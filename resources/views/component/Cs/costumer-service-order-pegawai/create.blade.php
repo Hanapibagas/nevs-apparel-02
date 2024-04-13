@@ -94,6 +94,16 @@
                                                 <hr>
                                                 <div class="row">
                                                     <div class="mb-3 col-md-6">
+                                                        <label class="form-label" for="country">Status</label>
+                                                        <select id="country" required name="status_player"
+                                                            class="select2 form-select">
+                                                            <option value="">-- Jenis Produksi --</option>
+                                                            <option value="Full print">Full print</option>
+                                                            <option value="Half print">Half print</option>
+                                                            <option value="Damy">Damy</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3 col-md-6">
                                                         <label class="form-label" for="country">Produksi</label>
                                                         <select id="country" required name="pola_lengan_player_id"
                                                             class="select2 form-select">
@@ -182,6 +192,16 @@
                                                 </h4>
                                                 <hr>
                                                 <div class="row">
+                                                    <div class="mb-3 col-md-6">
+                                                        <label class="form-label" for="country">Status</label>
+                                                        <select id="country" required name="status_pelatih"
+                                                            class="select2 form-select">
+                                                            <option value="">-- Jenis Produksi --</option>
+                                                            <option value="Full print">Full print</option>
+                                                            <option value="Half print">Half print</option>
+                                                            <option value="Damy">Damy</option>
+                                                        </select>
+                                                    </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label class="form-label" for="country">Produksi</label>
                                                         <select id="country" required name="pola_lengan_pelatih_id"
@@ -272,6 +292,16 @@
                                                 <hr>
                                                 <div class="row">
                                                     <div class="mb-3 col-md-6">
+                                                        <label class="form-label" for="country">Status</label>
+                                                        <select id="country" required name="status_kiper"
+                                                            class="select2 form-select">
+                                                            <option value="">-- Jenis Produksi --</option>
+                                                            <option value="Full print">Full print</option>
+                                                            <option value="Half print">Half print</option>
+                                                            <option value="Damy">Damy</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3 col-md-6">
                                                         <label class="form-label" for="country">Produksi</label>
                                                         <select id="country" required name="pola_lengan_kiper_id"
                                                             class="select2 form-select">
@@ -360,6 +390,16 @@
                                                 </h4>
                                                 <hr>
                                                 <div class="row">
+                                                    <div class="mb-3 col-md-6">
+                                                        <label class="form-label" for="country">Status</label>
+                                                        <select id="country" required name="status_baju_1"
+                                                            class="select2 form-select">
+                                                            <option value="">-- Jenis Produksi --</option>
+                                                            <option value="Full print">Full print</option>
+                                                            <option value="Half print">Half print</option>
+                                                            <option value="Damy">Damy</option>
+                                                        </select>
+                                                    </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label class="form-label" for="country">Produksi</label>
                                                         <select id="country" required name="pola_lengan_1_id"
@@ -452,6 +492,16 @@
                                                 <hr>
                                                 <div class="row">
                                                     <div class="mb-3 col-md-6">
+                                                        <label class="form-label" for="country">Status</label>
+                                                        <select id="country" required name="status_celana_player"
+                                                            class="select2 form-select">
+                                                            <option value="">-- Jenis Produksi --</option>
+                                                            <option value="Full print">Full print</option>
+                                                            <option value="Half print">Half print</option>
+                                                            <option value="Damy">Damy</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3 col-md-6">
                                                         <label class="form-label" for="country">Produksi</label>
                                                         <select id="country" required name="pola_celana_player_id"
                                                             class="select2 form-select">
@@ -541,6 +591,16 @@
                                                 </h4>
                                                 <hr>
                                                 <div class="row">
+                                                    <div class="mb-3 col-md-6">
+                                                        <label class="form-label" for="country">Status</label>
+                                                        <select id="country" required name="status_celana_pelatih"
+                                                            class="select2 form-select">
+                                                            <option value="">-- Jenis Produksi --</option>
+                                                            <option value="Full print">Full print</option>
+                                                            <option value="Half print">Half print</option>
+                                                            <option value="Damy">Damy</option>
+                                                        </select>
+                                                    </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label class="form-label" for="country">Produksi</label>
                                                         <select required id="country" name="pola_celana_pelatih_id"
@@ -633,6 +693,16 @@
                                                 <hr>
                                                 <div class="row">
                                                     <div class="mb-3 col-md-6">
+                                                        <label class="form-label" for="country">Status</label>
+                                                        <select id="country" required name="status_celana_kiper"
+                                                            class="select2 form-select">
+                                                            <option value="">-- Jenis Produksi --</option>
+                                                            <option value="Full print">Full print</option>
+                                                            <option value="Half print">Half print</option>
+                                                            <option value="Damy">Damy</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3 col-md-6">
                                                         <label class="form-label" for="country">Produksi</label>
                                                         <select required id="country" name="pola_celana_kiper_id"
                                                             class="select2 form-select">
@@ -722,6 +792,16 @@
                                                 </h4>
                                                 <hr>
                                                 <div class="row">
+                                                    <div class="mb-3 col-md-6">
+                                                        <label class="form-label" for="country">Status</label>
+                                                        <select id="country" required name="status_celana_1"
+                                                            class="select2 form-select">
+                                                            <option value="">-- Jenis Produksi --</option>
+                                                            <option value="Full print">Full print</option>
+                                                            <option value="Half print">Half print</option>
+                                                            <option value="Damy">Damy</option>
+                                                        </select>
+                                                    </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label class="form-label" for="country">Produksi</label>
                                                         <select required id="country" name="pola_celana_1_id"

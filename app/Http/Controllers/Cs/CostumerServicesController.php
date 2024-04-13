@@ -19,6 +19,14 @@ use App\Models\Finish;
 use App\Models\Jahit;
 use App\Models\KeraBaju;
 use App\Models\Laporan;
+use App\Models\LkBaju1;
+use App\Models\LkCelana1;
+use App\Models\LkCelanaKiper;
+use App\Models\LkCelanaPelatih;
+use App\Models\LkCelanaPlayer;
+use App\Models\LkKiper;
+use App\Models\LkPelatih;
+use App\Models\LkPlayer;
 use App\Models\MesinAtexco;
 use App\Models\MesinMimaki;
 use App\Models\PolaCeleana;
@@ -328,106 +336,144 @@ class CostumerServicesController extends Controller
             'deadline' => $request->deadline,
             'ket_hari' => $keterangan,
 
-            // baju player
-            'total_baju_player' => $request->total_baju_player,
-            'jenis_sablon_baju_player' => $request->jenis_sablon_baju_player,
-            'kera_baju_player_id' => $request->kera_baju_player_id,
-            'pola_lengan_player_id' => $request->pola_lengan_player_id,
-            'jenis_kain_baju_player' => $request->jenis_kain_baju_player,
-            'ket_kumis_baju_player' => $request->ket_kumis_baju_player,
-            'ket_bantalan_baju_player' => $request->ket_bantalan_baju_player,
-            'ket_celana_player' => $request->ket_celana_player,
-            'ket_tambahan_baju_player' => $request->ket_tambahan_baju_player,
-            'keterangan_baju_pelayer' => $request->keterangan_baju_pelayer,
-
-            // baju pelatih
-            'total_baju_pelatih' => $request->total_baju_pelatih,
-            'kerah_baju_pelatih_id' => $request->kerah_baju_pelatih_id,
-            'jenis_sablon_baju_pelatih' => $request->jenis_sablon_baju_pelatih,
-            'pola_lengan_pelatih_id' => $request->pola_lengan_pelatih_id,
-            'jenis_kain_baju_pelatih' => $request->jenis_kain_baju_pelatih,
-            'ket_kumis_baju_pelatih' => $request->ket_kumis_baju_pelatih,
-            'ket_bantalan_baju_pelatih' => $request->ket_bantalan_baju_pelatih,
-            'ket_celana_pelatih' => $request->ket_celana_pelatih,
-            'ket_tambahan_baju_pelatih' => $request->ket_tambahan_baju_pelatih,
-            'keterangan_baju_pelatih' => $request->keterangan_baju_pelatih,
-
-            // baju kiper
-            'total_baju_kiper' => $request->total_baju_kiper,
-            'kerah_baju_kiper_id' => $request->kerah_baju_kiper_id,
-            'pola_lengan_kiper_id' => $request->pola_lengan_kiper_id,
-            'jenis_kain_baju_kiper' => $request->jenis_kain_baju_kiper,
-            'jenis_sablon_baju_kiper' => $request->jenis_sablon_baju_kiper,
-            'ket_kumis_baju_kiper' => $request->ket_kumis_baju_kiper,
-            'ket_bantalan_baju_kiper' => $request->ket_bantalan_baju_kiper,
-            'ket_celana_kiper' => $request->ket_celana_kiper,
-            'ket_tambahan_baju_kiper' => $request->ket_tambahan_baju_kiper,
-            'keterangan_baju_kiper' => $request->keterangan_baju_kiper,
-
-            // baju player 1
-            'total_baju_1' => $request->total_baju_1,
-            'kerah_baju_1_id' => $request->kerah_baju_1_id,
-            'pola_lengan_1_id' => $request->pola_lengan_1_id,
-            'jenis_kain_baju_1' => $request->jenis_kain_baju_1,
-            'jenis_sablon_baju_1' => $request->jenis_sablon_baju_1,
-            'ket_kumis_baju_1' => $request->ket_kumis_baju_1,
-            'ket_bantalan_baju_1' => $request->ket_bantalan_baju_1,
-            'ket_celana_1' => $request->ket_celana_1,
-            'ket_tambahan_baju_1' => $request->ket_tambahan_baju_1,
-            'keterangan_baju_1' => $request->keterangan_baju_1,
-
-            // celana player
-            'total_celana_player' => $request->total_celana_player,
-            'kerah_celana_player_id' => $request->kerah_celana_player_id,
-            'jenis_sablon_celana_player' => $request->jenis_sablon_celana_player,
-            'jenis_kain_celana_player' => $request->jenis_kain_celana_player,
-            'pola_celana_player_id' => $request->pola_celana_player_id,
-            'kain_celana_player' => $request->kain_celana_player,
-            'ket_warna_kain_celana_player' => $request->ket_warna_kain_celana_player,
-            'ket_bis_celana_celana_player' => $request->ket_bis_celana_celana_player,
-            'ket_tambahan_celana_player' => $request->ket_tambahan_celana_player,
-            'keterangan_celana_pelayer' => $request->keterangan_celana_pelayer,
-
-            // celana pelatih
-            'total_celana_pelatih' => $request->total_celana_pelatih,
-            'kerah_celana_pelatih_id' => $request->kerah_celana_pelatih_id,
-            'jenis_sablon_celana_pelatih' => $request->jenis_sablon_celana_pelatih,
-            'pola_celana_pelatih_id' => $request->pola_celana_pelatih_id,
-            'jenis_kain_celana_pelatih' => $request->jenis_kain_celana_pelatih,
-            'ket_warna_kain_celana_pelatih' => $request->ket_warna_kain_celana_pelatih,
-            'ket_bis_celana_celana_pelatih' => $request->ket_bis_celana_celana_pelatih,
-            'ket_tambahan_celana_pelatih' => $request->ket_tambahan_celana_pelatih,
-            'keterangan_celana_pelatih' => $request->keterangan_celana_pelatih,
-
-            // celana kiper
-            'total_celana_kiper' => $request->total_celana_kiper,
-            'kerah_celana_kiper_id' => $request->kerah_celana_kiper_id,
-            'jenis_sablon_celana_kiper' => $request->jenis_sablon_celana_kiper,
-            'pola_celana_kiper_id' => $request->pola_celana_kiper_id,
-            'jenis_kain_celana_kiper' => $request->jenis_kain_celana_kiper,
-            'ket_warna_kain_celana_kiper' => $request->ket_warna_kain_celana_kiper,
-            'ket_bis_celana_celana_kiper' => $request->ket_bis_celana_celana_kiper,
-            'ket_tambahan_celana_kiper' => $request->ket_tambahan_celana_kiper,
-            'keterangan_celana_kiper' => $request->keterangan_celana_kiper,
-
-            // celana 1
-            'total_celana_1' => $request->total_celana_1,
-            'kerah_celana_1_id' => $request->kerah_celana_1_id,
-            'jenis_sablon_celana_1' => $request->jenis_sablon_celana_1,
-            'pola_celana_1_id' => $request->pola_celana_1_id,
-            'jenis_kain_celana_1' => $request->jenis_kain_celana_1,
-            'ket_warna_kain_celana_1' => $request->ket_warna_kain_celana_1,
-            'ket_bis_celana_celana_1' => $request->ket_bis_celana_celana_1,
-            'ket_tambahan_celana_1' => $request->ket_tambahan_celana_1,
-            'keterangan_celana_1' => $request->keterangan_celana_1,
-
             'keterangan_lengkap' => $request->keterangan_lengkap,
 
-            'aksi' => '1',
-            'tanda_telah_mengerjakan' => '1',
+            'aksi' => '0',
+            'tanda_telah_mengerjakan' => '0',
         ]);
 
-        // return response()->json($lk);
+        if ($lk->Gambar->file_baju_player) {
+            $LkPlayer = LkPlayer::create([
+                'barang_masuk_id' => $lk->id,
+                'total_baju_player' => $request->total_baju_player,
+                'jenis_sablon_baju_player' => $request->jenis_sablon_baju_player,
+                'kera_baju_player_id' => $request->kera_baju_player_id,
+                'pola_lengan_player_id' => $request->pola_lengan_player_id,
+                'status_player' => $request->status_player,
+                'jenis_kain_baju_player' => $request->jenis_kain_baju_player,
+                'ket_kumis_baju_player' => $request->ket_kumis_baju_player,
+                'ket_bantalan_baju_player' => $request->ket_bantalan_baju_player,
+                'ket_celana_player' => $request->ket_celana_player,
+                'ket_tambahan_baju_player' => $request->ket_tambahan_baju_player,
+                'keterangan_baju_pelayer' => $request->keterangan_baju_pelayer,
+            ]);
+        }
+
+        if ($lk->Gambar->file_baju_pelatih) {
+            $LkPelatih = LkPelatih::create([
+                'barang_masuk_id' => $lk->id,
+                'total_baju_pelatih' => $request->total_baju_pelatih,
+                'kerah_baju_pelatih_id' => $request->kerah_baju_pelatih_id,
+                'jenis_sablon_baju_pelatih' => $request->jenis_sablon_baju_pelatih,
+                'pola_lengan_pelatih_id' => $request->pola_lengan_pelatih_id,
+                'jenis_kain_baju_pelatih' => $request->jenis_kain_baju_pelatih,
+                'ket_kumis_baju_pelatih' => $request->ket_kumis_baju_pelatih,
+                'ket_bantalan_baju_pelatih' => $request->ket_bantalan_baju_pelatih,
+                'ket_celana_pelatih' => $request->ket_celana_pelatih,
+                'ket_tambahan_baju_pelatih' => $request->ket_tambahan_baju_pelatih,
+                'keterangan_baju_pelatih' => $request->keterangan_baju_pelatih,
+                'status_pelatih' => $request->status_pelatih,
+            ]);
+        }
+
+        if ($lk->Gambar->file_baju_kiper) {
+            $LkKiper = LkKiper::create([
+                'barang_masuk_id' => $lk->id,
+                'total_baju_kiper' => $request->total_baju_kiper,
+                'kerah_baju_kiper_id' => $request->kerah_baju_kiper_id,
+                'pola_lengan_kiper_id' => $request->pola_lengan_kiper_id,
+                'jenis_kain_baju_kiper' => $request->jenis_kain_baju_kiper,
+                'jenis_sablon_baju_kiper' => $request->jenis_sablon_baju_kiper,
+                'ket_kumis_baju_kiper' => $request->ket_kumis_baju_kiper,
+                'ket_bantalan_baju_kiper' => $request->ket_bantalan_baju_kiper,
+                'ket_celana_kiper' => $request->ket_celana_kiper,
+                'ket_tambahan_baju_kiper' => $request->ket_tambahan_baju_kiper,
+                'keterangan_baju_kiper' => $request->keterangan_baju_kiper,
+                'status_kiper' => $request->status_kiper,
+            ]);
+        }
+
+        if ($lk->Gambar->file_baju_1) {
+            $LkBaju1 = LkBaju1::create([
+                'barang_masuk_id' => $lk->id,
+                'total_baju_1' => $request->total_baju_1,
+                'kerah_baju_1_id' => $request->kerah_baju_1_id,
+                'pola_lengan_1_id' => $request->pola_lengan_1_id,
+                'jenis_kain_baju_1' => $request->jenis_kain_baju_1,
+                'jenis_sablon_baju_1' => $request->jenis_sablon_baju_1,
+                'ket_kumis_baju_1' => $request->ket_kumis_baju_1,
+                'ket_bantalan_baju_1' => $request->ket_bantalan_baju_1,
+                'ket_celana_1' => $request->ket_celana_1,
+                'ket_tambahan_baju_1' => $request->ket_tambahan_baju_1,
+                'keterangan_baju_1' => $request->keterangan_baju_1,
+                'status_baju_1' => $request->status_baju_1,
+            ]);
+        }
+
+        if ($lk->Gambar->file_celana_player) {
+            $LkCelanaPlayer = LkCelanaPlayer::create([
+                'barang_masuk_id' => $lk->id,
+                'total_celana_player' => $request->total_celana_player,
+                'kerah_celana_player_id' => $request->kerah_celana_player_id,
+                'jenis_sablon_celana_player' => $request->jenis_sablon_celana_player,
+                'jenis_kain_celana_player' => $request->jenis_kain_celana_player,
+                'pola_celana_player_id' => $request->pola_celana_player_id,
+                'kain_celana_player' => $request->kain_celana_player,
+                'ket_warna_kain_celana_player' => $request->ket_warna_kain_celana_player,
+                'ket_bis_celana_celana_player' => $request->ket_bis_celana_celana_player,
+                'ket_tambahan_celana_player' => $request->ket_tambahan_celana_player,
+                'keterangan_celana_pelayer' => $request->keterangan_celana_pelayer,
+                'status_celana_player' => $request->status_celana_player,
+            ]);
+        }
+
+        if ($lk->Gambar->file_celana_pelatih) {
+            $LkCelanaKiper = LkCelanaKiper::create([
+                'barang_masuk_id' => $lk->id,
+                'total_celana_kiper' => $request->total_celana_kiper,
+                'kerah_celana_kiper_id' => $request->kerah_celana_kiper_id,
+                'jenis_sablon_celana_kiper' => $request->jenis_sablon_celana_kiper,
+                'pola_celana_kiper_id' => $request->pola_celana_kiper_id,
+                'jenis_kain_celana_kiper' => $request->jenis_kain_celana_kiper,
+                'ket_warna_kain_celana_kiper' => $request->ket_warna_kain_celana_kiper,
+                'ket_bis_celana_celana_kiper' => $request->ket_bis_celana_celana_kiper,
+                'ket_tambahan_celana_kiper' => $request->ket_tambahan_celana_kiper,
+                'keterangan_celana_kiper' => $request->keterangan_celana_kiper,
+                'status_celana_kiper' => $request->status_celana_kiper,
+            ]);
+        }
+
+        if ($lk->Gambar->file_celana_kiper) {
+            $LkCelanaPelatih = LkCelanaPelatih::create([
+                'baraang_masuk_id' => $lk->id,
+                'total_celana_pelatih' => $request->total_celana_pelatih,
+                'kerah_celana_pelatih_id' => $request->kerah_celana_pelatih_id,
+                'jenis_sablon_celana_pelatih' => $request->jenis_sablon_celana_pelatih,
+                'pola_celana_pelatih_id' => $request->pola_celana_pelatih_id,
+                'jenis_kain_celana_pelatih' => $request->jenis_kain_celana_pelatih,
+                'ket_warna_kain_celana_pelatih' => $request->ket_warna_kain_celana_pelatih,
+                'ket_bis_celana_celana_pelatih' => $request->ket_bis_celana_celana_pelatih,
+                'ket_tambahan_celana_pelatih' => $request->ket_tambahan_celana_pelatih,
+                'keterangan_celana_pelatih' => $request->keterangan_celana_pelatih,
+                'status_celana_pelatih' => $request->status_celana_pelatih,
+            ]);
+        }
+
+        if ($lk->Gambar->file_celana_1) {
+            $LkCelana1 = LkCelana1::create([
+                'barang_masuk_id' => $lk->id,
+                'total_celana_1' => $request->total_celana_1,
+                'kerah_celana_1_id' => $request->kerah_celana_1_id,
+                'jenis_sablon_celana_1' => $request->jenis_sablon_celana_1,
+                'pola_celana_1_id' => $request->pola_celana_1_id,
+                'jenis_kain_celana_1' => $request->jenis_kain_celana_1,
+                'ket_warna_kain_celana_1' => $request->ket_warna_kain_celana_1,
+                'ket_bis_celana_celana_1' => $request->ket_bis_celana_celana_1,
+                'ket_tambahan_celana_1' => $request->ket_tambahan_celana_1,
+                'keterangan_celana_1' => $request->keterangan_celana_1,
+                'status_celana_1' => $request->status_celana_1,
+            ]);
+        }
 
         $createDate = clone $tanggal_masuk;
         if ($tanggal_masuk->dayOfWeek === Carbon::SATURDAY) {
@@ -601,839 +647,946 @@ class CostumerServicesController extends Controller
             $createDate12->addDay(14);
         }
 
-        if ($total_hari == 1) {
-            $barangMasukDataLayout = BarangMasukDatalayout::create([
-                'users_layout_id' => $lk->layout_id,
-                'no_order_id' => $lk->id,
-                'deadline' => $createDate->format('Y-m-d'),
-            ]);
-            $mesinAtexco = null;
-            $mesinMimaki = null;
-            if ($lk->jenis_mesin == 'atexco') {
-                $mesinAtexco = MesinAtexco::create([
-                    'no_order_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'nama_mesin' => $lk->jenis_mesin,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            } elseif ($lk->jenis_mesin == 'mimaki') {
-                $mesinMimaki = MesinMimaki::create([
-                    'no_order_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'nama_mesin' => $lk->jenis_mesin,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            }
-            if ($lk->jenis_mesin == 'atexco') {
-                $dataPressKain = DataPressKain::create([
-                    'no_order_id' => $lk->id,
-                    'mesin_atexco_id' => $mesinAtexco->id,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            } elseif ($lk->jenis_mesin == 'mimaki') {
-                $dataPressKain = DataPressKain::create([
-                    'no_order_id' => $lk->id,
-                    'mesin_mimaki_id' => $mesinMimaki->id,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            }
-            $dataCut = Cut::create([
-                'no_order_id' => $lk->id,
-                'press_kain_id' => $dataPressKain->id,
-                'deadline' => $createDate->format('Y-m-d'),
-            ]);
-            $dataSortit = DataSortir::create([
-                'no_order_id' => $lk->id,
-                'manual_cut_id' => $dataCut->id,
-                'deadline' => $createDate->format('Y-m-d'),
-            ]);
-            $dataJahit = Jahit::create([
-                'no_order_id' => $lk->id,
-                'sortir_id' => $dataSortit->id,
-                'deadline' => $createDate->format('Y-m-d'),
-            ]);
-            $dataFinis = Finish::create([
-                'no_order_id' => $lk->id,
-                'jahit_baju_id' => $dataJahit->id,
-                'deadline' => $createDate->format('Y-m-d'),
-            ]);
-            if ($mesinAtexco || $mesinMimaki) {
-                Laporan::create([
-                    'barang_masuk_costumer_services_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'barang_masuk_mesin_atexco_id' => $mesinAtexco ? $mesinAtexco->id : null,
-                    'barang_masuk_mesin_mimaki_id' => $mesinMimaki ? $mesinMimaki->id : null,
-                    'barang_masuk_presskain_id' => $dataPressKain->id,
-                    'cut_id' => $dataCut->id,
-                    'barang_masuk_sortir_id' => $dataSortit->id,
-                    'jahit_id' => $dataJahit->id,
-                    'finis_id' => $dataFinis->id,
-                ]);
-            }
-        } elseif ($total_hari == 2) {
-            $barangMasukDataLayout = BarangMasukDatalayout::create([
-                'users_layout_id' => $lk->layout_id,
-                'no_order_id' => $lk->id,
-                'deadline' => $createDate->format('Y-m-d'),
-            ]);
-            $mesinAtexco = null;
-            $mesinMimaki = null;
-            if ($lk->jenis_mesin == 'atexco') {
-                $mesinAtexco = MesinAtexco::create([
-                    'no_order_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'nama_mesin' => $lk->jenis_mesin,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            } elseif ($lk->jenis_mesin == 'mimaki') {
-                $mesinMimaki = MesinMimaki::create([
-                    'no_order_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'nama_mesin' => $lk->jenis_mesin,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            }
-            if ($lk->jenis_mesin == 'atexco') {
-                $dataPressKain = DataPressKain::create([
-                    'no_order_id' => $lk->id,
-                    'mesin_atexco_id' => $mesinAtexco->id,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            } elseif ($lk->jenis_mesin == 'mimaki') {
-                $dataPressKain = DataPressKain::create([
-                    'no_order_id' => $lk->id,
-                    'mesin_mimaki_id' => $mesinMimaki->id,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            }
-            $dataCut = Cut::create([
-                'no_order_id' => $lk->id,
-                'press_kain_id' => $dataPressKain->id,
-                'deadline' => $createDate->format('Y-m-d'),
-            ]);
-            $dataSortit = DataSortir::create([
-                'no_order_id' => $lk->id,
-                'manual_cut_id' => $dataCut->id,
-                'deadline' => $createDate2->format('Y-m-d'),
-            ]);
-            $dataJahit = Jahit::create([
-                'no_order_id' => $lk->id,
-                'sortir_id' => $dataSortit->id,
-                'deadline' => $createDate2->format('Y-m-d'),
-            ]);
-            $dataFinis = Finish::create([
-                'no_order_id' => $lk->id,
-                'jahit_baju_id' => $dataJahit->id,
-                'deadline' => $createDate2->format('Y-m-d'),
-            ]);
-            if ($mesinAtexco || $mesinMimaki) {
-                Laporan::create([
-                    'barang_masuk_costumer_services_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'barang_masuk_mesin_atexco_id' => $mesinAtexco ? $mesinAtexco->id : null,
-                    'barang_masuk_mesin_mimaki_id' => $mesinMimaki ? $mesinMimaki->id : null,
-                    'barang_masuk_presskain_id' => $dataPressKain->id,
-                    'cut_id' => $dataCut->id,
-                    'barang_masuk_sortir_id' => $dataSortit->id,
-                    'jahit_id' => $dataJahit->id,
-                    'finis_id' => $dataFinis->id,
-                ]);
-            }
-        } elseif ($total_hari == 3) {
-            $barangMasukDataLayout = BarangMasukDatalayout::create([
-                'users_layout_id' => $lk->layout_id,
-                'no_order_id' => $lk->id,
-                'deadline' => $createDate->format('Y-m-d'),
-            ]);
-            $mesinAtexco = null;
-            $mesinMimaki = null;
-            if ($lk->jenis_mesin == 'atexco') {
-                $mesinAtexco = MesinAtexco::create([
-                    'no_order_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'nama_mesin' => $lk->jenis_mesin,
-                    'deadline' => $createDate2->format('Y-m-d'),
-                ]);
-            } elseif ($lk->jenis_mesin == 'mimaki') {
-                $mesinMimaki = MesinMimaki::create([
-                    'no_order_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'nama_mesin' => $lk->jenis_mesin,
-                    'deadline' => $createDate2->format('Y-m-d'),
-                ]);
-            }
-            if ($lk->jenis_mesin == 'atexco') {
-                $dataPressKain = DataPressKain::create([
-                    'no_order_id' => $lk->id,
-                    'mesin_atexco_id' => $mesinAtexco->id,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            } elseif ($lk->jenis_mesin == 'mimaki') {
-                $dataPressKain = DataPressKain::create([
-                    'no_order_id' => $lk->id,
-                    'mesin_mimaki_id' => $mesinMimaki->id,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            }
-            $dataCut = Cut::create([
-                'no_order_id' => $lk->id,
-                'press_kain_id' => $dataPressKain->id,
-                'deadline' => $createDate2->format('Y-m-d'),
-            ]);
-            $dataSortit = DataSortir::create([
-                'no_order_id' => $lk->id,
-                'manual_cut_id' => $dataCut->id,
-                'deadline' => $createDate3->format('Y-m-d'),
-            ]);
-            $dataJahit = Jahit::create([
-                'no_order_id' => $lk->id,
-                'sortir_id' => $dataSortit->id,
-                'deadline' => $createDate3->format('Y-m-d'),
-            ]);
-            $dataFinis = Finish::create([
-                'no_order_id' => $lk->id,
-                'jahit_baju_id' => $dataJahit->id,
-                'deadline' => $createDate3->format('Y-m-d'),
-            ]);
-            if ($mesinAtexco || $mesinMimaki) {
-                Laporan::create([
-                    'barang_masuk_costumer_services_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'barang_masuk_mesin_atexco_id' => $mesinAtexco ? $mesinAtexco->id : null,
-                    'barang_masuk_mesin_mimaki_id' => $mesinMimaki ? $mesinMimaki->id : null,
-                    'barang_masuk_presskain_id' => $dataPressKain->id,
-                    'cut_id' => $dataCut->id,
-                    'barang_masuk_sortir_id' => $dataSortit->id,
-                    'jahit_id' => $dataJahit->id,
-                    'finis_id' => $dataFinis->id,
-                ]);
-            }
-        } elseif ($total_hari == 4) {
-            $barangMasukDataLayout = BarangMasukDatalayout::create([
-                'users_layout_id' => $lk->layout_id,
-                'no_order_id' => $lk->id,
-                'deadline' => $createDate->format('Y-m-d'),
-            ]);
-
-            $mesinAtexco = null;
-            $mesinMimaki = null;
-            if ($lk->jenis_mesin == 'atexco') {
-                $mesinAtexco = MesinAtexco::create([
-                    'no_order_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'nama_mesin' => $lk->jenis_mesin,
-                    'deadline' => $createDate2->format('Y-m-d'),
-                ]);
-            } elseif ($lk->jenis_mesin == 'mimaki') {
-                $mesinMimaki = MesinMimaki::create([
-                    'no_order_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'nama_mesin' => $lk->jenis_mesin,
-                    'deadline' => $createDate2->format('Y-m-d'),
-                ]);
-            }
-            if ($lk->jenis_mesin == 'atexco') {
-                $dataPressKain = DataPressKain::create([
-                    'no_order_id' => $lk->id,
-                    'mesin_atexco_id' => $mesinAtexco->id,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            } elseif ($lk->jenis_mesin == 'mimaki') {
-                $dataPressKain = DataPressKain::create([
-                    'no_order_id' => $lk->id,
-                    'mesin_mimaki_id' => $mesinMimaki->id,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            }
-            $dataCut = Cut::create([
-                'no_order_id' => $lk->id,
-                'press_kain_id' => $dataPressKain->id,
-                'deadline' => $createDate3->format('Y-m-d'),
-            ]);
-            $dataSortit = DataSortir::create([
-                'no_order_id' => $lk->id,
-                'manual_cut_id' => $dataCut->id,
-                'deadline' => $createDate3->format('Y-m-d'),
-            ]);
-            $dataJahit = Jahit::create([
-                'no_order_id' => $lk->id,
-                'sortir_id' => $dataSortit->id,
-                'deadline' => $createDate4->format('Y-m-d'),
-            ]);
-            $dataFinis = Finish::create([
-                'no_order_id' => $lk->id,
-                'jahit_baju_id' => $dataJahit->id,
-                'deadline' => $createDate4->format('Y-m-d'),
-            ]);
-            if ($mesinAtexco || $mesinMimaki) {
-                Laporan::create([
-                    'barang_masuk_costumer_services_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'barang_masuk_mesin_atexco_id' => $mesinAtexco ? $mesinAtexco->id : null,
-                    'barang_masuk_mesin_mimaki_id' => $mesinMimaki ? $mesinMimaki->id : null,
-                    'barang_masuk_presskain_id' => $dataPressKain->id,
-                    'cut_id' => $dataCut->id,
-                    'barang_masuk_sortir_id' => $dataSortit->id,
-                    'jahit_id' => $dataJahit->id,
-                    'finis_id' => $dataFinis->id,
-                ]);
-            }
-        } elseif ($total_hari == 5) {
-            $barangMasukDataLayout = BarangMasukDatalayout::create([
-                'users_layout_id' => $lk->layout_id,
-                'no_order_id' => $lk->id,
-                'deadline' => $createDate->format('Y-m-d'),
-            ]);
-            $mesinAtexco = null;
-            $mesinMimaki = null;
-            if ($lk->jenis_mesin == 'atexco') {
-                $mesinAtexco = MesinAtexco::create([
-                    'no_order_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'nama_mesin' => $lk->jenis_mesin,
-                    'deadline' => $createDate2->format('Y-m-d'),
-                ]);
-            } elseif ($lk->jenis_mesin == 'mimaki') {
-                $mesinMimaki = MesinMimaki::create([
-                    'no_order_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'nama_mesin' => $lk->jenis_mesin,
-                    'deadline' => $createDate2->format('Y-m-d'),
-                ]);
-            }
-            if ($lk->jenis_mesin == 'atexco') {
-                $dataPressKain = DataPressKain::create([
-                    'no_order_id' => $lk->id,
-                    'mesin_atexco_id' => $mesinAtexco->id,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            } elseif ($lk->jenis_mesin == 'mimaki') {
-                $dataPressKain = DataPressKain::create([
-                    'no_order_id' => $lk->id,
-                    'mesin_mimaki_id' => $mesinMimaki->id,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            }
-            $dataCut = Cut::create([
-                'no_order_id' => $lk->id,
-                'press_kain_id' => $dataPressKain->id,
-                'deadline' => $createDate3->format('Y-m-d'),
-            ]);
-            $dataSortit = DataSortir::create([
-                'no_order_id' => $lk->id,
-                'manual_cut_id' => $dataCut->id,
-                'deadline' => $createDate4->format('Y-m-d'),
-            ]);
-            $dataJahit = Jahit::create([
-                'no_order_id' => $lk->id,
-                'sortir_id' => $dataSortit->id,
-                'deadline' => $createDate5->format('Y-m-d'),
-            ]);
-            $dataFinis = Finish::create([
-                'no_order_id' => $lk->id,
-                'jahit_baju_id' => $dataJahit->id,
-                'deadline' => $createDate5->format('Y-m-d'),
-            ]);
-            if ($mesinAtexco || $mesinMimaki) {
-                Laporan::create([
-                    'barang_masuk_costumer_services_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'barang_masuk_mesin_atexco_id' => $mesinAtexco ? $mesinAtexco->id : null,
-                    'barang_masuk_mesin_mimaki_id' => $mesinMimaki ? $mesinMimaki->id : null,
-                    'barang_masuk_presskain_id' => $dataPressKain->id,
-                    'cut_id' => $dataCut->id,
-                    'barang_masuk_sortir_id' => $dataSortit->id,
-                    'jahit_id' => $dataJahit->id,
-                    'finis_id' => $dataFinis->id,
-                ]);
-            }
-        } elseif ($total_hari == 6) {
-            $barangMasukDataLayout = BarangMasukDatalayout::create([
-                'users_layout_id' => $lk->layout_id,
-                'no_order_id' => $lk->id,
-                'deadline' => $createDate->format('Y-m-d'),
-            ]);
-            $mesinAtexco = null;
-            $mesinMimaki = null;
-            if ($lk->jenis_mesin == 'atexco') {
-                $mesinAtexco = MesinAtexco::create([
-                    'no_order_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'nama_mesin' => $lk->jenis_mesin,
-                    'deadline' => $createDate2->format('Y-m-d'),
-                ]);
-            } elseif ($lk->jenis_mesin == 'mimaki') {
-                $mesinMimaki = MesinMimaki::create([
-                    'no_order_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'nama_mesin' => $lk->jenis_mesin,
-                    'deadline' => $createDate2->format('Y-m-d'),
-                ]);
-            }
-            if ($lk->jenis_mesin == 'atexco') {
-                $dataPressKain = DataPressKain::create([
-                    'no_order_id' => $lk->id,
-                    'mesin_atexco_id' => $mesinAtexco->id,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            } elseif ($lk->jenis_mesin == 'mimaki') {
-                $dataPressKain = DataPressKain::create([
-                    'no_order_id' => $lk->id,
-                    'mesin_mimaki_id' => $mesinMimaki->id,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            }
-            $dataCut = Cut::create([
-                'no_order_id' => $lk->id,
-                'press_kain_id' => $dataPressKain->id,
-                'deadline' => $createDate3->format('Y-m-d'),
-            ]);
-            $dataSortit = DataSortir::create([
-                'no_order_id' => $lk->id,
-                'manual_cut_id' => $dataCut->id,
-                'deadline' => $createDate5->format('Y-m-d'),
-            ]);
-            $dataJahit = Jahit::create([
-                'no_order_id' => $lk->id,
-                'sortir_id' => $dataSortit->id,
-                'deadline' => $createDate6->format('Y-m-d'),
-            ]);
-            $dataFinis = Finish::create([
-                'no_order_id' => $lk->id,
-                'jahit_baju_id' => $dataJahit->id,
-                'deadline' => $createDate6->format('Y-m-d'),
-            ]);
-            if ($mesinAtexco || $mesinMimaki) {
-                Laporan::create([
-                    'barang_masuk_costumer_services_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'barang_masuk_mesin_atexco_id' => $mesinAtexco ? $mesinAtexco->id : null,
-                    'barang_masuk_mesin_mimaki_id' => $mesinMimaki ? $mesinMimaki->id : null,
-                    'barang_masuk_presskain_id' => $dataPressKain->id,
-                    'cut_id' => $dataCut->id,
-                    'barang_masuk_sortir_id' => $dataSortit->id,
-                    'jahit_id' => $dataJahit->id,
-                    'finis_id' => $dataFinis->id,
-                ]);
-            }
-        } elseif ($total_hari == 7) {
-            $barangMasukDataLayout = BarangMasukDatalayout::create([
-                'users_layout_id' => $lk->layout_id,
-                'no_order_id' => $lk->id,
-                'deadline' => $createDate->format('Y-m-d'),
-            ]);
-
-            $mesinAtexco = null;
-            $mesinMimaki = null;
-            if ($lk->jenis_mesin == 'atexco') {
-                $mesinAtexco = MesinAtexco::create([
-                    'no_order_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'nama_mesin' => $lk->jenis_mesin,
-                    'deadline' => $createDate2->format('Y-m-d'),
-                ]);
-            } elseif ($lk->jenis_mesin == 'mimaki') {
-                $mesinMimaki = MesinMimaki::create([
-                    'no_order_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'nama_mesin' => $lk->jenis_mesin,
-                    'deadline' => $createDate2->format('Y-m-d'),
-                ]);
-            }
-            if ($lk->jenis_mesin == 'atexco') {
-                $dataPressKain = DataPressKain::create([
-                    'no_order_id' => $lk->id,
-                    'mesin_atexco_id' => $mesinAtexco->id,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            } elseif ($lk->jenis_mesin == 'mimaki') {
-                $dataPressKain = DataPressKain::create([
-                    'no_order_id' => $lk->id,
-                    'mesin_mimaki_id' => $mesinMimaki->id,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            }
-            $dataCut = Cut::create([
-                'no_order_id' => $lk->id,
-                'press_kain_id' => $dataPressKain->id,
-                'deadline' => $createDate4->format('Y-m-d'),
-            ]);
-            $dataSortit = DataSortir::create([
-                'no_order_id' => $lk->id,
-                'manual_cut_id' => $dataCut->id,
-                'deadline' => $createDate5->format('Y-m-d'),
-            ]);
-            $dataJahit = Jahit::create([
-                'no_order_id' => $lk->id,
-                'sortir_id' => $dataSortit->id,
-                'deadline' => $createDate7->format('Y-m-d'),
-            ]);
-            $dataFinis = Finish::create([
-                'no_order_id' => $lk->id,
-                'jahit_baju_id' => $dataJahit->id,
-                'deadline' => $createDate7->format('Y-m-d'),
-            ]);
-            if ($mesinAtexco || $mesinMimaki) {
-                Laporan::create([
-                    'barang_masuk_costumer_services_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'barang_masuk_mesin_atexco_id' => $mesinAtexco ? $mesinAtexco->id : null,
-                    'barang_masuk_mesin_mimaki_id' => $mesinMimaki ? $mesinMimaki->id : null,
-                    'barang_masuk_presskain_id' => $dataPressKain->id,
-                    'cut_id' => $dataCut->id,
-                    'barang_masuk_sortir_id' => $dataSortit->id,
-                    'jahit_id' => $dataJahit->id,
-                    'finis_id' => $dataFinis->id,
-                ]);
-            }
-        } elseif ($total_hari == 8) {
-            $barangMasukDataLayout = BarangMasukDatalayout::create([
-                'users_layout_id' => $lk->layout_id,
-                'no_order_id' => $lk->id,
-                'deadline' => $createDate2->format('Y-m-d'),
-            ]);
-            $mesinAtexco = null;
-            $mesinMimaki = null;
-            if ($lk->jenis_mesin == 'atexco') {
-                $mesinAtexco = MesinAtexco::create([
-                    'no_order_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'nama_mesin' => $lk->jenis_mesin,
-                    'deadline' => $createDate3->format('Y-m-d'),
-                ]);
-            } elseif ($lk->jenis_mesin == 'mimaki') {
-                $mesinMimaki = MesinMimaki::create([
-                    'no_order_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'nama_mesin' => $lk->jenis_mesin,
-                    'deadline' => $createDate3->format('Y-m-d'),
-                ]);
-            }
-            if ($lk->jenis_mesin == 'atexco') {
-                $dataPressKain = DataPressKain::create([
-                    'no_order_id' => $lk->id,
-                    'mesin_atexco_id' => $mesinAtexco->id,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            } elseif ($lk->jenis_mesin == 'mimaki') {
-                $dataPressKain = DataPressKain::create([
-                    'no_order_id' => $lk->id,
-                    'mesin_mimaki_id' => $mesinMimaki->id,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            }
-            $dataCut = Cut::create([
-                'no_order_id' => $lk->id,
-                'press_kain_id' => $dataPressKain->id,
-                'deadline' => $createDate5->format('Y-m-d'),
-            ]);
-            $dataSortit = DataSortir::create([
-                'no_order_id' => $lk->id,
-                'manual_cut_id' => $dataCut->id,
-                'deadline' => $createDate6->format('Y-m-d'),
-            ]);
-            $dataJahit = Jahit::create([
-                'no_order_id' => $lk->id,
-                'sortir_id' => $dataSortit->id,
-                'deadline' => $createDate8->format('Y-m-d'),
-            ]);
-            $dataFinis = Finish::create([
-                'no_order_id' => $lk->id,
-                'jahit_baju_id' => $dataJahit->id,
-                'deadline' => $createDate8->format('Y-m-d'),
-            ]);
-            if ($mesinAtexco || $mesinMimaki) {
-                Laporan::create([
-                    'barang_masuk_costumer_services_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'barang_masuk_mesin_atexco_id' => $mesinAtexco ? $mesinAtexco->id : null,
-                    'barang_masuk_mesin_mimaki_id' => $mesinMimaki ? $mesinMimaki->id : null,
-                    'barang_masuk_presskain_id' => $dataPressKain->id,
-                    'cut_id' => $dataCut->id,
-                    'barang_masuk_sortir_id' => $dataSortit->id,
-                    'jahit_id' => $dataJahit->id,
-                    'finis_id' => $dataFinis->id,
-                ]);
-            }
-        } elseif ($total_hari == 9) {
-            $barangMasukDataLayout = BarangMasukDatalayout::create([
-                'users_layout_id' => $lk->layout_id,
-                'no_order_id' => $lk->id,
-                'deadline' => $createDate2->format('Y-m-d'),
-            ]);
-
-            $mesinAtexco = null;
-            $mesinMimaki = null;
-            if ($lk->jenis_mesin == 'atexco') {
-                $mesinAtexco = MesinAtexco::create([
-                    'no_order_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'nama_mesin' => $lk->jenis_mesin,
-                    'deadline' => $createDate3->format('Y-m-d'),
-                ]);
-            } elseif ($lk->jenis_mesin == 'mimaki') {
-                $mesinMimaki = MesinMimaki::create([
-                    'no_order_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'nama_mesin' => $lk->jenis_mesin,
-                    'deadline' => $createDate3->format('Y-m-d'),
-                ]);
-            }
-            if ($lk->jenis_mesin == 'atexco') {
-                $dataPressKain = DataPressKain::create([
-                    'no_order_id' => $lk->id,
-                    'mesin_atexco_id' => $mesinAtexco->id,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            } elseif ($lk->jenis_mesin == 'mimaki') {
-                $dataPressKain = DataPressKain::create([
-                    'no_order_id' => $lk->id,
-                    'mesin_mimaki_id' => $mesinMimaki->id,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            }
-            $dataCut = Cut::create([
-                'no_order_id' => $lk->id,
-                'press_kain_id' => $dataPressKain->id,
-                'deadline' => $createDate5->format('Y-m-d'),
-            ]);
-            $dataSortit = DataSortir::create([
-                'no_order_id' => $lk->id,
-                'manual_cut_id' => $dataCut->id,
-                'deadline' => $createDate6->format('Y-m-d'),
-            ]);
-            $dataJahit = Jahit::create([
-                'no_order_id' => $lk->id,
-                'sortir_id' => $dataSortit->id,
-                'deadline' => $createDate8->format('Y-m-d'),
-            ]);
-            $dataFinis = Finish::create([
-                'no_order_id' => $lk->id,
-                'jahit_baju_id' => $dataJahit->id,
-                'deadline' => $createDate9->format('Y-m-d'),
-            ]);
-            if ($mesinAtexco || $mesinMimaki) {
-                Laporan::create([
-                    'barang_masuk_costumer_services_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'barang_masuk_mesin_atexco_id' => $mesinAtexco ? $mesinAtexco->id : null,
-                    'barang_masuk_mesin_mimaki_id' => $mesinMimaki ? $mesinMimaki->id : null,
-                    'barang_masuk_presskain_id' => $dataPressKain->id,
-                    'cut_id' => $dataCut->id,
-                    'barang_masuk_sortir_id' => $dataSortit->id,
-                    'jahit_id' => $dataJahit->id,
-                    'finis_id' => $dataFinis->id,
-                ]);
-            }
-        } elseif ($total_hari == 10) {
-            $barangMasukDataLayout = BarangMasukDatalayout::create([
-                'users_layout_id' => $lk->layout_id,
-                'no_order_id' => $lk->id,
-                'deadline' => $createDate2->format('Y-m-d'),
-            ]);
-            $mesinAtexco = null;
-            $mesinMimaki = null;
-            if ($lk->jenis_mesin == 'atexco') {
-                $mesinAtexco = MesinAtexco::create([
-                    'no_order_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'nama_mesin' => $lk->jenis_mesin,
-                    'deadline' => $createDate3->format('Y-m-d'),
-                ]);
-            } elseif ($lk->jenis_mesin == 'mimaki') {
-                $mesinMimaki = MesinMimaki::create([
-                    'no_order_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'nama_mesin' => $lk->jenis_mesin,
-                    'deadline' => $createDate3->format('Y-m-d'),
-                ]);
-            }
-            if ($lk->jenis_mesin == 'atexco') {
-                $dataPressKain = DataPressKain::create([
-                    'no_order_id' => $lk->id,
-                    'mesin_atexco_id' => $mesinAtexco->id,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            } elseif ($lk->jenis_mesin == 'mimaki') {
-                $dataPressKain = DataPressKain::create([
-                    'no_order_id' => $lk->id,
-                    'mesin_mimaki_id' => $mesinMimaki->id,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            }
-            $dataCut = Cut::create([
-                'no_order_id' => $lk->id,
-                'press_kain_id' => $dataPressKain->id,
-                'deadline' => $createDate5->format('Y-m-d'),
-            ]);
-            $dataSortit = DataSortir::create([
-                'no_order_id' => $lk->id,
-                'manual_cut_id' => $dataCut->id,
-                'deadline' => $createDate6->format('Y-m-d'),
-            ]);
-            $dataJahit = Jahit::create([
-                'no_order_id' => $lk->id,
-                'sortir_id' => $dataSortit->id,
-                'deadline' => $createDate9->format('Y-m-d'),
-            ]);
-            $dataFinis = Finish::create([
-                'no_order_id' => $lk->id,
-                'jahit_baju_id' => $dataJahit->id,
-                'deadline' => $createDate10->format('Y-m-d'),
-            ]);
-            if ($mesinAtexco || $mesinMimaki) {
-                Laporan::create([
-                    'barang_masuk_costumer_services_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'barang_masuk_mesin_atexco_id' => $mesinAtexco ? $mesinAtexco->id : null,
-                    'barang_masuk_mesin_mimaki_id' => $mesinMimaki ? $mesinMimaki->id : null,
-                    'barang_masuk_presskain_id' => $dataPressKain->id,
-                    'cut_id' => $dataCut->id,
-                    'barang_masuk_sortir_id' => $dataSortit->id,
-                    'jahit_id' => $dataJahit->id,
-                    'finis_id' => $dataFinis->id,
-                ]);
-            }
-        } elseif ($total_hari == 11) {
-            $barangMasukDataLayout = BarangMasukDatalayout::create([
-                'users_layout_id' => $lk->layout_id,
-                'no_order_id' => $lk->id,
-                'deadline' => $createDate3->format('Y-m-d'),
-            ]);
-
-            $mesinAtexco = null;
-            $mesinMimaki = null;
-            if ($lk->jenis_mesin == 'atexco') {
-                $mesinAtexco = MesinAtexco::create([
-                    'no_order_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'nama_mesin' => $lk->jenis_mesin,
-                    'deadline' => $createDate4->format('Y-m-d'),
-                ]);
-            } elseif ($lk->jenis_mesin == 'mimaki') {
-                $mesinMimaki = MesinMimaki::create([
-                    'no_order_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'nama_mesin' => $lk->jenis_mesin,
-                    'deadline' => $createDate4->format('Y-m-d'),
-                ]);
-            }
-            if ($lk->jenis_mesin == 'atexco') {
-                $dataPressKain = DataPressKain::create([
-                    'no_order_id' => $lk->id,
-                    'mesin_atexco_id' => $mesinAtexco->id,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            } elseif ($lk->jenis_mesin == 'mimaki') {
-                $dataPressKain = DataPressKain::create([
-                    'no_order_id' => $lk->id,
-                    'mesin_mimaki_id' => $mesinMimaki->id,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            }
-            $dataCut = Cut::create([
-                'no_order_id' => $lk->id,
-                'press_kain_id' => $dataPressKain->id,
-                'deadline' => $createDate6->format('Y-m-d'),
-            ]);
-            $dataSortit = DataSortir::create([
-                'no_order_id' => $lk->id,
-                'manual_cut_id' => $dataCut->id,
-                'deadline' => $createDate7->format('Y-m-d'),
-            ]);
-            $dataJahit = Jahit::create([
-                'no_order_id' => $lk->id,
-                'sortir_id' => $dataSortit->id,
-                'deadline' => $createDate10->format('Y-m-d'),
-            ]);
-            $dataFinis = Finish::create([
-                'no_order_id' => $lk->id,
-                'jahit_baju_id' => $dataJahit->id,
-                'deadline' => $createDate11->format('Y-m-d'),
-            ]);
-            if ($mesinAtexco || $mesinMimaki) {
-                Laporan::create([
-                    'barang_masuk_costumer_services_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'barang_masuk_mesin_atexco_id' => $mesinAtexco ? $mesinAtexco->id : null,
-                    'barang_masuk_mesin_mimaki_id' => $mesinMimaki ? $mesinMimaki->id : null,
-                    'barang_masuk_presskain_id' => $dataPressKain->id,
-                    'cut_id' => $dataCut->id,
-                    'barang_masuk_sortir_id' => $dataSortit->id,
-                    'jahit_id' => $dataJahit->id,
-                    'finis_id' => $dataFinis->id,
-                ]);
-            }
-        } elseif ($total_hari >= 12 && $total_hari <= 9999) {
-            $barangMasukDataLayout = BarangMasukDatalayout::create([
-                'users_layout_id' => $lk->layout_id,
-                'no_order_id' => $lk->id,
-                'deadline' => $createDate3->format('Y-m-d'),
-            ]);
-            $mesinAtexco = null;
-            $mesinMimaki = null;
-            if ($lk->jenis_mesin == 'atexco') {
-                $mesinAtexco = MesinAtexco::create([
-                    'no_order_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'nama_mesin' => $lk->jenis_mesin,
-                    'deadline' => $createDate4->format('Y-m-d'),
-                ]);
-            } elseif ($lk->jenis_mesin == 'mimaki') {
-                $mesinMimaki = MesinMimaki::create([
-                    'no_order_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'nama_mesin' => $lk->jenis_mesin,
-                    'deadline' => $createDate4->format('Y-m-d'),
-                ]);
-            }
-            if ($lk->jenis_mesin == 'atexco') {
-                $dataPressKain = DataPressKain::create([
-                    'no_order_id' => $lk->id,
-                    'mesin_atexco_id' => $mesinAtexco->id,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            } elseif ($lk->jenis_mesin == 'mimaki') {
-                $dataPressKain = DataPressKain::create([
-                    'no_order_id' => $lk->id,
-                    'mesin_mimaki_id' => $mesinMimaki->id,
-                    'deadline' => $createDate->format('Y-m-d'),
-                ]);
-            }
-            $dataCut = Cut::create([
-                'no_order_id' => $lk->id,
-                'press_kain_id' => $dataPressKain->id,
-                'deadline' => $createDate6->format('Y-m-d'),
-            ]);
-            $dataSortit = DataSortir::create([
-                'no_order_id' => $lk->id,
-                'manual_cut_id' => $dataCut->id,
-                'deadline' => $createDate7->format('Y-m-d'),
-            ]);
-            $dataJahit = Jahit::create([
-                'no_order_id' => $lk->id,
-                'sortir_id' => $dataSortit->id,
-                'deadline' => $createDate10->format('Y-m-d'),
-            ]);
-            $dataFinis = Finish::create([
-                'no_order_id' => $lk->id,
-                'jahit_baju_id' => $dataJahit->id,
-                'deadline' => $createDate12->format('Y-m-d'),
-            ]);
-            if ($mesinAtexco || $mesinMimaki) {
-                Laporan::create([
-                    'barang_masuk_costumer_services_id' => $lk->id,
-                    'barang_masuk_layout_id' => $barangMasukDataLayout->id,
-                    'barang_masuk_mesin_atexco_id' => $mesinAtexco ? $mesinAtexco->id : null,
-                    'barang_masuk_mesin_mimaki_id' => $mesinMimaki ? $mesinMimaki->id : null,
-                    'barang_masuk_presskain_id' => $dataPressKain->id,
-                    'cut_id' => $dataCut->id,
-                    'barang_masuk_sortir_id' => $dataSortit->id,
-                    'jahit_id' => $dataJahit->id,
-                    'finis_id' => $dataFinis->id,
-                ]);
-            }
+        $barangMasukDataLayoutData = [
+            'users_layout_id' => $lk->layout_id,
+            'lk_player_id' => null,
+            'lk_pelatih_id' => null,
+            'lk_kiper_id' => null,
+            'lk_1_id' => null,
+            'lk_celana_player_id' => null,
+            'lk_celana_pelatih_id' => null,
+            'lk_celana_kiper_id' => null,
+            'lk_celana_1_id' => null,
+            'deadline' => $createDate->format('Y-m-d'),
+        ];
+        if (isset($LkPlayer) && ($LkPlayer->status_player == "Full print")) {
+            $barangMasukDataLayoutData['lk_player_id'] = $LkPlayer->id;
         }
+        if (isset($LkPelatih) && ($LkPelatih->status_pelatih == "Full print")) {
+            $barangMasukDataLayoutData['lk_pelatih_id'] = $LkPelatih->id;
+        }
+        if (isset($LkKiper) && ($LkKiper->status_kiper == 'Full print')) {
+            $barangMasukDataLayoutData['lk_kiper_id'] = $LkKiper->id;
+        }
+        if (isset($LkBaju1) && ($LkBaju1->status_baju_1 == 'Full print')) {
+            $barangMasukDataLayoutData['lk_1_id'] = $LkBaju1->id;
+        }
+        if (isset($LkCelanaPlayer) && ($LkCelanaPlayer->status_celana_player == 'Full print')) {
+            $barangMasukDataLayoutData['lk_celana_player_id'] = $LkCelanaPlayer->id;
+        }
+        if (isset($LkCelanaPelatih) && ($LkCelanaPelatih->status_celana_pelatih == 'Full print')) {
+            $barangMasukDataLayoutData['lk_celana_pelatih_id'] = $LkCelanaPelatih->id;
+        }
+        if (isset($LkCelanaKiper) && ($LkCelanaKiper->status_celana_kiper == 'Full print')) {
+            $barangMasukDataLayoutData['lk_celana_kiper_id'] = $LkCelanaKiper->id;
+        }
+        if (isset($LkCelana1) && ($LkCelana1->status_celana_1 == 'Full print')) {
+            $barangMasukDataLayoutData['lk_celana_1_id'] = $LkCelana1->id;
+        }
+        $barangMasukDataLayout = BarangMasukDatalayout::create($barangMasukDataLayoutData);
+
+
+
+        $mesinAtexco = null;
+        $mesinMimaki = null;
+        if ($lk->jenis_mesin == 'atexco') {
+            $mesinAtexco = MesinAtexco::create([
+                'no_order_id' => $lk->id,
+                'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+                'nama_mesin' => $lk->jenis_mesin,
+                'deadline' => $createDate->format('Y-m-d'),
+            ]);
+        } elseif ($lk->jenis_mesin == 'mimaki') {
+            $mesinMimaki = MesinMimaki::create([
+                'no_order_id' => $lk->id,
+                'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+                'nama_mesin' => $lk->jenis_mesin,
+                'deadline' => $createDate->format('Y-m-d'),
+            ]);
+        }
+        if ($lk->jenis_mesin == 'atexco') {
+            $dataPressKain = DataPressKain::create([
+                'no_order_id' => $lk->id,
+                'mesin_atexco_id' => $mesinAtexco->id,
+                'deadline' => $createDate->format('Y-m-d'),
+            ]);
+        } elseif ($lk->jenis_mesin == 'mimaki') {
+            $dataPressKain = DataPressKain::create([
+                'no_order_id' => $lk->id,
+                'mesin_mimaki_id' => $mesinMimaki->id,
+                'deadline' => $createDate->format('Y-m-d'),
+            ]);
+        }
+        $dataCut = Cut::create([
+            'no_order_id' => $lk->id,
+            'press_kain_id' => $dataPressKain->id,
+            'deadline' => $createDate->format('Y-m-d'),
+        ]);
+        $dataSortit = DataSortir::create([
+            'no_order_id' => $lk->id,
+            'manual_cut_id' => $dataCut->id,
+            'deadline' => $createDate->format('Y-m-d'),
+        ]);
+        $dataJahit = Jahit::create([
+            'no_order_id' => $lk->id,
+            'sortir_id' => $dataSortit->id,
+            'deadline' => $createDate->format('Y-m-d'),
+        ]);
+        $dataFinis = Finish::create([
+            'no_order_id' => $lk->id,
+            'jahit_baju_id' => $dataJahit->id,
+            'deadline' => $createDate->format('Y-m-d'),
+        ]);
+        if ($mesinAtexco || $mesinMimaki) {
+            Laporan::create([
+                'barang_masuk_costumer_services_id' => $lk->id,
+                'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+                'barang_masuk_mesin_atexco_id' => $mesinAtexco ? $mesinAtexco->id : null,
+                'barang_masuk_mesin_mimaki_id' => $mesinMimaki ? $mesinMimaki->id : null,
+                'barang_masuk_presskain_id' => $dataPressKain->id,
+                'cut_id' => $dataCut->id,
+                'barang_masuk_sortir_id' => $dataSortit->id,
+                'jahit_id' => $dataJahit->id,
+                'finis_id' => $dataFinis->id,
+            ]);
+        }
+
+        return response()->json([
+            $LkPlayer, $LkPelatih, $barangMasukDataLayout
+        ]);
+        // if ($total_hari == 1) {
+        //     $barangMasukDataLayout = BarangMasukDatalayout::create([
+        //         'users_layout_id' => $lk->layout_id,
+        //         'no_order_id' => $lk->id,
+        //         'deadline' => $createDate->format('Y-m-d'),
+        //     ]);
+        //     $mesinAtexco = null;
+        //     $mesinMimaki = null;
+        //     if ($lk->jenis_mesin == 'atexco') {
+        //         $mesinAtexco = MesinAtexco::create([
+        //             'no_order_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'nama_mesin' => $lk->jenis_mesin,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     } elseif ($lk->jenis_mesin == 'mimaki') {
+        //         $mesinMimaki = MesinMimaki::create([
+        //             'no_order_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'nama_mesin' => $lk->jenis_mesin,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     }
+        //     if ($lk->jenis_mesin == 'atexco') {
+        //         $dataPressKain = DataPressKain::create([
+        //             'no_order_id' => $lk->id,
+        //             'mesin_atexco_id' => $mesinAtexco->id,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     } elseif ($lk->jenis_mesin == 'mimaki') {
+        //         $dataPressKain = DataPressKain::create([
+        //             'no_order_id' => $lk->id,
+        //             'mesin_mimaki_id' => $mesinMimaki->id,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     }
+        //     $dataCut = Cut::create([
+        //         'no_order_id' => $lk->id,
+        //         'press_kain_id' => $dataPressKain->id,
+        //         'deadline' => $createDate->format('Y-m-d'),
+        //     ]);
+        //     $dataSortit = DataSortir::create([
+        //         'no_order_id' => $lk->id,
+        //         'manual_cut_id' => $dataCut->id,
+        //         'deadline' => $createDate->format('Y-m-d'),
+        //     ]);
+        //     $dataJahit = Jahit::create([
+        //         'no_order_id' => $lk->id,
+        //         'sortir_id' => $dataSortit->id,
+        //         'deadline' => $createDate->format('Y-m-d'),
+        //     ]);
+        //     $dataFinis = Finish::create([
+        //         'no_order_id' => $lk->id,
+        //         'jahit_baju_id' => $dataJahit->id,
+        //         'deadline' => $createDate->format('Y-m-d'),
+        //     ]);
+        //     if ($mesinAtexco || $mesinMimaki) {
+        //         Laporan::create([
+        //             'barang_masuk_costumer_services_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'barang_masuk_mesin_atexco_id' => $mesinAtexco ? $mesinAtexco->id : null,
+        //             'barang_masuk_mesin_mimaki_id' => $mesinMimaki ? $mesinMimaki->id : null,
+        //             'barang_masuk_presskain_id' => $dataPressKain->id,
+        //             'cut_id' => $dataCut->id,
+        //             'barang_masuk_sortir_id' => $dataSortit->id,
+        //             'jahit_id' => $dataJahit->id,
+        //             'finis_id' => $dataFinis->id,
+        //         ]);
+        //     }
+        // } elseif ($total_hari == 2) {
+        //     $barangMasukDataLayout = BarangMasukDatalayout::create([
+        //         'users_layout_id' => $lk->layout_id,
+        //         'no_order_id' => $lk->id,
+        //         'deadline' => $createDate->format('Y-m-d'),
+        //     ]);
+        //     $mesinAtexco = null;
+        //     $mesinMimaki = null;
+        //     if ($lk->jenis_mesin == 'atexco') {
+        //         $mesinAtexco = MesinAtexco::create([
+        //             'no_order_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'nama_mesin' => $lk->jenis_mesin,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     } elseif ($lk->jenis_mesin == 'mimaki') {
+        //         $mesinMimaki = MesinMimaki::create([
+        //             'no_order_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'nama_mesin' => $lk->jenis_mesin,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     }
+        //     if ($lk->jenis_mesin == 'atexco') {
+        //         $dataPressKain = DataPressKain::create([
+        //             'no_order_id' => $lk->id,
+        //             'mesin_atexco_id' => $mesinAtexco->id,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     } elseif ($lk->jenis_mesin == 'mimaki') {
+        //         $dataPressKain = DataPressKain::create([
+        //             'no_order_id' => $lk->id,
+        //             'mesin_mimaki_id' => $mesinMimaki->id,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     }
+        //     $dataCut = Cut::create([
+        //         'no_order_id' => $lk->id,
+        //         'press_kain_id' => $dataPressKain->id,
+        //         'deadline' => $createDate->format('Y-m-d'),
+        //     ]);
+        //     $dataSortit = DataSortir::create([
+        //         'no_order_id' => $lk->id,
+        //         'manual_cut_id' => $dataCut->id,
+        //         'deadline' => $createDate2->format('Y-m-d'),
+        //     ]);
+        //     $dataJahit = Jahit::create([
+        //         'no_order_id' => $lk->id,
+        //         'sortir_id' => $dataSortit->id,
+        //         'deadline' => $createDate2->format('Y-m-d'),
+        //     ]);
+        //     $dataFinis = Finish::create([
+        //         'no_order_id' => $lk->id,
+        //         'jahit_baju_id' => $dataJahit->id,
+        //         'deadline' => $createDate2->format('Y-m-d'),
+        //     ]);
+        //     if ($mesinAtexco || $mesinMimaki) {
+        //         Laporan::create([
+        //             'barang_masuk_costumer_services_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'barang_masuk_mesin_atexco_id' => $mesinAtexco ? $mesinAtexco->id : null,
+        //             'barang_masuk_mesin_mimaki_id' => $mesinMimaki ? $mesinMimaki->id : null,
+        //             'barang_masuk_presskain_id' => $dataPressKain->id,
+        //             'cut_id' => $dataCut->id,
+        //             'barang_masuk_sortir_id' => $dataSortit->id,
+        //             'jahit_id' => $dataJahit->id,
+        //             'finis_id' => $dataFinis->id,
+        //         ]);
+        //     }
+        // } elseif ($total_hari == 3) {
+        //     $barangMasukDataLayout = BarangMasukDatalayout::create([
+        //         'users_layout_id' => $lk->layout_id,
+        //         'no_order_id' => $lk->id,
+        //         'deadline' => $createDate->format('Y-m-d'),
+        //     ]);
+        //     $mesinAtexco = null;
+        //     $mesinMimaki = null;
+        //     if ($lk->jenis_mesin == 'atexco') {
+        //         $mesinAtexco = MesinAtexco::create([
+        //             'no_order_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'nama_mesin' => $lk->jenis_mesin,
+        //             'deadline' => $createDate2->format('Y-m-d'),
+        //         ]);
+        //     } elseif ($lk->jenis_mesin == 'mimaki') {
+        //         $mesinMimaki = MesinMimaki::create([
+        //             'no_order_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'nama_mesin' => $lk->jenis_mesin,
+        //             'deadline' => $createDate2->format('Y-m-d'),
+        //         ]);
+        //     }
+        //     if ($lk->jenis_mesin == 'atexco') {
+        //         $dataPressKain = DataPressKain::create([
+        //             'no_order_id' => $lk->id,
+        //             'mesin_atexco_id' => $mesinAtexco->id,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     } elseif ($lk->jenis_mesin == 'mimaki') {
+        //         $dataPressKain = DataPressKain::create([
+        //             'no_order_id' => $lk->id,
+        //             'mesin_mimaki_id' => $mesinMimaki->id,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     }
+        //     $dataCut = Cut::create([
+        //         'no_order_id' => $lk->id,
+        //         'press_kain_id' => $dataPressKain->id,
+        //         'deadline' => $createDate2->format('Y-m-d'),
+        //     ]);
+        //     $dataSortit = DataSortir::create([
+        //         'no_order_id' => $lk->id,
+        //         'manual_cut_id' => $dataCut->id,
+        //         'deadline' => $createDate3->format('Y-m-d'),
+        //     ]);
+        //     $dataJahit = Jahit::create([
+        //         'no_order_id' => $lk->id,
+        //         'sortir_id' => $dataSortit->id,
+        //         'deadline' => $createDate3->format('Y-m-d'),
+        //     ]);
+        //     $dataFinis = Finish::create([
+        //         'no_order_id' => $lk->id,
+        //         'jahit_baju_id' => $dataJahit->id,
+        //         'deadline' => $createDate3->format('Y-m-d'),
+        //     ]);
+        //     if ($mesinAtexco || $mesinMimaki) {
+        //         Laporan::create([
+        //             'barang_masuk_costumer_services_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'barang_masuk_mesin_atexco_id' => $mesinAtexco ? $mesinAtexco->id : null,
+        //             'barang_masuk_mesin_mimaki_id' => $mesinMimaki ? $mesinMimaki->id : null,
+        //             'barang_masuk_presskain_id' => $dataPressKain->id,
+        //             'cut_id' => $dataCut->id,
+        //             'barang_masuk_sortir_id' => $dataSortit->id,
+        //             'jahit_id' => $dataJahit->id,
+        //             'finis_id' => $dataFinis->id,
+        //         ]);
+        //     }
+        // } elseif ($total_hari == 4) {
+        //     $barangMasukDataLayout = BarangMasukDatalayout::create([
+        //         'users_layout_id' => $lk->layout_id,
+        //         'no_order_id' => $lk->id,
+        //         'deadline' => $createDate->format('Y-m-d'),
+        //     ]);
+        //     $mesinAtexco = null;
+        //     $mesinMimaki = null;
+        //     if ($lk->jenis_mesin == 'atexco') {
+        //         $mesinAtexco = MesinAtexco::create([
+        //             'no_order_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'nama_mesin' => $lk->jenis_mesin,
+        //             'deadline' => $createDate2->format('Y-m-d'),
+        //         ]);
+        //     } elseif ($lk->jenis_mesin == 'mimaki') {
+        //         $mesinMimaki = MesinMimaki::create([
+        //             'no_order_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'nama_mesin' => $lk->jenis_mesin,
+        //             'deadline' => $createDate2->format('Y-m-d'),
+        //         ]);
+        //     }
+        //     if ($lk->jenis_mesin == 'atexco') {
+        //         $dataPressKain = DataPressKain::create([
+        //             'no_order_id' => $lk->id,
+        //             'mesin_atexco_id' => $mesinAtexco->id,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     } elseif ($lk->jenis_mesin == 'mimaki') {
+        //         $dataPressKain = DataPressKain::create([
+        //             'no_order_id' => $lk->id,
+        //             'mesin_mimaki_id' => $mesinMimaki->id,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     }
+        //     $dataCut = Cut::create([
+        //         'no_order_id' => $lk->id,
+        //         'press_kain_id' => $dataPressKain->id,
+        //         'deadline' => $createDate3->format('Y-m-d'),
+        //     ]);
+        //     $dataSortit = DataSortir::create([
+        //         'no_order_id' => $lk->id,
+        //         'manual_cut_id' => $dataCut->id,
+        //         'deadline' => $createDate3->format('Y-m-d'),
+        //     ]);
+        //     $dataJahit = Jahit::create([
+        //         'no_order_id' => $lk->id,
+        //         'sortir_id' => $dataSortit->id,
+        //         'deadline' => $createDate4->format('Y-m-d'),
+        //     ]);
+        //     $dataFinis = Finish::create([
+        //         'no_order_id' => $lk->id,
+        //         'jahit_baju_id' => $dataJahit->id,
+        //         'deadline' => $createDate4->format('Y-m-d'),
+        //     ]);
+        //     if ($mesinAtexco || $mesinMimaki) {
+        //         Laporan::create([
+        //             'barang_masuk_costumer_services_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'barang_masuk_mesin_atexco_id' => $mesinAtexco ? $mesinAtexco->id : null,
+        //             'barang_masuk_mesin_mimaki_id' => $mesinMimaki ? $mesinMimaki->id : null,
+        //             'barang_masuk_presskain_id' => $dataPressKain->id,
+        //             'cut_id' => $dataCut->id,
+        //             'barang_masuk_sortir_id' => $dataSortit->id,
+        //             'jahit_id' => $dataJahit->id,
+        //             'finis_id' => $dataFinis->id,
+        //         ]);
+        //     }
+        // } elseif ($total_hari == 5) {
+        //     $barangMasukDataLayout = BarangMasukDatalayout::create([
+        //         'users_layout_id' => $lk->layout_id,
+        //         'no_order_id' => $lk->id,
+        //         'deadline' => $createDate->format('Y-m-d'),
+        //     ]);
+        //     $mesinAtexco = null;
+        //     $mesinMimaki = null;
+        //     if ($lk->jenis_mesin == 'atexco') {
+        //         $mesinAtexco = MesinAtexco::create([
+        //             'no_order_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'nama_mesin' => $lk->jenis_mesin,
+        //             'deadline' => $createDate2->format('Y-m-d'),
+        //         ]);
+        //     } elseif ($lk->jenis_mesin == 'mimaki') {
+        //         $mesinMimaki = MesinMimaki::create([
+        //             'no_order_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'nama_mesin' => $lk->jenis_mesin,
+        //             'deadline' => $createDate2->format('Y-m-d'),
+        //         ]);
+        //     }
+        //     if ($lk->jenis_mesin == 'atexco') {
+        //         $dataPressKain = DataPressKain::create([
+        //             'no_order_id' => $lk->id,
+        //             'mesin_atexco_id' => $mesinAtexco->id,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     } elseif ($lk->jenis_mesin == 'mimaki') {
+        //         $dataPressKain = DataPressKain::create([
+        //             'no_order_id' => $lk->id,
+        //             'mesin_mimaki_id' => $mesinMimaki->id,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     }
+        //     $dataCut = Cut::create([
+        //         'no_order_id' => $lk->id,
+        //         'press_kain_id' => $dataPressKain->id,
+        //         'deadline' => $createDate3->format('Y-m-d'),
+        //     ]);
+        //     $dataSortit = DataSortir::create([
+        //         'no_order_id' => $lk->id,
+        //         'manual_cut_id' => $dataCut->id,
+        //         'deadline' => $createDate4->format('Y-m-d'),
+        //     ]);
+        //     $dataJahit = Jahit::create([
+        //         'no_order_id' => $lk->id,
+        //         'sortir_id' => $dataSortit->id,
+        //         'deadline' => $createDate5->format('Y-m-d'),
+        //     ]);
+        //     $dataFinis = Finish::create([
+        //         'no_order_id' => $lk->id,
+        //         'jahit_baju_id' => $dataJahit->id,
+        //         'deadline' => $createDate5->format('Y-m-d'),
+        //     ]);
+        //     if ($mesinAtexco || $mesinMimaki) {
+        //         Laporan::create([
+        //             'barang_masuk_costumer_services_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'barang_masuk_mesin_atexco_id' => $mesinAtexco ? $mesinAtexco->id : null,
+        //             'barang_masuk_mesin_mimaki_id' => $mesinMimaki ? $mesinMimaki->id : null,
+        //             'barang_masuk_presskain_id' => $dataPressKain->id,
+        //             'cut_id' => $dataCut->id,
+        //             'barang_masuk_sortir_id' => $dataSortit->id,
+        //             'jahit_id' => $dataJahit->id,
+        //             'finis_id' => $dataFinis->id,
+        //         ]);
+        //     }
+        // } elseif ($total_hari == 6) {
+        //     $barangMasukDataLayout = BarangMasukDatalayout::create([
+        //         'users_layout_id' => $lk->layout_id,
+        //         'no_order_id' => $lk->id,
+        //         'deadline' => $createDate->format('Y-m-d'),
+        //     ]);
+        //     $mesinAtexco = null;
+        //     $mesinMimaki = null;
+        //     if ($lk->jenis_mesin == 'atexco') {
+        //         $mesinAtexco = MesinAtexco::create([
+        //             'no_order_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'nama_mesin' => $lk->jenis_mesin,
+        //             'deadline' => $createDate2->format('Y-m-d'),
+        //         ]);
+        //     } elseif ($lk->jenis_mesin == 'mimaki') {
+        //         $mesinMimaki = MesinMimaki::create([
+        //             'no_order_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'nama_mesin' => $lk->jenis_mesin,
+        //             'deadline' => $createDate2->format('Y-m-d'),
+        //         ]);
+        //     }
+        //     if ($lk->jenis_mesin == 'atexco') {
+        //         $dataPressKain = DataPressKain::create([
+        //             'no_order_id' => $lk->id,
+        //             'mesin_atexco_id' => $mesinAtexco->id,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     } elseif ($lk->jenis_mesin == 'mimaki') {
+        //         $dataPressKain = DataPressKain::create([
+        //             'no_order_id' => $lk->id,
+        //             'mesin_mimaki_id' => $mesinMimaki->id,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     }
+        //     $dataCut = Cut::create([
+        //         'no_order_id' => $lk->id,
+        //         'press_kain_id' => $dataPressKain->id,
+        //         'deadline' => $createDate3->format('Y-m-d'),
+        //     ]);
+        //     $dataSortit = DataSortir::create([
+        //         'no_order_id' => $lk->id,
+        //         'manual_cut_id' => $dataCut->id,
+        //         'deadline' => $createDate5->format('Y-m-d'),
+        //     ]);
+        //     $dataJahit = Jahit::create([
+        //         'no_order_id' => $lk->id,
+        //         'sortir_id' => $dataSortit->id,
+        //         'deadline' => $createDate6->format('Y-m-d'),
+        //     ]);
+        //     $dataFinis = Finish::create([
+        //         'no_order_id' => $lk->id,
+        //         'jahit_baju_id' => $dataJahit->id,
+        //         'deadline' => $createDate6->format('Y-m-d'),
+        //     ]);
+        //     if ($mesinAtexco || $mesinMimaki) {
+        //         Laporan::create([
+        //             'barang_masuk_costumer_services_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'barang_masuk_mesin_atexco_id' => $mesinAtexco ? $mesinAtexco->id : null,
+        //             'barang_masuk_mesin_mimaki_id' => $mesinMimaki ? $mesinMimaki->id : null,
+        //             'barang_masuk_presskain_id' => $dataPressKain->id,
+        //             'cut_id' => $dataCut->id,
+        //             'barang_masuk_sortir_id' => $dataSortit->id,
+        //             'jahit_id' => $dataJahit->id,
+        //             'finis_id' => $dataFinis->id,
+        //         ]);
+        //     }
+        // } elseif ($total_hari == 7) {
+        //     $barangMasukDataLayout = BarangMasukDatalayout::create([
+        //         'users_layout_id' => $lk->layout_id,
+        //         'no_order_id' => $lk->id,
+        //         'deadline' => $createDate->format('Y-m-d'),
+        //     ]);
+        //     $mesinAtexco = null;
+        //     $mesinMimaki = null;
+        //     if ($lk->jenis_mesin == 'atexco') {
+        //         $mesinAtexco = MesinAtexco::create([
+        //             'no_order_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'nama_mesin' => $lk->jenis_mesin,
+        //             'deadline' => $createDate2->format('Y-m-d'),
+        //         ]);
+        //     } elseif ($lk->jenis_mesin == 'mimaki') {
+        //         $mesinMimaki = MesinMimaki::create([
+        //             'no_order_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'nama_mesin' => $lk->jenis_mesin,
+        //             'deadline' => $createDate2->format('Y-m-d'),
+        //         ]);
+        //     }
+        //     if ($lk->jenis_mesin == 'atexco') {
+        //         $dataPressKain = DataPressKain::create([
+        //             'no_order_id' => $lk->id,
+        //             'mesin_atexco_id' => $mesinAtexco->id,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     } elseif ($lk->jenis_mesin == 'mimaki') {
+        //         $dataPressKain = DataPressKain::create([
+        //             'no_order_id' => $lk->id,
+        //             'mesin_mimaki_id' => $mesinMimaki->id,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     }
+        //     $dataCut = Cut::create([
+        //         'no_order_id' => $lk->id,
+        //         'press_kain_id' => $dataPressKain->id,
+        //         'deadline' => $createDate4->format('Y-m-d'),
+        //     ]);
+        //     $dataSortit = DataSortir::create([
+        //         'no_order_id' => $lk->id,
+        //         'manual_cut_id' => $dataCut->id,
+        //         'deadline' => $createDate5->format('Y-m-d'),
+        //     ]);
+        //     $dataJahit = Jahit::create([
+        //         'no_order_id' => $lk->id,
+        //         'sortir_id' => $dataSortit->id,
+        //         'deadline' => $createDate7->format('Y-m-d'),
+        //     ]);
+        //     $dataFinis = Finish::create([
+        //         'no_order_id' => $lk->id,
+        //         'jahit_baju_id' => $dataJahit->id,
+        //         'deadline' => $createDate7->format('Y-m-d'),
+        //     ]);
+        //     if ($mesinAtexco || $mesinMimaki) {
+        //         Laporan::create([
+        //             'barang_masuk_costumer_services_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'barang_masuk_mesin_atexco_id' => $mesinAtexco ? $mesinAtexco->id : null,
+        //             'barang_masuk_mesin_mimaki_id' => $mesinMimaki ? $mesinMimaki->id : null,
+        //             'barang_masuk_presskain_id' => $dataPressKain->id,
+        //             'cut_id' => $dataCut->id,
+        //             'barang_masuk_sortir_id' => $dataSortit->id,
+        //             'jahit_id' => $dataJahit->id,
+        //             'finis_id' => $dataFinis->id,
+        //         ]);
+        //     }
+        // } elseif ($total_hari == 8) {
+        //     $barangMasukDataLayout = BarangMasukDatalayout::create([
+        //         'users_layout_id' => $lk->layout_id,
+        //         'no_order_id' => $lk->id,
+        //         'deadline' => $createDate2->format('Y-m-d'),
+        //     ]);
+        //     $mesinAtexco = null;
+        //     $mesinMimaki = null;
+        //     if ($lk->jenis_mesin == 'atexco') {
+        //         $mesinAtexco = MesinAtexco::create([
+        //             'no_order_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'nama_mesin' => $lk->jenis_mesin,
+        //             'deadline' => $createDate3->format('Y-m-d'),
+        //         ]);
+        //     } elseif ($lk->jenis_mesin == 'mimaki') {
+        //         $mesinMimaki = MesinMimaki::create([
+        //             'no_order_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'nama_mesin' => $lk->jenis_mesin,
+        //             'deadline' => $createDate3->format('Y-m-d'),
+        //         ]);
+        //     }
+        //     if ($lk->jenis_mesin == 'atexco') {
+        //         $dataPressKain = DataPressKain::create([
+        //             'no_order_id' => $lk->id,
+        //             'mesin_atexco_id' => $mesinAtexco->id,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     } elseif ($lk->jenis_mesin == 'mimaki') {
+        //         $dataPressKain = DataPressKain::create([
+        //             'no_order_id' => $lk->id,
+        //             'mesin_mimaki_id' => $mesinMimaki->id,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     }
+        //     $dataCut = Cut::create([
+        //         'no_order_id' => $lk->id,
+        //         'press_kain_id' => $dataPressKain->id,
+        //         'deadline' => $createDate5->format('Y-m-d'),
+        //     ]);
+        //     $dataSortit = DataSortir::create([
+        //         'no_order_id' => $lk->id,
+        //         'manual_cut_id' => $dataCut->id,
+        //         'deadline' => $createDate6->format('Y-m-d'),
+        //     ]);
+        //     $dataJahit = Jahit::create([
+        //         'no_order_id' => $lk->id,
+        //         'sortir_id' => $dataSortit->id,
+        //         'deadline' => $createDate8->format('Y-m-d'),
+        //     ]);
+        //     $dataFinis = Finish::create([
+        //         'no_order_id' => $lk->id,
+        //         'jahit_baju_id' => $dataJahit->id,
+        //         'deadline' => $createDate8->format('Y-m-d'),
+        //     ]);
+        //     if ($mesinAtexco || $mesinMimaki) {
+        //         Laporan::create([
+        //             'barang_masuk_costumer_services_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'barang_masuk_mesin_atexco_id' => $mesinAtexco ? $mesinAtexco->id : null,
+        //             'barang_masuk_mesin_mimaki_id' => $mesinMimaki ? $mesinMimaki->id : null,
+        //             'barang_masuk_presskain_id' => $dataPressKain->id,
+        //             'cut_id' => $dataCut->id,
+        //             'barang_masuk_sortir_id' => $dataSortit->id,
+        //             'jahit_id' => $dataJahit->id,
+        //             'finis_id' => $dataFinis->id,
+        //         ]);
+        //     }
+        // } elseif ($total_hari == 9) {
+        //     $barangMasukDataLayout = BarangMasukDatalayout::create([
+        //         'users_layout_id' => $lk->layout_id,
+        //         'no_order_id' => $lk->id,
+        //         'deadline' => $createDate2->format('Y-m-d'),
+        //     ]);
+
+        //     $mesinAtexco = null;
+        //     $mesinMimaki = null;
+        //     if ($lk->jenis_mesin == 'atexco') {
+        //         $mesinAtexco = MesinAtexco::create([
+        //             'no_order_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'nama_mesin' => $lk->jenis_mesin,
+        //             'deadline' => $createDate3->format('Y-m-d'),
+        //         ]);
+        //     } elseif ($lk->jenis_mesin == 'mimaki') {
+        //         $mesinMimaki = MesinMimaki::create([
+        //             'no_order_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'nama_mesin' => $lk->jenis_mesin,
+        //             'deadline' => $createDate3->format('Y-m-d'),
+        //         ]);
+        //     }
+        //     if ($lk->jenis_mesin == 'atexco') {
+        //         $dataPressKain = DataPressKain::create([
+        //             'no_order_id' => $lk->id,
+        //             'mesin_atexco_id' => $mesinAtexco->id,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     } elseif ($lk->jenis_mesin == 'mimaki') {
+        //         $dataPressKain = DataPressKain::create([
+        //             'no_order_id' => $lk->id,
+        //             'mesin_mimaki_id' => $mesinMimaki->id,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     }
+        //     $dataCut = Cut::create([
+        //         'no_order_id' => $lk->id,
+        //         'press_kain_id' => $dataPressKain->id,
+        //         'deadline' => $createDate5->format('Y-m-d'),
+        //     ]);
+        //     $dataSortit = DataSortir::create([
+        //         'no_order_id' => $lk->id,
+        //         'manual_cut_id' => $dataCut->id,
+        //         'deadline' => $createDate6->format('Y-m-d'),
+        //     ]);
+        //     $dataJahit = Jahit::create([
+        //         'no_order_id' => $lk->id,
+        //         'sortir_id' => $dataSortit->id,
+        //         'deadline' => $createDate8->format('Y-m-d'),
+        //     ]);
+        //     $dataFinis = Finish::create([
+        //         'no_order_id' => $lk->id,
+        //         'jahit_baju_id' => $dataJahit->id,
+        //         'deadline' => $createDate9->format('Y-m-d'),
+        //     ]);
+        //     if ($mesinAtexco || $mesinMimaki) {
+        //         Laporan::create([
+        //             'barang_masuk_costumer_services_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'barang_masuk_mesin_atexco_id' => $mesinAtexco ? $mesinAtexco->id : null,
+        //             'barang_masuk_mesin_mimaki_id' => $mesinMimaki ? $mesinMimaki->id : null,
+        //             'barang_masuk_presskain_id' => $dataPressKain->id,
+        //             'cut_id' => $dataCut->id,
+        //             'barang_masuk_sortir_id' => $dataSortit->id,
+        //             'jahit_id' => $dataJahit->id,
+        //             'finis_id' => $dataFinis->id,
+        //         ]);
+        //     }
+        // } elseif ($total_hari == 10) {
+        //     $barangMasukDataLayout = BarangMasukDatalayout::create([
+        //         'users_layout_id' => $lk->layout_id,
+        //         'no_order_id' => $lk->id,
+        //         'deadline' => $createDate2->format('Y-m-d'),
+        //     ]);
+        //     $mesinAtexco = null;
+        //     $mesinMimaki = null;
+        //     if ($lk->jenis_mesin == 'atexco') {
+        //         $mesinAtexco = MesinAtexco::create([
+        //             'no_order_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'nama_mesin' => $lk->jenis_mesin,
+        //             'deadline' => $createDate3->format('Y-m-d'),
+        //         ]);
+        //     } elseif ($lk->jenis_mesin == 'mimaki') {
+        //         $mesinMimaki = MesinMimaki::create([
+        //             'no_order_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'nama_mesin' => $lk->jenis_mesin,
+        //             'deadline' => $createDate3->format('Y-m-d'),
+        //         ]);
+        //     }
+        //     if ($lk->jenis_mesin == 'atexco') {
+        //         $dataPressKain = DataPressKain::create([
+        //             'no_order_id' => $lk->id,
+        //             'mesin_atexco_id' => $mesinAtexco->id,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     } elseif ($lk->jenis_mesin == 'mimaki') {
+        //         $dataPressKain = DataPressKain::create([
+        //             'no_order_id' => $lk->id,
+        //             'mesin_mimaki_id' => $mesinMimaki->id,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     }
+        //     $dataCut = Cut::create([
+        //         'no_order_id' => $lk->id,
+        //         'press_kain_id' => $dataPressKain->id,
+        //         'deadline' => $createDate5->format('Y-m-d'),
+        //     ]);
+        //     $dataSortit = DataSortir::create([
+        //         'no_order_id' => $lk->id,
+        //         'manual_cut_id' => $dataCut->id,
+        //         'deadline' => $createDate6->format('Y-m-d'),
+        //     ]);
+        //     $dataJahit = Jahit::create([
+        //         'no_order_id' => $lk->id,
+        //         'sortir_id' => $dataSortit->id,
+        //         'deadline' => $createDate9->format('Y-m-d'),
+        //     ]);
+        //     $dataFinis = Finish::create([
+        //         'no_order_id' => $lk->id,
+        //         'jahit_baju_id' => $dataJahit->id,
+        //         'deadline' => $createDate10->format('Y-m-d'),
+        //     ]);
+        //     if ($mesinAtexco || $mesinMimaki) {
+        //         Laporan::create([
+        //             'barang_masuk_costumer_services_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'barang_masuk_mesin_atexco_id' => $mesinAtexco ? $mesinAtexco->id : null,
+        //             'barang_masuk_mesin_mimaki_id' => $mesinMimaki ? $mesinMimaki->id : null,
+        //             'barang_masuk_presskain_id' => $dataPressKain->id,
+        //             'cut_id' => $dataCut->id,
+        //             'barang_masuk_sortir_id' => $dataSortit->id,
+        //             'jahit_id' => $dataJahit->id,
+        //             'finis_id' => $dataFinis->id,
+        //         ]);
+        //     }
+        // } elseif ($total_hari == 11) {
+        //     $barangMasukDataLayout = BarangMasukDatalayout::create([
+        //         'users_layout_id' => $lk->layout_id,
+        //         'no_order_id' => $lk->id,
+        //         'deadline' => $createDate3->format('Y-m-d'),
+        //     ]);
+
+        //     $mesinAtexco = null;
+        //     $mesinMimaki = null;
+        //     if ($lk->jenis_mesin == 'atexco') {
+        //         $mesinAtexco = MesinAtexco::create([
+        //             'no_order_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'nama_mesin' => $lk->jenis_mesin,
+        //             'deadline' => $createDate4->format('Y-m-d'),
+        //         ]);
+        //     } elseif ($lk->jenis_mesin == 'mimaki') {
+        //         $mesinMimaki = MesinMimaki::create([
+        //             'no_order_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'nama_mesin' => $lk->jenis_mesin,
+        //             'deadline' => $createDate4->format('Y-m-d'),
+        //         ]);
+        //     }
+        //     if ($lk->jenis_mesin == 'atexco') {
+        //         $dataPressKain = DataPressKain::create([
+        //             'no_order_id' => $lk->id,
+        //             'mesin_atexco_id' => $mesinAtexco->id,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     } elseif ($lk->jenis_mesin == 'mimaki') {
+        //         $dataPressKain = DataPressKain::create([
+        //             'no_order_id' => $lk->id,
+        //             'mesin_mimaki_id' => $mesinMimaki->id,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     }
+        //     $dataCut = Cut::create([
+        //         'no_order_id' => $lk->id,
+        //         'press_kain_id' => $dataPressKain->id,
+        //         'deadline' => $createDate6->format('Y-m-d'),
+        //     ]);
+        //     $dataSortit = DataSortir::create([
+        //         'no_order_id' => $lk->id,
+        //         'manual_cut_id' => $dataCut->id,
+        //         'deadline' => $createDate7->format('Y-m-d'),
+        //     ]);
+        //     $dataJahit = Jahit::create([
+        //         'no_order_id' => $lk->id,
+        //         'sortir_id' => $dataSortit->id,
+        //         'deadline' => $createDate10->format('Y-m-d'),
+        //     ]);
+        //     $dataFinis = Finish::create([
+        //         'no_order_id' => $lk->id,
+        //         'jahit_baju_id' => $dataJahit->id,
+        //         'deadline' => $createDate11->format('Y-m-d'),
+        //     ]);
+        //     if ($mesinAtexco || $mesinMimaki) {
+        //         Laporan::create([
+        //             'barang_masuk_costumer_services_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'barang_masuk_mesin_atexco_id' => $mesinAtexco ? $mesinAtexco->id : null,
+        //             'barang_masuk_mesin_mimaki_id' => $mesinMimaki ? $mesinMimaki->id : null,
+        //             'barang_masuk_presskain_id' => $dataPressKain->id,
+        //             'cut_id' => $dataCut->id,
+        //             'barang_masuk_sortir_id' => $dataSortit->id,
+        //             'jahit_id' => $dataJahit->id,
+        //             'finis_id' => $dataFinis->id,
+        //         ]);
+        //     }
+        // } elseif ($total_hari >= 12 && $total_hari <= 9999) {
+        //     $barangMasukDataLayout = BarangMasukDatalayout::create([
+        //         'users_layout_id' => $lk->layout_id,
+        //         'no_order_id' => $lk->id,
+        //         'deadline' => $createDate3->format('Y-m-d'),
+        //     ]);
+        //     $mesinAtexco = null;
+        //     $mesinMimaki = null;
+        //     if ($lk->jenis_mesin == 'atexco') {
+        //         $mesinAtexco = MesinAtexco::create([
+        //             'no_order_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'nama_mesin' => $lk->jenis_mesin,
+        //             'deadline' => $createDate4->format('Y-m-d'),
+        //         ]);
+        //     } elseif ($lk->jenis_mesin == 'mimaki') {
+        //         $mesinMimaki = MesinMimaki::create([
+        //             'no_order_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'nama_mesin' => $lk->jenis_mesin,
+        //             'deadline' => $createDate4->format('Y-m-d'),
+        //         ]);
+        //     }
+        //     if ($lk->jenis_mesin == 'atexco') {
+        //         $dataPressKain = DataPressKain::create([
+        //             'no_order_id' => $lk->id,
+        //             'mesin_atexco_id' => $mesinAtexco->id,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     } elseif ($lk->jenis_mesin == 'mimaki') {
+        //         $dataPressKain = DataPressKain::create([
+        //             'no_order_id' => $lk->id,
+        //             'mesin_mimaki_id' => $mesinMimaki->id,
+        //             'deadline' => $createDate->format('Y-m-d'),
+        //         ]);
+        //     }
+        //     $dataCut = Cut::create([
+        //         'no_order_id' => $lk->id,
+        //         'press_kain_id' => $dataPressKain->id,
+        //         'deadline' => $createDate6->format('Y-m-d'),
+        //     ]);
+        //     $dataSortit = DataSortir::create([
+        //         'no_order_id' => $lk->id,
+        //         'manual_cut_id' => $dataCut->id,
+        //         'deadline' => $createDate7->format('Y-m-d'),
+        //     ]);
+        //     $dataJahit = Jahit::create([
+        //         'no_order_id' => $lk->id,
+        //         'sortir_id' => $dataSortit->id,
+        //         'deadline' => $createDate10->format('Y-m-d'),
+        //     ]);
+        //     $dataFinis = Finish::create([
+        //         'no_order_id' => $lk->id,
+        //         'jahit_baju_id' => $dataJahit->id,
+        //         'deadline' => $createDate12->format('Y-m-d'),
+        //     ]);
+        //     if ($mesinAtexco || $mesinMimaki) {
+        //         Laporan::create([
+        //             'barang_masuk_costumer_services_id' => $lk->id,
+        //             'barang_masuk_layout_id' => $barangMasukDataLayout->id,
+        //             'barang_masuk_mesin_atexco_id' => $mesinAtexco ? $mesinAtexco->id : null,
+        //             'barang_masuk_mesin_mimaki_id' => $mesinMimaki ? $mesinMimaki->id : null,
+        //             'barang_masuk_presskain_id' => $dataPressKain->id,
+        //             'cut_id' => $dataCut->id,
+        //             'barang_masuk_sortir_id' => $dataSortit->id,
+        //             'jahit_id' => $dataJahit->id,
+        //             'finis_id' => $dataFinis->id,
+        //         ]);
+        //     }
+        // }
+
+
 
         return redirect()->route('getIndexLkCsPegawai')->with('success', 'Selamat data yang input berhasil!');
     }

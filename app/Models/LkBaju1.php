@@ -5,20 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LkPelatih extends Model
+class LkBaju1 extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'barang_masuk_id',
-        'status_pelatih',
-        'pola_lengan_pelatih_id',
-        'kerah_baju_pelatih_id',
-        'jenis_sablon_baju_pelatih',
-        'jenis_kain_baju_pelatih',
-        'total_baju_pelatih',
-        'ket_tambahan_baju_pelatih',
-        'keterangan_baju_pelatih',
+        'status_baju_1',
+        'pola_lengan_1_id',
+        'kerah_baju_1_id',
+        'jenis_sablon_baju_1',
+        'jenis_kain_baju_1',
+        'total_baju_1',
+        'ket_tambahan_baju_1',
+        'keterangan_baju_1',
     ];
 
     public function BarangMasukCostumerServices()
