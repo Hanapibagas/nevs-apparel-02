@@ -60,8 +60,8 @@
                 <p style="margin-top: -5px; font-weight: bold">Produksi</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="details">
-                    <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->LenganPlayer->gambar) }}" alt="">
+                    {{-- <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $dataLk->LenganPlayer->gambar) }}" alt=""> --}}
                 </div>
                 @endif
             </td>
@@ -72,8 +72,8 @@
                 <p style="margin-top: -5px; font-weight: bold">Model</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="">
-                    <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->KeraPlayer->gambar) }}" alt="">
+                    {{-- <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $dataLk->KeraPlayer->gambar) }}" alt=""> --}}
                 </div>
                 @endif
             </td>
@@ -146,8 +146,8 @@
                 <p style="margin-top: -5px; font-weight: bold">Produksi</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="details">
-                    <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->LenganPelatih->gambar) }}" alt="">
+                    {{-- <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $dataLk->LenganPelatih->gambar) }}" alt=""> --}}
                 </div>
                 @endif
             </td>
@@ -158,8 +158,8 @@
                 <p style="margin-top: -5px; font-weight: bold">Model</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="">
-                    <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->KeraPelatih->gambar) }}" alt="">
+                    {{-- <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $dataLk->KeraPelatih->gambar) }}" alt=""> --}}
                 </div>
                 @endif
             </td>
@@ -232,8 +232,8 @@
                 <p style="margin-top: -5px; font-weight: bold">Produksi</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="details">
-                    <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->LenganKiper->gambar) }}" alt="">
+                    {{-- <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $dataLk->LenganKiper->gambar) }}" alt=""> --}}
                 </div>
                 @endif
             </td>
@@ -244,8 +244,8 @@
                 <p style="margin-top: -5px; font-weight: bold">Model</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="">
-                    <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->KeraKiper->gambar) }}" alt="">
+                    {{-- <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $dataLk->KeraKiper->gambar) }}" alt=""> --}}
                 </div>
                 @endif
             </td>
@@ -318,8 +318,8 @@
                 <p style="margin-top: -5px; font-weight: bold">Produksi</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="details">
-                    <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->Lengan1->gambar) }}" alt="">
+                    {{-- <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $dataLk->Lengan1->gambar) }}" alt=""> --}}
                 </div>
                 @endif
             </td>
@@ -330,8 +330,8 @@
                 <p style="margin-top: -5px; font-weight: bold">Model</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="">
-                    <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->Kera1->gambar) }}" alt="">
+                    {{-- <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $dataLk->Kera1->gambar) }}" alt=""> --}}
                 </div>
                 @endif
             </td>
@@ -404,8 +404,8 @@
                 <p style="margin-top: -5px; font-weight: bold">Produksi</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="details">
-                    <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->CelanaPlayer->gambar) }}" alt="">
+                    {{-- <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $dataLk->CelanaPlayer->gambar) }}" alt=""> --}}
                 </div>
                 @endif
             </td>
@@ -416,8 +416,8 @@
                 <p style="margin-top: -5px; font-weight: bold">Model</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="">
-                    <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->KeraPlayer->gambar) }}" alt="">
+                    {{-- <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $dataLk->KeraPlayer->gambar) }}" alt=""> --}}
                 </div>
                 @endif
             </td>
@@ -491,8 +491,8 @@
                 <p style="margin-top: -5px; font-weight: bold">Produksi</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="details">
-                    <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->CelanaPelatih->gambar) }}" alt="">
+                    {{-- <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $dataLk->CelanaPelatih->gambar) }}" alt=""> --}}
                 </div>
                 @endif
             </td>
@@ -503,8 +503,8 @@
                 <p style="margin-top: -5px; font-weight: bold">Model</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="">
-                    <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->KeraPlayer->gambar) }}" alt="">
+                    {{-- <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $dataLk->KeraPlayer->gambar) }}" alt=""> --}}
                 </div>
                 @endif
             </td>
@@ -577,8 +577,8 @@
                 <p style="margin-top: -5px; font-weight: bold">Produksi</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="details">
-                    <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->CelanaKiper->gambar) }}" alt="">
+                    {{-- <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $dataLk->CelanaKiper->gambar) }}" alt=""> --}}
                 </div>
                 @endif
             </td>
@@ -589,8 +589,8 @@
                 <p style="margin-top: -5px; font-weight: bold">Model</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="">
-                    <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->KeraPlayer->gambar) }}" alt="">
+                    {{-- <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $dataLk->KeraPlayer->gambar) }}" alt=""> --}}
                 </div>
                 @endif
             </td>
@@ -663,8 +663,8 @@
                 <p style="margin-top: -5px; font-weight: bold">Produksi</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="details">
-                    <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->Celana1->gambar) }}" alt="">
+                    {{-- <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $dataLk->Celana1->gambar) }}" alt=""> --}}
                 </div>
                 @endif
             </td>
@@ -675,8 +675,8 @@
                 <p style="margin-top: -5px; font-weight: bold">Model</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="">
-                    <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->KeraPlayer->gambar) }}" alt="">
+                    {{-- <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $dataLk->KeraPlayer->gambar) }}" alt=""> --}}
                 </div>
                 @endif
             </td>

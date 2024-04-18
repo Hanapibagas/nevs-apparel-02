@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('barang_masuk_datalayouts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('users_layout_id')->nullable()->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('barang_masuk_id')->nullable()->constrained('barang_masuk_costumer_services')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('lk_player_id')->nullable()->constrained('lk_players')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('lk_pelatih_id')->nullable()->constrained('lk_pelatihs')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('lk_kiper_id')->nullable()->constrained('lk_kipers')->onUpdate('cascade')->onDelete('cascade');
@@ -26,33 +27,40 @@ return new class extends Migration
             $table->foreignId('lk_celana_1_id')->nullable()->constrained('lk_celana1s')->onUpdate('cascade')->onDelete('cascade');
             $table->string('deadline')->nullable();
             $table->string('selesai')->nullable();
-
+            // AWAL
             $table->string('panjang_kertas_palayer')->nullable();
             $table->string('poly_player')->nullable();
+            $table->string('file_tangkap_layar_player')->nullable();
 
             $table->string('panjang_kertas_pelatih')->nullable();
             $table->string('poly_pelatih')->nullable();
+            $table->string('file_tangkap_layar_pelatih')->nullable();
 
             $table->string('panjang_kertas_kiper')->nullable();
             $table->string('poly_kiper')->nullable();
+            $table->string('file_tangkap_layar_kiper')->nullable();
 
             $table->string('panjang_kertas_1')->nullable();
             $table->string('poly_1')->nullable();
+            $table->string('file_tangkap_layar_1')->nullable();
 
             $table->string('panjang_kertas_celana_pelayer')->nullable();
             $table->string('poly_celana_pelayer')->nullable();
+            $table->string('file_tangkap_layar_celana_pelayer')->nullable();
 
             $table->string('panjang_kertas_celana_pelatih')->nullable();
             $table->string('poly_celana_pelatih')->nullable();
+            $table->string('file_tangkap_layar_celana_pelatih')->nullable();
 
             $table->string('panjang_kertas_celana_kiper')->nullable();
             $table->string('poly_celana_kiper')->nullable();
+            $table->string('file_tangkap_layar_celana_kiper')->nullable();
 
             $table->string('panjang_kertas_celana_1')->nullable();
             $table->string('poly_celana_1')->nullable();
-
+            $table->string('file_tangkap_layar_celana_1')->nullable();
+            // AKHIR
             $table->string('file_corel_layout')->nullable();
-            $table->string('file_tangkap_layar')->nullable();
             $table->string('tanda_telah_mengerjakan')->default('0');
             $table->timestamps();
         });

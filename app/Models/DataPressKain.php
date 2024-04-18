@@ -14,8 +14,19 @@ class DataPressKain extends Model
         'penanggung_jawab_id',
         'mesin_atexco_id',
         'mesin_mimaki_id',
+
+        'lk_player_id',
+        'lk_pelatih_id',
+        'lk_kiper_id',
+        'lk_1_id',
+        'lk_celana_player_id',
+        'lk_celana_pelatih_id',
+        'lk_celana_kiper_id',
+        'lk_celana_1_id',
+
         'deadline',
         'selesai',
+
         'kain',
         'berat',
         'gambar',

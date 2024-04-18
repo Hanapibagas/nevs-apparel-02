@@ -100,7 +100,7 @@
                                                             <option value="">-- Jenis Produksi --</option>
                                                             <option value="Full print">Full print</option>
                                                             <option value="Half print">Half print</option>
-                                                            <option value="Damy">Damy</option>
+                                                            <option value="Polos">Polos</option>
                                                         </select>
                                                     </div>
                                                     <div class="mb-3 col-md-6">
@@ -199,7 +199,7 @@
                                                             <option value="">-- Jenis Produksi --</option>
                                                             <option value="Full print">Full print</option>
                                                             <option value="Half print">Half print</option>
-                                                            <option value="Damy">Damy</option>
+                                                            <option value="Polos">Polos</option>
                                                         </select>
                                                     </div>
                                                     <div class="mb-3 col-md-6">
@@ -298,7 +298,7 @@
                                                             <option value="">-- Jenis Produksi --</option>
                                                             <option value="Full print">Full print</option>
                                                             <option value="Half print">Half print</option>
-                                                            <option value="Damy">Damy</option>
+                                                            <option value="Polos">Polos</option>
                                                         </select>
                                                     </div>
                                                     <div class="mb-3 col-md-6">
@@ -397,7 +397,7 @@
                                                             <option value="">-- Jenis Produksi --</option>
                                                             <option value="Full print">Full print</option>
                                                             <option value="Half print">Half print</option>
-                                                            <option value="Damy">Damy</option>
+                                                            <option value="Polos">Polos</option>
                                                         </select>
                                                     </div>
                                                     <div class="mb-3 col-md-6">
@@ -498,7 +498,7 @@
                                                             <option value="">-- Jenis Produksi --</option>
                                                             <option value="Full print">Full print</option>
                                                             <option value="Half print">Half print</option>
-                                                            <option value="Damy">Damy</option>
+                                                            <option value="Polos">Polos</option>
                                                         </select>
                                                     </div>
                                                     <div class="mb-3 col-md-6">
@@ -598,7 +598,7 @@
                                                             <option value="">-- Jenis Produksi --</option>
                                                             <option value="Full print">Full print</option>
                                                             <option value="Half print">Half print</option>
-                                                            <option value="Damy">Damy</option>
+                                                            <option value="Polos">Polos</option>
                                                         </select>
                                                     </div>
                                                     <div class="mb-3 col-md-6">
@@ -699,7 +699,7 @@
                                                             <option value="">-- Jenis Produksi --</option>
                                                             <option value="Full print">Full print</option>
                                                             <option value="Half print">Half print</option>
-                                                            <option value="Damy">Damy</option>
+                                                            <option value="Polos">Polos</option>
                                                         </select>
                                                     </div>
                                                     <div class="mb-3 col-md-6">
@@ -799,7 +799,7 @@
                                                             <option value="">-- Jenis Produksi --</option>
                                                             <option value="Full print">Full print</option>
                                                             <option value="Half print">Half print</option>
-                                                            <option value="Damy">Damy</option>
+                                                            <option value="Polos">Polos</option>
                                                         </select>
                                                     </div>
                                                     <div class="mb-3 col-md-6">

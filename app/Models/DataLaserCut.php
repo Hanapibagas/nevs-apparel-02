@@ -12,9 +12,25 @@ class DataLaserCut extends Model
     protected $fillable = [
         'no_order_id',
         'press_kain_id',
-        'deadline',
         'penanggung_jawab_id',
+        'lk_player_id',
+        'lk_pelatih_id',
+        'lk_kiper_id',
+        'lk_1_id',
+        'lk_celana_player_id',
+        'lk_celana_pelatih_id',
+        'lk_celana_kiper_id',
+        'lk_celana_1_id',
+        'deadline',
         'selesai',
+        'file_foto',
+        'file_foto_pelatih',
+        'file_foto_kiper',
+        'file_foto_1',
+        'file_foto_celana_pelayer',
+        'file_foto_celana_pelatih',
+        'file_foto_celana_kiper',
+        'file_foto_celana_1',
         'tanda_telah_mengerjakan'
     ];
 

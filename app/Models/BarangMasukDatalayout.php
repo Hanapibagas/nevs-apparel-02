@@ -11,6 +11,7 @@ class BarangMasukDatalayout extends Model
 
     protected $fillable = [
         'users_layout_id',
+        'barang_masuk_id',
         'lk_player_id',
         'lk_pelatih_id',
         'lk_kiper_id',
