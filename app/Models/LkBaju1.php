@@ -25,4 +25,18 @@ class LkBaju1 extends Model
     {
         return $this->hasMany(BarangMasukCostumerServices::class, 'barang_masuk_id');
     }
+
+    // 1
+    public function Kera1()
+    {
+        return $this->belongsTo(KeraBaju::class, 'kerah_baju_1_id');
+    }
+    public function Lengan1()
+    {
+        return $this->belongsTo(PolaLengan::class, 'pola_lengan_1_id');
+    }
+    public function Celana1()
+    {
+        return $this->belongsTo(PolaLengan::class, 'pola_celana_1_id');
+    }
 }

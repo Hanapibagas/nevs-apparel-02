@@ -114,18 +114,39 @@ class LayoutController extends Controller
             'Users',
             'UsersOrder',
             'UsersLk',
-            'KeraPlayer',
-            'LenganPlayer',
-            'CelanaPlayer',
-            'KeraPelatih',
-            'LenganPelatih',
-            'CelanaPelatih',
-            'KeraKiper',
-            'LenganKiper',
-            'CelanaKiper',
-            'Kera1',
-            'Lengan1',
-            'Celana1'
+            'Gambar',
+
+            'BarangMasukCostumerServicesLkPlyer',
+            'BarangMasukCostumerServicesLkPlyer.LenganPlayer',
+            'BarangMasukCostumerServicesLkPlyer.KeraPlayer',
+
+            'BarangMasukCostumerServicesLkPelatih',
+            'BarangMasukCostumerServicesLkPelatih.LenganPelatih',
+            'BarangMasukCostumerServicesLkPelatih.KeraPelatih',
+
+            'BarangMasukCostumerServicesLkKiper',
+            'BarangMasukCostumerServicesLkKiper.LenganKiper',
+            'BarangMasukCostumerServicesLkKiper.KeraKiper',
+
+            'BarangMasukCostumerServicesLk1',
+            'BarangMasukCostumerServicesLk1.Lengan1',
+            'BarangMasukCostumerServicesLk1.Kera1',
+
+            'BarangMasukCostumerServicesLkCelanaPlyer',
+            'BarangMasukCostumerServicesLkCelanaPlyer.KeraCelanaPlayer',
+            'BarangMasukCostumerServicesLkCelanaPlyer.CelanaCelanaPlayer',
+
+            'BarangMasukCostumerServicesLkCelanaPelatih',
+            'BarangMasukCostumerServicesLkCelanaPelatih.KeraCelanapelatih',
+            'BarangMasukCostumerServicesLkCelanaPelatih.CelanaCelanapelatih',
+
+            'BarangMasukCostumerServicesLkCelanaKiper',
+            'BarangMasukCostumerServicesLkCelanaKiper.CelanaCealanaKiper',
+            'BarangMasukCostumerServicesLkCelanaKiper.KeraCealanaKiper',
+
+            'BarangMasukCostumerServicesLkCelana1',
+            'BarangMasukCostumerServicesLkCelana1.KeraCealana1',
+            'BarangMasukCostumerServicesLkCelana1.CelanaCelana1',
         )->findOrFail($id);
 
         // return response()->json($dataLk);

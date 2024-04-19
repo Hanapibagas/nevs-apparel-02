@@ -102,9 +102,11 @@
                                                         <label class="form-label" for="country">Produksi</label>
                                                         <select id="country" required name="pola_lengan_player_id"
                                                             class="select2 form-select">
-                                                            <option value="{{ $oderCs->LenganPlayer->id }}">{{
-                                                                $oderCs->LenganPlayer->jenis_kera }}</option>
-                                                            <option value="">-- Jenis Produksi --</option>
+                                                            {{-- <option
+                                                                value="{{ $oderCs->BarangMasukCostumerServicesLkPlyer->LenganPlayer->id }}">
+                                                                {{ $oderCs->LenganPlayer->jenis_kera }}</option> --}}
+                                                            <option value="">Jenis produksi kosong apakah anda ingin
+                                                                mengubahnya ?</option>
                                                             @foreach ( $lengan as $lengans )
                                                             <option value="{{ $lengans->id }}">{{ $lengans->jenis_kera
                                                                 }}
@@ -118,9 +120,10 @@
                                                         <label class="form-label" for="country">model</label>
                                                         <select id="country" required name="kera_baju_player_id"
                                                             class="select2 form-select">
-                                                            <option value="{{ $oderCs->KeraPlayer->id }}">{{
-                                                                $oderCs->KeraPlayer->jenis_kera }}</option>
-                                                            <option value="">-- Jenis Model --</option>
+                                                            {{-- <option value="{{ $oderCs->KeraPlayer->id }}">{{
+                                                                $oderCs->KeraPlayer->jenis_kera }}</option> --}}
+                                                            <option value="">Jenis model kosong apakah anda ingin
+                                                                mengubahnya ?</option>
                                                             @foreach ( $kera as $keras )
                                                             <option value="{{ $keras->id }}">{{ $keras->jenis_kera }}
                                                             </option>
@@ -133,33 +136,33 @@
                                                         <label class="form-label" for="country">Jenis Sublim</label>
                                                         <input class="form-control" required type="text" id="firstName"
                                                             name="jenis_sablon_baju_player"
-                                                            value="{{ $oderCs->jenis_sablon_baju_player }}"
+                                                            value="{{ $oderCs->BarangMasukCostumerServicesLkPlyer->first()->jenis_sablon_baju_player }}"
                                                             placeholder="Jenis Sublim" autofocus />
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label for="firstName" class="form-label">Jenis Bahan</label>
                                                         <input class="form-control" required type="text" id="firstName"
                                                             name="jenis_kain_baju_player"
-                                                            value="{{ $oderCs->jenis_kain_baju_player }}"
+                                                            value="{{ $oderCs->BarangMasukCostumerServicesLkPlyer->first()->jenis_kain_baju_player }}"
                                                             placeholder="Jenis Bahan" autofocus />
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label for="firstName" class="form-label">Jumlah</label>
                                                         <input class="form-control" required type="number"
                                                             id="firstName" placeholder="Jumlah"
-                                                            value="{{ $oderCs->total_baju_player }}"
+                                                            value="{{ $oderCs->BarangMasukCostumerServicesLkPlyer->first()->total_baju_player }}"
                                                             name="total_baju_player" autofocus />
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label for="firstName" class="form-label">Ukuran</label>
                                                         <textarea name="ket_tambahan_baju_player" required
                                                             class="form-control"
-                                                            placeholder="Contoh: M 10, L 2, Xl 1">{{ $oderCs->ket_tambahan_baju_player }}</textarea>
+                                                            placeholder="Contoh: M 10, L 2, Xl 1">{{ $oderCs->BarangMasukCostumerServicesLkPlyer->first()->ket_tambahan_baju_player }}</textarea>
                                                     </div>
                                                     <div class="mb-3 col-md-12">
                                                         <label class="form-label" for="country">Keterangan</label>
                                                         <textarea required class="form-control"
-                                                            name="keterangan_baju_pelayer">{!! $oderCs->keterangan_baju_pelayer !!}</textarea>
+                                                            name="keterangan_baju_pelayer">{!! $oderCs->BarangMasukCostumerServicesLkPlyer->first()->keterangan_baju_pelayer !!}</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="modal fade" id="modalCenterPlayer" tabindex="-1"
@@ -185,7 +188,7 @@
                                         </div>
                                         @endif
 
-                                        @if ($oderCs->Gambar->file_baju_pelatih)
+                                        {{-- @if ($oderCs->Gambar->file_baju_pelatih)
                                         <div class="card mb-4">
                                             <div class="card-body">
                                                 <h4 class="fw-bold py-3 mb-4">Keterangan Produksi
@@ -198,27 +201,24 @@
                                                         <label class="form-label" for="country">Produksi</label>
                                                         <select id="country" required name="pola_lengan_pelatih_id"
                                                             class="select2 form-select">
-                                                            <option value="{{ $oderCs->LenganPelatih->id }}">{{
-                                                                $oderCs->LenganPelatih->jenis_kera }}
-                                                            </option>
-                                                            <option value="">-- Jenis Produksi --</option>
-                                                            @foreach ( $lengan as $lengans )
-                                                            <option value="{{ $lengans->id }}">{{ $lengans->jenis_kera
-                                                                }}
-                                                            </option>
-                                                            @endforeach
-                                                            <option value="1">Opsional
-                                                                (jika tidak ada pilhan produksi)</option>
+                                                            <<option value="">Jenis produksi kosong apakah anda ingin
+                                                                mengubahnya ?</option>
+                                                                @foreach ( $lengan as $lengans )
+                                                                <option value="{{ $lengans->id }}">{{
+                                                                    $lengans->jenis_kera
+                                                                    }}
+                                                                </option>
+                                                                @endforeach
+                                                                <option value="1">Opsional
+                                                                    (jika tidak ada pilhan produksi)</option>
                                                         </select>
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label class="form-label" for="country">model</label>
                                                         <select id="country" required name="kerah_baju_pelatih_id"
                                                             class="select2 form-select">
-                                                            <option value="{{ $oderCs->KeraPelatih->id }}">{{
-                                                                $oderCs->KeraPelatih->jenis_kera }}
-                                                            </option>
-                                                            <option value="">-- Jenis Model --</option>
+                                                            <option value="">Jenis model kosong apakah anda ingin
+                                                                mengubahnya ?</option>
                                                             @foreach ( $kera as $keras )
                                                             <option value="{{ $keras->id }}">{{ $keras->jenis_kera }}
                                                             </option>
@@ -296,10 +296,8 @@
                                                         <label class="form-label" for="country">Produksi</label>
                                                         <select id="country" required name="pola_lengan_kiper_id"
                                                             class="select2 form-select">
-                                                            <option value="{{ $oderCs->LenganKiper->id }}">{{
-                                                                $oderCs->LenganKiper->jenis_kera }}
-                                                            </option>
-                                                            <option value="">-- Jenis Produksi --</option>
+                                                            <option value="">Jenis produksi kosong apakah anda ingin
+                                                                mengubahnya ?</option>
                                                             @foreach ( $lengan as $lengans )
                                                             <option value="{{ $lengans->id }}">{{ $lengans->jenis_kera
                                                                 }}
@@ -313,10 +311,8 @@
                                                         <label class="form-label" for="country">model</label>
                                                         <select id="country" required name="kera_baju_kiper_id"
                                                             class="select2 form-select">
-                                                            <option value="{{ $oderCs->KeraKiper->id }}">{{
-                                                                $oderCs->KeraKiper->jenis_kera }}
-                                                            </option>
-                                                            <option value="">-- Jenis Model --</option>
+                                                            <option value="">Jenis model kosong apakah anda ingin
+                                                                mengubahnya ?</option>
                                                             @foreach ( $kera as $keras )
                                                             <option value="{{ $keras->id }}">{{ $keras->jenis_kera }}
                                                             </option>
@@ -392,10 +388,8 @@
                                                         <label class="form-label" for="country">Produksi</label>
                                                         <select id="country" required name="pola_lengan_1_id"
                                                             class="select2 form-select">
-                                                            <option value="{{ $oderCs->Lengan1->id }}">{{
-                                                                $oderCs->Lengan1->jenis_kera }}
-                                                            </option>
-                                                            <option value="">-- Jenis Produksi --</option>
+                                                            <option value="">Jenis produksi kosong apakah anda ingin
+                                                                mengubahnya ?</option>
                                                             @foreach ( $lengan as $lengans )
                                                             <option value="{{ $lengans->id }}">{{ $lengans->jenis_kera
                                                                 }}
@@ -409,10 +403,8 @@
                                                         <label class="form-label" for="country">model</label>
                                                         <select id="country" required name="kerah_baju_1_id"
                                                             class="select2 form-select">
-                                                            <option value="{{ $oderCs->Kera1->id }}">{{
-                                                                $oderCs->Kera1->jenis_kera }}
-                                                            </option>
-                                                            <option value="">-- Jenis Model --</option>
+                                                            <option value="">Jenis model kosong apakah anda ingin
+                                                                mengubahnya ?</option>
                                                             @foreach ( $kera as $keras )
                                                             <option value="{{ $keras->id }}">{{ $keras->jenis_kera }}
                                                             </option>
@@ -477,7 +469,6 @@
                                         </div>
                                         @endif
 
-                                        {{-- celana --}}
                                         @if ($oderCs->Gambar->file_celana_player)
                                         <div class="card mb-4">
                                             <div class="card-body">
@@ -492,10 +483,8 @@
                                                         <label class="form-label" for="country">Produksi</label>
                                                         <select id="country" required name="pola_celana_player_id"
                                                             class="select2 form-select">
-                                                            <option value="{{ $oderCs->CelanaPlayer->id }}">{{
-                                                                $oderCs->CelanaPlayer->jenis_kera }}
-                                                            </option>
-                                                            <option value="">-- Jenis Produksi --</option>
+                                                            <option value="">Jenis produksi kosong apakah anda ingin
+                                                                mengubahnya ?</option>
                                                             @foreach ( $lengan as $lengans )
                                                             <option value="{{ $lengans->id }}">{{ $lengans->jenis_kera
                                                                 }}
@@ -509,9 +498,8 @@
                                                         <label class="form-label" for="country">model</label>
                                                         <select id="country" required name="kerah_celana_player_id"
                                                             class="select2 form-select">
-                                                            <option value="{{ $oderCs->KeraPlayer->id }}">{{
-                                                                $oderCs->KeraPlayer->jenis_kera }}</option>
-                                                            <option value="">-- Jenis Model --</option>
+                                                            <option value="">Jenis model kosong apakah anda ingin
+                                                                mengubahnya ?</option>
                                                             @foreach ( $kera as $keras )
                                                             <option value="{{ $keras->id }}">{{ $keras->jenis_kera }}
                                                             </option>
@@ -590,10 +578,8 @@
                                                         <label class="form-label" for="country">Produksi</label>
                                                         <select required id="country" name="pola_celana_pelatih_id"
                                                             class="select2 form-select">
-                                                            <option value="{{ $oderCs->CelanaPlayer->id }}">{{
-                                                                $oderCs->CelanaPlayer->jenis_kera }}
-                                                            </option>
-                                                            <option value="">-- Jenis Produksi --</option>
+                                                            <option value="">Jenis produksi kosong apakah anda ingin
+                                                                mengubahnya ?</option>
                                                             @foreach ( $lengan as $lengans )
                                                             <option value="{{ $lengans->id }}">{{ $lengans->jenis_kera
                                                                 }}
@@ -607,9 +593,8 @@
                                                         <label class="form-label" for="country">model</label>
                                                         <select id="country" required name="kerah_celana_pelatih_id"
                                                             class="select2 form-select">
-                                                            <option value="{{ $oderCs->KeraPelatih->id }}">{{
-                                                                $oderCs->KeraPelatih->jenis_kera }}</option>
-                                                            <option value="">-- Jenis Model --</option>
+                                                            <option value="">Jenis model kosong apakah anda ingin
+                                                                mengubahnya ?</option>
                                                             @foreach ( $kera as $keras )
                                                             <option value="{{ $keras->id }}">{{ $keras->jenis_kera }}
                                                             </option>
@@ -689,10 +674,8 @@
                                                         <label class="form-label" for="country">Produksi</label>
                                                         <select required id="country" name="pola_celana_kiper_id"
                                                             class="select2 form-select">
-                                                            <option value="{{ $oderCs->CelanaPlayer->id }}">{{
-                                                                $oderCs->CelanaPlayer->jenis_kera }}
-                                                            </option>
-                                                            <option value="">-- Jenis Produksi --</option>
+                                                            <option value="">Jenis produksi kosong apakah anda ingin
+                                                                mengubahnya ?</option>
                                                             @foreach ( $lengan as $lengans )
                                                             <option value="{{ $lengans->id }}">{{ $lengans->jenis_kera
                                                                 }}
@@ -706,9 +689,8 @@
                                                         <label class="form-label" for="country">model</label>
                                                         <select id="country" required name="kerah_celana_kiper_id"
                                                             class="select2 form-select">
-                                                            <option value="{{ $oderCs->KeraKiper->id }}">{{
-                                                                $oderCs->KeraKiper->jenis_kera }}</option>
-                                                            <option value="">-- Jenis Model --</option>
+                                                            <option value="">Jenis model kosong apakah anda ingin
+                                                                mengubahnya ?</option>
                                                             @foreach ( $kera as $keras )
                                                             <option value="{{ $keras->id }}">{{ $keras->jenis_kera }}
                                                             </option>
@@ -786,10 +768,8 @@
                                                         <label class="form-label" for="country">Produksi</label>
                                                         <select required id="country" name="pola_celana_1_id"
                                                             class="select2 form-select">
-                                                            <option value="{{ $oderCs->CelanaPlayer->id }}">{{
-                                                                $oderCs->CelanaPlayer->jenis_kera }}
-                                                            </option>
-                                                            <option value="">-- Jenis Produksi --</option>
+                                                            <option value="">Jenis produksi kosong apakah anda ingin
+                                                                mengubahnya ?</option>
                                                             @foreach ( $lengan as $lengans )
                                                             <option value="{{ $lengans->id }}">{{ $lengans->jenis_kera
                                                                 }}
@@ -803,9 +783,8 @@
                                                         <label class="form-label" for="country">model</label>
                                                         <select id="country" required name="kerah_celana_1_id"
                                                             class="select2 form-select">
-                                                            <option value="{{ $oderCs->Kera1->id }}">{{
-                                                                $oderCs->Kera1->jenis_kera }}</option>
-                                                            <option value="">-- Jenis Model --</option>
+                                                            <option value="">Jenis model kosong apakah anda ingin
+                                                                mengubahnya ?</option>
                                                             @foreach ( $kera as $keras )
                                                             <option value="{{ $keras->id }}">{{ $keras->jenis_kera }}
                                                             </option>
@@ -868,7 +847,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        @endif
+                                        @endif --}}
 
                                         <div class="card mb-4">
                                             <div class="card-body">

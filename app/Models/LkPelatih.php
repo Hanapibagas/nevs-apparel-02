@@ -21,8 +21,17 @@ class LkPelatih extends Model
         'keterangan_baju_pelatih',
     ];
 
-    public function BarangMasukCostumerServices()
+    // pelatih
+    public function KeraPelatih()
     {
-        return $this->hasMany(BarangMasukCostumerServices::class, 'barang_masuk_id');
+        return $this->belongsTo(KeraBaju::class, 'kerah_baju_pelatih_id');
+    }
+    public function LenganPelatih()
+    {
+        return $this->belongsTo(PolaLengan::class, 'pola_lengan_pelatih_id');
+    }
+    public function CelanaPelatih()
+    {
+        return $this->belongsTo(PolaLengan::class, 'pola_celana_pelatih_id');
     }
 }

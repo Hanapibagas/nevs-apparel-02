@@ -25,4 +25,17 @@ class LkCelanaPelatih extends Model
     {
         return $this->hasMany(BarangMasukCostumerServices::class, 'barang_masuk_id');
     }
+
+    public function KeraCelanapelatih()
+    {
+        return $this->belongsTo(KeraBaju::class, 'kerah_celana_pelatih_id');
+    }
+    public function LenganCelanapelatih()
+    {
+        return $this->belongsTo(PolaLengan::class, 'pola_lengan_player_id');
+    }
+    public function CelanaCelanapelatih()
+    {
+        return $this->belongsTo(PolaLengan::class, 'pola_celana_pelatih_id');
+    }
 }

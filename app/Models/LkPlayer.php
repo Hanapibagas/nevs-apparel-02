@@ -21,8 +21,22 @@ class LkPlayer extends Model
         'keterangan_baju_pelayer',
     ];
 
-    public function BarangMasukCostumerServices()
+    // public function BarangMasukCostumerServicesLkPlyer()
+    // {
+    //     return $this->belongsTo(BarangMasukCostumerServices::class, 'barang_masuk_id');
+    // }
+
+    // player
+    public function KeraPlayer()
     {
-        return $this->hasMany(BarangMasukCostumerServices::class, 'barang_masuk_id');
+        return $this->belongsTo(KeraBaju::class, 'kera_baju_player_id');
+    }
+    public function LenganPlayer()
+    {
+        return $this->belongsTo(PolaLengan::class, 'pola_lengan_player_id');
+    }
+    public function CelanaPlayer()
+    {
+        return $this->belongsTo(PolaLengan::class, 'pola_celana_player_id');
     }
 }

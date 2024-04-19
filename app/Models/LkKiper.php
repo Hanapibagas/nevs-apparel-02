@@ -21,8 +21,17 @@ class LkKiper extends Model
         'keterangan_baju_kiper',
     ];
 
-    public function BarangMasukCostumerServices()
+    // kiper
+    public function KeraKiper()
     {
-        return $this->hasMany(BarangMasukCostumerServices::class, 'barang_masuk_id');
+        return $this->belongsTo(KeraBaju::class, 'kerah_baju_kiper_id');
+    }
+    public function LenganKiper()
+    {
+        return $this->belongsTo(PolaLengan::class, 'pola_lengan_kiper_id');
+    }
+    public function CelanaKiper()
+    {
+        return $this->belongsTo(PolaLengan::class, 'pola_celana_kiper_id');
     }
 }

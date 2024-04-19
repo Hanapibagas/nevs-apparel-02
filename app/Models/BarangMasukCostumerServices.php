@@ -118,4 +118,40 @@ class BarangMasukCostumerServices extends Model
     {
         return $this->belongsTo(PolaLengan::class, 'pola_celana_1_id');
     }
+
+    public function BarangMasukCostumerServicesLkPlyer()
+    {
+        return $this->hasMany(LkPlayer::class, 'barang_masuk_id');
+    }
+
+    public function BarangMasukCostumerServicesLkPelatih()
+    {
+        return $this->hasMany(LkPelatih::class, 'barang_masuk_id');
+    }
+
+    public function BarangMasukCostumerServicesLkKiper()
+    {
+        return $this->hasMany(LkKiper::class, 'barang_masuk_id');
+    }
+
+    public function BarangMasukCostumerServicesLk1()
+    {
+        return $this->hasMany(LkBaju1::class, 'barang_masuk_id');
+    }
+    public function BarangMasukCostumerServicesLkCelanaPlyer()
+    {
+        return $this->hasMany(LkCelanaPlayer::class, 'barang_masuk_id');
+    }
+    public function BarangMasukCostumerServicesLkCelanaPelatih()
+    {
+        return $this->hasMany(LkCelanaPelatih::class, 'baraang_masuk_id');
+    }
+    public function BarangMasukCostumerServicesLkCelanaKiper()
+    {
+        return $this->hasMany(LkCelanaKiper::class, 'barang_masuk_id');
+    }
+    public function BarangMasukCostumerServicesLkCelana1()
+    {
+        return $this->hasMany(LkCelana1::class, 'barang_masuk_id');
+    }
 }

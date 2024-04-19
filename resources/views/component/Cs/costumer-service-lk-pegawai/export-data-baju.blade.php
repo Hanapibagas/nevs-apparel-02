@@ -54,33 +54,41 @@
         </tr>
         <tr>
             <td style="text-align: center">
-                @if ($dataLk->pola_lengan_player_id == 1)
+                @if ($dataLk->BarangMasukCostumerServicesLkPlyer->first()->pola_lengan_player_id == 1)
                 <p style="font-weight: bold">Keterangan produksi ada <br>dibagian tabel keterangan!!</p>
                 @else
                 <p style="margin-top: -5px; font-weight: bold">Produksi</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="details">
-                    {{-- <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->LenganPlayer->gambar) }}" alt=""> --}}
+                    @foreach ($dataLk->BarangMasukCostumerServicesLkPlyer as $item)
+                    <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $item->LenganPlayer->gambar) }}" alt="">
+                    @endforeach
                 </div>
                 @endif
             </td>
             <td style="text-align: center">
-                @if ($dataLk->kera_baju_player_id == 1)
+                @if ($dataLk->BarangMasukCostumerServicesLkPlyer->first()->kera_baju_player_id == 1)
                 <p style="font-weight: bold">Keterangan model ada <br>dibagian tabel keterangan!!</p>
                 @else
                 <p style="margin-top: -5px; font-weight: bold">Model</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="">
-                    {{-- <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->KeraPlayer->gambar) }}" alt=""> --}}
+                    @foreach ($dataLk->BarangMasukCostumerServicesLkPlyer as $item)
+                    <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $item->KeraPlayer->gambar) }}" alt="">
+                    @endforeach
                 </div>
                 @endif
             </td>
         </tr>
         <tr>
-            <td style="text-align: center; font-weight: bold">{{ $dataLk->ket_tambahan_baju_player }} </td>
-            <td style="text-align: center; font-weight: bold">TOTAL {{ $dataLk->total_baju_player }} PCS </td>
+
+            <td style="text-align: center; font-weight: bold">{{
+                $dataLk->BarangMasukCostumerServicesLkPlyer->first()->ket_tambahan_baju_player }}
+            </td>
+            <td style="text-align: center; font-weight: bold">TOTAL {{
+                $dataLk->BarangMasukCostumerServicesLkPlyer->first()->total_baju_player }} PCS </td>
         </tr>
     </table>
     <style>
@@ -111,15 +119,18 @@
         <p style="margin-top: -56px; margin-left: 400px">Disainer : {{ $dataLk->Users->name }}</p> <br>
         <p style="margin-top: -40px;">Mesin Print : {{ $dataLk->jenis_mesin }}</p><br>
         <p style="margin-left: 400px; margin-top: -60px;">Layout : {{ $dataLk->UsersLk->name }}</p> <br>
-        <p style="margin-top: -45px;">Jenis Sablon : {{ $dataLk->jenis_sablon_baju_player }}</p> <br>
-        <p style="margin-left: 400px; margin-top: -65px;">Jenis Bahan : {{ $dataLk->jenis_kain_baju_player }}</p>
+        <p style="margin-top: -45px;">Jenis Sablon : {{
+            $dataLk->BarangMasukCostumerServicesLkPlyer->first()->jenis_sablon_baju_player }}</p> <br>
+        <p style="margin-left: 400px; margin-top: -65px;">Jenis Bahan : {{
+            $dataLk->BarangMasukCostumerServicesLkPlyer->first()->jenis_kain_baju_player }}</p>
     </div>
     <div class="container1">
         <p style="font-weight: bold">Keterangan : <br>
-            {!! $dataLk->keterangan_baju_pelayer !!}
+            {!! $dataLk->BarangMasukCostumerServicesLkPlyer->first()->keterangan_baju_pelayer !!}
         </p>
     </div>
     @endif
+
 
     @if ($dataLk->Gambar->file_baju_pelatih)
     <table
@@ -140,33 +151,39 @@
         </tr>
         <tr>
             <td style="text-align: center">
-                @if ($dataLk->pola_lengan_pelatih_id == 1)
+                @if ($dataLk->BarangMasukCostumerServicesLkPelatih->first()->pola_lengan_pelatih_id == 1)
                 <p style="font-weight: bold">Keterangan produksi ada <br>dibagian tabel keterangan!!</p>
                 @else
                 <p style="margin-top: -5px; font-weight: bold">Produksi</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="details">
-                    {{-- <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->LenganPelatih->gambar) }}" alt=""> --}}
+                    @foreach ($dataLk->BarangMasukCostumerServicesLkPelatih as $item)
+                    <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $item->LenganPelatih->gambar) }}" alt="">
+                    @endforeach
                 </div>
                 @endif
             </td>
             <td style="text-align: center">
-                @if ($dataLk->kerah_baju_pelatih_id == 1)
+                @if ($dataLk->BarangMasukCostumerServicesLkPelatih->first()->kerah_baju_pelatih_id == 1)
                 <p style="font-weight: bold">Keterangan model ada <br>dibagian tabel keterangan!!</p>
                 @else
                 <p style="margin-top: -5px; font-weight: bold">Model</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="">
-                    {{-- <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->KeraPelatih->gambar) }}" alt=""> --}}
+                    @foreach ($dataLk->BarangMasukCostumerServicesLkPelatih as $item)
+                    <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $item->KeraPelatih->gambar) }}" alt="">
+                    @endforeach
                 </div>
                 @endif
             </td>
         </tr>
         <tr>
-            <td style="text-align: center; font-weight: bold">{{ $dataLk->ket_tambahan_baju_pelatih }} </td>
-            <td style="text-align: center; font-weight: bold">TOTAL {{ $dataLk->total_baju_pelatih }} PCS </td>
+            <td style="text-align: center; font-weight: bold">{{
+                $dataLk->BarangMasukCostumerServicesLkPelatih->first()->ket_tambahan_baju_pelatih }} </td>
+            <td style="text-align: center; font-weight: bold">TOTAL {{
+                $dataLk->BarangMasukCostumerServicesLkPelatih->first()->total_baju_pelatih }} PCS </td>
         </tr>
     </table>
     <style>
@@ -197,12 +214,14 @@
         <p style="margin-top: -56px; margin-left: 400px">Disainer : {{ $dataLk->Users->name }}</p> <br>
         <p style="margin-top: -40px;">Mesin Print : {{ $dataLk->jenis_mesin }}</p><br>
         <p style="margin-left: 400px; margin-top: -60px;">Layout : {{ $dataLk->UsersLk->name }}</p> <br>
-        <p style="margin-top: -45px;">Jenis Sablon : {{ $dataLk->jenis_sablon_baju_pelatih }}</p> <br>
-        <p style="margin-left: 400px; margin-top: -65px;">Jenis Bahan : {{ $dataLk->jenis_kain_baju_pelatih }}</p>
+        <p style="margin-top: -45px;">Jenis Sablon : {{
+            $dataLk->BarangMasukCostumerServicesLkPelatih->first()->jenis_sablon_baju_pelatih }}</p> <br>
+        <p style="margin-left: 400px; margin-top: -65px;">Jenis Bahan : {{
+            $dataLk->BarangMasukCostumerServicesLkPelatih->first()->jenis_kain_baju_pelatih }}</p>
     </div>
     <div class="container1">
         <p style="font-weight: bold">Keterangan : <br>
-            {!! $dataLk->keterangan_baju_pelatih !!}
+            {!! $dataLk->BarangMasukCostumerServicesLkPelatih->first()->keterangan_baju_pelatih !!}
         </p>
     </div>
     @endif
@@ -226,33 +245,39 @@
         </tr>
         <tr>
             <td style="text-align: center">
-                @if ($dataLk->pola_lengan_kiper_id == 1)
+                @if ($dataLk->BarangMasukCostumerServicesLkKiper->first()->pola_lengan_kiper_id == 1)
                 <p style="font-weight: bold">Keterangan produksi ada <br>dibagian tabel keterangan!!</p>
                 @else
                 <p style="margin-top: -5px; font-weight: bold">Produksi</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="details">
-                    {{-- <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->LenganKiper->gambar) }}" alt=""> --}}
+                    @foreach ($dataLk->BarangMasukCostumerServicesLkKiper as $item)
+                    <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $item->LenganKiper->gambar) }}" alt="">
+                    @endforeach
                 </div>
                 @endif
             </td>
             <td style="text-align: center">
-                @if ($dataLk->kerah_baju_kiper_id == 1)
+                @if ($dataLk->BarangMasukCostumerServicesLkKiper->first()->kerah_baju_kiper_id == 1)
                 <p style="font-weight: bold">Keterangan model ada <br>dibagian tabel keterangan!!</p>
                 @else
                 <p style="margin-top: -5px; font-weight: bold">Model</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="">
-                    {{-- <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->KeraKiper->gambar) }}" alt=""> --}}
+                    @foreach ($dataLk->BarangMasukCostumerServicesLkKiper as $item)
+                    <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $item->KeraKiper->gambar) }}" alt="">
+                    @endforeach
                 </div>
                 @endif
             </td>
         </tr>
         <tr>
-            <td style="text-align: center; font-weight: bold">{{ $dataLk->ket_tambahan_baju_kiper }} </td>
-            <td style="text-align: center; font-weight: bold">TOTAL {{ $dataLk->total_baju_kiper }} PCS </td>
+            <td style="text-align: center; font-weight: bold">{{
+                $dataLk->BarangMasukCostumerServicesLkKiper->first()->ket_tambahan_baju_kiper }} </td>
+            <td style="text-align: center; font-weight: bold">TOTAL {{
+                $dataLk->BarangMasukCostumerServicesLkKiper->first()->total_baju_kiper }} PCS </td>
         </tr>
     </table>
     <style>
@@ -283,12 +308,14 @@
         <p style="margin-top: -56px; margin-left: 400px">Disainer : {{ $dataLk->Users->name }}</p> <br>
         <p style="margin-top: -40px;">Mesin Print : {{ $dataLk->jenis_mesin }}</p><br>
         <p style="margin-left: 400px; margin-top: -60px;">Layout : {{ $dataLk->UsersLk->name }}</p> <br>
-        <p style="margin-top: -45px;">Jenis Sablon : {{ $dataLk->jenis_sablon_baju_kiper }}</p> <br>
-        <p style="margin-left: 400px; margin-top: -65px;">Jenis Bahan : {{ $dataLk->jenis_kain_baju_kiper }}</p>
+        <p style="margin-top: -45px;">Jenis Sablon : {{
+            $dataLk->BarangMasukCostumerServicesLkKiper->first()->jenis_sablon_baju_kiper }}</p> <br>
+        <p style="margin-left: 400px; margin-top: -65px;">Jenis Bahan : {{
+            $dataLk->BarangMasukCostumerServicesLkKiper->first()->jenis_kain_baju_kiper }}</p>
     </div>
     <div class="container1">
         <p style="font-weight: bold">Keterangan : <br>
-            {!! $dataLk->keterangan_baju_kiper !!}
+            {!! $dataLk->BarangMasukCostumerServicesLkKiper->first()->keterangan_baju_kiper !!}
         </p>
     </div>
     @endif
@@ -312,33 +339,39 @@
         </tr>
         <tr>
             <td style="text-align: center">
-                @if ($dataLk->pola_lengan_1_id == 1)
+                @if ($dataLk->BarangMasukCostumerServicesLk1->first()->pola_lengan_1_id == 1)
                 <p style="font-weight: bold">Keterangan produksi ada <br>dibagian tabel keterangan!!</p>
                 @else
                 <p style="margin-top: -5px; font-weight: bold">Produksi</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="details">
-                    {{-- <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->Lengan1->gambar) }}" alt=""> --}}
+                    @foreach ($dataLk->BarangMasukCostumerServicesLk1 as $item)
+                    <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $item->Lengan1->gambar) }}" alt="">
+                    @endforeach
                 </div>
                 @endif
             </td>
             <td style="text-align: center">
-                @if ($dataLk->kerah_baju_1_id == 1)
+                @if ($dataLk->BarangMasukCostumerServicesLk1->first()->kerah_baju_1_id == 1)
                 <p style="font-weight: bold">Keterangan model ada <br>dibagian tabel keterangan!!</p>
                 @else
                 <p style="margin-top: -5px; font-weight: bold">Model</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="">
-                    {{-- <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->Kera1->gambar) }}" alt=""> --}}
+                    @foreach ($dataLk->BarangMasukCostumerServicesLk1 as $item)
+                    <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $item->Kera1->gambar) }}" alt="">
+                    @endforeach
                 </div>
                 @endif
             </td>
         </tr>
         <tr>
-            <td style="text-align: center; font-weight: bold">{{ $dataLk->ket_tambahan_baju_1 }} </td>
-            <td style="text-align: center; font-weight: bold">TOTAL {{ $dataLk->total_baju_1 }} PCS </td>
+            <td style="text-align: center; font-weight: bold">{{
+                $dataLk->BarangMasukCostumerServicesLk1->first()->ket_tambahan_baju_1 }} </td>
+            <td style="text-align: center; font-weight: bold">TOTAL {{
+                $dataLk->BarangMasukCostumerServicesLk1->first()->total_baju_1 }} PCS </td>
         </tr>
     </table>
     <style>
@@ -369,12 +402,14 @@
         <p style="margin-top: -56px; margin-left: 400px">Disainer : {{ $dataLk->Users->name }}</p> <br>
         <p style="margin-top: -40px;">Mesin Print : {{ $dataLk->jenis_mesin }}</p><br>
         <p style="margin-left: 400px; margin-top: -60px;">Layout : {{ $dataLk->UsersLk->name }}</p> <br>
-        <p style="margin-top: -45px;">Jenis Sablon : {{ $dataLk->jenis_sablon_baju_1 }}</p> <br>
-        <p style="margin-left: 400px; margin-top: -65px;">Jenis Bahan : {{ $dataLk->jenis_kain_baju_1 }}</p>
+        <p style="margin-top: -45px;">Jenis Sablon : {{
+            $dataLk->BarangMasukCostumerServicesLk1->first()->jenis_sablon_baju_1 }}</p> <br>
+        <p style="margin-left: 400px; margin-top: -65px;">Jenis Bahan : {{
+            $dataLk->BarangMasukCostumerServicesLk1->first()->jenis_kain_baju_1 }}</p>
     </div>
     <div class="container1">
         <p style="font-weight: bold">Keterangan : <br>
-            {!! $dataLk->keterangan_baju_1 !!}
+            {!! $dataLk->BarangMasukCostumerServicesLk1->first()->keterangan_baju_1 !!}
         </p>
     </div>
     @endif
@@ -398,33 +433,39 @@
         </tr>
         <tr>
             <td style="text-align: center">
-                @if ($dataLk->pola_celana_player_id == 1)
+                @if ($dataLk->BarangMasukCostumerServicesLkCelanaPlyer->first()->pola_celana_player_id == 1)
                 <p style="font-weight: bold">Keterangan produksi ada <br>dibagian tabel keterangan!!</p>
                 @else
                 <p style="margin-top: -5px; font-weight: bold">Produksi</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="details">
-                    {{-- <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->CelanaPlayer->gambar) }}" alt=""> --}}
+                    @foreach ($dataLk->BarangMasukCostumerServicesLkCelanaPlyer as $item)
+                    <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $item->CelanaCelanaPlayer->gambar) }}" alt="">
+                    @endforeach
                 </div>
                 @endif
             </td>
             <td style="text-align: center">
-                @if ($dataLk->kerah_celana_player_id == 1)
+                @if ($dataLk->BarangMasukCostumerServicesLkCelanaPlyer->first()->kerah_celana_player_id == 1)
                 <p style="font-weight: bold">Keterangan model ada <br>dibagian tabel keterangan!!</p>
                 @else
                 <p style="margin-top: -5px; font-weight: bold">Model</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="">
-                    {{-- <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->KeraPlayer->gambar) }}" alt=""> --}}
+                    @foreach ($dataLk->BarangMasukCostumerServicesLkCelanaPlyer as $item)
+                    <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $item->KeraCelanaPlayer->gambar) }}" alt="">
+                    @endforeach
                 </div>
                 @endif
             </td>
         </tr>
         <tr>
-            <td style="text-align: center; font-weight: bold">{{ $dataLk->ket_tambahan_celana_player }} </td>
-            <td style="text-align: center; font-weight: bold">TOTAL {{ $dataLk->total_celana_player }} PCS </td>
+            <td style="text-align: center; font-weight: bold">{{
+                $dataLk->BarangMasukCostumerServicesLkCelanaPlyer->first()->ket_tambahan_celana_player }} </td>
+            <td style="text-align: center; font-weight: bold">TOTAL {{
+                $dataLk->BarangMasukCostumerServicesLkCelanaPlyer->first()->total_celana_player }} PCS </td>
         </tr>
     </table>
     <style>
@@ -455,12 +496,14 @@
         <p style="margin-top: -56px; margin-left: 400px">Disainer : {{ $dataLk->Users->name }}</p> <br>
         <p style="margin-top: -40px;">Mesin Print : {{ $dataLk->jenis_mesin }}</p><br>
         <p style="margin-left: 400px; margin-top: -60px;">Layout : {{ $dataLk->UsersLk->name }}</p> <br>
-        <p style="margin-top: -45px;">Jenis Sablon : {{ $dataLk->jenis_sablon_celana_player }}</p> <br>
-        <p style="margin-left: 400px; margin-top: -65px;">Jenis Bahan : {{ $dataLk->jenis_kain_celana_player }}</p>
+        <p style="margin-top: -45px;">Jenis Sablon : {{
+            $dataLk->BarangMasukCostumerServicesLkCelanaPlyer->first()->jenis_sablon_celana_player }}</p> <br>
+        <p style="margin-left: 400px; margin-top: -65px;">Jenis Bahan : {{
+            $dataLk->BarangMasukCostumerServicesLkCelanaPlyer->first()->jenis_kain_celana_player }}</p>
     </div>
     <div class="container1">
         <p style="font-weight: bold">Keterangan : <br>
-            {!! $dataLk->keterangan_celana_pelayer !!}
+            {!! $dataLk->BarangMasukCostumerServicesLkCelanaPlyer->first()->keterangan_celana_pelayer !!}
         </p>
     </div>
     @endif
@@ -485,33 +528,39 @@
         </tr>
         <tr>
             <td style="text-align: center">
-                @if ($dataLk->pola_celana_pelatih_id == 1)
+                @if ($dataLk->BarangMasukCostumerServicesLkCelanaPelatih->first()->pola_celana_pelatih_id == 1)
                 <p style="font-weight: bold">Keterangan produksi ada <br>dibagian tabel keterangan!!</p>
                 @else
                 <p style="margin-top: -5px; font-weight: bold">Produksi</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="details">
-                    {{-- <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->CelanaPelatih->gambar) }}" alt=""> --}}
+                    @foreach ($dataLk->BarangMasukCostumerServicesLkCelanaPelatih as $item)
+                    <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $item->CelanaCelanapelatih->gambar) }}" alt="">
+                    @endforeach
                 </div>
                 @endif
             </td>
             <td style="text-align: center">
-                @if ($dataLk->kerah_celana_pelatih_id == 1)
+                @if ($dataLk->BarangMasukCostumerServicesLkCelanaPelatih->first()->kerah_celana_pelatih_id == 1)
                 <p style="font-weight: bold">Keterangan model ada <br>dibagian tabel keterangan!!</p>
                 @else
                 <p style="margin-top: -5px; font-weight: bold">Model</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="">
-                    {{-- <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->KeraPlayer->gambar) }}" alt=""> --}}
+                    @foreach ($dataLk->BarangMasukCostumerServicesLkCelanaPelatih as $item)
+                    <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $item->KeraCelanapelatih->gambar) }}" alt="">
+                    @endforeach
                 </div>
                 @endif
             </td>
         </tr>
         <tr>
-            <td style="text-align: center; font-weight: bold">{{ $dataLk->ket_tambahan_celana_pelatih }} </td>
-            <td style="text-align: center; font-weight: bold">TOTAL {{ $dataLk->total_celana_pelatih }} PCS </td>
+            <td style="text-align: center; font-weight: bold">{{
+                $dataLk->BarangMasukCostumerServicesLkCelanaPelatih->first()->ket_tambahan_celana_pelatih }} </td>
+            <td style="text-align: center; font-weight: bold">TOTAL {{
+                $dataLk->BarangMasukCostumerServicesLkCelanaPelatih->first()->total_celana_pelatih }} PCS </td>
         </tr>
     </table>
     <style>
@@ -542,12 +591,14 @@
         <p style="margin-top: -56px; margin-left: 400px">Disainer : {{ $dataLk->Users->name }}</p> <br>
         <p style="margin-top: -40px;">Mesin Print : {{ $dataLk->jenis_mesin }}</p><br>
         <p style="margin-left: 400px; margin-top: -60px;">Layout : {{ $dataLk->UsersLk->name }}</p> <br>
-        <p style="margin-top: -45px;">Jenis Sablon : {{ $dataLk->jenis_sablon_celana_pelatih }}</p> <br>
-        <p style="margin-left: 400px; margin-top: -65px;">Jenis Bahan : {{ $dataLk->jenis_kain_celana_pelatih }}</p>
+        <p style="margin-top: -45px;">Jenis Sablon : {{
+            $dataLk->BarangMasukCostumerServicesLkCelanaPelatih->first()->jenis_sablon_celana_pelatih }}</p> <br>
+        <p style="margin-left: 400px; margin-top: -65px;">Jenis Bahan : {{
+            $dataLk->BarangMasukCostumerServicesLkCelanaPelatih->first()->jenis_kain_celana_pelatih }}</p>
     </div>
     <div class="container1">
         <p style="font-weight: bold">Keterangan : <br>
-            {!! $dataLk->keterangan_celana_pelatih !!}
+            {!! $dataLk->BarangMasukCostumerServicesLkCelanaPelatih->first()->keterangan_celana_pelatih !!}
         </p>
     </div>
     @endif
@@ -571,33 +622,39 @@
         </tr>
         <tr>
             <td style="text-align: center">
-                @if ($dataLk->pola_celana_kiper_id == 1)
+                @if ($dataLk->BarangMasukCostumerServicesLkCelanaKiper->first()->pola_celana_kiper_id == 1)
                 <p style="font-weight: bold">Keterangan produksi ada <br>dibagian tabel keterangan!!</p>
                 @else
                 <p style="margin-top: -5px; font-weight: bold">Produksi</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="details">
-                    {{-- <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->CelanaKiper->gambar) }}" alt=""> --}}
+                    @foreach ($dataLk->BarangMasukCostumerServicesLkCelanaKiper as $item)
+                    <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $item->CelanaCealanaKiper->gambar) }}" alt="">
+                    @endforeach
                 </div>
                 @endif
             </td>
             <td style="text-align: center">
-                @if ($dataLk->kerah_celana_kiper_id == 1)
+                @if ($dataLk->BarangMasukCostumerServicesLkCelanaKiper->first()->kerah_celana_kiper_id == 1)
                 <p style="font-weight: bold">Keterangan model ada <br>dibagian tabel keterangan!!</p>
                 @else
                 <p style="margin-top: -5px; font-weight: bold">Model</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="">
-                    {{-- <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->KeraPlayer->gambar) }}" alt=""> --}}
+                    @foreach ($dataLk->BarangMasukCostumerServicesLkCelanaKiper as $item)
+                    <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $item->KeraCealanaKiper->gambar) }}" alt="">
+                    @endforeach
                 </div>
                 @endif
             </td>
         </tr>
         <tr>
-            <td style="text-align: center; font-weight: bold">{{ $dataLk->ket_tambahan_celana_kiper }} </td>
-            <td style="text-align: center; font-weight: bold">TOTAL {{ $dataLk->total_celana_kiper }} PCS </td>
+            <td style="text-align: center; font-weight: bold">{{
+                $dataLk->BarangMasukCostumerServicesLkCelanaKiper->first()->ket_tambahan_celana_kiper }} </td>
+            <td style="text-align: center; font-weight: bold">TOTAL {{
+                $dataLk->BarangMasukCostumerServicesLkCelanaKiper->first()->total_celana_kiper }} PCS </td>
         </tr>
     </table>
     <style>
@@ -628,12 +685,14 @@
         <p style="margin-top: -56px; margin-left: 400px">Disainer : {{ $dataLk->Users->name }}</p> <br>
         <p style="margin-top: -40px;">Mesin Print : {{ $dataLk->jenis_mesin }}</p><br>
         <p style="margin-left: 400px; margin-top: -60px;">Layout : {{ $dataLk->UsersLk->name }}</p> <br>
-        <p style="margin-top: -45px;">Jenis Sablon : {{ $dataLk->jenis_sablon_celana_kiper }}</p> <br>
-        <p style="margin-left: 400px; margin-top: -65px;">Jenis Bahan : {{ $dataLk->jenis_kain_celana_kiper }}</p>
+        <p style="margin-top: -45px;">Jenis Sablon : {{
+            $dataLk->BarangMasukCostumerServicesLkCelanaKiper->first()->jenis_sablon_celana_kiper }}</p> <br>
+        <p style="margin-left: 400px; margin-top: -65px;">Jenis Bahan : {{
+            $dataLk->BarangMasukCostumerServicesLkCelanaKiper->first()->jenis_kain_celana_kiper }}</p>
     </div>
     <div class="container1">
         <p style="font-weight: bold">Keterangan : <br>
-            {!! $dataLk->keterangan_celana_kiper !!}
+            {!! $dataLk->BarangMasukCostumerServicesLkCelanaKiper->first()->keterangan_celana_kiper !!}
         </p>
     </div>
     @endif
@@ -657,33 +716,39 @@
         </tr>
         <tr>
             <td style="text-align: center">
-                @if ($dataLk->pola_celana_1_id == 1)
+                @if ($dataLk->BarangMasukCostumerServicesLkCelana1->first()->pola_celana_1_id == 1)
                 <p style="font-weight: bold">Keterangan produksi ada <br>dibagian tabel keterangan!!</p>
                 @else
                 <p style="margin-top: -5px; font-weight: bold">Produksi</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="details">
-                    {{-- <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->Celana1->gambar) }}" alt=""> --}}
+                    @foreach ($dataLk->BarangMasukCostumerServicesLkCelana1 as $item)
+                    <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $item->CelanaCelana1->gambar) }}" alt="">
+                    @endforeach
                 </div>
                 @endif
             </td>
             <td style="text-align: center">
-                @if ($dataLk->kerah_celana_1_id == 1)
+                @if ($dataLk->BarangMasukCostumerServicesLkCelana1->first()->kerah_celana_1_id == 1)
                 <p style="font-weight: bold">Keterangan model ada <br>dibagian tabel keterangan!!</p>
                 @else
                 <p style="margin-top: -5px; font-weight: bold">Model</p>
                 <div style="border: 1px solid black; border-radius: 50%; width: 120px; height: 120px; display: inline-block; overflow: hidden;"
                     class="">
-                    {{-- <img style="width: 100px; margin-top: 15px;"
-                        src="{{ public_path('storage/'. $dataLk->KeraPlayer->gambar) }}" alt=""> --}}
+                    @foreach ($dataLk->BarangMasukCostumerServicesLkCelana1 as $item)
+                    <img style="width: 100px; margin-top: 15px;"
+                        src="{{ public_path('storage/'. $item->KeraCealana1->gambar) }}" alt="">
+                    @endforeach
                 </div>
                 @endif
             </td>
         </tr>
         <tr>
-            <td style="text-align: center; font-weight: bold">{{ $dataLk->ket_tambahan_celana_1 }} </td>
-            <td style="text-align: center; font-weight: bold">TOTAL {{ $dataLk->total_celana_1 }} PCS </td>
+            <td style="text-align: center; font-weight: bold">{{
+                $dataLk->BarangMasukCostumerServicesLkCelana1->first()->ket_tambahan_celana_1 }} </td>
+            <td style="text-align: center; font-weight: bold">TOTAL {{
+                $dataLk->BarangMasukCostumerServicesLkCelana1->first()->total_celana_1 }} PCS </td>
         </tr>
     </table>
     <style>
@@ -714,12 +779,14 @@
         <p style="margin-top: -56px; margin-left: 400px">Disainer : {{ $dataLk->Users->name }}</p> <br>
         <p style="margin-top: -40px;">Mesin Print : {{ $dataLk->jenis_mesin }}</p><br>
         <p style="margin-left: 400px; margin-top: -60px;">Layout : {{ $dataLk->UsersLk->name }}</p> <br>
-        <p style="margin-top: -45px;">Jenis Sablon : {{ $dataLk->jenis_sablon_celana_1 }}</p> <br>
-        <p style="margin-left: 400px; margin-top: -65px;">Jenis Bahan : {{ $dataLk->jenis_kain_celana_1 }}</p>
+        <p style="margin-top: -45px;">Jenis Sablon : {{
+            $dataLk->BarangMasukCostumerServicesLkCelana1->first()->jenis_sablon_celana_1 }}</p> <br>
+        <p style="margin-left: 400px; margin-top: -65px;">Jenis Bahan : {{
+            $dataLk->BarangMasukCostumerServicesLkCelana1->first()->jenis_kain_celana_1 }}</p>
     </div>
     <div class="container1">
         <p style="font-weight: bold">Keterangan : <br>
-            {!! $dataLk->keterangan_celana_1 !!}
+            {!! $dataLk->BarangMasukCostumerServicesLkCelana1->first()->keterangan_celana_1 !!}
         </p>
     </div>
     @endif

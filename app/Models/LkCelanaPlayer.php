@@ -25,4 +25,17 @@ class LkCelanaPlayer extends Model
     {
         return $this->hasMany(BarangMasukCostumerServices::class, 'barang_masuk_id');
     }
+
+    public function KeraCelanaPlayer()
+    {
+        return $this->belongsTo(KeraBaju::class, 'kerah_celana_player_id');
+    }
+    public function LenganCealanaPlayer()
+    {
+        return $this->belongsTo(PolaLengan::class, 'pola_lengan_player_id');
+    }
+    public function CelanaCelanaPlayer()
+    {
+        return $this->belongsTo(PolaLengan::class, 'pola_celana_player_id');
+    }
 }

@@ -153,23 +153,42 @@ class CostumerServicesController extends Controller
             'Users',
             'UsersOrder',
             'UsersLk',
-            'KeraPlayer',
-            'LenganPlayer',
-            'CelanaPlayer',
-            'KeraPelatih',
-            'LenganPelatih',
-            'CelanaPelatih',
-            'KeraKiper',
-            'LenganKiper',
-            'CelanaKiper',
-            'Kera1',
-            'Lengan1',
-            'Celana1'
+             'BarangMasukCostumerServicesLkPlyer',
+            'BarangMasukCostumerServicesLkPlyer.LenganPlayer',
+            'BarangMasukCostumerServicesLkPlyer.KeraPlayer',
+
+            'BarangMasukCostumerServicesLkPelatih',
+            'BarangMasukCostumerServicesLkPelatih.LenganPelatih',
+            'BarangMasukCostumerServicesLkPelatih.KeraPelatih',
+
+            'BarangMasukCostumerServicesLkKiper',
+            'BarangMasukCostumerServicesLkKiper.LenganKiper',
+            'BarangMasukCostumerServicesLkKiper.KeraKiper',
+
+            'BarangMasukCostumerServicesLk1',
+            'BarangMasukCostumerServicesLk1.Lengan1',
+            'BarangMasukCostumerServicesLk1.Kera1',
+
+            'BarangMasukCostumerServicesLkCelanaPlyer',
+            'BarangMasukCostumerServicesLkCelanaPlyer.KeraCelanaPlayer',
+            'BarangMasukCostumerServicesLkCelanaPlyer.CelanaCelanaPlayer',
+
+            'BarangMasukCostumerServicesLkCelanaPelatih',
+            'BarangMasukCostumerServicesLkCelanaPelatih.KeraCelanapelatih',
+            'BarangMasukCostumerServicesLkCelanaPelatih.CelanaCelanapelatih',
+
+            'BarangMasukCostumerServicesLkCelanaKiper',
+            'BarangMasukCostumerServicesLkCelanaKiper.CelanaCealanaKiper',
+            'BarangMasukCostumerServicesLkCelanaKiper.KeraCealanaKiper',
+
+            'BarangMasukCostumerServicesLkCelana1',
+            'BarangMasukCostumerServicesLkCelana1.KeraCealana1',
+            'BarangMasukCostumerServicesLkCelana1.CelanaCelana1',
         )->find($id);
 
+        // return response()->json($oderCs);
         $kera = KeraBaju::where('id', '>', 1)->get();
         $lengan = PolaLengan::where('id', '>', 1)->get();
-        // return response()->json($lengan);
         $celana = PolaCeleana::all();
 
         return view('component.Cs.costumer-service-lk-pegawai.update', compact('oderCs', 'users', 'userCounts', 'kera', 'lengan', 'celana'));
@@ -179,20 +198,21 @@ class CostumerServicesController extends Controller
     {
         $lk = BarangMasukCostumerServices::find($id);
 
-        $tanggal_masuk = \Carbon\Carbon::parse($lk->tanggal_masuk);
-        $deadline = \Carbon\Carbon::parse($request->deadline);
-        $total_hari = $tanggal_masuk->diffInDays($deadline);
-        for ($date = clone $tanggal_masuk; $date->lte($deadline); $date->addDay()) {
-            if ($date->dayOfWeek === Carbon::SUNDAY) {
-                $total_hari--;
-            }
-        }
-
-        if ($total_hari >= 1 && $total_hari <= 8) {
-            $keterangan = "Express";
-        } else {
-            $keterangan = "Normal";
-        }
+         // PENENTUAN TANGGAL
+         $tanggal_masuk = \Carbon\Carbon::parse($lk->tanggal_masuk);
+         $deadline = \Carbon\Carbon::parse($request->deadline);
+         $total_hari = $tanggal_masuk->diffInDays($deadline);
+         for ($date = clone $tanggal_masuk; $date->lte($deadline); $date->addDay()) {
+             if ($date->dayOfWeek === Carbon::SUNDAY) {
+                 $total_hari--;
+             }
+         }
+         if ($total_hari >= 1 && $total_hari <= 8) {
+             $keterangan = "Express";
+         } else {
+             $keterangan = "Normal";
+         }
+         // AKHIR PENENTUAN TANGGAL
 
         $lk->update([
             'tanggal_jahit' => $request->tanggal_jahit,
@@ -207,100 +227,105 @@ class CostumerServicesController extends Controller
             'ket_hari' => $keterangan,
 
             // baju player
-            'total_baju_player' => $request->total_baju_player,
-            'jenis_sablon_baju_player' => $request->jenis_sablon_baju_player,
-            'kera_baju_player_id' => $request->kera_baju_player_id,
-            'pola_lengan_player_id' => $request->pola_lengan_player_id,
-            'jenis_kain_baju_player' => $request->jenis_kain_baju_player,
-            'ket_kumis_baju_player' => $request->ket_kumis_baju_player,
-            'ket_bantalan_baju_player' => $request->ket_bantalan_baju_player,
-            'ket_celana_player' => $request->ket_celana_player,
-            'ket_tambahan_baju_player' => $request->ket_tambahan_baju_player,
-            'keterangan_baju_pelayer' => $request->keterangan_baju_pelayer,
+
 
             // baju pelatih
-            'total_baju_pelatih' => $request->total_baju_pelatih,
-            'kerah_baju_pelatih_id' => $request->kerah_baju_pelatih_id,
-            'pola_lengan_pelatih_id' => $request->pola_lengan_pelatih_id,
-            'jenis_kain_baju_pelatih' => $request->jenis_kain_baju_pelatih,
-            'ket_kumis_baju_pelatih' => $request->ket_kumis_baju_pelatih,
-            'ket_bantalan_baju_pelatih' => $request->ket_bantalan_baju_pelatih,
-            'ket_celana_pelatih' => $request->ket_celana_pelatih,
-            'ket_tambahan_baju_pelatih' => $request->ket_tambahan_baju_pelatih,
-            'keterangan_baju_pelatih' => $request->keterangan_baju_pelatih,
+            // 'total_baju_pelatih' => $request->total_baju_pelatih,
+            // 'kerah_baju_pelatih_id' => $request->kerah_baju_pelatih_id,
+            // 'pola_lengan_pelatih_id' => $request->pola_lengan_pelatih_id,
+            // 'jenis_kain_baju_pelatih' => $request->jenis_kain_baju_pelatih,
+            // 'ket_kumis_baju_pelatih' => $request->ket_kumis_baju_pelatih,
+            // 'ket_bantalan_baju_pelatih' => $request->ket_bantalan_baju_pelatih,
+            // 'ket_celana_pelatih' => $request->ket_celana_pelatih,
+            // 'ket_tambahan_baju_pelatih' => $request->ket_tambahan_baju_pelatih,
+            // 'keterangan_baju_pelatih' => $request->keterangan_baju_pelatih,
 
-            // baju kiper
-            'total_baju_kiper' => $request->total_baju_kiper,
-            'kerah_baju_kiper_id' => $request->kerah_baju_kiper_id,
-            'pola_lengan_kiper_id' => $request->pola_lengan_kiper_id,
-            'jenis_kain_baju_kiper' => $request->jenis_kain_baju_kiper,
-            'ket_kumis_baju_kiper' => $request->ket_kumis_baju_kiper,
-            'ket_bantalan_baju_kiper' => $request->ket_bantalan_baju_kiper,
-            'ket_celana_kiper' => $request->ket_celana_kiper,
-            'ket_tambahan_baju_kiper' => $request->ket_tambahan_baju_kiper,
-            'keterangan_baju_kiper' => $request->keterangan_baju_kiper,
+            // // baju kiper
+            // 'total_baju_kiper' => $request->total_baju_kiper,
+            // 'kerah_baju_kiper_id' => $request->kerah_baju_kiper_id,
+            // 'pola_lengan_kiper_id' => $request->pola_lengan_kiper_id,
+            // 'jenis_kain_baju_kiper' => $request->jenis_kain_baju_kiper,
+            // 'ket_kumis_baju_kiper' => $request->ket_kumis_baju_kiper,
+            // 'ket_bantalan_baju_kiper' => $request->ket_bantalan_baju_kiper,
+            // 'ket_celana_kiper' => $request->ket_celana_kiper,
+            // 'ket_tambahan_baju_kiper' => $request->ket_tambahan_baju_kiper,
+            // 'keterangan_baju_kiper' => $request->keterangan_baju_kiper,
 
-            // baju player 1
-            'total_baju_1' => $request->total_baju_1,
-            'kerah_baju_1_id' => $request->kerah_baju_1_id,
-            'pola_lengan_1_id' => $request->pola_lengan_1_id,
-            'jenis_kain_baju_1' => $request->jenis_kain_baju_1,
-            'ket_kumis_baju_1' => $request->ket_kumis_baju_1,
-            'ket_bantalan_baju_1' => $request->ket_bantalan_baju_1,
-            'ket_celana_1' => $request->ket_celana_1,
-            'ket_tambahan_baju_1' => $request->ket_tambahan_baju_1,
-            'keterangan_baju_1' => $request->keterangan_baju_1,
+            // // baju player 1
+            // 'total_baju_1' => $request->total_baju_1,
+            // 'kerah_baju_1_id' => $request->kerah_baju_1_id,
+            // 'pola_lengan_1_id' => $request->pola_lengan_1_id,
+            // 'jenis_kain_baju_1' => $request->jenis_kain_baju_1,
+            // 'ket_kumis_baju_1' => $request->ket_kumis_baju_1,
+            // 'ket_bantalan_baju_1' => $request->ket_bantalan_baju_1,
+            // 'ket_celana_1' => $request->ket_celana_1,
+            // 'ket_tambahan_baju_1' => $request->ket_tambahan_baju_1,
+            // 'keterangan_baju_1' => $request->keterangan_baju_1,
 
-            // celana player
-            'total_celana_player' => $request->total_celana_player,
-            'kerah_celana_player_id' => $request->kerah_celana_player_id,
-            'jenis_sablon_celana_player' => $request->jenis_sablon_celana_player,
-            'jenis_kain_celana_player' => $request->jenis_kain_celana_player,
-            'pola_celana_player_id' => $request->pola_celana_player_id,
-            'kain_celana_player' => $request->kain_celana_player,
-            'ket_warna_kain_celana_player' => $request->ket_warna_kain_celana_player,
-            'ket_bis_celana_celana_player' => $request->ket_bis_celana_celana_player,
-            'ket_tambahan_celana_player' => $request->ket_tambahan_celana_player,
-            'keterangan_celana_pelayer' => $request->keterangan_celana_pelayer,
+            // // celana player
+            // 'total_celana_player' => $request->total_celana_player,
+            // 'kerah_celana_player_id' => $request->kerah_celana_player_id,
+            // 'jenis_sablon_celana_player' => $request->jenis_sablon_celana_player,
+            // 'jenis_kain_celana_player' => $request->jenis_kain_celana_player,
+            // 'pola_celana_player_id' => $request->pola_celana_player_id,
+            // 'kain_celana_player' => $request->kain_celana_player,
+            // 'ket_warna_kain_celana_player' => $request->ket_warna_kain_celana_player,
+            // 'ket_bis_celana_celana_player' => $request->ket_bis_celana_celana_player,
+            // 'ket_tambahan_celana_player' => $request->ket_tambahan_celana_player,
+            // 'keterangan_celana_pelayer' => $request->keterangan_celana_pelayer,
 
-            // celana pelatih
-            'total_celana_pelatih' => $request->total_celana_pelatih,
-            'kerah_celana_pelatih_id' => $request->kerah_celana_pelatih_id,
-            'jenis_sablon_celana_pelatih' => $request->jenis_sablon_celana_pelatih,
-            'pola_celana_pelatih_id' => $request->pola_celana_pelatih_id,
-            'jenis_kain_celana_pelatih' => $request->jenis_kain_celana_pelatih,
-            'ket_warna_kain_celana_pelatih' => $request->ket_warna_kain_celana_pelatih,
-            'ket_bis_celana_celana_pelatih' => $request->ket_bis_celana_celana_pelatih,
-            'ket_tambahan_celana_pelatih' => $request->ket_tambahan_celana_pelatih,
-            'keterangan_celana_pelatih' => $request->keterangan_celana_pelatih,
+            // // celana pelatih
+            // 'total_celana_pelatih' => $request->total_celana_pelatih,
+            // 'kerah_celana_pelatih_id' => $request->kerah_celana_pelatih_id,
+            // 'jenis_sablon_celana_pelatih' => $request->jenis_sablon_celana_pelatih,
+            // 'pola_celana_pelatih_id' => $request->pola_celana_pelatih_id,
+            // 'jenis_kain_celana_pelatih' => $request->jenis_kain_celana_pelatih,
+            // 'ket_warna_kain_celana_pelatih' => $request->ket_warna_kain_celana_pelatih,
+            // 'ket_bis_celana_celana_pelatih' => $request->ket_bis_celana_celana_pelatih,
+            // 'ket_tambahan_celana_pelatih' => $request->ket_tambahan_celana_pelatih,
+            // 'keterangan_celana_pelatih' => $request->keterangan_celana_pelatih,
 
-            // celana kiper
-            'total_celana_kiper' => $request->total_celana_kiper,
-            'kerah_celana_kiper_id' => $request->kerah_celana_kiper_id,
-            'jenis_sablon_celana_kiper' => $request->jenis_sablon_celana_kiper,
-            'pola_celana_kiper_id' => $request->pola_celana_kiper_id,
-            'jenis_kain_celana_kiper' => $request->jenis_kain_celana_kiper,
-            'ket_warna_kain_celana_kiper' => $request->ket_warna_kain_celana_kiper,
-            'ket_bis_celana_celana_kiper' => $request->ket_bis_celana_celana_kiper,
-            'ket_tambahan_celana_kiper' => $request->ket_tambahan_celana_kiper,
-            'keterangan_celana_kiper' => $request->keterangan_celana_kiper,
+            // // celana kiper
+            // 'total_celana_kiper' => $request->total_celana_kiper,
+            // 'kerah_celana_kiper_id' => $request->kerah_celana_kiper_id,
+            // 'jenis_sablon_celana_kiper' => $request->jenis_sablon_celana_kiper,
+            // 'pola_celana_kiper_id' => $request->pola_celana_kiper_id,
+            // 'jenis_kain_celana_kiper' => $request->jenis_kain_celana_kiper,
+            // 'ket_warna_kain_celana_kiper' => $request->ket_warna_kain_celana_kiper,
+            // 'ket_bis_celana_celana_kiper' => $request->ket_bis_celana_celana_kiper,
+            // 'ket_tambahan_celana_kiper' => $request->ket_tambahan_celana_kiper,
+            // 'keterangan_celana_kiper' => $request->keterangan_celana_kiper,
 
-            // celana 1
-            'total_celana_1' => $request->total_celana_1,
-            'kerah_celana_1_id' => $request->kerah_celana_1_id,
-            'jenis_sablon_celana_1' => $request->jenis_sablon_celana_1,
-            'pola_celana_1_id' => $request->pola_celana_1_id,
-            'jenis_kain_celana_1' => $request->jenis_kain_celana_1,
-            'ket_warna_kain_celana_1' => $request->ket_warna_kain_celana_1,
-            'ket_bis_celana_celana_1' => $request->ket_bis_celana_celana_1,
-            'ket_tambahan_celana_1' => $request->ket_tambahan_celana_1,
-            'keterangan_celana_1' => $request->keterangan_celana_1,
+            // // celana 1
+            // 'total_celana_1' => $request->total_celana_1,
+            // 'kerah_celana_1_id' => $request->kerah_celana_1_id,
+            // 'jenis_sablon_celana_1' => $request->jenis_sablon_celana_1,
+            // 'pola_celana_1_id' => $request->pola_celana_1_id,
+            // 'jenis_kain_celana_1' => $request->jenis_kain_celana_1,
+            // 'ket_warna_kain_celana_1' => $request->ket_warna_kain_celana_1,
+            // 'ket_bis_celana_celana_1' => $request->ket_bis_celana_celana_1,
+            // 'ket_tambahan_celana_1' => $request->ket_tambahan_celana_1,
+            // 'keterangan_celana_1' => $request->keterangan_celana_1,
 
             'keterangan_lengkap' => $request->keterangan_lengkap,
 
             'aksi' => '1',
             'tanda_telah_mengerjakan' => '1',
         ]);
+
+        $updateDataPlayer = [
+            'total_baju_player' => $request->total_baju_player,
+            'jenis_sablon_baju_player' => $request->jenis_sablon_baju_player,
+            'kera_baju_player_id' => $request->kera_baju_player_id,
+            'pola_lengan_player_id' => $request->pola_lengan_player_id,
+            'jenis_kain_baju_player' => $request->jenis_kain_baju_player,
+            'ket_tambahan_baju_player' => $request->ket_tambahan_baju_player,
+            'keterangan_baju_pelayer' => $request->keterangan_baju_pelayer,
+        ];
+
+        $dataTest = LkPlayer::where('barang_masuk_id', $lk->id)->update($updateDataPlayer);
+        return response()->json($dataTest);
+
 
         return redirect()->route('getIndexLkCsPegawai')->with('success', 'Selamat data yang input berhasil!');
     }
@@ -31626,23 +31651,44 @@ class CostumerServicesController extends Controller
             'Users',
             'UsersOrder',
             'UsersLk',
-            'KeraPlayer',
-            'LenganPlayer',
-            'CelanaPlayer',
-            'KeraPelatih',
-            'LenganPelatih',
-            'CelanaPelatih',
-            'KeraKiper',
-            'LenganKiper',
-            'CelanaKiper',
-            'Kera1',
-            'Lengan1',
-            'Celana1',
-            'Gambar'
+            'Gambar',
+
+            'BarangMasukCostumerServicesLkPlyer',
+            'BarangMasukCostumerServicesLkPlyer.LenganPlayer',
+            'BarangMasukCostumerServicesLkPlyer.KeraPlayer',
+
+            'BarangMasukCostumerServicesLkPelatih',
+            'BarangMasukCostumerServicesLkPelatih.LenganPelatih',
+            'BarangMasukCostumerServicesLkPelatih.KeraPelatih',
+
+            'BarangMasukCostumerServicesLkKiper',
+            'BarangMasukCostumerServicesLkKiper.LenganKiper',
+            'BarangMasukCostumerServicesLkKiper.KeraKiper',
+
+            'BarangMasukCostumerServicesLk1',
+            'BarangMasukCostumerServicesLk1.Lengan1',
+            'BarangMasukCostumerServicesLk1.Kera1',
+
+            'BarangMasukCostumerServicesLkCelanaPlyer',
+            'BarangMasukCostumerServicesLkCelanaPlyer.KeraCelanaPlayer',
+            'BarangMasukCostumerServicesLkCelanaPlyer.CelanaCelanaPlayer',
+
+            'BarangMasukCostumerServicesLkCelanaPelatih',
+            'BarangMasukCostumerServicesLkCelanaPelatih.KeraCelanapelatih',
+            'BarangMasukCostumerServicesLkCelanaPelatih.CelanaCelanapelatih',
+
+            'BarangMasukCostumerServicesLkCelanaKiper',
+            'BarangMasukCostumerServicesLkCelanaKiper.CelanaCealanaKiper',
+            'BarangMasukCostumerServicesLkCelanaKiper.KeraCealanaKiper',
+
+            'BarangMasukCostumerServicesLkCelana1',
+            'BarangMasukCostumerServicesLkCelana1.KeraCealana1',
+            'BarangMasukCostumerServicesLkCelana1.CelanaCelana1',
         )->findOrFail($id);
 
+
         // return response()->json($dataLk);
-        // return response()->json($dataLk);
+
         view()->share('dataLk', $dataLk->BarangMasukDisainer->nama_tim);
 
         $pdf = PDF::loadview('component.Cs.costumer-service-lk-pegawai.export-data-baju', compact('dataLk'));
