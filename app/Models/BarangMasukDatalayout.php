@@ -59,6 +59,6 @@ class BarangMasukDatalayout extends Model
 
     public function BarangMasukCsLK()
     {
-        return $this->belongsTo(BarangMasukCostumerServices::class, 'no_order_id');
+        return $this->belongsTo(BarangMasukCostumerServices::class, 'barang_masuk_id');
     }
 }

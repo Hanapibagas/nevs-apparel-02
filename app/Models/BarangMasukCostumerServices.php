@@ -27,6 +27,15 @@ class BarangMasukCostumerServices extends Model
         'deadline',
         'ket_hari',
 
+        'total_baju_player',
+        'total_baju_pelatih',
+        'total_baju_kiper',
+        'total_baju_1',
+        'total_celana_player',
+        'total_celana_pelatih',
+        'total_celana_kiper',
+        'total_celana_1',
+
         'file_corel_disainer',
         'keterangan_lengkap',
         'aksi',

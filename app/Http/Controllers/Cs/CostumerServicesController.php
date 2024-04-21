@@ -213,6 +213,15 @@ class CostumerServicesController extends Controller
             'deadline' => $request->deadline,
             'ket_hari' => $keterangan,
 
+            'total_baju_player' => $request->total_baju_player,
+            'total_baju_pelatih' => $request->total_baju_pelatih,
+            'total_baju_kiper' => $request->total_baju_kiper,
+            'total_baju_1' => $request->total_baju_1,
+            'total_celana_player' => $request->total_celana_player,
+            'total_celana_pelatih' => $request->total_celana_pelatih,
+            'total_celana_kiper' => $request->total_celana_kiper,
+            'total_celana_1' => $request->total_celana_1,
+
             'keterangan_lengkap' => $request->keterangan_lengkap,
 
             'aksi' => '1',
@@ -525,7 +534,7 @@ class CostumerServicesController extends Controller
                 if ($LkPlayer->status_player == "Full print") {
                     if ($total_hari == 1) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -652,7 +661,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 2) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -779,7 +788,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 3) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -906,7 +915,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 4) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -1033,7 +1042,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 5) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -1160,7 +1169,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 6) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -1287,7 +1296,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 7) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -1414,7 +1423,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 8) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -1541,7 +1550,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 9) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -1668,7 +1677,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 10) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -1795,7 +1804,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 11) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -1922,7 +1931,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari >= 12 && $total_hari <= 9999) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -2055,7 +2064,7 @@ class CostumerServicesController extends Controller
                 if ($LkPlayer->status_player == "Half print") {
                     if ($total_hari == 1) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -2193,7 +2202,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 2) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -2331,7 +2340,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 3) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();                        $barangMasukDataLayoutData = [
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();                        $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
                             'deadline' => $createDate->format('Y-m-d'),
@@ -2468,7 +2477,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 4) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -2606,7 +2615,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 5) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -2744,7 +2753,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 6) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -2882,7 +2891,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 7) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -3020,7 +3029,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 8) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -3158,7 +3167,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 9) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -3296,7 +3305,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 10) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -3571,7 +3580,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari >= 12 && $total_hari <= 9999) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -3715,8 +3724,8 @@ class CostumerServicesController extends Controller
                 if ($LkPlayer->status_player == "Polos") {
                     if ($total_hari == 1) {
                         // CUT 
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
+                        DataManualCut::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate->format('Y-m-d'),
@@ -3775,8 +3784,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 2) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
+                        DataManualCut::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate->format('Y-m-d'),
@@ -3835,8 +3844,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 3) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
+                        DataManualCut::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate2->format('Y-m-d'),
@@ -3895,8 +3904,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 4) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
+                        DataManualCut::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate3->format('Y-m-d'),
@@ -3955,8 +3964,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 5) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
+                        DataManualCut::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate3->format('Y-m-d'),
@@ -4015,8 +4024,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 6) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
+                        DataManualCut::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate3->format('Y-m-d'),
@@ -4075,8 +4084,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 7) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
+                        DataManualCut::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate4->format('Y-m-d'),
@@ -4135,8 +4144,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 8) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
+                        DataManualCut::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate5->format('Y-m-d'),
@@ -4195,8 +4204,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 9) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
+                        DataManualCut::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate5->format('Y-m-d'),
@@ -4255,8 +4264,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 10) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
+                        DataManualCut::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate5->format('Y-m-d'),
@@ -4315,8 +4324,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 11) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
+                        DataManualCut::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate6->format('Y-m-d'),
@@ -4375,8 +4384,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari >= 12 && $total_hari <= 9999) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
+                        DataManualCut::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate6->format('Y-m-d'),
@@ -4442,7 +4451,7 @@ class CostumerServicesController extends Controller
                 if ($LkPelatih->status_pelatih == "Full print") {
                     if ($total_hari == 1) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -4569,7 +4578,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 2) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -4696,7 +4705,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 3) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -4823,7 +4832,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 4) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -4950,7 +4959,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 5) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -5077,7 +5086,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 6) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -5204,7 +5213,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 7) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -5331,7 +5340,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 8) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -5458,7 +5467,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 9) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -5585,7 +5594,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 10) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -5712,7 +5721,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 11) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -5839,7 +5848,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari >= 12 && $total_hari <= 9999) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -5972,7 +5981,7 @@ class CostumerServicesController extends Controller
                 if ($LkPelatih->status_pelatih == "Half print") {
                     if ($total_hari == 1) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -6247,7 +6256,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 3) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -6385,7 +6394,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 4) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -6523,7 +6532,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 5) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -6661,7 +6670,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 6) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -6936,7 +6945,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 8) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -7074,7 +7083,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 9) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -7212,7 +7221,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 10) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -7350,7 +7359,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 11) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -7631,8 +7640,8 @@ class CostumerServicesController extends Controller
                 if ($LkPelatih->status_pelatih == "Polos") {
                     if ($total_hari == 1) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
+                        DataManualCut::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate->format('Y-m-d'),
@@ -7691,8 +7700,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 2) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
+                        DataManualCut::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate->format('Y-m-d'),
@@ -7751,8 +7760,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 3) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
+                        DataManualCut::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate2->format('Y-m-d'),
@@ -7811,8 +7820,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 4) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
+                        DataManualCut::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate3->format('Y-m-d'),
@@ -7871,8 +7880,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 5) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
+                        DataManualCut::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate3->format('Y-m-d'),
@@ -7931,8 +7940,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 6) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
+                        DataManualCut::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate3->format('Y-m-d'),
@@ -7991,8 +8000,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 7) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
+                        DataManualCut::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate4->format('Y-m-d'),
@@ -8051,8 +8060,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 8) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
+                        DataManualCut::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate5->format('Y-m-d'),
@@ -8111,8 +8120,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 9) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
+                        DataManualCut::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate5->format('Y-m-d'),
@@ -8171,8 +8180,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 10) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
+                        DataManualCut::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate5->format('Y-m-d'),
@@ -8231,8 +8240,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 11) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
+                        DataManualCut::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate6->format('Y-m-d'),
@@ -8291,8 +8300,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari >= 12 && $total_hari <= 9999) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_pelatih_id', $LkPelatih->id)->delete();
+                        DataManualCut::where('lk_pelatih_id', $LkPelatih->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate6->format('Y-m-d'),
@@ -8358,7 +8367,7 @@ class CostumerServicesController extends Controller
                 if ($LkKiper->status_kiper == "Full print") {
                     if ($total_hari == 1) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -8485,7 +8494,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 2) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -8612,7 +8621,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 3) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -8739,7 +8748,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 4) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -8866,7 +8875,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 5) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -8993,7 +9002,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 6) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -9120,7 +9129,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 7) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -9247,7 +9256,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 8) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -9374,7 +9383,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 9) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -9501,7 +9510,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 10) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -9628,7 +9637,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 11) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -9755,7 +9764,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari >= 12 && $total_hari <= 9999) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -9888,7 +9897,7 @@ class CostumerServicesController extends Controller
                 if ($LkKiper->status_kiper == "Half print") {
                     if ($total_hari == 1) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -10026,7 +10035,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 2) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -10164,7 +10173,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 3) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -10302,7 +10311,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 4) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -10440,7 +10449,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 5) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -10578,7 +10587,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 6) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -10716,7 +10725,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 7) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -10854,7 +10863,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 8) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -10992,7 +11001,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 9) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -11130,7 +11139,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 10) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -11267,7 +11276,8 @@ class CostumerServicesController extends Controller
                         }
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 11) {
-                        // LAYOUTBarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        // LAYOUT
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -11405,7 +11415,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari >= 12 && $total_hari <= 9999) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -11549,8 +11559,8 @@ class CostumerServicesController extends Controller
                 if ($LkKiper->status_kiper == "Polos") {
                     if ($total_hari == 1) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
+                        DataManualCut::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate->format('Y-m-d'),
@@ -11609,8 +11619,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 2) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
+                        DataManualCut::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate->format('Y-m-d'),
@@ -11669,8 +11679,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 3) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
+                        DataManualCut::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate2->format('Y-m-d'),
@@ -11729,8 +11739,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 4) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
+                        DataManualCut::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate3->format('Y-m-d'),
@@ -11789,8 +11799,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 5) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
+                        DataManualCut::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate3->format('Y-m-d'),
@@ -11849,8 +11859,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 6) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
+                        DataManualCut::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate3->format('Y-m-d'),
@@ -11909,8 +11919,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 7) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
+                        DataManualCut::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate4->format('Y-m-d'),
@@ -11969,8 +11979,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 8) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
+                        DataManualCut::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate5->format('Y-m-d'),
@@ -12029,8 +12039,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 9) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
+                        DataManualCut::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate5->format('Y-m-d'),
@@ -12089,8 +12099,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 10) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
+                        DataManualCut::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate5->format('Y-m-d'),
@@ -12149,8 +12159,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 11) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
+                        DataManualCut::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate6->format('Y-m-d'),
@@ -12209,8 +12219,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari >= 12 && $total_hari <= 9999) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_kiper_id', $LkKiper->id)->delete();
+                        DataManualCut::where('lk_kiper_id', $LkKiper->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate6->format('Y-m-d'),
@@ -12276,7 +12286,7 @@ class CostumerServicesController extends Controller
                 if ($LkBaju1->status_baju_1 == "Full print") {
                     if ($total_hari == 1) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -12403,7 +12413,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 2) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -12530,7 +12540,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 3) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -12657,7 +12667,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 4) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -12784,7 +12794,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 5) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -12911,7 +12921,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 6) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -13038,7 +13048,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 7) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -13165,7 +13175,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 8) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -13292,7 +13302,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 9) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -13419,7 +13429,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 10) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -13546,7 +13556,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 11) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -13673,7 +13683,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari >= 12 && $total_hari <= 9999) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -13806,7 +13816,7 @@ class CostumerServicesController extends Controller
                 if ($LkBaju1->status_baju_1 == "Half print") {
                     if ($total_hari == 1) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -13944,7 +13954,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 2) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -14082,7 +14092,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 3) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -14220,7 +14230,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 4) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -14358,7 +14368,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 5) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -14496,7 +14506,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 6) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -14634,7 +14644,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 7) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -14772,7 +14782,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 8) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -14910,7 +14920,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 9) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -15048,7 +15058,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 10) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -15186,7 +15196,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 11) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -15324,7 +15334,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari >= 12 && $total_hari <= 9999) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -15468,8 +15478,8 @@ class CostumerServicesController extends Controller
                 if ($LkBaju1->status_baju_1 == "Polos") {
                     if ($total_hari == 1) {
                         // CUT 
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
+                        DataManualCut::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate->format('Y-m-d'),
@@ -15528,8 +15538,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 2) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
+                        DataManualCut::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate->format('Y-m-d'),
@@ -15588,8 +15598,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 3) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
+                        DataManualCut::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate2->format('Y-m-d'),
@@ -15648,8 +15658,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 4) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
+                        DataManualCut::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate3->format('Y-m-d'),
@@ -15708,8 +15718,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 5) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
+                        DataManualCut::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate3->format('Y-m-d'),
@@ -15768,8 +15778,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 6) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
+                        DataManualCut::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate3->format('Y-m-d'),
@@ -15828,8 +15838,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 7) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
+                        DataManualCut::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate4->format('Y-m-d'),
@@ -15888,8 +15898,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 8) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
+                        DataManualCut::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate5->format('Y-m-d'),
@@ -15948,8 +15958,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 9) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
+                        DataManualCut::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate5->format('Y-m-d'),
@@ -16008,8 +16018,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 10) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
+                        DataManualCut::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate5->format('Y-m-d'),
@@ -16068,8 +16078,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 11) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
+                        DataManualCut::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate6->format('Y-m-d'),
@@ -16128,8 +16138,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari >= 12 && $total_hari <= 9999) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
+                        DataManualCut::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate6->format('Y-m-d'),
@@ -16195,7 +16205,7 @@ class CostumerServicesController extends Controller
                 if ($LkCelanaPlayer->status_celana_player == "Full print") {
                     if ($total_hari == 1) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -16322,7 +16332,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 2) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -16449,7 +16459,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 3) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -16576,7 +16586,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 4) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -16703,7 +16713,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 5) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -16830,7 +16840,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 6) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -16957,7 +16967,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 7) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -17084,7 +17094,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 8) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -17211,7 +17221,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 9) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -17338,7 +17348,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 10) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -17465,7 +17475,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 11) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -17592,7 +17602,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari >= 12 && $total_hari <= 9999) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -17725,7 +17735,7 @@ class CostumerServicesController extends Controller
                 if ($LkCelanaPlayer->status_celana_player == "Half print") {
                     if ($total_hari == 1) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -17863,7 +17873,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 2) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -18001,7 +18011,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 3) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -18139,7 +18149,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 4) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -18277,7 +18287,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 5) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -18415,7 +18425,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 6) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -18553,7 +18563,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 7) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -18691,7 +18701,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 8) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -18829,7 +18839,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 9) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -18967,7 +18977,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 10) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -19105,7 +19115,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 11) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -19243,7 +19253,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari >= 12 && $total_hari <= 9999) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -19387,8 +19397,8 @@ class CostumerServicesController extends Controller
                 if ($LkCelanaPlayer->status_celana_player == "Polos") {
                     if ($total_hari == 1) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
+                        DataManualCut::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate->format('Y-m-d'),
@@ -19447,8 +19457,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 2) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
+                        DataManualCut::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate->format('Y-m-d'),
@@ -19507,8 +19517,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 3) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
+                        DataManualCut::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate2->format('Y-m-d'),
@@ -19567,8 +19577,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 4) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
+                        DataManualCut::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate3->format('Y-m-d'),
@@ -19627,8 +19637,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 5) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
+                        DataManualCut::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate3->format('Y-m-d'),
@@ -19687,8 +19697,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 6) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
+                        DataManualCut::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate3->format('Y-m-d'),
@@ -19747,8 +19757,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 7) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
+                        DataManualCut::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate4->format('Y-m-d'),
@@ -19807,8 +19817,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 8) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
+                        DataManualCut::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate5->format('Y-m-d'),
@@ -19867,8 +19877,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 9) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
+                        DataManualCut::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate5->format('Y-m-d'),
@@ -19927,8 +19937,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 10) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
+                        DataManualCut::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate5->format('Y-m-d'),
@@ -19987,8 +19997,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 11) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
+                        DataManualCut::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate6->format('Y-m-d'),
@@ -20047,8 +20057,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari >= 12 && $total_hari <= 9999) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
+                        DataManualCut::where('lk_celana_player_id', $LkCelanaPlayer->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate6->format('Y-m-d'),
@@ -20114,7 +20124,7 @@ class CostumerServicesController extends Controller
                 if ($LkCelanaPelatih->status_celana_pelatih == "Full print") {
                     if ($total_hari == 1) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -20241,7 +20251,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 2) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -20368,7 +20378,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 3) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -20495,7 +20505,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 4) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -20622,7 +20632,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 5) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -20749,7 +20759,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 6) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -20876,7 +20886,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 7) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -21003,7 +21013,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 8) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -21130,7 +21140,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 9) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -21257,7 +21267,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 10) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -21384,7 +21394,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 11) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -21511,7 +21521,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari >= 12 && $total_hari <= 9999) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -21644,7 +21654,7 @@ class CostumerServicesController extends Controller
                 if ($LkCelanaPelatih->status_celana_pelatih == "Half print") {
                     if ($total_hari == 1) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -21782,7 +21792,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 2) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -21920,7 +21930,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 3) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -22058,7 +22068,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 4) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -22196,7 +22206,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 5) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -22334,7 +22344,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 6) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -22472,7 +22482,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 7) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -22610,7 +22620,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 8) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -22748,7 +22758,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 9) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -22886,7 +22896,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 10) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -23024,7 +23034,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 11) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -23162,7 +23172,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari >= 12 && $total_hari <= 9999) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -23306,8 +23316,8 @@ class CostumerServicesController extends Controller
                 if ($LkCelanaPelatih->status_celana_pelatih == "Polos") {
                     if ($total_hari == 1) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
+                        DataManualCut::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate->format('Y-m-d'),
@@ -23366,8 +23376,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 2) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
+                        DataManualCut::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate->format('Y-m-d'),
@@ -23426,8 +23436,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 3) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
+                        DataManualCut::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate2->format('Y-m-d'),
@@ -23486,8 +23496,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 4) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
+                        DataManualCut::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate3->format('Y-m-d'),
@@ -23546,8 +23556,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 5) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
+                        DataManualCut::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate3->format('Y-m-d'),
@@ -23606,8 +23616,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 6) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
+                        DataManualCut::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate3->format('Y-m-d'),
@@ -23666,8 +23676,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 7) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
+                        DataManualCut::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate4->format('Y-m-d'),
@@ -23726,8 +23736,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 8) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
+                        DataManualCut::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate5->format('Y-m-d'),
@@ -23786,8 +23796,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 9) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
+                        DataManualCut::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate5->format('Y-m-d'),
@@ -23846,8 +23856,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 10) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
+                        DataManualCut::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate5->format('Y-m-d'),
@@ -23906,8 +23916,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 11) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
+                        DataManualCut::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate6->format('Y-m-d'),
@@ -23966,8 +23976,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari >= 12 && $total_hari <= 9999) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
+                        DataManualCut::where('lk_celana_pelatih_id', $LkCelanaPelatih->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate6->format('Y-m-d'),
@@ -24033,7 +24043,7 @@ class CostumerServicesController extends Controller
                 if ($LkCelanaKiper->status_celana_kiper == "Full print") {
                     if ($total_hari == 1) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -24160,7 +24170,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 2) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -24287,7 +24297,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 3) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -24414,7 +24424,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 4) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -24541,7 +24551,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 5) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -24668,7 +24678,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 6) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -24795,7 +24805,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 7) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -24922,7 +24932,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 8) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -25049,7 +25059,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 9) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -25176,7 +25186,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 10) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -25303,7 +25313,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 11) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -25430,7 +25440,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari >= 12 && $total_hari <= 9999) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -25563,7 +25573,7 @@ class CostumerServicesController extends Controller
                 if ($LkCelanaKiper->status_celana_kiper == "Half print") {
                     if ($total_hari == 1) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -25701,7 +25711,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 2) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -25839,7 +25849,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 3) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -25977,7 +25987,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 4) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -26115,7 +26125,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 5) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -26253,7 +26263,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 6) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -26391,7 +26401,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 7) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -26529,7 +26539,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 8) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -26667,7 +26677,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 9) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -26805,7 +26815,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 10) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -26943,7 +26953,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 11) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -27081,7 +27091,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari >= 12 && $total_hari <= 9999) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -27225,8 +27235,8 @@ class CostumerServicesController extends Controller
                 if ($LkCelanaKiper->status_celana_kiper == "Polos") {
                     if ($total_hari == 1) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
+                        DataManualCut::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate->format('Y-m-d'),
@@ -27285,8 +27295,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 2) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
+                        DataManualCut::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate->format('Y-m-d'),
@@ -27345,8 +27355,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 3) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
+                        DataManualCut::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate2->format('Y-m-d'),
@@ -27405,8 +27415,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 4) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
+                        DataManualCut::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate3->format('Y-m-d'),
@@ -27465,8 +27475,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 5) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
+                        DataManualCut::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate3->format('Y-m-d'),
@@ -27525,8 +27535,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 6) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
+                        DataManualCut::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate3->format('Y-m-d'),
@@ -27585,8 +27595,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 7) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
+                        DataManualCut::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate4->format('Y-m-d'),
@@ -27645,8 +27655,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 8) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
+                        DataManualCut::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate5->format('Y-m-d'),
@@ -27705,8 +27715,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 9) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
+                        DataManualCut::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate5->format('Y-m-d'),
@@ -27765,8 +27775,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 10) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
+                        DataManualCut::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate5->format('Y-m-d'),
@@ -27825,8 +27835,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 11) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
+                        DataManualCut::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate6->format('Y-m-d'),
@@ -27885,8 +27895,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari >= 12 && $total_hari <= 9999) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
+                        DataManualCut::where('lk_celana_kiper_id', $LkCelanaKiper->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate6->format('Y-m-d'),
@@ -27952,7 +27962,7 @@ class CostumerServicesController extends Controller
                 if ($LkCelana1->status_celana_1 == "Full print") {
                     if ($total_hari == 1) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -28079,7 +28089,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 2) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -28206,7 +28216,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 3) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -28333,7 +28343,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 4) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -28460,7 +28470,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 5) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -28587,7 +28597,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 6) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -28714,7 +28724,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 7) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -28841,7 +28851,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 8) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -28968,7 +28978,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 9) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -29095,7 +29105,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 10) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -29222,7 +29232,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 11) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -29349,7 +29359,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari >= 12 && $total_hari <= 9999) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -29482,7 +29492,7 @@ class CostumerServicesController extends Controller
                 if ($LkCelana1->status_celana_1 == "Half print") {
                     if ($total_hari == 1) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -29620,7 +29630,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 2) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -29758,7 +29768,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 3) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -29896,7 +29906,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 4) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -30034,7 +30044,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 5) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -30172,7 +30182,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 6) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -30310,7 +30320,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 7) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -30448,7 +30458,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 8) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -30586,7 +30596,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 9) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -30724,7 +30734,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 10) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -30862,7 +30872,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 11) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -31000,7 +31010,7 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari >= 12 && $total_hari <= 9999) {
                         // LAYOUT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataLayoutData = [
                             'users_layout_id' => $lk->layout_id,
                             'barang_masuk_id' => $lk->id,
@@ -31144,8 +31154,8 @@ class CostumerServicesController extends Controller
                 if ($LkCelana1->status_celana_1 == "Polos") {
                     if ($total_hari == 1) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
+                        DataManualCut::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate->format('Y-m-d'),
@@ -31204,8 +31214,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 2) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
+                        DataManualCut::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate->format('Y-m-d'),
@@ -31264,8 +31274,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 3) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
+                        DataManualCut::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate2->format('Y-m-d'),
@@ -31324,8 +31334,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 4) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
+                        DataManualCut::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate3->format('Y-m-d'),
@@ -31384,8 +31394,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 5) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
+                        DataManualCut::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate3->format('Y-m-d'),
@@ -31444,8 +31454,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 6) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
+                        DataManualCut::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate3->format('Y-m-d'),
@@ -31504,8 +31514,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 7) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
+                        DataManualCut::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate4->format('Y-m-d'),
@@ -31564,8 +31574,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 8) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
+                        DataManualCut::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate5->format('Y-m-d'),
@@ -31624,8 +31634,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 9) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
+                        DataManualCut::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate5->format('Y-m-d'),
@@ -31684,8 +31694,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 10) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
+                        DataManualCut::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate5->format('Y-m-d'),
@@ -31744,8 +31754,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari == 11) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
+                        DataManualCut::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate6->format('Y-m-d'),
@@ -31804,8 +31814,8 @@ class CostumerServicesController extends Controller
                         // AKHIR LAPORAN
                     } elseif ($total_hari >= 12 && $total_hari <= 9999) {
                         // CUT PRINT
-                        BarangMasukDatalayout::where('barang_masuk_id', $lk->id)->delete();
-                        DataManualCut::where('no_order_id', $lk->id)->delete();
+                        BarangMasukDatalayout::where('lk_celana_1_id', $LkCelana1->id)->delete();
+                        DataManualCut::where('lk_celana_1_id', $LkCelana1->id)->delete();
                         $barangMasukDataCutManualData = [
                             'no_order_id' => $lk->id,
                             'deadline' => $createDate6->format('Y-m-d'),
@@ -31867,120 +31877,126 @@ class CostumerServicesController extends Controller
                 // AKHIR POLOS
             }
             // CREATE LAPORAN
-        } else {
-            if ($lk->Gambar->file_baju_player) {
-                $updateDataPlayer = [
-                    'status_player' => $request->status_player,
-                    'total_baju_player' => $request->total_baju_player,
-                    'jenis_sablon_baju_player' => $request->jenis_sablon_baju_player,
-                    'kera_baju_player_id' => $request->kera_baju_player_id,
-                    'pola_lengan_player_id' => $request->pola_lengan_player_id,
-                    'jenis_kain_baju_player' => $request->jenis_kain_baju_player,
-                    'ket_tambahan_baju_player' => $request->ket_tambahan_baju_player,
-                    'keterangan_baju_pelayer' => $request->keterangan_baju_pelayer,
-                ];
-                $dataTest = LkPlayer::where('barang_masuk_id', $lk->id)->update($updateDataPlayer);
-            }
+        }    
 
-            if ($lk->Gambar->file_baju_pelatih) {
-                $updateDataPelatih =[
-                    'kerah_baju_pelatih_id' => $request->kerah_baju_pelatih_id,
-                    'pola_lengan_pelatih_id' => $request->pola_lengan_pelatih_id,
-                    'jenis_sablon_baju_pelatih' => $request->jenis_sablon_baju_pelatih,
-                    'status_pelatih' => $request->status_pelatih,
-                    'jenis_kain_baju_pelatih' => $request->jenis_kain_baju_pelatih,
-                    'total_baju_pelatih' => $request->total_baju_pelatih,
-                    'ket_tambahan_baju_pelatih' => $request->ket_tambahan_baju_pelatih,
-                    'keterangan_baju_pelatih' => $request->keterangan_baju_pelatih,
-                ];
-                $dataTest1 = LkPelatih::where('barang_masuk_id', $lk->id)->update($updateDataPelatih);
-            }
+        // return response()->json([
+        //     $barangMasukDataLayout,
+        //     $LkCelanaPlayer,
+        // ]);
+        // } else {
+        //     if ($lk->Gambar->file_baju_player) {
+        //         $updateDataPlayer = [
+        //             'status_player' => $request->status_player,
+        //             'total_baju_player' => $request->total_baju_player,
+        //             'jenis_sablon_baju_player' => $request->jenis_sablon_baju_player,
+        //             'kera_baju_player_id' => $request->kera_baju_player_id,
+        //             'pola_lengan_player_id' => $request->pola_lengan_player_id,
+        //             'jenis_kain_baju_player' => $request->jenis_kain_baju_player,
+        //             'ket_tambahan_baju_player' => $request->ket_tambahan_baju_player,
+        //             'keterangan_baju_pelayer' => $request->keterangan_baju_pelayer,
+        //         ];
+        //         $dataTest = LkPlayer::where('barang_masuk_id', $lk->id)->update($updateDataPlayer);
+        //     }
 
-            if ($lk->Gambar->file_baju_kiper) {
-                $updateDataKiper = [
-                    'kerah_baju_kiper_id' => $request->kerah_baju_kiper_id,
-                    'pola_lengan_kiper_id' => $request->pola_lengan_kiper_id,
-                    'jenis_sablon_baju_kiper' => $request->jenis_sablon_baju_kiper,
-                    'status_kiper' => $request->status_kiper,
-                    'jenis_kain_baju_kiper' => $request->jenis_kain_baju_kiper,
-                    'total_baju_kiper' => $request->total_baju_kiper,
-                    'ket_tambahan_baju_kiper' => $request->ket_tambahan_baju_kiper,
-                    'keterangan_baju_kiper' => $request->keterangan_baju_kiper,
-                ];
-                $dataTest2 = LkKiper::where('barang_masuk_id', $lk->id)->update($updateDataKiper);
-            }
+        //     if ($lk->Gambar->file_baju_pelatih) {
+        //         $updateDataPelatih =[
+        //             'kerah_baju_pelatih_id' => $request->kerah_baju_pelatih_id,
+        //             'pola_lengan_pelatih_id' => $request->pola_lengan_pelatih_id,
+        //             'jenis_sablon_baju_pelatih' => $request->jenis_sablon_baju_pelatih,
+        //             'status_pelatih' => $request->status_pelatih,
+        //             'jenis_kain_baju_pelatih' => $request->jenis_kain_baju_pelatih,
+        //             'total_baju_pelatih' => $request->total_baju_pelatih,
+        //             'ket_tambahan_baju_pelatih' => $request->ket_tambahan_baju_pelatih,
+        //             'keterangan_baju_pelatih' => $request->keterangan_baju_pelatih,
+        //         ];
+        //         $dataTest1 = LkPelatih::where('barang_masuk_id', $lk->id)->update($updateDataPelatih);
+        //     }
 
-            if ($lk->Gambar->file_baju_1) {
-                $updateData1 = [
-                    'kerah_baju_1_id' => $request->kerah_baju_1_id,
-                    'pola_lengan_1_id' => $request->pola_lengan_1_id,
-                    'jenis_sablon_baju_1' => $request->jenis_sablon_baju_1,
-                    'status_baju_1' => $request->status_baju_1,
-                    'jenis_kain_baju_1' => $request->jenis_kain_baju_1,
-                    'total_baju_1' => $request->total_baju_1,
-                    'ket_tambahan_baju_1' => $request->ket_tambahan_baju_1,
-                    'keterangan_baju_1' => $request->keterangan_baju_1,
-                ];
-                $dataTest3 = LkBaju1::where('barang_masuk_id', $lk->id)->update($updateData1);
-            }
+        //     if ($lk->Gambar->file_baju_kiper) {
+        //         $updateDataKiper = [
+        //             'kerah_baju_kiper_id' => $request->kerah_baju_kiper_id,
+        //             'pola_lengan_kiper_id' => $request->pola_lengan_kiper_id,
+        //             'jenis_sablon_baju_kiper' => $request->jenis_sablon_baju_kiper,
+        //             'status_kiper' => $request->status_kiper,
+        //             'jenis_kain_baju_kiper' => $request->jenis_kain_baju_kiper,
+        //             'total_baju_kiper' => $request->total_baju_kiper,
+        //             'ket_tambahan_baju_kiper' => $request->ket_tambahan_baju_kiper,
+        //             'keterangan_baju_kiper' => $request->keterangan_baju_kiper,
+        //         ];
+        //         $dataTest2 = LkKiper::where('barang_masuk_id', $lk->id)->update($updateDataKiper);
+        //     }
 
-            if ($lk->Gambar->file_celana_player) {
-                $updateDataCelanaPlayer = [
-                    'pola_celana_player_id' => $request->pola_celana_player_id,
-                    'kerah_celana_player_id' => $request->kerah_celana_player_id,
-                    'jenis_sablon_celana_player' => $request->jenis_sablon_celana_player,
-                    'jenis_kain_celana_player' => $request->jenis_kain_celana_player,
-                    'status_celana_player' => $request->status_celana_player,
-                    'total_celana_player' => $request->total_celana_player,
-                    'ket_tambahan_celana_player' => $request->ket_tambahan_celana_player,
-                    'keterangan_celana_pelayer' => $request->keterangan_celana_pelayer,
-                ];
-                $dataTest4 = LkCelanaPlayer::where('barang_masuk_id', $lk->id)->update($updateDataCelanaPlayer);
-            }
+        //     if ($lk->Gambar->file_baju_1) {
+        //         $updateData1 = [
+        //             'kerah_baju_1_id' => $request->kerah_baju_1_id,
+        //             'pola_lengan_1_id' => $request->pola_lengan_1_id,
+        //             'jenis_sablon_baju_1' => $request->jenis_sablon_baju_1,
+        //             'status_baju_1' => $request->status_baju_1,
+        //             'jenis_kain_baju_1' => $request->jenis_kain_baju_1,
+        //             'total_baju_1' => $request->total_baju_1,
+        //             'ket_tambahan_baju_1' => $request->ket_tambahan_baju_1,
+        //             'keterangan_baju_1' => $request->keterangan_baju_1,
+        //         ];
+        //         $dataTest3 = LkBaju1::where('barang_masuk_id', $lk->id)->update($updateData1);
+        //     }
 
-            if ($lk->Gambar->file_celana_kiper) {
-                $updateDataCelanaKiper = [
-                    'pola_celana_kiper_id' => $request->pola_celana_kiper_id,
-                    'kerah_celana_kiper_id' => $request->kerah_celana_kiper_id,
-                    'total_celana_kiper' => $request->total_celana_kiper,
-                    'status_celana_kiper' => $request->status_celana_kiper,
-                    'status_celana_kiper' => $request->status_celana_kiper,
-                    'jenis_sablon_celana_kiper' => $request->jenis_sablon_celana_kiper,
-                    'jenis_kain_celana_kiper' => $request->jenis_kain_celana_kiper,
-                    'ket_tambahan_celana_kiper' => $request->ket_tambahan_celana_kiper,
-                    'keterangan_celana_kiper' => $request->keterangan_celana_kiper,
-                ];
-                $dataTest5 = LkCelanaKiper::where('barang_masuk_id', $lk->id)->update($updateDataCelanaKiper);
-            }
+        //     if ($lk->Gambar->file_celana_player) {
+        //         $updateDataCelanaPlayer = [
+        //             'pola_celana_player_id' => $request->pola_celana_player_id,
+        //             'kerah_celana_player_id' => $request->kerah_celana_player_id,
+        //             'jenis_sablon_celana_player' => $request->jenis_sablon_celana_player,
+        //             'jenis_kain_celana_player' => $request->jenis_kain_celana_player,
+        //             'status_celana_player' => $request->status_celana_player,
+        //             'total_celana_player' => $request->total_celana_player,
+        //             'ket_tambahan_celana_player' => $request->ket_tambahan_celana_player,
+        //             'keterangan_celana_pelayer' => $request->keterangan_celana_pelayer,
+        //         ];
+        //         $dataTest4 = LkCelanaPlayer::where('barang_masuk_id', $lk->id)->update($updateDataCelanaPlayer);
+        //     }
 
-            if ($lk->Gambar->file_celana_pelatih) {
-                $updateDataCelanaPelatih = [
-                    'pola_celana_pelatih_id' => $request->pola_celana_pelatih_id,
-                    'kerah_celana_pelatih_id' => $request->kerah_celana_pelatih_id,
-                    'total_celana_pelatih' => $request->total_celana_pelatih,
-                    'status_celana_pelatih' => $request->status_celana_pelatih,
-                    'jenis_sablon_celana_pelatih' => $request->jenis_sablon_celana_pelatih,
-                    'jenis_kain_celana_pelatih' => $request->jenis_kain_celana_pelatih,
-                    'ket_tambahan_celana_pelatih' => $request->ket_tambahan_celana_pelatih,
-                    'keterangan_celana_pelatih' => $request->keterangan_celana_pelatih,
-                ];
-                $dataTest6 = LkCelanaPelatih::where('baraang_masuk_id', $lk->id)->update($updateDataCelanaPelatih);
-            }
+        //     if ($lk->Gambar->file_celana_kiper) {
+        //         $updateDataCelanaKiper = [
+        //             'pola_celana_kiper_id' => $request->pola_celana_kiper_id,
+        //             'kerah_celana_kiper_id' => $request->kerah_celana_kiper_id,
+        //             'total_celana_kiper' => $request->total_celana_kiper,
+        //             'status_celana_kiper' => $request->status_celana_kiper,
+        //             'status_celana_kiper' => $request->status_celana_kiper,
+        //             'jenis_sablon_celana_kiper' => $request->jenis_sablon_celana_kiper,
+        //             'jenis_kain_celana_kiper' => $request->jenis_kain_celana_kiper,
+        //             'ket_tambahan_celana_kiper' => $request->ket_tambahan_celana_kiper,
+        //             'keterangan_celana_kiper' => $request->keterangan_celana_kiper,
+        //         ];
+        //         $dataTest5 = LkCelanaKiper::where('barang_masuk_id', $lk->id)->update($updateDataCelanaKiper);
+        //     }
 
-            if ($lk->Gambar->file_celana_1) {
-                $updateDataCelana1 = [
-                    'pola_celana_1_id' => $request->pola_celana_1_id,
-                    'kerah_celana_1_id' => $request->kerah_celana_1_id,
-                    'status_celana_1' => $request->status_celana_1,
-                    'total_celana_1' => $request->total_celana_1,
-                    'jenis_sablon_celana_1' => $request->jenis_sablon_celana_1,
-                    'jenis_kain_celana_1' => $request->jenis_kain_celana_1,
-                    'ket_tambahan_celana_1' => $request->ket_tambahan_celana_1,
-                    'keterangan_celana_1' => $request->keterangan_celana_1,
-                ];
-                $dataTest7 = LkCelana1::where('barang_masuk_id', $lk->id)->update($updateDataCelana1);
-            }
-        }
+        //     if ($lk->Gambar->file_celana_pelatih) {
+        //         $updateDataCelanaPelatih = [
+        //             'pola_celana_pelatih_id' => $request->pola_celana_pelatih_id,
+        //             'kerah_celana_pelatih_id' => $request->kerah_celana_pelatih_id,
+        //             'total_celana_pelatih' => $request->total_celana_pelatih,
+        //             'status_celana_pelatih' => $request->status_celana_pelatih,
+        //             'jenis_sablon_celana_pelatih' => $request->jenis_sablon_celana_pelatih,
+        //             'jenis_kain_celana_pelatih' => $request->jenis_kain_celana_pelatih,
+        //             'ket_tambahan_celana_pelatih' => $request->ket_tambahan_celana_pelatih,
+        //             'keterangan_celana_pelatih' => $request->keterangan_celana_pelatih,
+        //         ];
+        //         $dataTest6 = LkCelanaPelatih::where('baraang_masuk_id', $lk->id)->update($updateDataCelanaPelatih);
+        //     }
+
+        //     if ($lk->Gambar->file_celana_1) {
+        //         $updateDataCelana1 = [
+        //             'pola_celana_1_id' => $request->pola_celana_1_id,
+        //             'kerah_celana_1_id' => $request->kerah_celana_1_id,
+        //             'status_celana_1' => $request->status_celana_1,
+        //             'total_celana_1' => $request->total_celana_1,
+        //             'jenis_sablon_celana_1' => $request->jenis_sablon_celana_1,
+        //             'jenis_kain_celana_1' => $request->jenis_kain_celana_1,
+        //             'ket_tambahan_celana_1' => $request->ket_tambahan_celana_1,
+        //             'keterangan_celana_1' => $request->keterangan_celana_1,
+        //         ];
+        //         $dataTest7 = LkCelana1::where('barang_masuk_id', $lk->id)->update($updateDataCelana1);
+        //     }
+        // }
         // AKHIR UPDATE DATA LK
 
         return redirect()->route('getIndexLkCsPegawai')->with('success', 'Selamat data yang input berhasil!');
@@ -32018,6 +32034,15 @@ class CostumerServicesController extends Controller
             'pola' => $request->pola,
             'deadline' => $request->deadline,
             'ket_hari' => $keterangan,
+
+            'total_baju_player' => $request->total_baju_player,
+            'total_baju_pelatih' => $request->total_baju_pelatih,
+            'total_baju_kiper' => $request->total_baju_kiper,
+            'total_baju_1' => $request->total_baju_1,
+            'total_celana_player' => $request->total_celana_player,
+            'total_celana_pelatih' => $request->total_celana_pelatih,
+            'total_celana_kiper' => $request->total_celana_kiper,
+            'total_celana_1' => $request->total_celana_1,
 
             'keterangan_lengkap' => $request->keterangan_lengkap,
 
@@ -63296,7 +63321,6 @@ class CostumerServicesController extends Controller
         // CREATE LAPORAN
 
 
-        // return response()->json($total_hari);
         return redirect()->route('getIndexLkCsPegawai')->with('success', 'Selamat data yang input berhasil!');
     }
 

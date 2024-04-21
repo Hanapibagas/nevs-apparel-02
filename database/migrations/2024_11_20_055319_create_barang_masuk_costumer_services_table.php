@@ -30,6 +30,15 @@ return new class extends Migration
             $table->date('deadline')->nullable();
             $table->string('ket_hari')->nullable();
 
+            $table->string('total_baju_player')->nullable();
+            $table->string('total_baju_pelatih')->nullable();
+            $table->string('total_baju_kiper')->nullable();
+            $table->string('total_baju_1')->nullable();
+            $table->string('total_celana_player')->nullable();
+            $table->string('total_celana_pelatih')->nullable();
+            $table->string('total_celana_kiper')->nullable();
+            $table->string('total_celana_1')->nullable();
+
             $table->longText('file_corel_disainer')->nullable();
             $table->longText('keterangan_lengkap')->nullable();
 
