@@ -99,6 +99,21 @@
                                                 <hr>
                                                 <div class="row">
                                                     <div class="mb-3 col-md-6">
+                                                        <label class="form-label" for="country">Status</label>
+                                                        <select id="country" required name="status_player"
+                                                            class="select2 form-select">
+                                                            <option
+                                                                value="{{ $oderCs->BarangMasukCostumerServicesLkPlyer->first()->status_player }}">
+                                                                {{
+                                                                $oderCs->BarangMasukCostumerServicesLkPlyer->first()->status_player
+                                                                }}</option>
+                                                            <option value="">-- Jenis Produksi --</option>
+                                                            <option value="Full print">Full print</option>
+                                                            <option value="Half print">Half print</option>
+                                                            <option value="Polos">Polos</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3 col-md-6">
                                                         <label class="form-label" for="country">Produksi</label>
                                                         <select id="country" required name="pola_lengan_player_id"
                                                             class="select2 form-select">
@@ -188,7 +203,7 @@
                                         </div>
                                         @endif
 
-                                        {{-- @if ($oderCs->Gambar->file_baju_pelatih)
+                                        @if ($oderCs->Gambar->file_baju_pelatih)
                                         <div class="card mb-4">
                                             <div class="card-body">
                                                 <h4 class="fw-bold py-3 mb-4">Keterangan Produksi
@@ -197,6 +212,21 @@
                                                 </h4>
                                                 <hr>
                                                 <div class="row">
+                                                    <div class="mb-3 col-md-6">
+                                                        <label class="form-label" for="country">Status</label>
+                                                        <select id="country" required name="status_pelatih"
+                                                            class="select2 form-select">
+                                                            <option
+                                                                value="{{ $oderCs->BarangMasukCostumerServicesLkPelatih->first()->status_pelatih }}">
+                                                                {{
+                                                                $oderCs->BarangMasukCostumerServicesLkPelatih->first()->status_pelatih
+                                                                }}</option>
+                                                            <option value="">-- Jenis Produksi --</option>
+                                                            <option value="Full print">Full print</option>
+                                                            <option value="Half print">Half print</option>
+                                                            <option value="Polos">Polos</option>
+                                                        </select>
+                                                    </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label class="form-label" for="country">Produksi</label>
                                                         <select id="country" required name="pola_lengan_pelatih_id"
@@ -231,33 +261,33 @@
                                                         <label class="form-label" for="country">Jenis Sublim</label>
                                                         <input class="form-control" required type="text" id="firstName"
                                                             name="jenis_sablon_baju_pelatih"
-                                                            value="{{ $oderCs->jenis_sablon_baju_pelatih }}"
+                                                            value="{{ $oderCs->BarangMasukCostumerServicesLkPelatih->first()->jenis_sablon_baju_pelatih }}"
                                                             placeholder="Jenis Sublim" autofocus />
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label for="firstName" class="form-label">Jenis Bahan</label>
                                                         <input class="form-control" required type="text" id="firstName"
                                                             name="jenis_kain_baju_pelatih"
-                                                            value="{{ $oderCs->jenis_kain_baju_pelatih }}"
+                                                            value="{{ $oderCs->BarangMasukCostumerServicesLkPelatih->first()->jenis_kain_baju_pelatih }}"
                                                             placeholder="Jenis Bahan" autofocus />
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label for="firstName" class="form-label">Jumlah</label>
                                                         <input class="form-control" required type="number"
                                                             id="firstName" placeholder="Jumlah"
-                                                            value="{{ $oderCs->total_baju_pelatih }}"
+                                                            value="{{ $oderCs->BarangMasukCostumerServicesLkPelatih->first()->total_baju_pelatih }}"
                                                             name="total_baju_pelatih" autofocus />
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label for="firstName" class="form-label">Ukuran</label>
                                                         <textarea required name="ket_tambahan_baju_pelatih"
                                                             class="form-control"
-                                                            placeholder="Contoh: M 10, L 2, Xl 1">{{ $oderCs->ket_tambahan_baju_pelatih }}</textarea>
+                                                            placeholder="Contoh: M 10, L 2, Xl 1">{{ $oderCs->BarangMasukCostumerServicesLkPelatih->first()->ket_tambahan_baju_pelatih }}</textarea>
                                                     </div>
                                                     <div class="mb-3 col-md-12">
                                                         <label class="form-label" for="country">Keterangan</label>
                                                         <textarea required class="form-control"
-                                                            name="keterangan_baju_pelatih">{!! $oderCs->keterangan_baju_pelatih !!}</textarea>
+                                                            name="keterangan_baju_pelatih">{!! $oderCs->BarangMasukCostumerServicesLkPelatih->first()->keterangan_baju_pelatih !!}</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="modal fade" id="modalCenterPelatih" tabindex="-1"
@@ -293,6 +323,21 @@
                                                 <hr>
                                                 <div class="row">
                                                     <div class="mb-3 col-md-6">
+                                                        <label class="form-label" for="country">Status</label>
+                                                        <select id="country" required name="status_kiper"
+                                                            class="select2 form-select">
+                                                            <option
+                                                                value="{{ $oderCs->BarangMasukCostumerServicesLkKiper->first()->status_kiper }}">
+                                                                {{
+                                                                $oderCs->BarangMasukCostumerServicesLkKiper->first()->status_kiper
+                                                                }}</option>
+                                                            <option value="">-- Jenis Produksi --</option>
+                                                            <option value="Full print">Full print</option>
+                                                            <option value="Half print">Half print</option>
+                                                            <option value="Polos">Polos</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3 col-md-6">
                                                         <label class="form-label" for="country">Produksi</label>
                                                         <select id="country" required name="pola_lengan_kiper_id"
                                                             class="select2 form-select">
@@ -309,7 +354,7 @@
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label class="form-label" for="country">model</label>
-                                                        <select id="country" required name="kera_baju_kiper_id"
+                                                        <select id="country" required name="kerah_baju_kiper_id"
                                                             class="select2 form-select">
                                                             <option value="">Jenis model kosong apakah anda ingin
                                                                 mengubahnya ?</option>
@@ -325,31 +370,33 @@
                                                         <label class="form-label" for="country">Jenis Sublim</label>
                                                         <input class="form-control" required type="text" id="firstName"
                                                             name="jenis_sablon_baju_kiper" placeholder="Jenis Sublim"
-                                                            autofocus value="{{ $oderCs->jenis_sablon_baju_kiper }}" />
+                                                            autofocus
+                                                            value="{{ $oderCs->BarangMasukCostumerServicesLkKiper->first()->jenis_sablon_baju_kiper }}" />
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label for="firstName" class="form-label">Jenis Bahan</label>
                                                         <input class="form-control" required type="text" id="firstName"
                                                             name="jenis_kain_baju_kiper"
-                                                            value="{{ $oderCs->jenis_kain_baju_kiper }}"
+                                                            value="{{ $oderCs->BarangMasukCostumerServicesLkKiper->first()->jenis_kain_baju_kiper }}"
                                                             placeholder="Jenis Bahan" autofocus />
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label for="firstName" class="form-label">Jumlah</label>
                                                         <input class="form-control" required type="number"
-                                                            value="{{ $oderCs->total_baju_kiper }}" id="firstName"
-                                                            placeholder="Jumlah" name="total_baju_kiper" autofocus />
+                                                            value="{{ $oderCs->BarangMasukCostumerServicesLkKiper->first()->total_baju_kiper }}"
+                                                            id="firstName" placeholder="Jumlah" name="total_baju_kiper"
+                                                            autofocus />
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label for="firstName" class="form-label">Ukuran</label>
                                                         <textarea required name="ket_tambahan_baju_kiper"
                                                             class="form-control"
-                                                            placeholder="Contoh: M 10, L 2, Xl 1">{{ $oderCs->ket_tambahan_baju_kiper }}</textarea>
+                                                            placeholder="Contoh: M 10, L 2, Xl 1">{{ $oderCs->BarangMasukCostumerServicesLkKiper->first()->ket_tambahan_baju_kiper }}</textarea>
                                                     </div>
                                                     <div class="mb-3 col-md-12">
                                                         <label class="form-label" for="country">Keterangan</label>
                                                         <textarea required class="form-control"
-                                                            name="keterangan_baju_kiper">{!! $oderCs->keterangan_baju_kiper !!}</textarea>
+                                                            name="keterangan_baju_kiper">{!! $oderCs->BarangMasukCostumerServicesLkKiper->first()->keterangan_baju_kiper !!}</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="modal fade" id="modalCenterKiper" tabindex="-1"
@@ -385,6 +432,21 @@
                                                 <hr>
                                                 <div class="row">
                                                     <div class="mb-3 col-md-6">
+                                                        <label class="form-label" for="country">Status</label>
+                                                        <select id="country" required name="status_baju_1"
+                                                            class="select2 form-select">
+                                                            <option
+                                                                value="{{ $oderCs->BarangMasukCostumerServicesLkKiper->first()->status_kiper }}">
+                                                                {{
+                                                                $oderCs->BarangMasukCostumerServicesLkKiper->first()->status_kiper
+                                                                }}</option>
+                                                            <option value="">-- Jenis Produksi --</option>
+                                                            <option value="Full print">Full print</option>
+                                                            <option value="Half print">Half print</option>
+                                                            <option value="Polos">Polos</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3 col-md-6">
                                                         <label class="form-label" for="country">Produksi</label>
                                                         <select id="country" required name="pola_lengan_1_id"
                                                             class="select2 form-select">
@@ -417,33 +479,33 @@
                                                         <label class="form-label" for="country">Jenis Sublim</label>
                                                         <input class="form-control" required type="text" id="firstName"
                                                             name="jenis_sablon_baju_1"
-                                                            value="{{ $oderCs->jenis_sablon_baju_1 }}"
+                                                            value="{{ $oderCs->BarangMasukCostumerServicesLk1->first()->jenis_sablon_baju_1 }}"
                                                             placeholder="Jenis Sublim" autofocus />
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label for="firstName" class="form-label">Jenis Bahan</label>
                                                         <input class="form-control"
-                                                            value="{{ $oderCs->jenis_kain_baju_1 }}" required
-                                                            type="text" id="firstName" name="jenis_kain_baju_1"
+                                                            value="{{ $oderCs->BarangMasukCostumerServicesLk1->first()->jenis_kain_baju_1 }}"
+                                                            required type="text" id="firstName" name="jenis_kain_baju_1"
                                                             placeholder="Jenis Bahan" autofocus />
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label for="firstName" class="form-label">Jumlah</label>
                                                         <input class="form-control" required type="number"
                                                             id="firstName" placeholder="Jumlah"
-                                                            value="{{ $oderCs->total_baju_1 }}" name="total_baju_1"
-                                                            autofocus />
+                                                            value="{{ $oderCs->BarangMasukCostumerServicesLk1->first()->total_baju_1 }}"
+                                                            name="total_baju_1" autofocus />
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label for="firstName" class="form-label">Ukuran</label>
                                                         <textarea required name="ket_tambahan_baju_1"
                                                             class="form-control"
-                                                            placeholder="Contoh: M 10, L 2, Xl 1">{{ $oderCs->ket_tambahan_baju_1 }}</textarea>
+                                                            placeholder="Contoh: M 10, L 2, Xl 1">{{ $oderCs->BarangMasukCostumerServicesLk1->first()->ket_tambahan_baju_1 }}</textarea>
                                                     </div>
                                                     <div class="mb-3 col-md-12">
                                                         <label class="form-label" for="country">Keterangan</label>
                                                         <textarea required class="form-control"
-                                                            name="keterangan_baju_1">{!! $oderCs->keterangan_baju_1 !!}</textarea>
+                                                            name="keterangan_baju_1">{!! $oderCs->BarangMasukCostumerServicesLk1->first()->keterangan_baju_1 !!}</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="modal fade" id="modalCenter1" tabindex="-1"
@@ -480,6 +542,21 @@
                                                 <hr>
                                                 <div class="row">
                                                     <div class="mb-3 col-md-6">
+                                                        <label class="form-label" for="country">Status</label>
+                                                        <select id="country" required name="status_celana_player"
+                                                            class="select2 form-select">
+                                                            <option
+                                                                value="{{ $oderCs->BarangMasukCostumerServicesLkCelanaPlyer->first()->status_celana_player }}">
+                                                                {{
+                                                                $oderCs->BarangMasukCostumerServicesLkCelanaPlyer->first()->status_celana_player
+                                                                }}</option>
+                                                            <option value="">-- Jenis Produksi --</option>
+                                                            <option value="Full print">Full print</option>
+                                                            <option value="Half print">Half print</option>
+                                                            <option value="Polos">Polos</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3 col-md-6">
                                                         <label class="form-label" for="country">Produksi</label>
                                                         <select id="country" required name="pola_celana_player_id"
                                                             class="select2 form-select">
@@ -512,33 +589,33 @@
                                                         <label class="form-label" for="country">Jenis Sublim</label>
                                                         <input class="form-control" required type="text" id="firstName"
                                                             name="jenis_sablon_celana_player"
-                                                            value="{{ $oderCs->jenis_sablon_celana_player }}"
+                                                            value="{{ $oderCs->BarangMasukCostumerServicesLkCelanaPlyer->first()->jenis_sablon_celana_player }}"
                                                             placeholder="Jenis Sublim" autofocus />
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label for="firstName" class="form-label">Jenis Bahan</label>
                                                         <input class="form-control" required type="text" id="firstName"
                                                             name="jenis_kain_celana_player"
-                                                            value="{{ $oderCs->jenis_kain_celana_player }}"
+                                                            value="{{ $oderCs->BarangMasukCostumerServicesLkCelanaPlyer->first()->jenis_kain_celana_player }}"
                                                             placeholder="Jenis Bahan" autofocus />
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label for="firstName" class="form-label">Jumlah</label>
                                                         <input class="form-control" required type="number"
                                                             id="firstName" placeholder="Jumlah"
-                                                            value="{{ $oderCs->total_celana_player }}"
+                                                            value="{{ $oderCs->BarangMasukCostumerServicesLkCelanaPlyer->first()->total_celana_player }}"
                                                             name="total_celana_player" autofocus />
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label for="firstName" class="form-label">Ukuran</label>
                                                         <textarea required name="ket_tambahan_celana_player"
                                                             class="form-control"
-                                                            placeholder="Contoh: M 10, L 2, Xl 1">{{ $oderCs->ket_tambahan_celana_player }}</textarea>
+                                                            placeholder="Contoh: M 10, L 2, Xl 1">{{ $oderCs->BarangMasukCostumerServicesLkCelanaPlyer->first()->ket_tambahan_celana_player }}</textarea>
                                                     </div>
                                                     <div class="mb-3 col-md-12">
                                                         <label class="form-label" for="country">Keterangan</label>
                                                         <textarea required class="form-control"
-                                                            name="keterangan_celana_pelayer">{!! $oderCs->keterangan_celana_pelayer !!}</textarea>
+                                                            name="keterangan_celana_pelayer">{!! $oderCs->BarangMasukCostumerServicesLkCelanaPlyer->first()->keterangan_celana_pelayer !!}</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="modal fade" id="modalCenterCelanaPlayer" tabindex="-1"
@@ -575,6 +652,21 @@
                                                 <hr>
                                                 <div class="row">
                                                     <div class="mb-3 col-md-6">
+                                                        <label class="form-label" for="country">Status</label>
+                                                        <select id="country" required name="status_celana_pelatih"
+                                                            class="select2 form-select">
+                                                            <option
+                                                                value="{{ $oderCs->BarangMasukCostumerServicesLkCelanaPelatih->first()->status_celana_pelatih	 }}">
+                                                                {{
+                                                                $oderCs->BarangMasukCostumerServicesLkCelanaPelatih->first()->status_celana_pelatih
+                                                                }}</option>
+                                                            <option value="">-- Jenis Produksi --</option>
+                                                            <option value="Full print">Full print</option>
+                                                            <option value="Half print">Half print</option>
+                                                            <option value="Polos">Polos</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3 col-md-6">
                                                         <label class="form-label" for="country">Produksi</label>
                                                         <select required id="country" name="pola_celana_pelatih_id"
                                                             class="select2 form-select">
@@ -608,33 +700,33 @@
                                                         <input required class="form-control" type="text" id="firstName"
                                                             name="jenis_sablon_celana_pelatih"
                                                             placeholder="Jenis Sublim"
-                                                            value="{{ $oderCs->jenis_sablon_celana_pelatih }}"
+                                                            value="{{ $oderCs->BarangMasukCostumerServicesLkCelanaPelatih->first()->jenis_sablon_celana_pelatih }}"
                                                             autofocus />
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label for="firstName" class="form-label">Jenis Bahan</label>
                                                         <input required class="form-control" type="text" id="firstName"
                                                             name="jenis_kain_celana_pelatih"
-                                                            value="{{ $oderCs->jenis_kain_celana_pelatih }}"
+                                                            value="{{ $oderCs->BarangMasukCostumerServicesLkCelanaPelatih->first()->jenis_kain_celana_pelatih }}"
                                                             placeholder="Jenis Bahan" autofocus />
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label for="firstName" class="form-label">Jumlah</label>
                                                         <input required class="form-control" type="text" id="firstName"
                                                             placeholder="Jumlah"
-                                                            value="{{ $oderCs->total_celana_pelatih }}"
+                                                            value="{{ $oderCs->BarangMasukCostumerServicesLkCelanaPelatih->first()->total_celana_pelatih }}"
                                                             name="total_celana_pelatih" autofocus />
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label for="firstName" class="form-label">Ukuran</label>
                                                         <textarea required name="ket_tambahan_celana_pelatih"
                                                             class="form-control"
-                                                            placeholder="Contoh: M 10, L 2, Xl 1">{{ $oderCs->ket_tambahan_celana_pelatih }}</textarea>
+                                                            placeholder="Contoh: M 10, L 2, Xl 1">{{ $oderCs->BarangMasukCostumerServicesLkCelanaPelatih->first()->ket_tambahan_celana_pelatih }}</textarea>
                                                     </div>
                                                     <div class="mb-3 col-md-12">
                                                         <label class="form-label" for="country">Keterangan</label>
                                                         <textarea required class="form-control"
-                                                            name="keterangan_celana_pelatih">{!! $oderCs->keterangan_celana_pelatih !!}</textarea>
+                                                            name="keterangan_celana_pelatih">{!! $oderCs->BarangMasukCostumerServicesLkCelanaPelatih->first()->keterangan_celana_pelatih !!}</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="modal fade" id="modalCenterCelanaPelatih" tabindex="-1"
@@ -671,6 +763,21 @@
                                                 <hr>
                                                 <div class="row">
                                                     <div class="mb-3 col-md-6">
+                                                        <label class="form-label" for="country">Status</label>
+                                                        <select id="country" required name="status_celana_kiper"
+                                                            class="select2 form-select">
+                                                            <option
+                                                                value="{{ $oderCs->BarangMasukCostumerServicesLkCelanaKiper->first()->status_celana_kiper		 }}">
+                                                                {{
+                                                                $oderCs->BarangMasukCostumerServicesLkCelanaKiper->first()->status_celana_kiper
+                                                                }}</option>
+                                                            <option value="">-- Jenis Produksi --</option>
+                                                            <option value="Full print">Full print</option>
+                                                            <option value="Half print">Half print</option>
+                                                            <option value="Polos">Polos</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3 col-md-6">
                                                         <label class="form-label" for="country">Produksi</label>
                                                         <select required id="country" name="pola_celana_kiper_id"
                                                             class="select2 form-select">
@@ -703,32 +810,33 @@
                                                         <label class="form-label" for="country">Jenis Sublim</label>
                                                         <input required class="form-control" type="text" id="firstName"
                                                             name="jenis_sablon_celana_kiper"
-                                                            value="{{ $oderCs->jenis_sablon_celana_kiper }}"
+                                                            value="{{ $oderCs->BarangMasukCostumerServicesLkCelanaKiper->first()->jenis_sablon_celana_kiper }}"
                                                             placeholder="Jenis Sublim" autofocus />
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label for="firstName" class="form-label">Jenis Bahan</label>
                                                         <input required class="form-control" type="text" id="firstName"
-                                                            name="jenis_kain_celana_kiper" placeholder="Jenis Bahan"
-                                                            autofocus />
+                                                            name="jenis_kain_celana_kiper"
+                                                            value="{{ $oderCs->BarangMasukCostumerServicesLkCelanaKiper->first()->jenis_kain_celana_kiper }}"
+                                                            placeholder="Jenis Bahan" autofocus />
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label for="firstName" class="form-label">Jumlah</label>
                                                         <input required class="form-control" type="number"
                                                             id="firstName" placeholder="Jumlah"
-                                                            value="{{ $oderCs->total_celana_kiper }}"
+                                                            value="{{ $oderCs->BarangMasukCostumerServicesLkCelanaKiper->first()->total_celana_kiper }}"
                                                             name="total_celana_kiper" autofocus />
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label for="firstName" class="form-label">Ukuran</label>
                                                         <textarea required name="ket_tambahan_celana_kiper"
                                                             class="form-control"
-                                                            placeholder="Contoh: M 10, L 2, Xl 1">{{ $oderCs->ket_tambahan_celana_kiper }}</textarea>
+                                                            placeholder="Contoh: M 10, L 2, Xl 1">{{ $oderCs->BarangMasukCostumerServicesLkCelanaKiper->first()->ket_tambahan_celana_kiper }}</textarea>
                                                     </div>
                                                     <div class="mb-3 col-md-12">
                                                         <label class="form-label" for="country">Keterangan</label>
                                                         <textarea required class="form-control"
-                                                            name="keterangan_celana_kiper">{!! $oderCs->keterangan_celana_kiper !!}</textarea>
+                                                            name="keterangan_celana_kiper">{!! $oderCs->BarangMasukCostumerServicesLkCelanaKiper->first()->keterangan_celana_kiper !!}</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="modal fade" id="modalCenterCelanaKiper" tabindex="-1"
@@ -765,6 +873,21 @@
                                                 <hr>
                                                 <div class="row">
                                                     <div class="mb-3 col-md-6">
+                                                        <label class="form-label" for="country">Status</label>
+                                                        <select id="country" required name="status_celana_1"
+                                                            class="select2 form-select">
+                                                            <option
+                                                                value="{{ $oderCs->BarangMasukCostumerServicesLkCelana1->first()->status_celana_1 }}">
+                                                                {{
+                                                                $oderCs->BarangMasukCostumerServicesLkCelana1->first()->status_celana_1
+                                                                }}</option>
+                                                            <option value="">-- Jenis Produksi --</option>
+                                                            <option value="Full print">Full print</option>
+                                                            <option value="Half print">Half print</option>
+                                                            <option value="Polos">Polos</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3 col-md-6">
                                                         <label class="form-label" for="country">Produksi</label>
                                                         <select required id="country" name="pola_celana_1_id"
                                                             class="select2 form-select">
@@ -797,33 +920,33 @@
                                                         <label class="form-label" for="country">Jenis Sublim</label>
                                                         <input required class="form-control" type="text" id="firstName"
                                                             name="jenis_sablon_celana_1"
-                                                            value="{{ $oderCs->jenis_sablon_celana_1 }}"
+                                                            value="{{ $oderCs->BarangMasukCostumerServicesLkCelana1->first()->jenis_sablon_celana_1 }}"
                                                             placeholder="Jenis Sublim" autofocus />
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label for="firstName" class="form-label">Jenis Bahan</label>
                                                         <input required class="form-control" type="text" id="firstName"
                                                             name="jenis_kain_celana_1"
-                                                            value="{{ $oderCs->jenis_kain_celana_1 }}"
+                                                            value="{{ $oderCs->BarangMasukCostumerServicesLkCelana1->first()->jenis_kain_celana_1 }}"
                                                             placeholder="Jenis Bahan" autofocus />
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label for="firstName" class="form-label">Jumlah</label>
                                                         <input required class="form-control" type="number"
                                                             id="firstName" placeholder="Jumlah"
-                                                            value="{{ $oderCs->total_celana_1 }}" name="total_celana_1"
-                                                            autofocus />
+                                                            value="{{ $oderCs->BarangMasukCostumerServicesLkCelana1->first()->total_celana_1 }}"
+                                                            name="total_celana_1" autofocus />
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label for="firstName" class="form-label">Ukuran</label>
                                                         <textarea required name="ket_tambahan_celana_1"
                                                             class="form-control"
-                                                            placeholder="Contoh: M 10, L 2, Xl 1">{{ $oderCs->ket_tambahan_celana_1 }}</textarea>
+                                                            placeholder="Contoh: M 10, L 2, Xl 1">{{ $oderCs->BarangMasukCostumerServicesLkCelana1->first()->ket_tambahan_celana_1 }}</textarea>
                                                     </div>
                                                     <div class="mb-3 col-md-12">
                                                         <label class="form-label" for="country">Keterangan</label>
                                                         <textarea required class="form-control"
-                                                            name="keterangan_celana_1">{!! $oderCs->keterangan_celana_1 !!}</textarea>
+                                                            name="keterangan_celana_1">{!! $oderCs->BarangMasukCostumerServicesLkCelana1->first()->keterangan_celana_1 !!}</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="modal fade" id="modalCenterCelanaPlayer1" tabindex="-1"
@@ -847,7 +970,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        @endif --}}
+                                        @endif
 
                                         <div class="card mb-4">
                                             <div class="card-body">
