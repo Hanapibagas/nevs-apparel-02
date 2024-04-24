@@ -157,6 +157,7 @@ Route::middleware(['auth', 'checkroll:laser_cut'])->group(function () {
     Route::get('/data-masuk-laser-cut/{id}', [LaserCutController::class, 'getInputLaporan'])->name('getInputLaporanLaserCut');
     Route::put('/data-masuk-laser-cut/{id}', [LaserCutController::class, 'putLaporan'])->name('putLaporanLaserCut');
     Route::get('/data-masuk-laser-cut-fix', [LaserCutController::class, 'getIndexFix'])->name('getIndexFixLaserCut');
+    Route::get('/show-data-lk-lasercut/{id}', [LaserCutController::class, 'cetakDataLk'])->name('getCetakDataLklaserCut');
 });
 
 Route::middleware(['auth', 'checkroll:manual_cut'])->group(function () {

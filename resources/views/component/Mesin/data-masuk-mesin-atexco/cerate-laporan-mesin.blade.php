@@ -83,7 +83,7 @@
                                         <div class="row">
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">File foto</label>
-                                                <input class="form-control" name="file_foto_celana_pelayer" type="file"
+                                                <input class="form-control" name="file_foto_celana_player" type="file"
                                                     id="firstName" required />
                                             </div>
                                         </div>

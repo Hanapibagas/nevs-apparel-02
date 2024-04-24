@@ -354,7 +354,7 @@ $activeList = $listData ? 'active' : '';
         </li>
         @endif
 
-        @if ( Auth::user()->roles == 'cut')
+        {{-- @if ( Auth::user()->roles == 'cut')
         @php
         $user = Auth::user();
         $dataMasuk = App\Models\Cut::where('tanda_telah_mengerjakan', 0)->count();
@@ -381,10 +381,10 @@ $activeList = $listData ? 'active' : '';
                     }}</span>
             </a>
         </li>
-        @endif
+        @endif --}}
 
 
-        {{-- @if ( Auth::user()->roles == 'laser_cut')
+        @if ( Auth::user()->roles == 'laser_cut')
         @php
         $user = Auth::user();
         $dataMasuk = App\Models\DataLaserCut::where('tanda_telah_mengerjakan', 0)->count();
@@ -440,7 +440,7 @@ $activeList = $listData ? 'active' : '';
                     }}</span>
             </a>
         </li>
-        @endif --}}
+        @endif
 
         @if ( Auth::user()->roles == 'sortir')
         @php

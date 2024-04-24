@@ -68,6 +68,25 @@ class ManualCutController extends Controller
     public function putLaporan(Request $request, $id)
     {
         $user = Auth::user();
+
+        if ($request->player_id) {
+        }
+        if ($request->pelatih_id) {
+        }
+        if ($request->kiper_id) {
+        }
+        if ($request->lk1_id) {
+        }
+        if ($request->celana_player_id) {
+        }
+        if ($request->celana_pelatih_id) {
+        }
+        if ($request->celana_kiper_id) {
+        }
+        if ($request->celana_1_id) {
+        }
+
+
         $dataMasuk = DataManualCut::find($id);
 
         $dataMasuk->update([
@@ -77,6 +96,23 @@ class ManualCutController extends Controller
         ]);
 
         if ($dataMasuk) {
+
+            if ($request->player_id) {
+            }
+            if ($request->pelatih_id) {
+            }
+            if ($request->kiper_id) {
+            }
+            if ($request->lk1_id) {
+            }
+            if ($request->celana_player_id) {
+            }
+            if ($request->celana_pelatih_id) {
+            }
+            if ($request->celana_kiper_id) {
+            }
+            if ($request->celana_1_id) {
+            }
             $laporan = Laporan::where('barang_masuk_manualcut_id', $dataMasuk->id)->first();
             if ($laporan) {
                 $laporan->update([

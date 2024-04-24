@@ -166,33 +166,248 @@ class AtexcoController extends Controller
     public function putLaporanMesin(Request $request, $id)
     {
         $user = Auth::user();
-        $dataMasuk = MesinAtexco::with('BarangMasukCs')->find($id);
 
-        if ($request->file('file_foto')) {
-            $fileTangkapLayar = $request->file('file_foto')->store('file-laporan-atexco', 'public');
-            if ($dataMasuk->file_foto && file_exists(storage_path('app/public/' . $dataMasuk->file_foto))) {
-                Storage::delete('public/' . $dataMasuk->file_foto);
-                $fileTangkapLayar = $request->file('file_foto')->store('file-laporan-atexco', 'public');
+        if ($request->player_id) {
+            $dataMasukPlayer = MesinAtexco::findOrFail($request->player_id);
+
+            if ($request->file('file_foto')) {
+                $fileTangkapLayar = $request->file('file_foto')->store('file-laporan-atexco-player', 'public');
+                if ($dataMasukPlayer->file_foto && file_exists(storage_path('app/public/' . $dataMasukPlayer->file_foto))) {
+                    Storage::delete('public/' . $dataMasukPlayer->file_foto);
+                    $fileTangkapLayar = $request->file('file_foto')->store('file-laporan-atexco-player', 'public');
+                }
             }
+
+            if ($request->file('file_foto') === null) {
+                $fileTangkapLayar = $dataMasukPlayer->file_foto;
+            }
+
+            $dataMasukPlayer->update([
+                'penanggung_jawab_id' => $user->id,
+                'selesai' => Carbon::now(),
+                'file_foto' => $fileTangkapLayar,
+                'tanda_telah_mengerjakan' => 1
+            ]);
+        }
+        if ($request->pelatih_id) {
+            $dataMasukPelatih = MesinAtexco::findOrFail($request->pelatih_id);
+
+            if ($request->file('file_foto_pelatih')) {
+                $fileTangkapLayar = $request->file('file_foto_pelatih')->store('file-laporan-atexco-pelatih', 'public');
+                if ($dataMasukPelatih->file_foto_pelatih && file_exists(storage_path('app/public/' . $dataMasukPelatih->file_foto_pelatih))) {
+                    Storage::delete('public/' . $dataMasukPelatih->file_foto_pelatih);
+                    $fileTangkapLayar = $request->file('file_foto_pelatih')->store('file-laporan-atexco-pelatih', 'public');
+                }
+            }
+
+            if ($request->file('file_foto_pelatih') === null) {
+                $fileTangkapLayar = $dataMasukPelatih->file_foto_pelatih;
+            }
+
+            $dataMasukPelatih->update([
+                'penanggung_jawab_id' => $user->id,
+                'selesai' => Carbon::now(),
+                'file_foto_pelatih' => $fileTangkapLayar,
+                'tanda_telah_mengerjakan' => 1
+            ]);
+        }
+        if ($request->kiper_id) {
+            $dataMasukKiper = MesinAtexco::findOrFail($request->kiper_id);
+
+            if ($request->file('file_foto_kiper')) {
+                $fileTangkapLayar = $request->file('file_foto_kiper')->store('file-laporan-atexco-kiper', 'public');
+                if ($dataMasukKiper->file_foto_kiper && file_exists(storage_path('app/public/' . $dataMasukKiper->file_foto_kiper))) {
+                    Storage::delete('public/' . $dataMasukKiper->file_foto_kiper);
+                    $fileTangkapLayar = $request->file('file_foto_kiper')->store('file-laporan-atexco-kiper', 'public');
+                }
+            }
+
+            if ($request->file('file_foto_kiper') === null) {
+                $fileTangkapLayar = $dataMasukKiper->file_foto_kiper;
+            }
+
+            $dataMasukKiper->update([
+                'penanggung_jawab_id' => $user->id,
+                'selesai' => Carbon::now(),
+                'file_foto_kiper' => $fileTangkapLayar,
+                'tanda_telah_mengerjakan' => 1
+            ]);
+        }
+        if ($request->lk1_id) {
+            $dataMasuk1 = MesinAtexco::findOrFail($request->lk1_id);
+
+            if ($request->file('file_foto_1')) {
+                $fileTangkapLayar = $request->file('file_foto_1')->store('file-laporan-atexco-1', 'public');
+                if ($dataMasuk1->file_foto_1 && file_exists(storage_path('app/public/' . $dataMasuk1->file_foto_1))) {
+                    Storage::delete('public/' . $dataMasuk1->file_foto_1);
+                    $fileTangkapLayar = $request->file('file_foto_1')->store('file-laporan-atexco-1', 'public');
+                }
+            }
+
+            if ($request->file('file_foto_1') === null) {
+                $fileTangkapLayar = $dataMasuk1->file_foto_1;
+            }
+
+            $dataMasuk1->update([
+                'penanggung_jawab_id' => $user->id,
+                'selesai' => Carbon::now(),
+                'file_foto_1' => $fileTangkapLayar,
+                'tanda_telah_mengerjakan' => 1
+            ]);
+        }
+        if ($request->celana_player_id) {
+            $dataMasukCelanaPlayer = MesinAtexco::findOrFail($request->celana_player_id);
+
+            if ($request->file('file_foto_celana_player')) {
+                $fileTangkapLayar = $request->file('file_foto_celana_player')->store('file-laporan-atexco-celana-player', 'public');
+                if ($dataMasukCelanaPlayer->file_foto_celana_player && file_exists(storage_path('app/public/' . $dataMasukCelanaPlayer->file_foto_celana_player))) {
+                    Storage::delete('public/' . $dataMasukCelanaPlayer->file_foto_celana_player);
+                    $fileTangkapLayar = $request->file('file_foto_celana_player')->store('file-laporan-atexco-celana-player', 'public');
+                }
+            }
+
+            if ($request->file('file_foto_celana_player') === null) {
+                $fileTangkapLayar = $dataMasukCelanaPlayer->file_foto_celana_player;
+            }
+
+            $dataMasukCelanaPlayer->update([
+                'penanggung_jawab_id' => $user->id,
+                'selesai' => Carbon::now(),
+                'file_foto_celana_player' => $fileTangkapLayar,
+                'tanda_telah_mengerjakan' => 1
+            ]);
+        }
+        if ($request->celana_pelatih_id) {
+            $dataMasukCelanaPelatih = MesinAtexco::findOrFail($request->celana_pelatih_id);
+
+            if ($request->file('file_foto_celana_pelatih')) {
+                $fileTangkapLayar = $request->file('file_foto_celana_pelatih')->store('file-laporan-atexco-celana-pelatih', 'public');
+                if ($dataMasukCelanaPelatih->file_foto_celana_pelatih && file_exists(storage_path('app/public/' . $dataMasukCelanaPelatih->file_foto_celana_pelatih))) {
+                    Storage::delete('public/' . $dataMasukCelanaPelatih->file_foto_celana_pelatih);
+                    $fileTangkapLayar = $request->file('file_foto_celana_pelatih')->store('file-laporan-atexco-celana-pelatih', 'public');
+                }
+            }
+
+            if ($request->file('file_foto_celana_pelatih') === null) {
+                $fileTangkapLayar = $dataMasukCelanaPelatih->file_foto_celana_pelatih;
+            }
+
+            $dataMasukCelanaPelatih->update([
+                'penanggung_jawab_id' => $user->id,
+                'selesai' => Carbon::now(),
+                'file_foto_celana_pelatih' => $fileTangkapLayar,
+                'tanda_telah_mengerjakan' => 1
+            ]);
+        }
+        if ($request->celana_kiper_id) {
+            $dataMasukCelanaKiper = MesinAtexco::findOrFail($request->celana_kiper_id);
+
+            if ($request->file('file_foto_celana_kiper')) {
+                $fileTangkapLayar = $request->file('file_foto_celana_kiper')->store('file-laporan-atexco-celana-kiper', 'public');
+                if ($dataMasukCelanaKiper->file_foto_celana_kiper && file_exists(storage_path('app/public/' . $dataMasukCelanaKiper->file_foto_celana_kiper))) {
+                    Storage::delete('public/' . $dataMasukCelanaKiper->file_foto_celana_kiper);
+                    $fileTangkapLayar = $request->file('file_foto_celana_kiper')->store('file-laporan-atexco-celana-kiper', 'public');
+                }
+            }
+
+            if ($request->file('file_foto_celana_kiper') === null) {
+                $fileTangkapLayar = $dataMasukCelanaKiper->file_foto_celana_kiper;
+            }
+
+            $dataMasukCelanaKiper->update([
+                'penanggung_jawab_id' => $user->id,
+                'selesai' => Carbon::now(),
+                'file_foto_celana_kiper' => $fileTangkapLayar,
+                'tanda_telah_mengerjakan' => 1
+            ]);
+        }
+        if ($request->celana_1_id) {
+            $dataMasukCelana1 = MesinAtexco::findOrFail($request->celana_1_id);
+
+            if ($request->file('file_foto_celana_1')) {
+                $fileTangkapLayar = $request->file('file_foto_celana_1')->store('file-laporan-atexco-celana-1', 'public');
+                if ($dataMasukCelana1->file_foto_celana_1 && file_exists(storage_path('app/public/' . $dataMasukCelana1->file_foto_celana_1))) {
+                    Storage::delete('public/' . $dataMasukCelana1->file_foto_celana_1);
+                    $fileTangkapLayar = $request->file('file_foto_celana_1')->store('file-laporan-atexco-celana-1', 'public');
+                }
+            }
+
+            if ($request->file('file_foto_celana_1') === null) {
+                $fileTangkapLayar = $dataMasukCelana1->file_foto_celana_1;
+            }
+
+            $dataMasukCelana1->update([
+                'penanggung_jawab_id' => $user->id,
+                'selesai' => Carbon::now(),
+                'file_foto_celana_1' => $fileTangkapLayar,
+                'tanda_telah_mengerjakan' => 1
+            ]);
         }
 
-        if ($request->file('file_foto') === null) {
-            $fileTangkapLayar = $dataMasuk->file_foto;
-        }
-
-        $dataMasuk->update([
-            'penanggung_jawab_id' => $user->id,
-            'selesai' => Carbon::now(),
-            'file_foto' => $fileTangkapLayar,
-            'tanda_telah_mengerjakan' => 1
-        ]);
-
-        if ($dataMasuk) {
-            $laporan = Laporan::where('barang_masuk_mesin_atexco_id', $dataMasuk->id)->first();
-            if ($laporan) {
-                $laporan->update([
-                    'status' => 'Press Kain',
-                ]);
+        if ($dataMasukPlayer) {
+            if ($request->player_id) {
+                $laporanPlayer = Laporan::findOrFail($request->player_id);
+                if ($laporanPlayer) {
+                    $laporanPlayer->update([
+                        'status' => 'Press Kain',
+                    ]);
+                }
+            }
+            if ($request->pelatih_id) {
+                $laporanPelatih = Laporan::findOrFail($request->pelatih_id);
+                if ($laporanPelatih) {
+                    $laporanPelatih->update([
+                        'status' => 'Press Kain',
+                    ]);
+                }
+            }
+            if ($request->kiper_id) {
+                $laporanKiper = Laporan::findOrFail($request->kiper_id);
+                if ($laporanKiper) {
+                    $laporanKiper->update([
+                        'status' => 'Press Kain',
+                    ]);
+                }
+            }
+            if ($request->lk1_id) {
+                $laporan1 = Laporan::findOrFail($request->lk1_id);
+                if ($laporan1) {
+                    $laporan1->update([
+                        'status' => 'Press Kain',
+                    ]);
+                }
+            }
+            if ($request->celana_player_id) {
+                $laporanCelanaPlayer = Laporan::findOrFail($request->celana_player_id);
+                if ($laporanCelanaPlayer) {
+                    $laporanCelanaPlayer->update([
+                        'status' => 'Press Kain',
+                    ]);
+                }
+            }
+            if ($request->celana_pelatih_id) {
+                $laporanCelanaPelatih = Laporan::findOrFail($request->celana_pelatih_id);
+                if ($laporanCelanaPelatih) {
+                    $laporanCelanaPelatih->update([
+                        'status' => 'Press Kain',
+                    ]);
+                }
+            }
+            if ($request->celana_kiper_id) {
+                $laporanCelanaKiper = Laporan::findOrFail($request->celana_kiper_id);
+                if ($laporanCelanaKiper) {
+                    $laporanCelanaKiper->update([
+                        'status' => 'Press Kain',
+                    ]);
+                }
+            }
+            if ($request->celana_1_id) {
+                $laporanCelana1 = Laporan::findOrFail($request->celana_1_id);
+                if ($laporanCelana1) {
+                    $laporanCelana1->update([
+                        'status' => 'Press Kain',
+                    ]);
+                }
             }
         }
 

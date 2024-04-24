@@ -14,6 +14,40 @@
                         @csrf
                         @method('PUT')
                         <div class="row">
+                            @if (!empty($formattedData['player']))
+                            <input type="hidden" id="playerId" name="player_id"
+                                value="{{ $formattedData['player'][0]['id'] }}">
+
+                            @endif
+                            @if (!empty($formattedData['pelatih']))
+                            <input type="hidden" id="pelatihId" name="pelatih_id"
+                                value="{{ $formattedData['pelatih'][0]['id'] }}">
+
+                            @endif
+                            @if (!empty($formattedData['kiper']))
+                            <input type="hidden" id="kiperId" name="kiper_id"
+                                value="{{ $formattedData['kiper'][0]['id'] }}">
+
+                            @endif
+                            @if (!empty($formattedData['lk_1']))
+                            <input type="hidden" id="lk1Id" name="lk1_id" value="{{ $formattedData['lk_1'][0]['id'] }}">
+
+                            @endif
+                            @if (!empty($formattedData['celana_pelatih']))
+                            <input type="hidden" id="celanaPelatihId" name="celana_pelatih_id"
+                                value="{{ $formattedData['celana_pelatih'][0]['id'] }}">
+
+                            @endif
+                            @if (!empty($formattedData['celana_kiper']))
+                            <input type="hidden" id="celanaKiperId" name="celana_kiper_id"
+                                value="{{ $formattedData['celana_kiper'][0]['id'] }}">
+
+                            @endif
+                            @if (!empty($formattedData['celana_1']))
+                            <input type="hidden" id="celana1Id" name="celana_1_id"
+                                value="{{ $formattedData['celana_1'][0]['id'] }}">
+
+                            @endif
                             <div class="col-md-12">
                                 <div class="card mb-4">
                                     <div class="card-body">
@@ -44,6 +78,24 @@
 @endsection
 
 @push('js')
+<script>
+    var playerId = document.getElementById('playerId').value;
+    var pelatihId = document.getElementById('pelatihId').value;
+    var kiperId = document.getElementById('kiperId').value;
+    var lk1Id = document.getElementById('lk1Id').value;
+    var celanaPlayerId = document.getElementById('celanaPlayerId').value;
+    var celanaPelatihId = document.getElementById('celanaPelatihId').value;
+    var celanaKiperId = document.getElementById('celanaKiperId').value;
+    var celana1Id = document.getElementById('celana1Id').value;
+
+    document.getElementById('hiddenPlayerId').value = pelatihId;
+    document.getElementById('hiddenPelatihId').value = pelatihId;
+    document.getElementById('hiddenKiperId').value = kiperId;
+    document.getElementById('hiddenLk1Id').value = lk1Id;
+    document.getElementById('hiddenCelanaPlayerId').value = celanaPlayerId;
+    document.getElementById('hiddenCelanaKiperId').value = celanaKiperId;
+    document.getElementById('hiddenCelana1Id').value = celana1Id;
+</script>
 <script>
     document.getElementById('submissionForm').addEventListener('submit', function () {
         document.getElementById('submitButton').setAttribute('disabled', 'true');

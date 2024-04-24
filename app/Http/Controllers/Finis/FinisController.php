@@ -72,6 +72,25 @@ class FinisController extends Controller
     public function putLaporan(Request $request, $id)
     {
         $user = Auth::user();
+
+        if ($request->player_id) {
+        }
+        if ($request->pelatih_id) {
+        }
+        if ($request->kiper_id) {
+        }
+        if ($request->lk1_id) {
+        }
+        if ($request->celana_player_id) {
+        }
+        if ($request->celana_pelatih_id) {
+        }
+        if ($request->celana_kiper_id) {
+        }
+        if ($request->celana_1_id) {
+        }
+
+
         $dataMasuk = Finish::find($id);
 
         if ($request->file('foto')) {
@@ -94,6 +113,24 @@ class FinisController extends Controller
         ]);
 
         if ($dataMasuk) {
+            if ($request->player_id) {
+            }
+            if ($request->pelatih_id) {
+            }
+            if ($request->kiper_id) {
+            }
+            if ($request->lk1_id) {
+            }
+            if ($request->celana_player_id) {
+            }
+            if ($request->celana_pelatih_id) {
+            }
+            if ($request->celana_kiper_id) {
+            }
+            if ($request->celana_1_id) {
+            }
+
+
             $laporan = Laporan::where('finis_id', $dataMasuk->id)->first();
             if ($laporan) {
                 $laporan->update([
@@ -185,6 +222,5 @@ class FinisController extends Controller
         // return $pdf->stream('data-baju.pdf');
         $namaTimClean = preg_replace('/[^A-Za-z0-9\-]/', '', $dataLk->BarangMasukDisainer->nama_tim);
         return $pdf->stream($namaTimClean . '.pdf');
-
     }
 }
