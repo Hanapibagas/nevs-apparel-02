@@ -53,7 +53,12 @@ class AtexcoController extends Controller
                 ->whereHas('BarangMasukLayout', function ($query) {
                     $query->whereNotNull('selesai');
                 })
-                ->get();
+                ->get()
+                ->groupBy('barang_masuk_id')
+                ->map(function ($group) {
+                    return $group->first();
+                });
+            $dataMasuk = $dataMasuk->values()->all();
         } elseif ($user->asal_kota == 'jakarta') {
             $dataMasuk = MesinAtexco::with('BarangMasukCs', 'BarangMasukLayout', 'BarangMasukCs.BarangMasukDisainer')
                 ->where('tanda_telah_mengerjakan', 0)
@@ -63,7 +68,12 @@ class AtexcoController extends Controller
                 ->whereHas('BarangMasukLayout', function ($query) {
                     $query->whereNotNull('selesai');
                 })
-                ->get();
+                ->get()
+                ->groupBy('barang_masuk_id')
+                ->map(function ($group) {
+                    return $group->first();
+                });
+            $dataMasuk = $dataMasuk->values()->all();
         } elseif ($user->asal_kota == 'bandung') {
             $dataMasuk = MesinAtexco::with('BarangMasukCs', 'BarangMasukLayout', 'BarangMasukCs.BarangMasukDisainer')
                 ->where('tanda_telah_mengerjakan', 0)
@@ -73,7 +83,12 @@ class AtexcoController extends Controller
                 ->whereHas('BarangMasukLayout', function ($query) {
                     $query->whereNotNull('selesai');
                 })
-                ->get();
+                ->get()
+                ->groupBy('barang_masuk_id')
+                ->map(function ($group) {
+                    return $group->first();
+                });
+            $dataMasuk = $dataMasuk->values()->all();
         } else {
             $dataMasuk = MesinAtexco::with('BarangMasukCs', 'BarangMasukLayout', 'BarangMasukCs.BarangMasukDisainer')
                 ->where('tanda_telah_mengerjakan', 0)
@@ -83,7 +98,12 @@ class AtexcoController extends Controller
                 ->whereHas('BarangMasukLayout', function ($query) {
                     $query->whereNotNull('selesai');
                 })
-                ->get();
+                ->get()
+                ->groupBy('barang_masuk_id')
+                ->map(function ($group) {
+                    return $group->first();
+                });
+            $dataMasuk = $dataMasuk->values()->all();
         }
 
         return view('component.Mesin.data-masuk-mesin-atexco.index', compact('dataMasuk'));
@@ -91,8 +111,56 @@ class AtexcoController extends Controller
 
     public function getInputLaporan($id)
     {
-        $dataMasuk = MesinAtexco::with('BarangMasukCs')->find($id);
-        return view('component.Mesin.data-masuk-mesin-atexco.cerate-laporan-mesin', compact('dataMasuk'));
+        $dataMasuk = MesinAtexco::with('BarangMasukCs')->get();
+
+        $formattedData = [];
+
+        foreach ($dataMasuk as $item) {
+            if ($item->lk_player_id) {
+                $formattedData['player'][] = [
+                    'id' => $item->id,
+                    'file_foto' => $item->file_foto
+                ];
+            } elseif ($item->lk_pelatih_id) {
+                $formattedData['pelatih'][] = [
+                    'id' => $item->id,
+                    'file_foto_pelatih' => $item->file_foto_pelatih,
+                ];
+            } elseif ($item->lk_kiper_id) {
+                $formattedData['kiper'][] = [
+                    'id' => $item->id,
+                    'file_foto_kiper' => $item->file_foto_kiper
+                ];
+            } elseif ($item->lk_1_id) {
+                $formattedData['lk_1'][] = [
+                    'id' => $item->id,
+                    'file_foto_1' => $item->file_foto_1,
+                ];
+            } elseif ($item->lk_celana_player_id) {
+                $formattedData['celana_player'][] = [
+                    'id' => $item->id,
+                    'file_foto_celana_pelayer' => $item->file_foto_celana_pelayer,
+                ];
+            } elseif ($item->lk_celana_pelatih_id) {
+                $formattedData['celana_pelatih'][] = [
+                    'id' => $item->id,
+                    'file_foto_celana_pelatih' => $item->file_foto_celana_pelatih
+                ];
+            } elseif ($item->lk_celana_kiper_id) {
+                $formattedData['celana_kiper'][] = [
+                    'id' => $item->id,
+                    'file_foto_celana_kiper' => $item->file_foto_celana_kiper
+                ];
+            } elseif ($item->lk_celana_1_id) {
+                $formattedData['celana_1'][] = [
+                    'id' => $item->id,
+                    'file_foto_celana_1' => $item->file_foto_celana_1,
+                ];
+            }
+        }
+
+        // return response()->json($formattedData);
+        return view('component.Mesin.data-masuk-mesin-atexco.cerate-laporan-mesin', compact('dataMasuk', 'formattedData'));
     }
 
     public function putLaporanMesin(Request $request, $id)
@@ -143,7 +211,12 @@ class AtexcoController extends Controller
                 ->whereHas('BarangMasukLayout', function ($query) {
                     $query->whereNotNull('selesai');
                 })
-                ->get();
+                ->get()
+                ->groupBy('barang_masuk_id')
+                ->map(function ($group) {
+                    return $group->first();
+                });
+            $dataMasuk = $dataMasuk->values()->all();
         } elseif ($user->asal_kota == 'jakarta') {
             $dataMasuk = MesinAtexco::with('BarangMasukCs', 'BarangMasukLayout', 'BarangMasukCs.BarangMasukDisainer')
                 ->where('tanda_telah_mengerjakan', 1)
@@ -153,7 +226,12 @@ class AtexcoController extends Controller
                 ->whereHas('BarangMasukLayout', function ($query) {
                     $query->whereNotNull('selesai');
                 })
-                ->get();
+                ->get()
+                ->groupBy('barang_masuk_id')
+                ->map(function ($group) {
+                    return $group->first();
+                });
+            $dataMasuk = $dataMasuk->values()->all();
         } elseif ($user->asal_kota == 'bandung') {
             $dataMasuk = MesinAtexco::with('BarangMasukCs', 'BarangMasukLayout', 'BarangMasukCs.BarangMasukDisainer')
                 ->where('tanda_telah_mengerjakan', 1)
@@ -163,7 +241,12 @@ class AtexcoController extends Controller
                 ->whereHas('BarangMasukLayout', function ($query) {
                     $query->whereNotNull('selesai');
                 })
-                ->get();
+                ->get()
+                ->groupBy('barang_masuk_id')
+                ->map(function ($group) {
+                    return $group->first();
+                });
+            $dataMasuk = $dataMasuk->values()->all();
         } else {
             $dataMasuk = MesinAtexco::with('BarangMasukCs', 'BarangMasukLayout', 'BarangMasukCs.BarangMasukDisainer')
                 ->where('tanda_telah_mengerjakan', 1)
@@ -173,7 +256,12 @@ class AtexcoController extends Controller
                 ->whereHas('BarangMasukLayout', function ($query) {
                     $query->whereNotNull('selesai');
                 })
-                ->get();
+                ->get()
+                ->groupBy('barang_masuk_id')
+                ->map(function ($group) {
+                    return $group->first();
+                });
+            $dataMasuk = $dataMasuk->values()->all();
         }
 
         return view('component.Mesin.data-masuk-mesin-fix-atexco.index', compact('dataMasuk'));
@@ -186,31 +274,90 @@ class AtexcoController extends Controller
             'Users',
             'UsersOrder',
             'UsersLk',
-            'KeraPlayer',
-            'LenganPlayer',
-            'CelanaPlayer',
-            'KeraPelatih',
-            'LenganPelatih',
-            'CelanaPelatih',
-            'KeraKiper',
-            'LenganKiper',
-            'CelanaKiper',
-            'Kera1',
-            'Lengan1',
-            'Celana1'
+            'Gambar',
+
+            'BarangMasukCostumerServicesLkPlyer',
+            'BarangMasukCostumerServicesLkPlyer.LenganPlayer',
+            'BarangMasukCostumerServicesLkPlyer.KeraPlayer',
+
+            'BarangMasukCostumerServicesLkPelatih',
+            'BarangMasukCostumerServicesLkPelatih.LenganPelatih',
+            'BarangMasukCostumerServicesLkPelatih.KeraPelatih',
+
+            'BarangMasukCostumerServicesLkKiper',
+            'BarangMasukCostumerServicesLkKiper.LenganKiper',
+            'BarangMasukCostumerServicesLkKiper.KeraKiper',
+
+            'BarangMasukCostumerServicesLk1',
+            'BarangMasukCostumerServicesLk1.Lengan1',
+            'BarangMasukCostumerServicesLk1.Kera1',
+
+            'BarangMasukCostumerServicesLkCelanaPlyer',
+            'BarangMasukCostumerServicesLkCelanaPlyer.KeraCelanaPlayer',
+            'BarangMasukCostumerServicesLkCelanaPlyer.CelanaCelanaPlayer',
+
+            'BarangMasukCostumerServicesLkCelanaPelatih',
+            'BarangMasukCostumerServicesLkCelanaPelatih.KeraCelanapelatih',
+            'BarangMasukCostumerServicesLkCelanaPelatih.CelanaCelanapelatih',
+
+            'BarangMasukCostumerServicesLkCelanaKiper',
+            'BarangMasukCostumerServicesLkCelanaKiper.CelanaCealanaKiper',
+            'BarangMasukCostumerServicesLkCelanaKiper.KeraCealanaKiper',
+
+            'BarangMasukCostumerServicesLkCelana1',
+            'BarangMasukCostumerServicesLkCelana1.KeraCealana1',
+            'BarangMasukCostumerServicesLkCelana1.CelanaCelana1',
         )->findOrFail($id);
 
-        $layout = BarangMasukDatalayout::where('no_order_id', $dataLk->id)->first();
+        $layout = BarangMasukDatalayout::where('barang_masuk_id', $dataLk->BarangMasukDisainer->id)->get();
 
-        // return response()->json($layout);
+        $formattedData = [];
+
+        foreach ($layout as $item) {
+            if ($item->lk_player_id) {
+                $formattedData['player'] = [
+                    'file_tangkap_layar_player' => $item->file_tangkap_layar_player
+                ];
+            } elseif ($item->lk_pelatih_id) {
+                $formattedData['pelatih'] = [
+                    'file_tangkap_layar_pelatih' => $item->file_tangkap_layar_pelatih,
+                ];
+            } elseif ($item->lk_kiper_id) {
+                $formattedData['kiper'] = [
+                    'file_tangkap_layar_kiper' => $item->file_tangkap_layar_kiper
+                ];
+            } elseif ($item->lk_1_id) {
+                $formattedData['lk_1'] = [
+                    'file_tangkap_layar_1' => $item->file_tangkap_layar_1,
+                ];
+            } elseif ($item->lk_celana_player_id) {
+                $formattedData['celana_player'] = [
+                    'file_tangkap_layar_celana_pelayer' => $item->file_tangkap_layar_celana_pelayer,
+                ];
+            } elseif ($item->lk_celana_pelatih_id) {
+                $formattedData['celana_pelatih'] = [
+                    'file_tangkap_layar_celana_pelatih' => $item->file_tangkap_layar_celana_pelatih
+                ];
+            } elseif ($item->lk_celana_kiper_id) {
+                $formattedData['celana_kiper'] = [
+                    'file_tangkap_layar_celana_kiper' => $item->file_tangkap_layar_celana_kiper
+                ];
+            } elseif ($item->lk_celana_1_id) {
+                $formattedData['celana_1'] = [
+                    'file_tangkap_layar_celana_1' => $item->file_tangkap_layar_celana_1,
+                ];
+            }
+        }
+
+        // return response()->json($formattedData);
+
         view()->share('dataLk', $dataLk->BarangMasukDisainer->nama_tim);
 
-        $pdf = PDF::loadview('component.Mesin.export-data-baju', compact('dataLk', 'layout'));
+        $pdf = PDF::loadview('component.Mesin.export-data-baju', compact('dataLk', 'formattedData'));
         $pdf->setPaper('A4', 'potrait');
 
         // return $pdf->stream('data-baju.pdf');
         $namaTimClean = preg_replace('/[^A-Za-z0-9\-]/', '', $dataLk->BarangMasukDisainer->nama_tim);
         return $pdf->stream($namaTimClean . '.pdf');
-
     }
 }

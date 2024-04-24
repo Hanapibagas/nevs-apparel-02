@@ -24,32 +24,39 @@ class BarangMasukDatalayout extends Model
 
         'panjang_kertas_palayer',
         'poly_player',
+        'file_tangkap_layar_player',
 
         'panjang_kertas_pelatih',
         'poly_pelatih',
+        'file_tangkap_layar_pelatih',
 
         'panjang_kertas_kiper',
         'poly_kiper',
+        'file_tangkap_layar_kiper',
 
         'panjang_kertas_1',
         'poly_1',
+        'file_tangkap_layar_1',
 
         'panjang_kertas_celana_pelayer',
         'poly_celana_pelayer',
+        'file_tangkap_layar_celana_pelayer',
 
         'panjang_kertas_celana_pelatih',
         'poly_celana_pelatih',
+        'file_tangkap_layar_celana_pelatih',
 
         'panjang_kertas_celana_kiper',
         'poly_celana_kiper',
+        'file_tangkap_layar_celana_kiper',
 
         'panjang_kertas_celana_1',
         'poly_celana_1',
+        'file_tangkap_layar_celana_1',
 
         'selesai',
         'tanda_telah_mengerjakan',
         'file_corel_layout',
-        'file_tangkap_layar',
     ];
 
     public function UserLayout()
@@ -60,5 +67,40 @@ class BarangMasukDatalayout extends Model
     public function BarangMasukCsLK()
     {
         return $this->belongsTo(BarangMasukCostumerServices::class, 'barang_masuk_id');
+    }
+
+    public function BarangMasukCostumerServicesLkPlyer()
+    {
+        return $this->hasMany(LkPlayer::class, 'barang_masuk_id');
+    }
+
+    public function BarangMasukCostumerServicesLkPelatih()
+    {
+        return $this->hasMany(LkPelatih::class, 'barang_masuk_id');
+    }
+
+    public function BarangMasukCostumerServicesLkKiper()
+    {
+        return $this->hasMany(LkKiper::class, 'barang_masuk_id');
+    }
+    public function BarangMasukCostumerServicesLk1()
+    {
+        return $this->hasMany(LkBaju1::class, 'barang_masuk_id');
+    }
+    public function BarangMasukCostumerServicesLkCelanaPlyer()
+    {
+        return $this->hasMany(LkCelanaPlayer::class, 'barang_masuk_id');
+    }
+    public function BarangMasukCostumerServicesLkCelanaPelatih()
+    {
+        return $this->hasMany(LkCelanaPelatih::class, 'baraang_masuk_id');
+    }
+    public function BarangMasukCostumerServicesLkCelanaKiper()
+    {
+        return $this->hasMany(LkCelanaKiper::class, 'barang_masuk_id');
+    }
+    public function BarangMasukCostumerServicesLkCelana1()
+    {
+        return $this->hasMany(LkCelana1::class, 'barang_masuk_id');
     }
 }

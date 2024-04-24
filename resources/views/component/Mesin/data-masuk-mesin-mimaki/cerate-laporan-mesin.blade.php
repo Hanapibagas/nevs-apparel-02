@@ -15,6 +15,22 @@
                         @method('PUT')
                         <div class="row">
                             <div class="col-md-12">
+                                @if (!empty($formattedData['player']))
+                                @endif
+                                @if (!empty($formattedData['pelatih']))
+                                @endif
+                                @if (!empty($formattedData['kiper']))
+                                @endif
+                                @if (!empty($formattedData['lk_1']))
+                                @endif
+                                @if (!empty($formattedData['celana_player']))
+                                @endif
+                                @if (!empty($formattedData['celana_pelatih']))
+                                @endif
+                                @if (!empty($formattedData['celana_kiper']))
+                                @endif
+                                @if (!empty($formattedData['celana_1']))
+                                @endif
                                 <div class="card mb-4">
                                     <div class="card-body">
                                         <div class="row">

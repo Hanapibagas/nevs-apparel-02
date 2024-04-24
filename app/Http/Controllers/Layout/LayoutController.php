@@ -211,6 +211,7 @@ class LayoutController extends Controller
                     'id' => $item->id,
                     'panjang_kertas_player' => $item->panjang_kertas_player,
                     'poly_player' => $item->poly_player,
+                    'file_corel_layout' => $item->file_corel_layout,
                     'file_tangkap_layar_player' => $item->file_tangkap_layar_player
                 ];
             } elseif ($item->lk_pelatih_id) {
@@ -218,6 +219,7 @@ class LayoutController extends Controller
                     'id' => $item->id,
                     'panjang_kertas_pelatih' => $item->panjang_kertas_pelatih,
                     'poly_pelatih' => $item->poly_pelatih,
+                    'file_corel_layout' => $item->file_corel_layout,
                     'file_tangkap_layar_pelatih' => $item->file_tangkap_layar_pelatih,
                 ];
             } elseif ($item->lk_kiper_id) {
@@ -225,6 +227,7 @@ class LayoutController extends Controller
                     'id' => $item->id,
                     'panjang_kertas_kiper' => $item->panjang_kertas_kiper,
                     'poly_kiper' => $item->poly_kiper,
+                    'file_corel_layout' => $item->file_corel_layout,
                     'file_tangkap_layar_kiper' => $item->file_tangkap_layar_kiper
                 ];
             } elseif ($item->lk_1_id) {
@@ -232,6 +235,7 @@ class LayoutController extends Controller
                     'id' => $item->id,
                     'panjang_kertas_1' => $item->panjang_kertas_1,
                     'poly_1' => $item->poly_1,
+                    'file_corel_layout' => $item->file_corel_layout,
                     'file_tangkap_layar_1' => $item->file_tangkap_layar_1,
                 ];
             } elseif ($item->lk_celana_player_id) {
@@ -239,6 +243,7 @@ class LayoutController extends Controller
                     'id' => $item->id,
                     'panjang_kertas_celana_player' => $item->panjang_kertas_celana_player,
                     'poly_celana_player' => $item->poly_celana_player,
+                    'file_corel_layout' => $item->file_corel_layout,
                     'file_tangkap_layar_celana_pelayer' => $item->file_tangkap_layar_celana_pelayer,
                 ];
             } elseif ($item->lk_celana_pelatih_id) {
@@ -246,6 +251,7 @@ class LayoutController extends Controller
                     'id' => $item->id,
                     'panjang_kertas_celana_pelatih' => $item->panjang_kertas_celana_pelatih,
                     'poly_celana_pelatih' => $item->poly_celana_pelatih,
+                    'file_corel_layout' => $item->file_corel_layout,
                     'file_tangkap_layar_celana_pelatih' => $item->file_tangkap_layar_celana_pelatih
                 ];
             } elseif ($item->lk_celana_kiper_id) {
@@ -253,6 +259,7 @@ class LayoutController extends Controller
                     'id' => $item->id,
                     'panjang_kertas_celana_kiper' => $item->panjang_kertas_celana_kiper,
                     'poly_celana_kiper' => $item->poly_celana_kiper,
+                    'file_corel_layout' => $item->file_corel_layout,
                     'file_tangkap_layar_celana_kiper' => $item->file_tangkap_layar_celana_kiper
                 ];
             } elseif ($item->lk_celana_1_id) {
@@ -260,12 +267,13 @@ class LayoutController extends Controller
                     'id' => $item->id,
                     'panjang_kertas_celana_1' => $item->panjang_kertas_celana_1,
                     'poly_celana_1' => $item->poly_celana_1,
+                    'file_corel_layout' => $item->file_corel_layout,
                     'file_tangkap_layar_celana_1' => $item->file_tangkap_layar_celana_1,
                 ];
             }
         }
 
-        return response()->json($formattedData);
+        // return response()->json($formattedData);
 
         return view('component.Layout.layout-lk-pegawai.cerate-laporan-lk', compact('dataLk', 'formattedData'));
     }
@@ -273,256 +281,429 @@ class LayoutController extends Controller
     public function putLaporanLs(Request $request, $id)
     {
         $user = Auth::user();
-        $dataLk = BarangMasukDatalayout::with('BarangMasukCsLK')->find($id);
 
-        $validator = FacadesValidator::make($request->all(), [
-            'file_corel_layout' => 'required|file',
-            'file_tangkap_layar' => 'required|file',
-        ]);
+        if ($request->player_id) {
+            $dataPlayer = BarangMasukDatalayout::with(
+                'BarangMasukCsLK',
+                'BarangMasukCostumerServicesLkPlyer.LenganPlayer',
+                'BarangMasukCostumerServicesLkPelatih.LenganPelatih',
+                'BarangMasukCostumerServicesLkKiper.LenganKiper',
+                'BarangMasukCostumerServicesLk1.Lengan1',
+                'BarangMasukCostumerServicesLkCelanaPlyer.CelanaCelanaPlayer',
+                'BarangMasukCostumerServicesLkCelanaPelatih.CelanaCelanapelatih',
+                'BarangMasukCostumerServicesLkCelanaKiper.CelanaCealanaKiper',
+                'BarangMasukCostumerServicesLkCelana1.CelanaCelana1'
+            )->findOrFail($request->player_id);
 
-        if ($validator->fails()) {
-            return redirect()->back()->with('error', 'File Corel Disainer harus diisi!');
+            $jumlahBajuPlayer = $dataPlayer->BarangMasukCostumerServicesLkPlyer;
+            $resulTotalBaju = 0;
+            $resulSatatusBaju = null;
+            foreach ($jumlahBajuPlayer as $item) {
+                $resulTotalBaju = $item->total_baju_player;
+                $resulSatatusBaju = $item->LenganPlayer->status;
+            }
+            $jumlahBajuPelatih = $dataPlayer->BarangMasukCostumerServicesLkPelatih;
+            $resulTotalBajuPelatih = 0;
+            $resulSatatusBajuPelatih = null;
+            foreach ($jumlahBajuPelatih as $item) {
+                $resulTotalBajuPelatih = $item->total_baju_pelatih;
+                $resulSatatusBajuPelatih = $item->LenganPelatih->status;
+            }
+            $jumlahBajuKiper = $dataPlayer->BarangMasukCostumerServicesLkKiper;
+            $resulTotalBajuKiper = 0;
+            $resulSatatusBajuKiper = null;
+            foreach ($jumlahBajuKiper as $item) {
+                $resulTotalBajuKiper = $item->total_baju_kiper;
+                $resulSatatusBajuKiper = $item->LenganKiper->status;
+            }
+            $jumlahBaju1 = $dataPlayer->BarangMasukCostumerServicesLk1;
+            $resulTotalBaju1 = 0;
+            $resulSatatusBaju1 = null;
+            foreach ($jumlahBaju1 as $item) {
+                $resulTotalBaju1 = $item->total_baju_1;
+                $resulSatatusBaju1 = $item->Lengan1->status;
+            }
+            $jumlahBajuCelanaPlayer = $dataPlayer->BarangMasukCostumerServicesLkCelanaPlyer;
+            $resulTotalBajuCelanaPlayer = 0;
+            $resulSatatusBajuCelanaPlayer = null;
+            foreach ($jumlahBajuCelanaPlayer as $item) {
+                $resulTotalBajuCelanaPlayer = $item->total_celana_player;
+                $resulSatatusBajuCelanaPlayer = $item->CelanaCelanaPlayer->status;
+            }
+            $jumlahBajuCelanaPelatih = $dataPlayer->BarangMasukCostumerServicesLkCelanaPelatih;
+            $resulTotalBajuCelanaPelatih = 0;
+            $resulSatatusBajuCelanaPelatih = null;
+            foreach ($jumlahBajuCelanaPelatih as $item) {
+                $resulTotalBajuCelanaPelatih = $item->total_celana_pelatih;
+                $resulSatatusBajuCelanaPelatih = $item->CelanaCelanapelatih->status;
+            }
+            $jumlahBajuCelanaKiper = $dataPlayer->BarangMasukCostumerServicesLkCelanaKiper;
+            $resulTotalBajuCelanaKiper = 0;
+            $resulSatatusBajuCelanaKiper = null;
+            foreach ($jumlahBajuCelanaKiper as $item) {
+                $resulTotalBajuCelanaKiper = $item->total_celana_kiper;
+                $resulSatatusBajuCelanaKiper = $item->CelanaCealanaKiper->status;
+            }
+            $jumlahBajuCelana1 = $dataPlayer->BarangMasukCostumerServicesLkCelana1;
+            $resulTotalBajuCelana1 = 0;
+            $resulSatatusBajuCelana1 = null;
+            foreach ($jumlahBajuCelana1 as $item) {
+                $resulTotalBajuCelana1 = $item->total_celana_1;
+                $resulSatatusBajuCelana1 = $item->CelanaCelana1->status;
+            }
+
+            if ($request->file('file_corel_layout')) {
+                $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-player', 'public');
+                if ($dataPlayer->file_corel_layout && file_exists(storage_path('app/public/' . $dataPlayer->file_corel_layout))) {
+                    Storage::delete('public/' . $dataPlayer->file_corel_layout);
+                    $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-player', 'public');
+                }
+            }
+            if ($request->file('file_tangkap_layar_player')) {
+                $fileTangkapLayar = $request->file('file_tangkap_layar_player')->store('file-tangkap-layout-player', 'public');
+                if ($dataPlayer->file_tangkap_layar_player && file_exists(storage_path('app/public/' . $dataPlayer->file_tangkap_layar_player))) {
+                    Storage::delete('public/' . $dataPlayer->file_tangkap_layar_player);
+                    $fileTangkapLayar = $request->file('file_tangkap_layar_player')->store('file-tangkap-layout-player', 'public');
+                }
+            }
+            if ($request->file('file_tangkap_layar_player') === null) {
+                $fileTangkapLayar = $dataPlayer->file_tangkap_layar_player;
+            }
+            $dataPlayer->update([
+                'selesai' => Carbon::now(),
+
+                'panjang_kertas_palayer' => $request->panjang_kertas_palayer,
+                'poly_player' => $request->poly_player,
+                'file_tangkap_layar_player' => $fileTangkapLayar,
+
+                'file_corel_layout' => $filebajuplayer,
+                'tanda_telah_mengerjakan' => 1,
+            ]);
+        }
+        if ($request->pelatih_id) {
+            $dataPelatih = BarangMasukDatalayout::with('BarangMasukCostumerServicesLkPelatih')->findOrFail($request->pelatih_id);
+            $dataPelatih->load('BarangMasukCostumerServicesLkPelatih');
+
+            if ($request->file('file_corel_layout')) {
+                $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-pelatih', 'public');
+                if ($dataPelatih->file_corel_layout && file_exists(storage_path('app/public/' . $dataPelatih->file_corel_layout))) {
+                    Storage::delete('public/' . $dataPelatih->file_corel_layout);
+                    $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-pelatih', 'public');
+                }
+            }
+            if ($request->file('file_tangkap_layar_pelatih')) {
+                $fileTangkapLayar = $request->file('file_tangkap_layar_pelatih')->store('file-tangkap-layout-pelatih', 'public');
+                if ($dataPelatih->file_tangkap_layar_pelatih && file_exists(storage_path('app/public/' . $dataPelatih->file_tangkap_layar_pelatih))) {
+                    Storage::delete('public/' . $dataPelatih->file_tangkap_layar_pelatih);
+                    $fileTangkapLayar = $request->file('file_tangkap_layar_pelatih')->store('file-tangkap-layout-pelatih', 'public');
+                }
+            }
+            if ($request->file('file_tangkap_layar_pelatih') === null) {
+                $fileTangkapLayar = $dataPelatih->file_tangkap_layar_pelatih;
+            }
+            $dataPelatih->update([
+                'selesai' => Carbon::now(),
+
+                'panjang_kertas_pelatih' => $request->panjang_kertas_pelatih,
+                'poly_pelatih' => $request->poly_pelatih,
+                'file_tangkap_layar_pelatih' => $fileTangkapLayar,
+
+                'file_corel_layout' => $filebajuplayer,
+                'tanda_telah_mengerjakan' => 1,
+            ]);
+        }
+        if ($request->kiper_id) {
+            $dataKiper = BarangMasukDatalayout::findOrFail($request->kiper_id);
+
+            if ($request->file('file_corel_layout')) {
+                $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-kiper', 'public');
+                if ($dataKiper->file_corel_layout && file_exists(storage_path('app/public/' . $dataKiper->file_corel_layout))) {
+                    Storage::delete('public/' . $dataKiper->file_corel_layout);
+                    $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout', 'public');
+                }
+            }
+            if ($request->file('file_tangkap_layar_kiper')) {
+                $fileTangkapLayar = $request->file('file_tangkap_layar_kiper')->store('file-tangkap-layout-kiper', 'public');
+                if ($dataKiper->file_tangkap_layar_kiper && file_exists(storage_path('app/public/' . $dataKiper->file_tangkap_layar_kiper))) {
+                    Storage::delete('public/' . $dataKiper->file_tangkap_layar_kiper);
+                    $fileTangkapLayar = $request->file('file_tangkap_layar_kiper')->store('file-tangkap-layout-kiper', 'public');
+                }
+            }
+            if ($request->file('file_tangkap_layar_kiper') === null) {
+                $fileTangkapLayar = $dataKiper->file_tangkap_layar_kiper;
+            }
+            $dataKiper->update([
+                'selesai' => Carbon::now(),
+
+                'panjang_kertas_kiper' => $request->panjang_kertas_kiper,
+                'poly_kiper' => $request->poly_kiper,
+                'file_tangkap_layar_kiper' => $fileTangkapLayar,
+
+                'file_corel_layout' => $filebajuplayer,
+                'tanda_telah_mengerjakan' => 1,
+            ]);
+        }
+        if ($request->lk1_id) {
+            $data1 = BarangMasukDatalayout::findOrFail($request->lk1_id);
+
+            if ($request->file('file_corel_layout')) {
+                $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-1', 'public');
+                if ($data1->file_corel_layout && file_exists(storage_path('app/public/' . $data1->file_corel_layout))) {
+                    Storage::delete('public/' . $data1->file_corel_layout);
+                    $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-1', 'public');
+                }
+            }
+            if ($request->file('file_tangkap_layar_1')) {
+                $fileTangkapLayar = $request->file('file_tangkap_layar_1')->store('file-tangkap-layout-1', 'public');
+                if ($data1->file_tangkap_layar_1 && file_exists(storage_path('app/public/' . $data1->file_tangkap_layar_1))) {
+                    Storage::delete('public/' . $data1->file_tangkap_layar_1);
+                    $fileTangkapLayar = $request->file('file_tangkap_layar_1')->store('file-tangkap-layout-1', 'public');
+                }
+            }
+            if ($request->file('file_tangkap_layar_1') === null) {
+                $fileTangkapLayar = $data1->file_tangkap_layar_1;
+            }
+            $data1->update([
+                'selesai' => Carbon::now(),
+
+                'panjang_kertas_1' => $request->panjang_kertas_1,
+                'poly_1' => $request->poly_1,
+                'file_tangkap_layar_1' => $fileTangkapLayar,
+
+                'file_corel_layout' => $filebajuplayer,
+                'tanda_telah_mengerjakan' => 1,
+            ]);
+        }
+        if ($request->celana_player_id) {
+            $dataCelanaPlayer = BarangMasukDatalayout::findOrFail($request->celana_player_id);
+
+
+            if ($request->file('file_corel_layout')) {
+                $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-celana-player', 'public');
+                if ($dataCelanaPlayer->file_corel_layout && file_exists(storage_path('app/public/' . $dataCelanaPlayer->file_corel_layout))) {
+                    Storage::delete('public/' . $dataCelanaPlayer->file_corel_layout);
+                    $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout', 'public');
+                }
+            }
+            if ($request->file('file_tangkap_layar_celana_pelayer')) {
+                $fileTangkapLayar = $request->file('file_tangkap_layar_celana_pelayer')->store('file-tangkap-layout-celana-player', 'public');
+                if ($dataCelanaPlayer->file_tangkap_layar_celana_pelayer && file_exists(storage_path('app/public/' . $dataCelanaPlayer->file_tangkap_layar_celana_pelayer))) {
+                    Storage::delete('public/' . $dataCelanaPlayer->file_tangkap_layar_celana_pelayer);
+                    $fileTangkapLayar = $request->file('file_tangkap_layar_celana_pelayer')->store('file-tangkap-layout-celana-player', 'public');
+                }
+            }
+            if ($request->file('file_tangkap_layar_celana_pelayer') === null) {
+                $fileTangkapLayar = $dataCelanaPlayer->file_tangkap_layar_celana_pelayer;
+            }
+            $dataCelanaPlayer->update([
+                'selesai' => Carbon::now(),
+
+                'panjang_kertas_celana_pelayer' => $request->panjang_kertas_celana_pelayer,
+                'poly_celana_pelayer' => $request->poly_celana_pelayer,
+                'file_tangkap_layar_celana_pelayer' => $fileTangkapLayar,
+
+                'file_corel_layout' => $filebajuplayer,
+                'tanda_telah_mengerjakan' => 1,
+            ]);
+        }
+        if ($request->celana_pelatih_id) {
+            $dataCelanaPelatih = BarangMasukDatalayout::findOrFail($request->celana_pelatih_id);
+
+
+
+            if ($request->file('file_corel_layout')) {
+                $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-celana-pelatih', 'public');
+                if ($dataCelanaPelatih->file_corel_layout && file_exists(storage_path('app/public/' . $dataCelanaPelatih->file_corel_layout))) {
+                    Storage::delete('public/' . $dataCelanaPelatih->file_corel_layout);
+                    $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-celana-pelatih', 'public');
+                }
+            }
+            if ($request->file('file_tangkap_layar_celana_pelatih')) {
+                $fileTangkapLayar = $request->file('file_tangkap_layar_celana_pelatih')->store('file-tangkap-layout-celana-pelatih', 'public');
+                if ($dataCelanaPelatih->file_tangkap_layar_celana_pelatih && file_exists(storage_path('app/public/' . $dataCelanaPelatih->file_tangkap_layar_celana_pelatih))) {
+                    Storage::delete('public/' . $dataCelanaPelatih->file_tangkap_layar_celana_pelatih);
+                    $fileTangkapLayar = $request->file('file_tangkap_layar_celana_pelatih')->store('file-tangkap-layout-celana-pelatih', 'public');
+                }
+            }
+            if ($request->file('file_tangkap_layar_celana_pelatih') === null) {
+                $fileTangkapLayar = $dataCelanaPelatih->file_tangkap_layar_celana_pelatih;
+            }
+            $dataCelanaPelatih->update([
+                'selesai' => Carbon::now(),
+
+                'panjang_kertas_celana_pelatih' => $request->panjang_kertas_celana_pelatih,
+                'poly_celana_pelatih' => $request->poly_celana_pelatih,
+                'file_tangkap_layar_celana_pelatih' => $fileTangkapLayar,
+
+                'file_corel_layout' => $filebajuplayer,
+                'tanda_telah_mengerjakan' => 1,
+            ]);
+        }
+        if ($request->celana_kiper_id) {
+            $dataCelanaKiper = BarangMasukDatalayout::findOrFail($request->celana_kiper_id);
+
+
+            if ($request->file('file_corel_layout')) {
+                $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-celana-kiper', 'public');
+                if ($dataCelanaKiper->file_corel_layout && file_exists(storage_path('app/public/' . $dataCelanaKiper->file_corel_layout))) {
+                    Storage::delete('public/' . $dataCelanaKiper->file_corel_layout);
+                    $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-celana-kiper', 'public');
+                }
+            }
+            if ($request->file('file_tangkap_layar_celana_kiper')) {
+                $fileTangkapLayar = $request->file('file_tangkap_layar_celana_kiper')->store('file-tangkap-layout-celana-kiper', 'public');
+                if ($dataCelanaKiper->file_tangkap_layar_celana_kiper && file_exists(storage_path('app/public/' . $dataCelanaKiper->file_tangkap_layar_celana_kiper))) {
+                    Storage::delete('public/' . $dataCelanaKiper->file_tangkap_layar_celana_kiper);
+                    $fileTangkapLayar = $request->file('file_tangkap_layar_celana_kiper')->store('file-tangkap-layout-celana-kiper', 'public');
+                }
+            }
+            if ($request->file('file_tangkap_layar_celana_kiper') === null) {
+                $fileTangkapLayar = $dataCelanaKiper->file_tangkap_layar_celana_kiper;
+            }
+            $dataCelanaKiper->update([
+                'selesai' => Carbon::now(),
+
+                'panjang_kertas_celana_kiper' => $request->panjang_kertas_celana_kiper,
+                'poly_celana_kiper' => $request->poly_celana_kiper,
+                'file_tangkap_layar_celana_kiper' => $fileTangkapLayar,
+
+                'file_corel_layout' => $filebajuplayer,
+                'tanda_telah_mengerjakan' => 1,
+            ]);
+        }
+        if ($request->celana_1_id) {
+            $dataCelana1 = BarangMasukDatalayout::findOrFail($request->celana_1_id);
+
+
+            if ($request->file('file_corel_layout')) {
+                $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-celana-1', 'public');
+                if ($dataCelana1->file_corel_layout && file_exists(storage_path('app/public/' . $dataCelana1->file_corel_layout))) {
+                    Storage::delete('public/' . $dataCelana1->file_corel_layout);
+                    $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-celana-1', 'public');
+                }
+            }
+            if ($request->file('file_tangkap_layar_celana_1')) {
+                $fileTangkapLayar = $request->file('file_tangkap_layar_celana_1')->store('file-tangkap-layout-celana-1', 'public');
+                if ($dataCelana1->file_tangkap_layar_celana_1 && file_exists(storage_path('app/public/' . $dataCelana1->file_tangkap_layar_celana_1))) {
+                    Storage::delete('public/' . $dataCelana1->file_tangkap_layar_celana_1);
+                    $fileTangkapLayar = $request->file('file_tangkap_layar_celana_1')->store('file-tangkap-layout-celana-1', 'public');
+                }
+            }
+            if ($request->file('file_tangkap_layar_celana_1') === null) {
+                $fileTangkapLayar = $dataCelana1->file_tangkap_layar_celana_1;
+            }
+            $dataCelana1->update([
+                'selesai' => Carbon::now(),
+
+                'panjang_kertas_celana_1' => $request->panjang_kertas_celana_1,
+                'poly_celana_1' => $request->poly_celana_1,
+                'file_tangkap_layar_celana_1' => $fileTangkapLayar,
+
+                'file_corel_layout' => $filebajuplayer,
+                'tanda_telah_mengerjakan' => 1,
+            ]);
         }
 
-        if ($request->file('file_corel_layout')) {
-            $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout', 'public');
-            if ($dataLk->file_corel_layout && file_exists(storage_path('app/public/' . $dataLk->file_corel_layout))) {
-                Storage::delete('public/' . $dataLk->file_corel_layout);
-                $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout', 'public');
+        if ($resulSatatusBaju == 1) {
+            $dataBajuPlayer = $resulTotalBaju;
+        } else {
+            $dataBajuPlayer = 0;
+        }
+
+        if ($resulSatatusBajuPelatih == 1) {
+            $dataBajuPelatih = $resulTotalBajuPelatih;
+        } else {
+            $dataBajuPelatih = 0;
+        }
+
+        if ($resulSatatusBajuKiper == 1) {
+            $dataBajuKiper = $resulTotalBajuKiper;
+        } else {
+            $dataBajuKiper = 0;
+        }
+
+        if ($resulSatatusBaju1 == 1) {
+            $dataBaju1 = $resulTotalBaju1;
+        } else {
+            $dataBaju1 = 0;
+        }
+
+        if ($resulSatatusBajuCelanaPlayer == 1) {
+            $dataCelanaPlayer = $resulTotalBajuCelanaPlayer;
+        } else {
+            $dataCelanaPlayer = 0;
+        }
+
+        if ($resulSatatusBajuCelanaPelatih == 1) {
+            $dataCelanaPelatih = $resulTotalBajuCelanaPelatih;
+        } else {
+            $dataCelanaPelatih = 0;
+        }
+
+        if ($resulSatatusBajuCelanaKiper == 1) {
+            $dataCelanaKiper = $resulTotalBajuCelanaKiper;
+        } else {
+            $dataCelanaKiper = 0;
+        }
+
+        if ($resulSatatusBajuCelana1 == 1) {
+            $dataCelana1 = $resulTotalBajuCelana1;
+        } else {
+            $dataCelana1 = 0;
+        }
+
+        $deadline = Carbon::parse($dataPlayer->deadline);
+        $selesai = Carbon::parse($dataPlayer->selesai);
+
+        if ($selesai->lt($deadline)) {
+            $selisihHari = $selesai->diffInDaysFiltered(function (Carbon $date) use ($deadline) {
+                return $date->lte($deadline);
+            });
+            $totalBarang = $dataBajuPlayer + $dataBajuPelatih + $dataBajuKiper + $dataBaju1 +
+                $dataCelanaPlayer + $dataCelanaPelatih + $dataCelanaKiper + $dataCelana1;
+            $hargaPerBarang = 750;
+            $totalHarga = $totalBarang * $hargaPerBarang;
+            $keterangan = "- $selisihHari";
+        } else {
+            $selisihHari = $selesai->diffInDays($deadline);
+            if ($selisihHari == 0) {
+                $totalBarang = $dataBajuPlayer + $dataBajuPelatih + $dataBajuKiper + $dataBaju1 +
+                    $dataCelanaPlayer + $dataCelanaPelatih + $dataCelanaKiper + $dataCelana1;
+                $hargaPerBarang = 750;
+                $totalHarga = $totalBarang * $hargaPerBarang;
+                $keterangan = "- $selisihHari";
+            } else {
+                $keterangan = "+ $selisihHari";
             }
         }
-        if ($request->file('file_tangkap_layar')) {
-            $fileTangkapLayar = $request->file('file_tangkap_layar')->store('file-tangkap-layout', 'public');
-            if ($dataLk->file_tangkap_layar && file_exists(storage_path('app/public/' . $dataLk->file_tangkap_layar))) {
-                Storage::delete('public/' . $dataLk->file_tangkap_layar);
-                $fileTangkapLayar = $request->file('file_tangkap_layar')->store('file-tangkap-layout', 'public');
-            }
+
+        if ($keterangan == "- $selisihHari") {
+            PembagianKomisi::create([
+                'user_id' => $user->id,
+                'layout_id' => $dataPlayer->id,
+                'tanggal' => Carbon::now(),
+                'jumlah_komisi' => $totalHarga,
+                'kota' => $dataPlayer->BarangMasukCsLK->kota_produksi,
+            ]);
+        } else {
+            PembagianKomisi::create([
+                'user_id' => $user->id,
+                'layout_id' => $dataPlayer->id,
+                'tanggal' => Carbon::now(),
+                'jumlah_komisi' => "0",
+                'kota' => $dataPlayer->BarangMasukCsLK->kota_produksi,
+            ]);
         }
-        if ($request->file('file_tangkap_layar') === null) {
-            $fileTangkapLayar = $dataLk->file_tangkap_layar;
-        }
 
-        if ($request->file('file_corel_layout') === null) {
-            $filebajuplayer = $dataLk->file_corel_layout;
-        }
-
-        $dataLk->update([
-            'selesai' => Carbon::now(),
-
-            'panjang_kertas' => $request->panjang_kertas,
-            'poly' => $request->poly,
-            'file_tangkap_layar' => $fileTangkapLayar,
-
-            'file_corel_layout' => $filebajuplayer,
-            'tanda_telah_mengerjakan' => 1,
-        ]);
-
-
-        // if (
-        //     $dataLk !== null &&
-        //     isset($dataLk->BarangMasukCsLK) &&
-        //     $dataLk->BarangMasukCsLK !== null &&
-        //     isset($dataLk->BarangMasukCsLK->LenganPlayer) &&
-        //     $dataLk->BarangMasukCsLK->LenganPlayer !== null &&
-        //     isset($dataLk->BarangMasukCsLK->LenganPlayer->status)
-        // ) {
-        //     $dataKomisi1 = $dataLk->BarangMasukCsLK->LenganPlayer->status == 1;
-        // } else {
-        //     $dataKomisi1 = false;
-        // }
-
-        // if (
-        //     $dataLk !== null &&
-        //     isset($dataLk->BarangMasukCsLK) &&
-        //     $dataLk->BarangMasukCsLK !== null &&
-        //     isset($dataLk->BarangMasukCsLK->LenganPelatih) &&
-        //     $dataLk->BarangMasukCsLK->LenganPelatih !== null &&
-        //     isset($dataLk->BarangMasukCsLK->LenganPelatih->status)
-        // ) {
-        //     $dataKomisi2 = $dataLk->BarangMasukCsLK->LenganPelatih->status == 1;
-        // } else {
-        //     $dataKomisi2 = false;
-        // }
-
-        // if (
-        //     $dataLk !== null &&
-        //     isset($dataLk->BarangMasukCsLK) &&
-        //     $dataLk->BarangMasukCsLK !== null &&
-        //     isset($dataLk->BarangMasukCsLK->LenganKiper) &&
-        //     $dataLk->BarangMasukCsLK->LenganKiper !== null &&
-        //     isset($dataLk->BarangMasukCsLK->LenganKiper->status)
-        // ) {
-        //     $dataKomisi3 = $dataLk->BarangMasukCsLK->LenganKiper->status == 1;
-        // } else {
-        //     $dataKomisi3 = false;
-        // }
-
-        // if (
-        //     $dataLk !== null &&
-        //     isset($dataLk->BarangMasukCsLK) &&
-        //     $dataLk->BarangMasukCsLK !== null &&
-        //     isset($dataLk->BarangMasukCsLK->Lengan1) &&
-        //     $dataLk->BarangMasukCsLK->Lengan1 !== null &&
-        //     isset($dataLk->BarangMasukCsLK->Lengan1->status)
-        // ) {
-        //     $dataKomisi4 = $dataLk->BarangMasukCsLK->Lengan1->status == 1;
-        // } else {
-        //     $dataKomisi4 = false;
-        // }
-
-        // if (
-        //     $dataLk !== null &&
-        //     isset($dataLk->BarangMasukCsLK) &&
-        //     $dataLk->BarangMasukCsLK !== null &&
-        //     isset($dataLk->BarangMasukCsLK->CelanaPlayer) &&
-        //     $dataLk->BarangMasukCsLK->CelanaPlayer !== null &&
-        //     isset($dataLk->BarangMasukCsLK->CelanaPlayer->status)
-        // ) {
-        //     $dataKomisi5 = $dataLk->BarangMasukCsLK->CelanaPlayer->status == 1;
-        // } else {
-        //     $dataKomisi5 = false;
-        // }
-
-        // if (
-        //     $dataLk !== null &&
-        //     isset($dataLk->BarangMasukCsLK) &&
-        //     $dataLk->BarangMasukCsLK !== null &&
-        //     isset($dataLk->BarangMasukCsLK->CelanaPelatih) &&
-        //     $dataLk->BarangMasukCsLK->CelanaPelatih !== null &&
-        //     isset($dataLk->BarangMasukCsLK->CelanaPelatih->status)
-        // ) {
-        //     $dataKomisi6 = $dataLk->BarangMasukCsLK->CelanaPelatih->status == 1;
-        // } else {
-        //     $dataKomisi6 = false;
-        // }
-
-        // if (
-        //     $dataLk !== null &&
-        //     isset($dataLk->BarangMasukCsLK) &&
-        //     $dataLk->BarangMasukCsLK !== null &&
-        //     isset($dataLk->BarangMasukCsLK->CelanaKiper) &&
-        //     $dataLk->BarangMasukCsLK->CelanaKiper !== null &&
-        //     isset($dataLk->BarangMasukCsLK->CelanaKiper->status)
-        // ) {
-        //     $dataKomisi7 = $dataLk->BarangMasukCsLK->CelanaKiper->status == 1;
-        // } else {
-        //     $dataKomisi7 = false;
-        // }
-
-        // if (
-        //     $dataLk !== null &&
-        //     isset($dataLk->BarangMasukCsLK) &&
-        //     $dataLk->BarangMasukCsLK !== null &&
-        //     isset($dataLk->BarangMasukCsLK->Celana1) &&
-        //     $dataLk->BarangMasukCsLK->Celana1 !== null &&
-        //     isset($dataLk->BarangMasukCsLK->Celana1->status)
-        // ) {
-        //     $dataKomisi8 = $dataLk->BarangMasukCsLK->Celana1->status == 1;
-        // } else {
-        //     $dataKomisi8 = false;
-        // }
-
-        // if ($dataKomisi1 == 1) {
-        //     $dataBajuPlayer = $dataLk->BarangMasukCsLK->total_baju_player;
-        // } elseif ($dataKomisi1 == 0) {
-        //     $dataBajuPlayer = 0;
-        // }
-
-        // if ($dataKomisi2 == 1) {
-        //     $dataBajuPelatih = $dataLk->BarangMasukCsLK->total_baju_pelatih;
-        // } elseif ($dataKomisi2 == 0) {
-        //     $dataBajuPelatih = 0;
-        // }
-
-        // if ($dataKomisi3 == 1) {
-        //     $dataBajuKiper = $dataLk->BarangMasukCsLK->total_baju_kiper;
-        // } elseif ($dataKomisi3 == 0) {
-        //     $dataBajuKiper = 0;
-        // }
-
-        // if ($dataKomisi4 == 1) {
-        //     $dataBaju1 = $dataLk->BarangMasukCsLK->total_baju_1;
-        // } elseif ($dataKomisi4 == 0) {
-        //     $dataBaju1 = 0;
-        // }
-
-        // if ($dataKomisi5 == 1) {
-        //     $dataCelanaPlayer = $dataLk->BarangMasukCsLK->total_celana_player;
-        // } elseif ($dataKomisi5 == 0) {
-        //     $dataCelanaPlayer = 0;
-        // }
-
-        // if ($dataKomisi6 == 1) {
-        //     $dataCelanaPelatih = $dataLk->BarangMasukCsLK->total_celana_pelatih;
-        // } elseif ($dataKomisi6 == 0) {
-        //     $dataCelanaPelatih = 0;
-        // }
-
-        // if ($dataKomisi7 == 1) {
-        //     $dataCelanaKiper = $dataLk->BarangMasukCsLK->total_celana_kiper;
-        // } elseif ($dataKomisi7 == 0) {
-        //     $dataCelanaKiper = 0;
-        // }
-
-        // if ($dataKomisi8 == 1) {
-        //     $dataCelana1 = $dataLk->BarangMasukCsLK->total_celana_1;
-        // } elseif ($dataKomisi8 == 0) {
-        //     $dataCelana1 = 0;
-        // }
-
-        // $deadline = Carbon::parse($dataLk->deadline);
-        // $selesai = Carbon::parse($dataLk->selesai);
-
-        // if ($selesai->lt($deadline)) {
-        //     $selisihHari = $selesai->diffInDaysFiltered(function (Carbon $date) use ($deadline) {
-        //         return $date->lte($deadline);
-        //     });
-        //     $totalBarang = $dataBajuPlayer + $dataBajuPelatih + $dataBajuKiper + $dataBaju1 +
-        //         $dataCelanaPlayer + $dataCelanaPelatih + $dataCelanaKiper + $dataCelana1;
-        //     $hargaPerBarang = 750;
-        //     $totalHarga = $totalBarang * $hargaPerBarang;
-        //     $keterangan = "- $selisihHari";
-        // } else {
-        //     $selisihHari = $selesai->diffInDays($deadline);
-        //     if ($selisihHari == 0) {
-        //         $totalBarang = $dataBajuPlayer + $dataBajuPelatih + $dataBajuKiper + $dataBaju1 +
-        //             $dataCelanaPlayer + $dataCelanaPelatih + $dataCelanaKiper + $dataCelana1;
-        //         $hargaPerBarang = 750;
-        //         $totalHarga = $totalBarang * $hargaPerBarang;
-        //         $keterangan = "- $selisihHari";
-        //     } else {
-        //         $keterangan = "+ $selisihHari";
-        //     }
-        // }
-
-
-        // if ($keterangan == "- $selisihHari") {
-        //     PembagianKomisi::create([
-        //         'user_id' => $user->id,
-        //         'layout_id' => $dataLk->id,
-        //         'tanggal' => Carbon::now(),
-        //         'jumlah_komisi' => $totalHarga,
-        //         'kota' => $dataLk->BarangMasukCsLK->kota_produksi,
-        //     ]);
-        // } else {
-        //     PembagianKomisi::create([
-        //         'user_id' => $user->id,
-        //         'layout_id' => $dataLk->id,
-        //         'tanggal' => Carbon::now(),
-        //         'jumlah_komisi' => "0",
-        //         'kota' => $dataLk->BarangMasukCsLK->kota_produksi,
-        //     ]);
-        // }
-
-        if ($dataLk->BarangMasukCsLK->jenis_mesin == 'mimaki') {
-            $laporan = Laporan::where('barang_masuk_layout_id', $dataLk->id)->first();
+        if ($dataPlayer->BarangMasukCsLK->jenis_mesin == 'mimaki') {
+            $laporan = Laporan::where('barang_masuk_layout_id', $dataPlayer->id)->first();
             if ($laporan) {
                 $laporan->update([
                     'status' => 'Mesin Mimaki',
                 ]);
             }
-        } elseif ($dataLk->BarangMasukCsLK->jenis_mesin == 'atexco') {
-            $laporan = Laporan::where('barang_masuk_layout_id', $dataLk->id)->first();
+        } elseif ($dataPlayer->BarangMasukCsLK->jenis_mesin == 'atexco') {
+            $laporan = Laporan::where('barang_masuk_layout_id', $dataPlayer->id)->first();
             if ($laporan) {
                 $laporan->update([
                     'status' => 'Mesin Atexco',
