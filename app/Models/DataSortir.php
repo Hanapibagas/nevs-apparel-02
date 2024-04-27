@@ -84,7 +84,7 @@ class DataSortir extends Model
 
     public function BarangMasukManualCut()
     {
-        return $this->belongsTo(Cut::class, 'manual_cut_id');
+        return $this->belongsTo(DataManualCut::class, 'manual_cut_id');
     }
 
     public function UserSortir()

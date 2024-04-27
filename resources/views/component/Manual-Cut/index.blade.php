@@ -70,6 +70,10 @@
                                     </script>
                                 </td>
                                 <td>
+                                    <a target="_blank"
+                                        href="{{ route('getCetakDataLkManualCut', $mesins->BarangMasukCs->id) }}"
+                                        class="btn btn-danger">
+                                        <i class="menu-icon tf-icons bx bxs-file-pdf"></i>Show LK</a>
                                     <a href="{{ route('getInputLaporanManualCut' , $mesins->id) }}"
                                         class="btn btn-info">
                                         <i class="menu-icon tf-icons bx bxs-inbox"></i>Input Laporan</a>

@@ -165,6 +165,7 @@ Route::middleware(['auth', 'checkroll:manual_cut'])->group(function () {
     Route::get('/data-masuk-manual-cut/{id}', [ManualCutController::class, 'getInputLaporan'])->name('getInputLaporanManualCut');
     Route::put('/data-masuk-manual-cut/{id}', [ManualCutController::class, 'putLaporan'])->name('putLaporanManualCut');
     Route::get('/data-masuk-manual-cut-fix', [ManualCutController::class, 'getIndexFix'])->name('getIndexFixManualCut');
+    Route::get('/show-data-lk-manualcut/{id}', [ManualCutController::class, 'cetakDataLk'])->name('getCetakDataLkManualCut');
 });
 
 Route::middleware(['auth', 'checkroll:sortir'])->group(function () {
