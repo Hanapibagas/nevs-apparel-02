@@ -20,11 +20,25 @@ class ManualCutController extends Controller
     {
         $user = Auth::user();
         if ($user->asal_kota == 'makassar') {
-            $dataMasuk = DataManualCut::with('BarangMasukCs', 'BarangMasukLaserCut', 'BarangMasukCs.BarangMasukDisainer')
+            $dataMasuk = DataManualCut::with(
+                'BarangMasukCs',
+                'BarangMasukLaserCut',
+                'BarangMasukCs.BarangMasukDisainer',
+                'BarangMasukCostumerServicesLkPlyer',
+
+                'BarangMasukCostumerServicesLkPelatih',
+
+                'BarangMasukCostumerServicesLkKiper',
+                'BarangMasukCostumerServicesLk1',
+
+                'BarangMasukCostumerServicesLkCelanaPlyer',
+
+                'BarangMasukCostumerServicesLkCelanaPelatih',
+                'BarangMasukCostumerServicesLkCelanaKiper',
+
+                'BarangMasukCostumerServicesLkCelana1',
+            )
                 ->where('tanda_telah_mengerjakan', 0)
-                ->whereHas('BarangMasukLaserCut', function ($query) {
-                    $query->whereNotNull('selesai');
-                })
                 ->whereHas('BarangMasukCs', function ($query) use ($user) {
                     $query->where('kota_produksi', 'Makassar');
                 })
@@ -81,6 +95,7 @@ class ManualCutController extends Controller
             $dataMasuk = $dataMasuk->values()->all();
         }
 
+        // return response()->json($dataMasuk);
         return view('component.Manual-Cut.index', compact('dataMasuk'));
     }
 

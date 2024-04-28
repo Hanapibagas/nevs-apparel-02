@@ -95,7 +95,12 @@ $activeList = $listData ? 'active' : '';
                 </li>
                 <li class="menu-item {{ request()->is('manual-cut-admin')  ? 'active' : '' }}">
                     <a href="{{ route('getManualut') }}" class="menu-link">
-                        <div data-i18n="Connections">Cut</div>
+                        <div data-i18n="Connections">Manual Cut</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->is('laser-cut-admin')  ? 'active' : '' }}">
+                    <a href="{{ route('getLaserCut') }}" class="menu-link">
+                        <div data-i18n="Connections">Laser Cut</div>
                     </a>
                 </li>
                 <li class="menu-item {{ request()->is('sortir-admin')  ? 'active' : '' }}">
@@ -138,6 +143,12 @@ $activeList = $listData ? 'active' : '';
                 </li> --}}
             </ul>
         </li>
+        <li class="menu-item {{ request()->is('update-password')  ? 'active' : '' }}">
+            <a href="{{ route('getUpdatePassword') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-cog"></i>
+                <div data-i18n="Analytics">Update Password</div>
+            </a>
+        </li>
         @endif
 
         @if (Auth::user()->roles == 'cs')
@@ -172,6 +183,12 @@ $activeList = $listData ? 'active' : '';
                 <div data-i18n="Analytics">Data LK</div>
                 <span style="margin-left: 10px; margin-bottom: 20px;" class="badge bg-label-success">{{ $dataLk
                     }}</span>
+            </a>
+        </li>
+        <li class="menu-item {{ request()->is('update-password')  ? 'active' : '' }}">
+            <a href="{{ route('getUpdatePassword') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-cog"></i>
+                <div data-i18n="Analytics">Update Password</div>
             </a>
         </li>
         @endif
@@ -216,6 +233,12 @@ $activeList = $listData ? 'active' : '';
                     }}</span>
             </a>
         </li>
+        <li class="menu-item {{ request()->is('update-password')  ? 'active' : '' }}">
+            <a href="{{ route('getUpdatePassword') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-cog"></i>
+                <div data-i18n="Analytics">Update Password</div>
+            </a>
+        </li>
         @endif
 
         @if ( Auth::user()->roles == 'atexco')
@@ -253,6 +276,12 @@ $activeList = $listData ? 'active' : '';
                 <span style="margin-left: 10px; margin-bottom: 20px;" class="badge bg-label-success">{{
                     $dataMasukFix
                     }}</span>
+            </a>
+        </li>
+        <li class="menu-item {{ request()->is('update-password')  ? 'active' : '' }}">
+            <a href="{{ route('getUpdatePassword') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-cog"></i>
+                <div data-i18n="Analytics">Update Password</div>
             </a>
         </li>
         @endif
@@ -293,6 +322,12 @@ $activeList = $listData ? 'active' : '';
                     }}</span>
             </a>
         </li>
+        <li class="menu-item {{ request()->is('update-password')  ? 'active' : '' }}">
+            <a href="{{ route('getUpdatePassword') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-cog"></i>
+                <div data-i18n="Analytics">Update Password</div>
+            </a>
+        </li>
         @endif
 
         @if ( Auth::user()->roles == 'layout')
@@ -324,6 +359,12 @@ $activeList = $listData ? 'active' : '';
                     }}</span>
             </a>
         </li>
+        <li class="menu-item {{ request()->is('update-password')  ? 'active' : '' }}">
+            <a href="{{ route('getUpdatePassword') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-cog"></i>
+                <div data-i18n="Analytics">Update Password</div>
+            </a>
+        </li>
         @endif
 
         @if ( Auth::user()->roles == 'pres_kain')
@@ -350,6 +391,12 @@ $activeList = $listData ? 'active' : '';
                 <div data-i18n="Analytics">Data Fix</div>
                 <span style="margin-left: 10px; margin-bottom: 20px;" class="badge bg-label-success">{{ $dataMasukFix
                     }}</span>
+            </a>
+        </li>
+        <li class="menu-item {{ request()->is('update-password')  ? 'active' : '' }}">
+            <a href="{{ route('getUpdatePassword') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-cog"></i>
+                <div data-i18n="Analytics">Update Password</div>
             </a>
         </li>
         @endif
@@ -411,6 +458,12 @@ $activeList = $listData ? 'active' : '';
                     }}</span>
             </a>
         </li>
+        <li class="menu-item {{ request()->is('update-password')  ? 'active' : '' }}">
+            <a href="{{ route('getUpdatePassword') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-cog"></i>
+                <div data-i18n="Analytics">Update Password</div>
+            </a>
+        </li>
         @endif
 
         @if ( Auth::user()->roles == 'manual_cut')
@@ -440,6 +493,12 @@ $activeList = $listData ? 'active' : '';
                     }}</span>
             </a>
         </li>
+        <li class="menu-item {{ request()->is('update-password')  ? 'active' : '' }}">
+            <a href="{{ route('getUpdatePassword') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-cog"></i>
+                <div data-i18n="Analytics">Update Password</div>
+            </a>
+        </li>
         @endif
 
         @if ( Auth::user()->roles == 'sortir')
@@ -467,6 +526,12 @@ $activeList = $listData ? 'active' : '';
                 <span style="margin-left: 10px; margin-bottom: 20px;" class="badge bg-label-success">{{
                     $dataMasukFix
                     }}</span>
+            </a>
+        </li>
+        <li class="menu-item {{ request()->is('update-password')  ? 'active' : '' }}">
+            <a href="{{ route('getUpdatePassword') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-cog"></i>
+                <div data-i18n="Analytics">Update Password</div>
             </a>
         </li>
         @endif
@@ -499,6 +564,12 @@ $activeList = $listData ? 'active' : '';
                     }}</span>
             </a>
         </li>
+        <li class="menu-item {{ request()->is('update-password')  ? 'active' : '' }}">
+            <a href="{{ route('getUpdatePassword') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-cog"></i>
+                <div data-i18n="Analytics">Update Password</div>
+            </a>
+        </li>
         @endif
 
         @if ( Auth::user()->roles == 'finis')
@@ -526,6 +597,12 @@ $activeList = $listData ? 'active' : '';
                 <span style="margin-left: 10px; margin-bottom: 20px;" class="badge bg-label-success">{{
                     $dataMasukFix
                     }}</span>
+            </a>
+        </li>
+        <li class="menu-item {{ request()->is('update-password')  ? 'active' : '' }}">
+            <a href="{{ route('getUpdatePassword') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-cog"></i>
+                <div data-i18n="Analytics">Update Password</div>
             </a>
         </li>
         @endif

@@ -60,6 +60,7 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <input type="hidden" name="password_user" value="12345678">
                                 <div class="col mb-3">
                                     <label for="nameWithTitle" class="form-label">Email Pegawai</label>
                                     <input name="email" type="text" id="nameWithTitle" class="form-control"
@@ -90,6 +91,7 @@
                             <tr>
                                 <th class="text-nowrap">Nama pegawai</th>
                                 <th class="text-nowrap">Asal pegawai</th>
+                                <th class="text-nowrap">Password pegawai</th>
                                 <th class="text-nowrap text-center">Edit</th>
                                 <th class="text-nowrap text-center">Hapus</th>
                                 <th class="text-nowrap text-center">Updload</th>
@@ -103,6 +105,11 @@
                                 <tr>
                                     <td class="text-nowrap">{{ $user->name }}</td>
                                     <td class="text-nowrap">{{ $user->asal_kota }}</td>
+                                    <td class="text-nowrap">
+                                        @foreach ($user->PasswordUser as $passwordUser)
+                                        {{ $passwordUser->password_user }}
+                                        @endforeach
+                                    </td>
                                     <td>
                                         <div class="form-check d-flex justify-content-center">
                                             <input type="hidden" name="permission_edit[{{ $user->id }}]" value="off">

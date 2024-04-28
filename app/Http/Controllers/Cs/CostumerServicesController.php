@@ -3723,7 +3723,7 @@ class CostumerServicesController extends Controller
                 // POLOS
                 if ($LkPlayer->status_player == "Polos") {
                     if ($total_hari == 1) {
-                        // CUT 
+                        // CUT
                         BarangMasukDatalayout::where('lk_player_id', $LkPlayer->id)->delete();
                         DataManualCut::where('lk_player_id', $LkPlayer->id)->delete();
                         $barangMasukDataCutManualData = [
@@ -15477,7 +15477,7 @@ class CostumerServicesController extends Controller
                 // POLOS
                 if ($LkBaju1->status_baju_1 == "Polos") {
                     if ($total_hari == 1) {
-                        // CUT 
+                        // CUT
                         BarangMasukDatalayout::where('lk_1_id', $LkBaju1->id)->delete();
                         DataManualCut::where('lk_1_id', $LkBaju1->id)->delete();
                         $barangMasukDataCutManualData = [
@@ -31877,7 +31877,7 @@ class CostumerServicesController extends Controller
                 // AKHIR POLOS
             }
             // CREATE LAPORAN
-        }    
+        }
 
         // return response()->json([
         //     $barangMasukDataLayout,
@@ -63377,5 +63377,32 @@ class CostumerServicesController extends Controller
 
         $namaTimClean = preg_replace('/[^A-Za-z0-9\-]/', '', $dataLk->BarangMasukDisainer->nama_tim);
         return $pdf->stream($namaTimClean . '.pdf');
+    }
+
+     public function getUpdatePassword()
+    {
+        $users = User::findOrFail(Auth::user()->id);
+        // return response()->json($users);
+
+        return view('component.update-passsword.index', compact('users'));
+    }
+
+    public function postUpdatePassword(Request $request)
+    {
+        // return response()->json($request->all());
+        $this->validate($request, [
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required',
+        ]);
+
+        $user = Auth::user();
+
+
+        $user->password = Hash::make($request->password);
+        // return response()->json($user);
+
+        $user->save();
+
+        return redirect()->back()->with('success', 'Permission telah diperbarui.');
     }
 }

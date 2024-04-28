@@ -13,11 +13,13 @@ use App\Models\Jahit;
 use App\Models\Laporan;
 use App\Models\MesinAtexco;
 use App\Models\MesinMimaki;
+use App\Models\PasswordUser;
 use App\Models\PembagianKomisi;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -89,34 +91,38 @@ class HomeController extends Controller
 
         $tahun = $request->input('tahun');
         $bulan = $request->input('bulan');
-        $tanggal = $request->input('tanggal');
 
-        $jahits = Jahit::whereYear('deadline', $tahun)
-            ->whereMonth('deadline', $bulan)
-            ->whereDay('deadline', $tanggal)
-            ->get();
+        $dates = [];
+        $totals = [];
 
-        $total_semua = 0;
+        // Looping untuk setiap tanggal dalam bulan ini
+        for ($i = 1; $i <= 31; $i++) {
+            $deadline = $tahun . '-' . $bulan . '-' . str_pad($i, 2, '0', STR_PAD_LEFT); // Format tanggal
 
-        foreach ($jahits as $jahit) {
-            $barangMasuk = $jahit->barangMasukCs()->first();
+            $jahits = Jahit::whereDate('deadline', $deadline)->get();
+            $total_semua = 0;
 
-            if ($barangMasuk) {
-                $total_baju_player = $barangMasuk->total_baju_player ?? 0;
-                $total_baju_pelatih = $barangMasuk->total_baju_pelatih ?? 0;
-                $total_baju_kiper = $barangMasuk->total_baju_kiper ?? 0;
-                $total_baju_1 = $barangMasuk->total_baju_1 ?? 0;
-                $total_celana_player = $barangMasuk->total_celana_player ?? 0;
-                $total_celana_pelatih = $barangMasuk->total_celana_pelatih ?? 0;
-                $total_celana_kiper = $barangMasuk->total_celana_kiper ?? 0;
-                $total_celana_1 = $barangMasuk->total_celana_1 ?? 0;
+            foreach ($jahits as $jahit) {
+                $barangMasuk = $jahit->barangMasukCs()->first();
 
-                $total_semua += $total_baju_player + $total_baju_pelatih + $total_baju_kiper +
-                    $total_baju_1 + $total_celana_player + $total_celana_pelatih +
-                    $total_celana_kiper + $total_celana_1;
+                if ($barangMasuk) {
+                    $total_semua += $barangMasuk->total_baju_player ?? 0;
+                    $total_semua += $barangMasuk->total_baju_pelatih ?? 0;
+                    $total_semua += $barangMasuk->total_baju_kiper ?? 0;
+                    $total_semua += $barangMasuk->total_baju_1 ?? 0;
+                    $total_semua += $barangMasuk->total_celana_player ?? 0;
+                    $total_semua += $barangMasuk->total_celana_pelatih ?? 0;
+                    $total_semua += $barangMasuk->total_celana_kiper ?? 0;
+                    $total_semua += $barangMasuk->total_celana_1 ?? 0;
+                }
             }
+
+            // Menambahkan data ke array
+            $dates[] = $deadline;
+            $totals[] = $total_semua;
         }
 
+        // return response()->json($total_semua);
 
         return view('component.dashboard', compact(
             'dashboardMakassar',
@@ -134,6 +140,8 @@ class HomeController extends Controller
             'dataMasukjahit',
             'dataMasukFinis',
             'total_semua',
+            'dates',
+            'totals',
         ));
     }
 
@@ -174,91 +182,92 @@ class HomeController extends Controller
 
     public function getCostumerSevices()
     {
-        $userCs = User::where('roles', 'cs')->get();
+        $userCs = User::with('PasswordUser')->where('roles', 'cs')->get();
+        // return response()->json($userCs);
 
         return view('component.Admin.costumer-service-admin.index', compact('userCs'));
     }
 
     public function getDesainer()
     {
-        $userDesainer = User::where('roles', 'disainer')->get();
+        $userDesainer = User::with('PasswordUser')->where('roles', 'disainer')->get();
 
         return view('component.Admin.desainer-admin.index', compact('userDesainer'));
     }
 
     public function getLayout()
     {
-        $userLaytout = User::where('roles', 'layout')->get();
+        $userLaytout = User::with('PasswordUser')->where('roles', 'layout')->get();
 
         return view('component.Admin.layout-admin.index', compact('userLaytout'));
     }
 
     public function getMesinAtexco()
     {
-        $userMesinAtexco = User::where('roles', 'atexco')->get();
+        $userMesinAtexco = User::with('PasswordUser')->where('roles', 'atexco')->get();
 
         return view('component.Admin.mesin-atexco-admin.index', compact('userMesinAtexco'));
     }
 
     public function getMesinMimaki()
     {
-        $userMimaki = User::where('roles', 'mimaki')->get();
+        $userMimaki = User::with('PasswordUser')->where('roles', 'mimaki')->get();
 
         return view('component.Admin.mesin-mimaki-admin.index', compact('userMimaki'));
     }
 
     public function getPressKain()
     {
-        $userPresKain = User::where('roles', 'pres_kain')->get();
+        $userPresKain = User::with('PasswordUser')->where('roles', 'pres_kain')->get();
 
         return view('component.Admin.press-kain-admin.index', compact('userPresKain'));
     }
 
     public function getLaserCut()
     {
-        $userLaserCut = User::where('roles', 'laser_cut')->get();
+        $userLaserCut = User::with('PasswordUser')->where('roles', 'laser_cut')->get();
 
         return view('component.Admin.laser-cut-admin.index', compact('userLaserCut'));
     }
 
     public function getManualut()
     {
-        $userManuakCut = User::where('roles', 'cut')->get();
+        $userManuakCut = User::with('PasswordUser')->where('roles', 'manual_cut')->get();
 
         return view('component.Admin.manual-cut-admin.index', compact('userManuakCut'));
     }
 
     public function getSortir()
     {
-        $userSortir = User::where('roles', 'sortir')->get();
+        $userSortir = User::with('PasswordUser')->where('roles', 'sortir')->get();
 
         return view('component.Admin.sortir-admin.index', compact('userSortir'));
     }
 
     public function getJahitBaju()
     {
-        $userJahitBaju = User::where('roles', 'jahit')->get();
+        $userJahitBaju = User::with('PasswordUser')->where('roles', 'jahit')->get();
 
         return view('component.Admin.jahit-baju-admin.index', compact('userJahitBaju'));
     }
 
     public function getJahitCelana()
     {
-        $userJahitCelana = User::where('roles', 'jahit_celana')->get();
+        $userJahitCelana = User::with('PasswordUser')->where('roles', 'jahit_celana')->get();
 
         return view('component.Admin.jahit-celana-admin.index', compact('userJahitCelana'));
     }
 
     public function getPressTag()
     {
-        $userPressTag = User::where('roles', 'finis')->get();
+        $userPressTag = User::with('PasswordUser')->where('roles', 'finis')->get();
 
         return view('component.Admin.pres-tag-admin.index', compact('userPressTag'));
     }
 
     public function getPacking()
     {
-        $userPacking = User::where('roles', 'packing')->get();
+        $userPacking = User::with('PasswordUser')->where('roles', 'packing')->get();
 
         return view('component.Admin.packing-admin.index', compact('userPacking'));
     }
@@ -270,12 +279,17 @@ class HomeController extends Controller
             return redirect()->back()->with('error', 'Email Pegawai sudah ada mohon buat yang berbeda.');
         }
 
-        User::create([
+        $user =  User::create([
             'name' => $request->input('name'),
             'asal_kota' => $request->input('asal_kota'),
             'email' => $email,
             'roles' => $request->input('roles'),
             'password' => bcrypt('12345678')
+        ]);
+
+        PasswordUser::create([
+            'user' => $user->id,
+            'password_user' => $request->password_user
         ]);
 
         return redirect()->back()->with('success', 'Data pegawai telah ditambah.');
@@ -288,12 +302,17 @@ class HomeController extends Controller
             return redirect()->back()->with('error', 'Email Pegawai sudah ada mohon buat yang berbeda.');
         }
 
-        User::create([
+        $user =  User::create([
             'name' => $request->input('name'),
             'asal_kota' => $request->input('asal_kota'),
             'email' => $email,
             'roles' => $request->input('roles'),
             'password' => bcrypt('12345678')
+        ]);
+
+        PasswordUser::create([
+            'user' => $user->id,
+            'password_user' => $request->password_user
         ]);
 
         return redirect()->back()->with('success', 'Data pegawai telah ditambah.');
@@ -306,12 +325,17 @@ class HomeController extends Controller
             return redirect()->back()->with('error', 'Email Pegawai sudah ada mohon buat yang berbeda.');
         }
 
-        User::create([
+        $user =  User::create([
             'name' => $request->input('name'),
             'asal_kota' => $request->input('asal_kota'),
             'email' => $email,
             'roles' => $request->input('roles'),
             'password' => bcrypt('12345678')
+        ]);
+
+        PasswordUser::create([
+            'user' => $user->id,
+            'password_user' => $request->password_user
         ]);
 
         return redirect()->back()->with('success', 'Data pegawai telah ditambah.');
@@ -402,5 +426,36 @@ class HomeController extends Controller
         // return response()->json($totalKomisiPerUser);
 
         return view('component.Admin.pembagian-komisi-pengerjaan.index', compact('pembagianKomisiFiltered', 'totalKomisiPerUser'))->with('success', 'Filtering data berhasil.');
+    }
+
+    public function getUpdatePassword()
+    {
+        $users = User::findOrFail(Auth::user()->id);
+        // return response()->json($users);
+
+        return view('component.Admin.update-passsword.index', compact('users'));
+    }
+
+    public function postUpdatePassword(Request $request)
+    {
+        $this->validate($request, [
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required',
+        ]);
+
+        $user = Auth::user();
+
+        $passwordUser = PasswordUser::find($user->id);
+
+        $passwordUser->update([
+            'password_user' => $request->password_user
+        ]);
+        // return response()->json($passwordUser);
+
+        $user->password = Hash::make($request->password);
+
+        $user->save();
+
+        return redirect()->back()->with('success', 'Permission telah diperbarui.');
     }
 }

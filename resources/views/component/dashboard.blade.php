@@ -10,7 +10,7 @@
     <div class="content-wrapper">
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="card">
-                <h5 class="card-header">Silahkan pilih tahun, bulan dan tanggal untuk melihat jumlah jahit </h5>
+                <h5 class="card-header">Silahkan pilih tahun dan bulan untuk melihat jumlah jahit </h5>
                 <form action="{{ route('indexHome') }}" method="get">
                     <div class="card-header row">
                         <div class="mb-3 col-md-3">
@@ -43,26 +43,27 @@
                             </select>
                         </div>
                         <div class="mb-3 col-md-3">
-                            <label for="">Tanggal</label>
-                            <input required class="form-control" type="number" name="tanggal" />
-                        </div>
-                        <div class="mb-3 col-md-3">
-                            <button type="submit" class="btn btn-primary form-control">Kirim</button>
+                            <button type="submit" style="margin-top: 20px"
+                                class="btn btn-primary form-control">Kirim</button>
                         </div>
                     </div>
                 </form>
             </div>
 
+
             <div class="row" style="margin-top: 20px;">
-                <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
+                <div class="col-md-12 col-lg-12 col-xl-12 order-0 mb-4">
                     <div class="card h-100">
                         <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
+                            <canvas id="myChart"></canvas>
+                            {{-- <div class="d-flex justify-content-between align-items-center mb-3">
                                 <div class="d-flex flex-column align-items-center gap-1">
-                                    <h2 class="mb-2">{{ $total_semua }}</h2>
+                                    <h2 class="mb-2">
+                                        {{ $total_semua }}
+                                    </h2>
                                     <span>Total Orders</span>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -158,6 +159,36 @@
     });
 </script> --}}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Data dari server Laravel
+    var dates = {!! json_encode($dates) !!};
+    var totals = {!! json_encode($totals) !!};
+
+    // Mendapatkan elemen canvas
+    var ctx = document.getElementById('myChart').getContext('2d');
+
+    // Membuat grafik
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: dates,
+            datasets: [{
+                label: 'Total Jahit',
+                data: totals,
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
 <script>
     var dashboardMakassar = {!! $dashboardMakassar !!};
     var dashboardBandung = {!! $dashboardBandung !!};

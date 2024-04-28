@@ -31,7 +31,7 @@ Route::get('/migrate-fresh-seed', function () {
 
 Route::middleware(['auth', 'checkroll:super_admin,jahit,finis,cut,disainer,layout,cs,atexco,mimaki,pres_kain,laser_cut,manual_cut,sortir,jahit_baju,jahit_celana,press_tag,packing'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('indexHome');
-    Route::post('/filtering-ahit', [HomeController::class, 'fiterTotaljahit'])->name('fiterTotaljahit');
+    Route::get('/filtering-ahit', [HomeController::class, 'fiterTotaljahit'])->name('fiterTotaljahit');
 
     // route admin cs
     Route::get('/laporan', [HomeController::class, 'getLaporan'])->name('getIndexLaporan');
@@ -73,6 +73,10 @@ Route::middleware(['auth', 'checkroll:super_admin,jahit,finis,cut,disainer,layou
     Route::post('/list-data-jenis-celana/create', [ListDataController::class, 'postDataJenisCelana'])->name('getCreateistDataJenisCelana');
     Route::put('/list-data-jenis-celana/update/{id}', [ListDataController::class, 'putDataJenisCelana'])->name('putListDataJenisCelana');
     Route::delete('/list-data-jenis-celana/delete/{id}', [ListDataController::class, 'deletJenisDataCelana'])->name('deleteListDataJenisCelana');
+
+    // update Password
+    Route::get('/update-password', [HomeController::class, 'getUpdatePassword'])->name('getUpdatePassword');
+    Route::put('/update-password-user', [HomeController::class, 'postUpdatePassword'])->name('postUpdatePassword');
 });
 
 Route::middleware(['auth', 'checkroll:cs'])->group(function () {
@@ -87,6 +91,9 @@ Route::middleware(['auth', 'checkroll:cs'])->group(function () {
     Route::put('/data-lk/updateLK/{id}', [CostumerServicesController::class, 'putDataLk'])->name('putDataLkSajaPegawai');
 
     Route::get('cetak-data-lk/{id}', [CostumerServicesController::class, 'cetakDataLk'])->name('getCetakDataLk');
+
+    // Route::get('update-password-cs', [CostumerServicesController::class, 'getUpdatePassword'])->name('getUpdatePassword');
+    // Route::put('update-password-cs/post', [CostumerServicesController::class, 'postUpdatePassword'])->name('postUpdatePassword');
 });
 
 Route::middleware(['auth', 'checkroll:disainer'])->group(function () {

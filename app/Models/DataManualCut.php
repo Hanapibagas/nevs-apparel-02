@@ -48,4 +48,37 @@ class DataManualCut extends Model
     {
         return $this->belongsTo(User::class, 'penanggung_jawab_id');
     }
+
+    public function BarangMasukCostumerServicesLkPlyer()
+    {
+        return $this->hasMany(LkPlayer::class, 'id');
+    }
+    public function BarangMasukCostumerServicesLkPelatih()
+    {
+        return $this->hasMany(LkPelatih::class, 'id');
+    }
+    public function BarangMasukCostumerServicesLkKiper()
+    {
+        return $this->hasMany(LkKiper::class, 'id');
+    }
+    public function BarangMasukCostumerServicesLk1()
+    {
+        return $this->hasMany(LkBaju1::class, 'id');
+    }
+    public function BarangMasukCostumerServicesLkCelanaPlyer()
+    {
+        return $this->hasMany(LkCelanaPlayer::class, 'id');
+    }
+    public function BarangMasukCostumerServicesLkCelanaPelatih()
+    {
+        return $this->hasMany(LkCelanaPelatih::class, 'id');
+    }
+    public function BarangMasukCostumerServicesLkCelanaKiper()
+    {
+        return $this->hasMany(LkCelanaKiper::class, 'id');
+    }
+    public function BarangMasukCostumerServicesLkCelana1()
+    {
+        return $this->hasMany(LkCelana1::class, 'id');
+    }
 }

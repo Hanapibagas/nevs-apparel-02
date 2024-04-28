@@ -13,6 +13,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class DisainerController extends Controller
@@ -32,9 +33,21 @@ class DisainerController extends Controller
     public function getCreateToTeamMesin($nama_tim)
     {
         $disainer = BarangMasukDisainer::where('nama_tim', $nama_tim)->first();
+        $mesin = User::whereIn('roles', ['atexco', 'mimaki'])->get();
         $user = User::where('roles', 'atexco')->orWhere('roles', 'mimaki')->get();
 
-        return view('component.Disainer.disainer-pegawai.create', compact('disainer', 'user'));
+        $userCounts = [];
+        foreach ($mesin as $v) {
+            $userId = $v->id;
+            $barangMasukCount = BarangMasukMesin::where('nama_mesin_id', $userId)
+                ->where('status', 0)
+                ->count();
+            $userCounts[$userId] = $barangMasukCount;
+        }
+
+        // return response()->json($userCounts);
+
+        return view('component.Disainer.disainer-pegawai.create', compact('disainer', 'userCounts', 'mesin'));
     }
 
     public function postToTeamMesin(Request $request, $nama_tim)
@@ -64,8 +77,19 @@ class DisainerController extends Controller
     public function getUpdateToTeamMesin($id)
     {
         $disainer = BarangMasukMesin::find($id);
+        $mesin = User::whereIn('roles', ['atexco', 'mimaki'])->get();
+        $userCounts = [];
+        foreach ($mesin as $v) {
+            $userId = $v->id;
+            $barangMasukCount = BarangMasukMesin::where('nama_mesin_id', $userId)
+                ->where('status', 0)
+                ->count();
+            $userCounts[$userId] = $barangMasukCount;
+        }
 
-        return view('component.Disainer.disainer-pegawai.update', compact('disainer'));
+        // return response()->json($userCounts);
+
+        return view('component.Disainer.disainer-pegawai.update', compact('disainer', 'mesin', 'userCounts'));
     }
 
     public function putUpdateToTeamMesin(Request $request, $id)
@@ -204,5 +228,32 @@ class DisainerController extends Controller
             ->get();
 
         return view('component.Disainer.data-fix-disainer-pegawai.index', compact('disainer'));
+    }
+
+    public function getUpdatePassword()
+    {
+        $users = User::findOrFail(Auth::user()->id);
+        // return response()->json($users);
+
+        return view('component.update-passsword.index', compact('users'));
+    }
+
+    public function postUpdatePassword(Request $request)
+    {
+        // return response()->json($request->all());
+        $this->validate($request, [
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required',
+        ]);
+
+        $user = Auth::user();
+
+
+        $user->password = Hash::make($request->password);
+        // return response()->json($user);
+
+        $user->save();
+
+        return redirect()->back()->with('success', 'Permission telah diperbarui.');
     }
 }

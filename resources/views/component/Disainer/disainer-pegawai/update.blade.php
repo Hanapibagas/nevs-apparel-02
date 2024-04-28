@@ -29,10 +29,15 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="basic-default-company">Nama mesin</label>
                             <div class="col-sm-10">
-                                <select name="nama_mesin" class="form-control">
-                                    <option>-- Silahkan Pilih Mesin --</option>
-                                    <option style="text-transform: uppercase" value="atexco">atexco</option>
-                                    <option style="text-transform: uppercase" value="mimaki">mimaki</option>
+                                <select id="country" required name="nama_mesin_id" class="select2 form-select">
+                                    <option value="">-- Pilih Pembagian Mesin --</option>
+                                    @foreach ( $mesin as $user )
+                                    <option value="{{ $user->id }}">
+                                        {{ $user->name }} sedang menangani LK {{
+                                        isset($userCounts[$user->id]) ? $userCounts[$user->id]
+                                        : 0}}
+                                    </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

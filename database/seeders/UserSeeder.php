@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\KeraBaju;
+use App\Models\PasswordUser;
 use App\Models\PolaCeleana;
 use App\Models\PolaLengan;
 use App\Models\User;
@@ -29,6 +30,10 @@ class UserSeeder extends Seeder
             'permission_show' => 1,
             'asal_kota' => "owner",
             'password' => bcrypt('superadmin')
+        ]);
+        PasswordUser::create([
+            'user' => 1,
+            'password_user' => 'superadmin'
         ]);
         User::create([
             'name' => 'cs',
@@ -104,8 +109,20 @@ class UserSeeder extends Seeder
         ]);
         User::create([
             'name' => 'cut',
-            'email' => 'cut@gmail.com',
-            'roles' => 'cut',
+            'email' => 'cutmanual@gmail.com',
+            'roles' => 'manual_cut',
+            'gambar' => 'cut.jpg',
+            'permission_edit' => 1,
+            'permission_hapus' => 1,
+            'permission_hapus' => 1,
+            'permission_show' => 1,
+            'asal_kota' => "makassar",
+            'password' => bcrypt('12345678')
+        ]);
+        User::create([
+            'name' => 'cut',
+            'email' => 'cutlaser@gmail.com',
+            'roles' => 'laser_cut',
             'gambar' => 'cut.jpg',
             'permission_edit' => 1,
             'permission_hapus' => 1,
