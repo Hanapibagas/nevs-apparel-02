@@ -449,9 +449,8 @@
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td> --}}
                                         <td>
-                                            @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id)
-                                            {{-- Belum melakukan pengisian data --}}
-                                            {{ strtoupper($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
+                                            @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id == null)
+                                            Belum melakukan pengisian data
                                             @elseif ($laporan->BarangMasukMesinAtexco->UserMesinAtexco)
                                             {{ strtoupper($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
                                             @endif
@@ -484,10 +483,10 @@
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td> --}}
                                         <td>
-                                            @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id)
+                                            @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id == null)
                                             Belum melakukan pengisian data
                                             @elseif ($laporan->BarangMasukMesinAtexco->UserMesinAtexco)
-                                            {{ ($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
+                                            {{ strtoupper($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
                                             @endif
                                         </td>
                                         <td>
@@ -518,10 +517,10 @@
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td> --}}
                                         <td>
-                                            @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id)
+                                            @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id == null)
                                             Belum melakukan pengisian data
                                             @elseif ($laporan->BarangMasukMesinAtexco->UserMesinAtexco)
-                                            {{ ($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
+                                            {{ strtoupper($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
                                             @endif
                                         </td>
                                         <td>
@@ -552,10 +551,10 @@
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td> --}}
                                         <td>
-                                            @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id)
+                                            @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id == null)
                                             Belum melakukan pengisian data
                                             @elseif ($laporan->BarangMasukMesinAtexco->UserMesinAtexco)
-                                            {{ ($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
+                                            {{ strtoupper($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
                                             @endif
                                         </td>
                                         <td>
@@ -586,10 +585,10 @@
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td> --}}
                                         <td>
-                                            @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id)
+                                            @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id == null)
                                             Belum melakukan pengisian data
                                             @elseif ($laporan->BarangMasukMesinAtexco->UserMesinAtexco)
-                                            {{ ($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
+                                            {{ strtoupper($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
                                             @endif
                                         </td>
                                         <td>
@@ -620,10 +619,10 @@
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td> --}}
                                         <td>
-                                            @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id)
+                                            @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id == null)
                                             Belum melakukan pengisian data
                                             @elseif ($laporan->BarangMasukMesinAtexco->UserMesinAtexco)
-                                            {{ ($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
+                                            {{ strtoupper($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
                                             @endif
                                         </td>
                                         <td>
@@ -654,10 +653,10 @@
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td> --}}
                                         <td>
-                                            @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id)
+                                            @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id == null)
                                             Belum melakukan pengisian data
                                             @elseif ($laporan->BarangMasukMesinAtexco->UserMesinAtexco)
-                                            {{ ($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
+                                            {{ strtoupper($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
                                             @endif
                                         </td>
                                         <td>
@@ -688,10 +687,10 @@
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td> --}}
                                         <td>
-                                            @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id)
+                                            @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id == null)
                                             Belum melakukan pengisian data
                                             @elseif ($laporan->BarangMasukMesinAtexco->UserMesinAtexco)
-                                            {{ ($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
+                                            {{ strtoupper($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
                                             @endif
                                         </td>
                                         <td>
@@ -757,10 +756,10 @@
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
                                         <td>
-                                            @if ($laporan->BarangMasukMesinMimaki->penanggung_jawab_id)
+                                            @if ($laporan->BarangMasukMesinMimaki->penanggung_jawab_id == null)
                                             Belum melakukan pengisian data
                                             @elseif ($laporan->BarangMasukMesinMimaki->UserMesinAtexco)
-                                            {{ ($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
+                                            {{ strtoupper($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
                                             @endif
                                         </td>
                                         <td>
@@ -791,10 +790,10 @@
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td> --}}
                                         <td>
-                                            @if ($laporan->BarangMasukMesinMimaki->penanggung_jawab_id)
+                                            @if ($laporan->BarangMasukMesinMimaki->penanggung_jawab_id == null)
                                             Belum melakukan pengisian data
                                             @elseif ($laporan->BarangMasukMesinMimaki->UserMesinAtexco)
-                                            {{ ($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
+                                            {{ strtoupper($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
                                             @endif
                                         </td>
                                         <td>
@@ -825,10 +824,10 @@
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td> --}}
                                         <td>
-                                            @if ($laporan->BarangMasukMesinMimaki->penanggung_jawab_id)
+                                            @if ($laporan->BarangMasukMesinMimaki->penanggung_jawab_id == null)
                                             Belum melakukan pengisian data
                                             @elseif ($laporan->BarangMasukMesinMimaki->UserMesinAtexco)
-                                            {{ ($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
+                                            {{ strtoupper($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
                                             @endif
                                         </td>
                                         <td>
@@ -859,10 +858,10 @@
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td> --}}
                                         <td>
-                                            @if ($laporan->BarangMasukMesinMimaki->penanggung_jawab_id)
+                                            @if ($laporan->BarangMasukMesinMimaki->penanggung_jawab_id == null)
                                             Belum melakukan pengisian data
                                             @elseif ($laporan->BarangMasukMesinMimaki->UserMesinAtexco)
-                                            {{ ($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
+                                            {{ strtoupper($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
                                             @endif
                                         </td>
                                         <td>
@@ -893,10 +892,10 @@
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td> --}}
                                         <td>
-                                            @if ($laporan->BarangMasukMesinMimaki->penanggung_jawab_id)
+                                            @if ($laporan->BarangMasukMesinMimaki->penanggung_jawab_id == null)
                                             Belum melakukan pengisian data
                                             @elseif ($laporan->BarangMasukMesinMimaki->UserMesinAtexco)
-                                            {{ ($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
+                                            {{ strtoupper($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
                                             @endif
                                         </td>
                                         <td>
@@ -927,10 +926,10 @@
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td> --}}
                                         <td>
-                                            @if ($laporan->BarangMasukMesinMimaki->penanggung_jawab_id)
+                                            @if ($laporan->BarangMasukMesinMimaki->penanggung_jawab_id == null)
                                             Belum melakukan pengisian data
                                             @elseif ($laporan->BarangMasukMesinMimaki->UserMesinAtexco)
-                                            {{ ($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
+                                            {{ strtoupper($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
                                             @endif
                                         </td>
                                         <td>
@@ -961,10 +960,10 @@
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td> --}}
                                         <td>
-                                            @if ($laporan->BarangMasukMesinMimaki->penanggung_jawab_id)
+                                            @if ($laporan->BarangMasukMesinMimaki->penanggung_jawab_id == null)
                                             Belum melakukan pengisian data
                                             @elseif ($laporan->BarangMasukMesinMimaki->UserMesinAtexco)
-                                            {{ ($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
+                                            {{ strtoupper($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
                                             @endif
                                         </td>
                                         <td>
@@ -995,10 +994,10 @@
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td> --}}
                                         <td>
-                                            @if ($laporan->BarangMasukMesinMimaki->penanggung_jawab_id)
+                                            @if ($laporan->BarangMasukMesinMimaki->penanggung_jawab_id == null)
                                             Belum melakukan pengisian data
                                             @elseif ($laporan->BarangMasukMesinMimaki->UserMesinAtexco)
-                                            {{ ($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
+                                            {{ strtoupper($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
                                             @endif
                                         </td>
                                         <td>
