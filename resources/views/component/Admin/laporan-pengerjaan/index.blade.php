@@ -177,8 +177,8 @@
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
-                                                pada Deadline @endif </td>
-                                        <td> --}}
+                                                pada Deadline @endif </td> --}}
+                                        <td>
                                             {{ strtoupper($laporan->BarangMasukLayout->UserLayout->name) }}
                                         </td>
                                         <td>
@@ -447,9 +447,13 @@
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
-                                                pada Deadline @endif </td>
-                                        <td> --}}
+                                                pada Deadline @endif </td> --}}
+                                        <td>
+                                            @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id)
+                                            Belum melakukan pengisian data
+                                            @else
                                             {{ ($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
+                                            @endif
                                         </td>
                                         <td>
                                             <img style="height: 200px; width: 200px"
@@ -477,9 +481,13 @@
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
-                                                pada Deadline @endif </td>
-                                        <td> --}}
+                                                pada Deadline @endif </td> --}}
+                                        <td>
+                                            @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id)
+                                            Belum melakukan pengisian data
+                                            @else
                                             {{ ($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
+                                            @endif
                                         </td>
                                         <td>
                                             <img style="height: 200px; width: 200px"
@@ -507,9 +515,13 @@
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
-                                                pada Deadline @endif </td>
-                                        <td> --}}
+                                                pada Deadline @endif </td> --}}
+                                        <td>
+                                            @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id)
+                                            Belum melakukan pengisian data
+                                            @else
                                             {{ ($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
+                                            @endif
                                         </td>
                                         <td>
                                             <img style="height: 200px; width: 200px"
@@ -537,9 +549,13 @@
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
-                                                pada Deadline @endif </td>
-                                        <td> --}}
+                                                pada Deadline @endif </td> --}}
+                                        <td>
+                                            @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id)
+                                            Belum melakukan pengisian data
+                                            @else
                                             {{ ($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
+                                            @endif
                                         </td>
                                         <td>
                                             <img style="height: 200px; width: 200px"
@@ -567,9 +583,13 @@
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
-                                                pada Deadline @endif </td>
-                                        <td> --}}
+                                                pada Deadline @endif </td> --}}
+                                        <td>
+                                            @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id)
+                                            Belum melakukan pengisian data
+                                            @else
                                             {{ ($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
+                                            @endif
                                         </td>
                                         <td>
                                             <img style="height: 200px; width: 200px"
@@ -597,9 +617,13 @@
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
-                                                pada Deadline @endif </td>
-                                        <td> --}}
+                                                pada Deadline @endif </td> --}}
+                                        <td>
+                                            @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id)
+                                            Belum melakukan pengisian data
+                                            @else
                                             {{ ($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
+                                            @endif
                                         </td>
                                         <td>
                                             <img style="height: 200px; width: 200px"
@@ -627,9 +651,13 @@
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
-                                                pada Deadline @endif </td>
-                                        <td> --}}
+                                                pada Deadline @endif </td> --}}
+                                        <td>
+                                            @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id)
+                                            Belum melakukan pengisian data
+                                            @else
                                             {{ ($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
+                                            @endif
                                         </td>
                                         <td>
                                             <img style="height: 200px; width: 200px"
@@ -657,9 +685,13 @@
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
-                                                pada Deadline @endif </td>
-                                        <td> --}}
+                                                pada Deadline @endif </td> --}}
+                                        <td>
+                                            @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id)
+                                            Belum melakukan pengisian data
+                                            @else
                                             {{ ($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
+                                            @endif
                                         </td>
                                         <td>
                                             <img style="height: 200px; width: 200px"
@@ -718,13 +750,17 @@
                                             @else
                                             @endif
                                         </td>
-                                        {{-- <td>
+                                        <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td> --}}
+                                        <td>
+                                            @if ($laporan->BarangMasukMesinMimaki->penanggung_jawab_id)
+                                            Belum melakukan pengisian data
+                                            @else
                                             {{ ($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
+                                            @endif
                                         </td>
                                         <td>
                                             <img style="height: 200px; width: 200px"
@@ -752,9 +788,13 @@
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
-                                                pada Deadline @endif </td>
-                                        <td> --}}
+                                                pada Deadline @endif </td> --}}
+                                        <td>
+                                            @if ($laporan->BarangMasukMesinMimaki->penanggung_jawab_id)
+                                            Belum melakukan pengisian data
+                                            @else
                                             {{ ($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
+                                            @endif
                                         </td>
                                         <td>
                                             <img style="height: 200px; width: 200px"
@@ -782,9 +822,13 @@
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
-                                                pada Deadline @endif </td>
-                                        <td> --}}
+                                                pada Deadline @endif </td> --}}
+                                        <td>
+                                            @if ($laporan->BarangMasukMesinMimaki->penanggung_jawab_id)
+                                            Belum melakukan pengisian data
+                                            @else
                                             {{ ($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
+                                            @endif
                                         </td>
                                         <td>
                                             <img style="height: 200px; width: 200px"
@@ -812,9 +856,13 @@
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
-                                                pada Deadline @endif </td>
-                                        <td> --}}
+                                                pada Deadline @endif </td> --}}
+                                        <td>
+                                            @if ($laporan->BarangMasukMesinMimaki->penanggung_jawab_id)
+                                            Belum melakukan pengisian data
+                                            @else
                                             {{ ($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
+                                            @endif
                                         </td>
                                         <td>
                                             <img style="height: 200px; width: 200px"
@@ -842,9 +890,13 @@
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
-                                                pada Deadline @endif </td>
-                                        <td> --}}
+                                                pada Deadline @endif </td> --}}
+                                        <td>
+                                            @if ($laporan->BarangMasukMesinMimaki->penanggung_jawab_id)
+                                            Belum melakukan pengisian data
+                                            @else
                                             {{ ($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
+                                            @endif
                                         </td>
                                         <td>
                                             <img style="height: 200px; width: 200px"
@@ -872,9 +924,13 @@
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
-                                                pada Deadline @endif </td>
-                                        <td> --}}
+                                                pada Deadline @endif </td> --}}
+                                        <td>
+                                            @if ($laporan->BarangMasukMesinMimaki->penanggung_jawab_id)
+                                            Belum melakukan pengisian data
+                                            @else
                                             {{ ($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
+                                            @endif
                                         </td>
                                         <td>
                                             <img style="height: 200px; width: 200px"
@@ -902,9 +958,13 @@
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
-                                                pada Deadline @endif </td>
-                                        <td> --}}
+                                                pada Deadline @endif </td> --}}
+                                        <td>
+                                            @if ($laporan->BarangMasukMesinMimaki->penanggung_jawab_id)
+                                            Belum melakukan pengisian data
+                                            @else
                                             {{ ($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
+                                            @endif
                                         </td>
                                         <td>
                                             <img style="height: 200px; width: 200px"
@@ -932,9 +992,13 @@
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
-                                                pada Deadline @endif </td>
-                                        <td> --}}
+                                                pada Deadline @endif </td> --}}
+                                        <td>
+                                            @if ($laporan->BarangMasukMesinMimaki->penanggung_jawab_id)
+                                            Belum melakukan pengisian data
+                                            @else
                                             {{ ($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
+                                            @endif
                                         </td>
                                         <td>
                                             <img style="height: 200px; width: 200px"
