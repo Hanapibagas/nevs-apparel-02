@@ -156,11 +156,9 @@
                                                 } @endphp </th> --}}
                                         <th>
                                             @php
-                                            use Carbon\Carbon;
-
-                                            $deadline = Carbon::parse($laporan->BarangMasukLayout->deadline);
+                                            $deadline = \Carbon\Carbon::parse($laporan->BarangMasukLayout->deadline);
                                             $selesai = $laporan->BarangMasukLayout->selesai ?
-                                            Carbon::parse($laporan->BarangMasukLayout->selesai) : null;
+                                            \Carbon\Carbon::parse($laporan->BarangMasukLayout->selesai) : null;
 
                                             if ($selesai) {
                                             if ($selesai->gt($deadline)) {
