@@ -142,7 +142,7 @@
                                     <tr>
                                         <th>Deadline</th>
                                         <th>Selesai</th>
-                                        {{-- <th>
+                                        <th>
                                             @php
                                             $deadline = \Carbon\Carbon::parse($laporan->BarangMasukLayout->deadline);
                                             $selesai = $laporan->BarangMasukLayout->selesai ?
@@ -153,7 +153,7 @@
                                             echo "<p>Lebih dari Deadline:</p>";
                                             } elseif ($selesai < $deadline) { echo "<p>Kurang dari Deadline</p>" ; }
                                                 else { echo "<p>Selesai tepat pada Deadline</p>" ; } } else { echo "" ;
-                                                } @endphp </th> --}}
+                                                } @endphp </th>
                                         <th>Nama layout</th>
                                         <th>Panjang kertas</th>
                                         <th>Panjang poly/DTF</th>
