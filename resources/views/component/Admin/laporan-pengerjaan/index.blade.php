@@ -450,7 +450,8 @@
                                                 pada Deadline @endif </td> --}}
                                         <td>
                                             @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id)
-                                            Belum melakukan pengisian data
+                                            {{-- Belum melakukan pengisian data --}}
+                                            {{ strtoupper($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
                                             @elseif ($laporan->BarangMasukMesinAtexco->UserMesinAtexco)
                                             {{ strtoupper($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
                                             @endif
