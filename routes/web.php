@@ -29,7 +29,7 @@ Route::get('/migrate-fresh-seed', function () {
 });
 
 
-Route::middleware(['auth', 'checkroll:super_admin,jahit,finis,cut,disainer,layout,cs,atexco,mimaki,pres_kain,laser_cut,manual_cut,sortir,jahit_baju,jahit_celana,press_tag,packing'])->group(function () {
+Route::middleware(['auth', 'checkroll:super_admin,jahit,finis,cut,disainer,layout,cs,atexco,mimaki,pres_kain,laser_cut,manual_cut,sortir,jahit_baju,jahit_celana,press_tag,packing,admin'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('indexHome');
     Route::get('/filtering-ahit', [HomeController::class, 'fiterTotaljahit'])->name('fiterTotaljahit');
 
@@ -38,6 +38,8 @@ Route::middleware(['auth', 'checkroll:super_admin,jahit,finis,cut,disainer,layou
     Route::get('/laporan-details', [HomeController::class, 'getDetailLaporan'])->name('getDetailLaporan');
     Route::get('/pemabagain-komisi', [HomeController::class, 'getPembagianKomisi'])->name('getPembagianKomisi');
     Route::get('/filtering-pemabagain-komisi', [HomeController::class, 'getFilterPembagianKomisi'])->name('getFilterPembagianKomisi');
+
+    Route::get('admin-akun', [HomeController::class, 'getAdmin'])->name('getAdmin');
 
     Route::get('/costumer-service-admin', [HomeController::class, 'getCostumerSevices'])->name('getIndexCs');
     Route::post('/costumer-service-admin/update', [HomeController::class, 'postUpdatePirmission'])->name('postPirmission');

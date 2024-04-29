@@ -74,6 +74,7 @@
                                         href="{{ route('getCetakDataLkJahit', $mesins->BarangMasukCs->id) }}"
                                         class="btn btn-danger">
                                         <i class="menu-icon tf-icons bx bxs-file-pdf"></i>Show LK</a>
+                                    @if (Auth::user()->permission_create == 1)
                                     @if ($mesins->serah_terima == 0)
                                     <a href="{{ route('getInputLaporanJahit' , $mesins->id) }}" class="btn btn-info">
                                         <i class="menu-icon tf-icons bx bxs-inbox"></i>Input Laporan Serah</a>
@@ -81,6 +82,7 @@
                                     <a href="{{ route('getInputLaporanJahitTerima' , $mesins->id) }}"
                                         class="btn btn-info">
                                         <i class="menu-icon tf-icons bx bxs-inbox"></i>Input Laporan Terima</a>
+                                    @endif
                                     @endif
                                 </td>
                             </tr>

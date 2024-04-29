@@ -79,8 +79,10 @@
                                     <a href="storage/{{ $mesins->BarangMasukLayout->file_corel_layout }}"
                                         class="btn btn-success" download>
                                         <i class="menu-icon tf-icons bx bxs-download"></i>Download File RAR</a>
+                                    @if (Auth::user()->permission_create == 1)
                                     <a href="{{ route('getInputLaporanAtxco' , $mesins->id) }}" class="btn btn-info">
                                         <i class="menu-icon tf-icons bx bxs-inbox"></i>Input Laporan</a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

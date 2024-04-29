@@ -84,9 +84,11 @@
                                     <a href="storage/{{ $disainers->BarangMasukCsLK->file_corel_disainer }}"
                                         class="btn btn-success" download>
                                         <i class="menu-icon tf-icons bx bxs-download"></i>Download File Corel</a>
+                                    @if (Auth::user()->permission_create == 1)
                                     <a href="{{ route('getCreateLaporanLkLayout' , $disainers->id) }}"
                                         class="btn btn-info">
                                         <i class="menu-icon tf-icons bx bxs-inbox"></i>Input Laporan</a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

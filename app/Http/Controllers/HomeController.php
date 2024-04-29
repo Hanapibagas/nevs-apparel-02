@@ -188,6 +188,14 @@ class HomeController extends Controller
         return view('component.Admin.costumer-service-admin.index', compact('userCs'));
     }
 
+    public function getAdmin()
+    {
+        $userLaytout = User::with('PasswordUser')->where('roles', 'admin')->get();
+        // return response()->json($userCs);
+
+        return view('component.Admin.admin-admin.index', compact('userLaytout'));
+    }
+
     public function getDesainer()
     {
         $userDesainer = User::with('PasswordUser')->where('roles', 'disainer')->get();

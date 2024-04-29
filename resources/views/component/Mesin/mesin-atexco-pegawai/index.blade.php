@@ -57,11 +57,13 @@
                                     </span>
                                 </td>
                                 <td>
+                                    @if (Auth::user()->permission_create == 1)
                                     <a data-bs-toggle="modal" data-bs-target="#modalCenter{{ $mesins->id }}"
                                         style="cursor: pointer; text-decoration: none; color: white"
                                         class="btn btn-warning">
                                         <i class="menu-icon tf-icons bx bx-show"></i>
                                         Detail</a>
+                                    @endif
                                 </td>
                             </tr>
                             <div class="modal fade" id="modalCenter{{ $mesins->id }}" tabindex="-1" aria-hidden="true">

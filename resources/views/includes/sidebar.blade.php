@@ -1,5 +1,6 @@
 @php
 $isActive = request()->routeIs('getIndexCs') ||
+$isActive = request()->routeIs('getAdmin') ||
 $isActive = request()->routeIs('getIndexDesainer') ||
 $isActive = request()->routeIs('getIndexLayout') ||
 $isActive = request()->routeIs('getIndexMesinAtexco') ||
@@ -63,6 +64,11 @@ $activeList = $listData ? 'active' : '';
                 <div data-i18n="Account Settings">Account Settings</div>
             </a>
             <ul class="menu-sub">
+                <li class="menu-item {{ request()->is('admin-akun')  ? 'active' : '' }}">
+                    <a href="{{ route('getAdmin') }}" class="menu-link">
+                        <div data-i18n="Account">Admin</div>
+                    </a>
+                </li>
                 <li class="menu-item {{ request()->is('costumer-service-admin')  ? 'active' : '' }}">
                     <a href="{{ route('getIndexCs') }}" class="menu-link">
                         <div data-i18n="Account">Costumer Service</div>
@@ -184,6 +190,122 @@ $activeList = $listData ? 'active' : '';
                 <span style="margin-left: 10px; margin-bottom: 20px;" class="badge bg-label-success">{{ $dataLk
                     }}</span>
             </a>
+        </li>
+        <li class="menu-item {{ request()->is('update-password')  ? 'active' : '' }}">
+            <a href="{{ route('getUpdatePassword') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-cog"></i>
+                <div data-i18n="Analytics">Update Password</div>
+            </a>
+        </li>
+        @endif
+
+        @if (Auth::user()->roles == 'admin')
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Admin</span>
+        </li>
+        <li class="menu-item {{ request()->is('laporan')  ? 'active' : '' }}">
+            <a href="{{ route('getIndexLaporan') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-list-ul"></i>
+                <div data-i18n="Analytics">Laporan pengerjaan</div>
+            </a>
+        </li>
+        <li
+            class="menu-item {{ request()->is('pemabagain-komisi') || request()->is('filtering-pemabagain-komisi*')  ? 'active' : '' }}">
+            <a href="{{ route('getPembagianKomisi') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-list-ul"></i>
+                <div data-i18n="Analytics">Laporan pembagian komisi</div>
+            </a>
+        </li>
+        <li class="menu-item {{ $activeClass }} {{ $active }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <div data-i18n="Account Settings">Account Settings</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ request()->is('admin-akun')  ? 'active' : '' }}">
+                    <a href="{{ route('getAdmin') }}" class="menu-link">
+                        <div data-i18n="Account">Admin</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->is('costumer-service-admin')  ? 'active' : '' }}">
+                    <a href="{{ route('getIndexCs') }}" class="menu-link">
+                        <div data-i18n="Account">Costumer Service</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->is('desainer-admin')  ? 'active' : '' }}">
+                    <a href="{{ route('getIndexDesainer') }}" class="menu-link">
+                        <div data-i18n="Notifications">Desainer</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->is('layout-admin')  ? 'active' : '' }}">
+                    <a href="{{ route('getIndexLayout') }}" class="menu-link">
+                        <div data-i18n="Connections">Layout</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->is('mesin-atexco-admin')  ? 'active' : '' }}">
+                    <a href="{{ route('getIndexMesinAtexco') }}" class="menu-link">
+                        <div data-i18n="Connections">Mesin Atxco</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->is('mesin-mimaki-admin')  ? 'active' : '' }}">
+                    <a href="{{ route('getIndexMesinMimaki') }}" class="menu-link">
+                        <div data-i18n="Connections">Mesin Mimaki</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->is('press-kain-admin')  ? 'active' : '' }}">
+                    <a href="{{ route('getPressKain') }}" class="menu-link">
+                        <div data-i18n="Connections">Press Kain</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->is('manual-cut-admin')  ? 'active' : '' }}">
+                    <a href="{{ route('getManualut') }}" class="menu-link">
+                        <div data-i18n="Connections">Manual Cut</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->is('laser-cut-admin')  ? 'active' : '' }}">
+                    <a href="{{ route('getLaserCut') }}" class="menu-link">
+                        <div data-i18n="Connections">Laser Cut</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->is('sortir-admin')  ? 'active' : '' }}">
+                    <a href="{{ route('getSortir') }}" class="menu-link">
+                        <div data-i18n="Connections">Sortir</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->is('jahit-baju-admin')  ? 'active' : '' }}">
+                    <a href="{{ route('getJahitBaju') }}" class="menu-link">
+                        <div data-i18n="Connections">Jahit</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->is('press-tag-admin')  ? 'active' : '' }}">
+                    <a href="{{ route('getPressTag') }}" class="menu-link">
+                        <div data-i18n="Connections">Finish</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-item {{ $activeClassList }} {{ $activeList }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <div data-i18n="Account Settings">Lis Data Bahan</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ request()->is('list-data-jenis-kerah') ? 'active' : '' }}">
+                    <a href="{{ route('getIndexListDataJenisKerah') }}" class="menu-link">
+                        <div data-i18n="Account">Model</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->is('list-data-jenis-lengan') ? 'active' : '' }}">
+                    <a href="{{ route('getIndexListDataJenisLengan') }}" class="menu-link">
+                        <div data-i18n="Notifications">Produksi</div>
+                    </a>
+                </li>
+                {{-- <li class="menu-item {{ request()->is('list-data-jenis-celana') ? 'active' : '' }}">
+                    <a href="{{ route('getIndexListDataJenisCelana') }}" class="menu-link">
+                        <div data-i18n="Connections">Pola celana</div>
+                    </a>
+                </li> --}}
+            </ul>
         </li>
         <li class="menu-item {{ request()->is('update-password')  ? 'active' : '' }}">
             <a href="{{ route('getUpdatePassword') }}" class="menu-link">

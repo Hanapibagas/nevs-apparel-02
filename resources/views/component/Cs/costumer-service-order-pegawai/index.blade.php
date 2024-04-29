@@ -56,6 +56,7 @@
                                 <td><strong style="text-transform: uppercase">{{ $disainers->Users->name }}</strong>
                                 </td>
                                 <td>
+                                    @if (Auth::user()->permission_create == 1)
                                     @if ($disainers->aksi == 0)
                                     <a href="{{ route('getCreateToLkPegawai', $disainers->id) }}"
                                         class="btn btn-primary">
@@ -65,6 +66,7 @@
                                     <button type="button" class="btn btn-warning">
                                         <i class="menu-icon tf-icons bx bx-show"></i>
                                         Lihat Detail</button>
+                                    @endif
                                     @endif
                                 </td>
                             </tr>

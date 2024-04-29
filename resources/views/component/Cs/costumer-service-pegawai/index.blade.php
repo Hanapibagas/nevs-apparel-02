@@ -29,10 +29,12 @@
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Costumer Service</h4>
+        @if (Auth::user()->permission_create == 1)
         <button style="margin-bottom: 20px;" type="button" class="btn btn-primary" data-bs-toggle="modal"
             data-bs-target="#modalCenter">
             Kirim data ke disainer
         </button>
+        @endif
         <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
