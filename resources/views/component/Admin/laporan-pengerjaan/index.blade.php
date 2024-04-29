@@ -132,6 +132,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                @if ($laporan->barang_masuk_layout_id )
                 <div class="card">
                     <h5 class="card-header">Laporan Layout</h5>
                     <div class="card-body">
@@ -141,7 +142,7 @@
                                     <tr>
                                         <th>Deadline</th>
                                         <th>Selesai</th>
-                                        <th>
+                                        {{-- <th>
                                             @php
                                             $deadline = \Carbon\Carbon::parse($laporan->BarangMasukLayout->deadline);
                                             $selesai = $laporan->BarangMasukLayout->selesai ?
@@ -152,7 +153,7 @@
                                             echo "<p>Lebih dari Deadline:</p>";
                                             } elseif ($selesai < $deadline) { echo "<p>Kurang dari Deadline</p>" ; }
                                                 else { echo "<p>Selesai tepat pada Deadline</p>" ; } } else { echo "" ;
-                                                } @endphp </th>
+                                                } @endphp </th> --}}
                                         <th>Nama layout</th>
                                         <th>Panjang kertas</th>
                                         <th>Panjang poly/DTF</th>
@@ -172,12 +173,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ strtoupper($laporan->BarangMasukLayout->UserLayout->name) }}
                                         </td>
                                         <td>
@@ -201,12 +202,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ strtoupper($laporan->BarangMasukLayout->UserLayout->name) }}
                                         </td>
                                         <td>
@@ -230,12 +231,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ strtoupper($laporan->BarangMasukLayout->UserLayout->name) }}
                                         </td>
                                         <td>
@@ -259,12 +260,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ strtoupper($laporan->BarangMasukLayout->UserLayout->name) }}
                                         </td>
                                         <td>
@@ -288,12 +289,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ strtoupper($laporan->BarangMasukLayout->UserLayout->name) }}
                                         </td>
                                         <td>
@@ -317,12 +318,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ strtoupper($laporan->BarangMasukLayout->UserLayout->name) }}
                                         </td>
                                         <td>
@@ -346,12 +347,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ strtoupper($laporan->BarangMasukLayout->UserLayout->name) }}
                                         </td>
                                         <td>
@@ -375,12 +376,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ strtoupper($laporan->BarangMasukLayout->UserLayout->name) }}
                                         </td>
                                         <td>
@@ -396,8 +397,10 @@
                         </div>
                     </div>
                 </div> <br>
+                @endif
 
                 @if(isset($laporan->BarangMasukMesinAtexco))
+                @if ($laporan->barang_masuk_mesin_atexco_id )
                 <div class="card">
                     <h5 class="card-header">Laporan Atexco</h5>
                     <div class="card-body">
@@ -407,7 +410,7 @@
                                     <tr>
                                         <th>Deadline</th>
                                         <th>Selesai</th>
-                                        <th>
+                                        {{-- <th>
                                             @php
                                             $deadline =
                                             \Carbon\Carbon::parse($laporan->BarangMasukMesinAtexco->deadline);
@@ -419,7 +422,7 @@
                                             echo "<p>Lebih dari Deadline:</p>";
                                             } elseif ($selesai < $deadline) { echo "<p>Kurang dari Deadline</p>" ; }
                                                 else { echo "<p>Selesai tepat pada Deadline</p>" ; } } else { echo "" ;
-                                                } @endphp </th>
+                                                } @endphp </th> --}}
                                         <th>Nama penanggung jawab</th>
                                         <th>Foto</th>
                                     </tr>
@@ -440,12 +443,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ ($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
                                         </td>
                                         <td>
@@ -470,12 +473,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ ($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
                                         </td>
                                         <td>
@@ -500,12 +503,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ ($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
                                         </td>
                                         <td>
@@ -530,12 +533,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ ($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
                                         </td>
                                         <td>
@@ -560,12 +563,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ ($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
                                         </td>
                                         <td>
@@ -590,12 +593,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ ($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
                                         </td>
                                         <td>
@@ -620,12 +623,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ ($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
                                         </td>
                                         <td>
@@ -650,12 +653,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ ($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
                                         </td>
                                         <td>
@@ -670,7 +673,9 @@
                         </div>
                     </div>
                 </div><br>
+                @endif
                 @elseif(isset($laporan->BarangMasukMesinMimaki))
+                @if ($laporan->barang_masuk_mesin_mimaki_id )
                 <div class="card">
                     <h5 class="card-header">Laporan Mimaki</h5>
                     <div class="card-body">
@@ -680,7 +685,7 @@
                                     <tr>
                                         <th>Deadline</th>
                                         <th>Selesai</th>
-                                        <th>
+                                        {{-- <th>
                                             @php
                                             $deadline =
                                             \Carbon\Carbon::parse($laporan->BarangMasukMesinMimaki->deadline);
@@ -692,7 +697,7 @@
                                             echo "<p>Lebih dari Deadline:</p>";
                                             } elseif ($selesai < $deadline) { echo "<p>Kurang dari Deadline</p>" ; }
                                                 else { echo "<p>Selesai tepat pada Deadline</p>" ; } } else { echo "" ;
-                                                } @endphp </th>
+                                                } @endphp </th> --}}
                                         <th>Nama penanggung jawab</th>
                                         <th>Foto</th>
                                     </tr>
@@ -713,12 +718,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ ($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
                                         </td>
                                         <td>
@@ -743,12 +748,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ ($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
                                         </td>
                                         <td>
@@ -773,12 +778,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ ($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
                                         </td>
                                         <td>
@@ -803,12 +808,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ ($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
                                         </td>
                                         <td>
@@ -833,12 +838,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ ($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
                                         </td>
                                         <td>
@@ -863,12 +868,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ ($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
                                         </td>
                                         <td>
@@ -893,12 +898,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ ($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
                                         </td>
                                         <td>
@@ -923,12 +928,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ ($laporan->BarangMasukMesinMimaki->UserMesinAtexco->name) }}
                                         </td>
                                         <td>
@@ -944,7 +949,9 @@
                     </div>
                 </div><br>
                 @endif
+                @endif
 
+                @if ($laporan->barang_masuk_presskain_id )
                 <div class="card">
                     <h5 class="card-header">Laporan Press Kain</h5>
                     <div class="card-body">
@@ -954,7 +961,7 @@
                                     <tr>
                                         <th>Deadline</th>
                                         <th>Selesai</th>
-                                        <th>
+                                        {{-- <th>
                                             @php
                                             $deadline = \Carbon\Carbon::parse($laporan->BarangMasukPressKain->deadline);
                                             $selesai = $laporan->BarangMasukPressKain->selesai ?
@@ -965,7 +972,7 @@
                                             echo "<p>Lebih dari Deadline:</p>";
                                             } elseif ($selesai < $deadline) { echo "<p>Kurang dari Deadline</p>" ; }
                                                 else { echo "<p>Selesai tepat pada Deadline</p>" ; } } else { echo "" ;
-                                                } @endphp </th>
+                                                } @endphp </th> --}}
                                         <th>kain</th>
                                         <th>Berat</th>
                                         <th>Foto</th>
@@ -986,12 +993,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ $laporan->BarangMasukPressKain->kain }}
                                         </td>
                                         <td>
@@ -1018,12 +1025,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ $laporan->BarangMasukPressKain->kain_pelatih }}
                                         </td>
                                         <td>
@@ -1050,12 +1057,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ $laporan->BarangMasukPressKain->kain_kiper }}
                                         </td>
                                         <td>
@@ -1082,12 +1089,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ $laporan->BarangMasukPressKain->kain_1 }}
                                         </td>
                                         <td>
@@ -1114,12 +1121,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ $laporan->BarangMasukPressKain->kain_celana_player }}
                                         </td>
                                         <td>
@@ -1146,12 +1153,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ $laporan->BarangMasukPressKain->kain_celana_pelatih }}
                                         </td>
                                         <td>
@@ -1178,12 +1185,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ $laporan->BarangMasukPressKain->kain_celana_kiper }}
                                         </td>
                                         <td>
@@ -1210,12 +1217,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ $laporan->BarangMasukPressKain->kain_celana_1 }}
                                         </td>
                                         <td>
@@ -1233,7 +1240,9 @@
                         </div>
                     </div>
                 </div><br>
+                @endif
 
+                @if ($laporan->barang_masuk_lasercut_id )
                 <div class="card">
                     <h5 class="card-header">Laporan Laser Cut</h5>
                     <div class="card-body">
@@ -1243,7 +1252,7 @@
                                     <tr>
                                         <th>Deadline</th>
                                         <th>Selesai</th>
-                                        <th>
+                                        {{-- <th>
                                             @php
                                             $deadline = \Carbon\Carbon::parse($laporan->BarangMasukLaserCut->deadline);
                                             $selesai = $laporan->BarangMasukLaserCut->selesai ?
@@ -1254,7 +1263,7 @@
                                             echo "<p>Lebih dari Deadline:</p>";
                                             } elseif ($selesai < $deadline) { echo "<p>Kurang dari Deadline</p>" ; }
                                                 else { echo "<p>Selesai tepat pada Deadline</p>" ; } } else { echo "" ;
-                                                } @endphp </th>
+                                                } @endphp </th> --}}
                                         <th>Foto</th>
                                     </tr>
                                 </thead>
@@ -1274,12 +1283,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             <img style="height: 200px; width: 200px"
                                                 src="{{ Storage::url($laporan->BarangMasukLaserCut->file_foto) }}"
                                                 alt="" srcset="">
@@ -1301,12 +1310,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             <img style="height: 200px; width: 200px"
                                                 src="{{ Storage::url($laporan->BarangMasukLaserCut->file_foto_pelatih) }}"
                                                 alt="" srcset="">
@@ -1328,12 +1337,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             <img style="height: 200px; width: 200px"
                                                 src="{{ Storage::url($laporan->BarangMasukLaserCut->file_foto_kiper) }}"
                                                 alt="" srcset="">
@@ -1355,12 +1364,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             <img style="height: 200px; width: 200px"
                                                 src="{{ Storage::url($laporan->BarangMasukLaserCut->file_foto_1) }}"
                                                 alt="" srcset="">
@@ -1382,12 +1391,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             <img style="height: 200px; width: 200px"
                                                 src="{{ Storage::url($laporan->BarangMasukLaserCut->file_foto_celana_player) }}"
                                                 alt="" srcset="">
@@ -1409,12 +1418,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             <img style="height: 200px; width: 200px"
                                                 src="{{ Storage::url($laporan->BarangMasukLaserCut->file_foto_celana_pelatih) }}"
                                                 alt="" srcset="">
@@ -1436,12 +1445,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             <img style="height: 200px; width: 200px"
                                                 src="{{ Storage::url($laporan->BarangMasukLaserCut->file_foto_celana_kiper) }}"
                                                 alt="" srcset="">
@@ -1463,12 +1472,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             <img style="height: 200px; width: 200px"
                                                 src="{{ Storage::url($laporan->BarangMasukLaserCut->file_foto_celana_1) }}"
                                                 alt="" srcset="">
@@ -1480,6 +1489,7 @@
                         </div>
                     </div>
                 </div><br>
+                @endif
 
                 @if ($laporan->barang_masuk_manualcut_id)
                 <div class="card">
@@ -1491,7 +1501,7 @@
                                     <tr>
                                         <th>Deadline</th>
                                         <th>Selesai</th>
-                                        <th>
+                                        {{-- <th>
                                             @php
                                             $deadline = \Carbon\Carbon::parse($laporan->BarangMasukManualcut->deadline);
                                             $selesai = $laporan->BarangMasukManualcut->selesai ?
@@ -1502,7 +1512,7 @@
                                             echo "<p>Lebih dari Deadline:</p>";
                                             } elseif ($selesai < $deadline) { echo "<p>Kurang dari Deadline</p>" ; }
                                                 else { echo "<p>Selesai tepat pada Deadline</p>" ; } } else { echo "" ;
-                                                } @endphp </th>
+                                                } @endphp </th> --}}
                                         <th>Foto</th>
                                     </tr>
                                 </thead>
@@ -1523,12 +1533,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             <img style="height: 200px; width: 200px"
                                                 src="{{ Storage::url($laporan->BarangMasukManualcut->file_foto) }}"
                                                 alt="" srcset="">
@@ -1551,12 +1561,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             <img style="height: 200px; width: 200px"
                                                 src="{{ Storage::url($laporan->BarangMasukManualcut->file_foto_pelatih) }}"
                                                 alt="" srcset="">
@@ -1579,12 +1589,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             <img style="height: 200px; width: 200px"
                                                 src="{{ Storage::url($laporan->BarangMasukManualcut->file_foto_kiper) }}"
                                                 alt="" srcset="">
@@ -1607,12 +1617,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             <img style="height: 200px; width: 200px"
                                                 src="{{ Storage::url($laporan->BarangMasukManualcut->file_foto_1) }}"
                                                 alt="" srcset="">
@@ -1635,12 +1645,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             <img style="height: 200px; width: 200px"
                                                 src="{{ Storage::url($laporan->BarangMasukManualcut->file_foto_celana_player) }}"
                                                 alt="" srcset="">
@@ -1663,12 +1673,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             <img style="height: 200px; width: 200px"
                                                 src="{{ Storage::url($laporan->BarangMasukManualcut->file_foto_celana_pelatih) }}"
                                                 alt="" srcset="">
@@ -1691,12 +1701,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             <img style="height: 200px; width: 200px"
                                                 src="{{ Storage::url($laporan->BarangMasukManualcut->file_foto_celana_kiper) }}"
                                                 alt="" srcset="">
@@ -1719,12 +1729,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             <img style="height: 200px; width: 200px"
                                                 src="{{ Storage::url($laporan->BarangMasukManualcut->file_foto_celana_1) }}"
                                                 alt="" srcset="">
@@ -1747,7 +1757,7 @@
                                     <tr>
                                         <th>Deadline</th>
                                         <th>Selesai</th>
-                                        <th>
+                                        {{-- <th>
                                             @php
                                             $deadline = \Carbon\Carbon::parse($laporan->BarangMasukSortir->deadline);
                                             $selesai = $laporan->BarangMasukSortir->selesai ?
@@ -1758,7 +1768,7 @@
                                             echo "<p>Lebih dari Deadline:</p>";
                                             } elseif ($selesai < $deadline) { echo "<p>Kurang dari Deadline</p>" ; }
                                                 else { echo "<p>Selesai tepat pada Deadline</p>" ; } } else { echo "" ;
-                                                } @endphp </th>
+                                                } @endphp </th> --}}
                                         <th>No eror</th>
                                         <th>Panjang kertas</th>
                                         <th>Berat</th>
@@ -1780,12 +1790,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ $laporan->BarangMasukSortir->no_error }}
                                         </td>
                                         <td>
@@ -1817,12 +1827,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ $laporan->BarangMasukSortir->no_error_pelatih }}
                                         </td>
                                         <td>
@@ -1854,12 +1864,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ $laporan->BarangMasukSortir->no_error_kiper }}
                                         </td>
                                         <td>
@@ -1891,12 +1901,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ $laporan->BarangMasukSortir->no_error_1 }}
                                         </td>
                                         <td>
@@ -1928,12 +1938,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ $laporan->BarangMasukSortir->no_error_celana_pelayer }}
                                         </td>
                                         <td>
@@ -1965,12 +1975,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ $laporan->BarangMasukSortir->no_error_celana_pelatih }}
                                         </td>
                                         <td>
@@ -2002,12 +2012,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ $laporan->BarangMasukSortir->no_error_celana_kiper }}
                                         </td>
                                         <td>
@@ -2039,12 +2049,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ $laporan->BarangMasukSortir->no_error_celana_1 }}
                                         </td>
                                         <td>
@@ -2078,7 +2088,7 @@
                                     <tr>
                                         <th>Deadline</th>
                                         <th>Selesai</th>
-                                        <th>
+                                        {{-- <th>
                                             @php
                                             $deadline = \Carbon\Carbon::parse($laporan->BarangMasukJahitBaju->deadline);
                                             $selesai = $laporan->BarangMasukJahitBaju->selesai ?
@@ -2089,7 +2099,7 @@
                                             echo "<p>Lebih dari Deadline:</p>";
                                             } elseif ($selesai < $deadline) { echo "<p>Kurang dari Deadline</p>" ; }
                                                 else { echo "<p>Selesai tepat pada Deadline</p>" ; } } else { echo "" ;
-                                                } @endphp </th>
+                                                } @endphp </th> --}}
                                         <th>Nama Penjahit</th>
                                         <th>Foto serah</th>
                                         <th>Foto terima</th>
@@ -2111,12 +2121,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ strtoupper($laporan->BarangMasukJahitBaju->leher) }}
                                         </td>
                                         <td>
@@ -2146,12 +2156,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ strtoupper($laporan->BarangMasukJahitBaju->leher_pelatih) }}
                                         </td>
                                         <td>
@@ -2181,12 +2191,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ strtoupper($laporan->BarangMasukJahitBaju->leher_kiper) }}
                                         </td>
                                         <td>
@@ -2216,12 +2226,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ strtoupper($laporan->BarangMasukJahitBaju->leher_1) }}
                                         </td>
                                         <td>
@@ -2251,12 +2261,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ strtoupper($laporan->BarangMasukJahitBaju->leher_celana_player) }}
                                         </td>
                                         <td>
@@ -2286,12 +2296,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ strtoupper($laporan->BarangMasukJahitBaju->leher_celana_pelatih) }}
                                         </td>
                                         <td>
@@ -2321,12 +2331,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ strtoupper($laporan->BarangMasukJahitBaju->leher_celana_kiper) }}
                                         </td>
                                         <td>
@@ -2356,12 +2366,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             {{ strtoupper($laporan->BarangMasukJahitBaju->leher_celana_1) }}
                                         </td>
                                         <td>
@@ -2391,7 +2401,7 @@
                                     <tr>
                                         <th>Deadline</th>
                                         <th>Selesai</th>
-                                        <th>
+                                        {{-- <th>
                                             @php
                                             $deadline = \Carbon\Carbon::parse($laporan->BarangMasukPressTag->deadline);
                                             $selesai = $laporan->BarangMasukPressTag->selesai ?
@@ -2402,7 +2412,7 @@
                                             echo "<p>Lebih dari Deadline:</p>";
                                             } elseif ($selesai < $deadline) { echo "<p>Kurang dari Deadline</p>" ; }
                                                 else { echo "<p>Selesai tepat pada Deadline</p>" ; } } else { echo "" ;
-                                                } @endphp </th>
+                                                } @endphp </th> --}}
                                         <th>foto</th>
                                     </tr>
                                 </thead>
@@ -2422,12 +2432,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             <img style="height: 200px; width: 200px"
                                                 src="{{ Storage::url($laporan->BarangMasukPressTag->foto) }}" alt=""
                                                 srcset="">
@@ -2449,12 +2459,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             <img style="height: 200px; width: 200px"
                                                 src="{{ Storage::url($laporan->BarangMasukPressTag->foto_pelatih) }}"
                                                 alt="" srcset="">
@@ -2476,12 +2486,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             <img style="height: 200px; width: 200px"
                                                 src="{{ Storage::url($laporan->BarangMasukPressTag->foto_kiper) }}"
                                                 alt="" srcset="">
@@ -2503,12 +2513,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             <img style="height: 200px; width: 200px"
                                                 src="{{ Storage::url($laporan->BarangMasukPressTag->foto_1) }}" alt=""
                                                 srcset="">
@@ -2530,12 +2540,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             <img style="height: 200px; width: 200px"
                                                 src="{{ Storage::url($laporan->BarangMasukPressTag->foto_celana_player) }}"
                                                 alt="" srcset="">
@@ -2557,12 +2567,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             <img style="height: 200px; width: 200px"
                                                 src="{{ Storage::url($laporan->BarangMasukPressTag->foto_celana_pelatih) }}"
                                                 alt="" srcset="">
@@ -2584,12 +2594,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             <img style="height: 200px; width: 200px"
                                                 src="{{ Storage::url($laporan->BarangMasukPressTag->foto_celana_kiper) }}"
                                                 alt="" srcset="">
@@ -2611,12 +2621,12 @@
                                             @else
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($selesai > $deadline)
                                             +{{ $selisihHari }} hari
                                             @elseif($selesai < $deadline) - {{ $selisihHari }} hari @else Selesai tepat
                                                 pada Deadline @endif </td>
-                                        <td>
+                                        <td> --}}
                                             <img style="height: 200px; width: 200px"
                                                 src="{{ Storage::url($laporan->BarangMasukPressTag->foto_celana_1) }}"
                                                 alt="" srcset="">
