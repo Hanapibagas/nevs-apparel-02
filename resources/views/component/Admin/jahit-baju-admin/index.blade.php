@@ -90,6 +90,7 @@
                         <thead>
                             <tr>
                                 <th class="text-nowrap">Nama pegawai</th>
+                                <th class="text-nowrap">Email pegawai</th>
                                 <th class="text-nowrap">Asal pegawai</th>
                                 <th class="text-nowrap">Password pegawai</th>
                                 <th class="text-nowrap text-center">Edit</th>
@@ -104,6 +105,7 @@
                                 @foreach ($userJahitBaju as $user)
                                 <tr>
                                     <td class="text-nowrap">{{ $user->name }}</td>
+                                    <td class="text-nowrap">{{ $user->email }}</td>
                                     <td class="text-nowrap">{{ $user->asal_kota }}</td>
                                     <td class="text-nowrap">
                                         @foreach ($user->PasswordUser as $passwordUser)
