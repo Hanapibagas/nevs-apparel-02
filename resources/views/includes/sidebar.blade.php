@@ -254,7 +254,7 @@ $activeList = $listData ? 'active' : '';
         <li
             class="menu-item {{ request()->is('data-masuk-mesin-atexco') || request()->is('data-masuk-mesin-atexco/*') ? 'active' : '' }}">
             <a href="{{ route('getIndexDataMasukMesinAtexco') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-cog"></i>
+                <i class="menu-icon tf-icons bx bx-cloud-download"></i>
                 <div data-i18n="Analytics">Data Masuk </div>
                 <span style="margin-left: 10px; margin-bottom: 20px;" class="badge bg-label-danger">{{ $dataMasuk
                     }}</span>
@@ -262,7 +262,7 @@ $activeList = $listData ? 'active' : '';
         </li>
         <li class="menu-item {{ request()->is('mesin-atexco')  ? 'active' : '' }}">
             <a href="{{ route('getIndexMesinAtexcoPegawai') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-cog"></i>
+                <i class="menu-icon tf-icons bx bx-cloud-download"></i>
                 <div data-i18n="Analytics">Data Tes Disainer</div>
                 <span style="margin-left: 10px; margin-bottom: 20px;" class="badge bg-label-warning">{{
                     $dataMasuktest
@@ -271,7 +271,7 @@ $activeList = $listData ? 'active' : '';
         </li>
         <li class="menu-item {{ request()->is('data-masuk-mesin-atexco-fix') ? 'active' : '' }}">
             <a href="{{ route('getIndexDataMasukAtexcoFix') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-cog"></i>
+                <i class="menu-icon tf-icons bx bx-check-double"></i>
                 <div data-i18n="Analytics">Data Masuk Fix Mesin</div>
                 <span style="margin-left: 10px; margin-bottom: 20px;" class="badge bg-label-success">{{
                     $dataMasukFix
@@ -299,7 +299,7 @@ $activeList = $listData ? 'active' : '';
         <li
             class="menu-item {{ request()->is('data-masuk-mesin-mimaki') || request()->is('data-masuk-mesin-mimaki/*') ? 'active' : '' }}">
             <a href="{{ route('getIndexDataMasukMimaki') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-detail"></i>
+                <i class="menu-icon tf-icons bx bx-cloud-download"></i>
                 <div data-i18n="Analytics">Data Masuk</div>
                 <span style="margin-left: 10px; margin-bottom: 20px;" class="badge bg-label-danger">{{ $dataMasuk
                     }}</span>
@@ -307,7 +307,7 @@ $activeList = $listData ? 'active' : '';
         </li>
         <li class="menu-item {{ request()->is('mesin-mimaki') ? 'active' : '' }}">
             <a href="{{ route('getIndexMesinMimakiPegawai') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-detail"></i>
+                <i class="menu-icon tf-icons bx bx-cloud-download"></i>
                 <div data-i18n="Analytics">Data Tes Disainer</div>
                 <span style="margin-left: 10px; margin-bottom: 20px;" class="badge bg-label-warning">{{ $dataMasuktest
                     }}</span>
@@ -315,7 +315,7 @@ $activeList = $listData ? 'active' : '';
         </li>
         <li class="menu-item {{ request()->is('data-masuk-mesin-mimaki-fix') ? 'active' : '' }}">
             <a href="{{ route('getIndexDataMasukMimakiFix') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-detail"></i>
+                <i class="menu-icon tf-icons bx bx-check-double"></i>
                 <div data-i18n="Analytics">Data Masuk Fix Mesin</div>
                 <span style="margin-left: 10px; margin-bottom: 20px;" class="badge bg-label-success">{{
                     $dataMasukFix

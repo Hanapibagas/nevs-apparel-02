@@ -51,7 +51,7 @@ class Laporan extends Model
 
     public function BarangMasukLaserCut()
     {
-        return $this->belongsTo(Cut::class, 'cut_id');
+        return $this->belongsTo(DataLaserCut::class, 'barang_masuk_lasercut_id');
     }
 
     public function BarangMasukManualcut()

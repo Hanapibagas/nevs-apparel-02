@@ -14,141 +14,86 @@
                         @csrf
                         @method('PUT')
                         <div class="row">
-                            @if (!empty($formattedData['player']))
-                            <input type="hidden" id="playerId" name="player_id"
-                                value="{{ $formattedData['player'][0]['id'] }}">
                             <div class="col-md-12">
                                 <div class="card mb-4">
                                     <div class="card-body">
                                         <div class="row">
+                                            @if (!empty($formattedData['player']))
+                                            <input type="hidden" id="playerId" name="player_id"
+                                                value="{{ $formattedData['player'][0]['id'] }}">
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">Foto</label>
                                                 <input required class="form-control" type="file" id="firstName"
                                                     name="foto" required autofocus />
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
-                            @if (!empty($formattedData['pelatih']))
-                            <input type="hidden" id="pelatihId" name="pelatih_id"
-                                value="{{ $formattedData['pelatih'][0]['id'] }}">
-                            <div class="col-md-12">
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <div class="row">
+                                            @endif
+                                            @if (!empty($formattedData['pelatih']))
+                                            <input type="hidden" id="pelatihId" name="pelatih_id"
+                                                value="{{ $formattedData['pelatih'][0]['id'] }}">
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">Foto</label>
                                                 <input required class="form-control" type="file" id="firstName"
                                                     name="foto_pelatih" required autofocus />
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
-                            @if (!empty($formattedData['kiper']))
-                            <input type="hidden" id="kiperId" name="kiper_id"
-                                value="{{ $formattedData['kiper'][0]['id'] }}">
-                            <div class="col-md-12">
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <div class="row">
+                                            @endif
+                                            @if (!empty($formattedData['kiper']))
+                                            <input type="hidden" id="kiperId" name="kiper_id"
+                                                value="{{ $formattedData['kiper'][0]['id'] }}">
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">Foto</label>
                                                 <input required class="form-control" type="file" id="firstName"
                                                     name="foto_kiper" required autofocus />
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
-                            @if (!empty($formattedData['lk_1']))
-                            <input type="hidden" id="lk1Id" name="lk1_id" value="{{ $formattedData['lk_1'][0]['id'] }}">
-                            <div class="col-md-12">
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <div class="row">
+                                            @endif
+                                            @if (!empty($formattedData['lk_1']))
+                                            <input type="hidden" id="lk1Id" name="lk1_id"
+                                                value="{{ $formattedData['lk_1'][0]['id'] }}">
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">Foto</label>
                                                 <input required class="form-control" type="file" id="firstName"
                                                     name="foto_1" required autofocus />
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
-                            @if (!empty($formattedData['celana_player']))
-                            <input type="hidden" id="celanaPlayerId" name="celana_player_id"
-                                value="{{ $formattedData['celana_player'][0]['id'] }}">
-                            <div class="col-md-12">
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <div class="row">
+                                            @endif
+                                            @if (!empty($formattedData['celana_player']))
+                                            <input type="hidden" id="celanaPlayerId" name="celana_player_id"
+                                                value="{{ $formattedData['celana_player'][0]['id'] }}">
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">Foto</label>
                                                 <input required class="form-control" type="file" id="firstName"
                                                     name="foto_celana_pelayer" required autofocus />
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
-                            @if (!empty($formattedData['celana_pelatih']))
-                            <input type="hidden" id="celanaPelatihId" name="celana_pelatih_id"
-                                value="{{ $formattedData['celana_pelatih'][0]['id'] }}">
-                            <div class="col-md-12">
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <div class="row">
+                                            @endif
+                                            @if (!empty($formattedData['celana_pelatih']))
+                                            <input type="hidden" id="celanaPelatihId" name="celana_pelatih_id"
+                                                value="{{ $formattedData['celana_pelatih'][0]['id'] }}">
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">Foto</label>
                                                 <input required class="form-control" type="file" id="firstName"
                                                     name="foto_celana_pelatih" required autofocus />
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
-                            @if (!empty($formattedData['celana_kiper']))
-                            <input type="hidden" id="celanaKiperId" name="celana_kiper_id"
-                                value="{{ $formattedData['celana_kiper'][0]['id'] }}">
-                            <div class="col-md-12">
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <div class="row">
+                                            @endif
+                                            @if (!empty($formattedData['celana_kiper']))
+                                            <input type="hidden" id="celanaKiperId" name="celana_kiper_id"
+                                                value="{{ $formattedData['celana_kiper'][0]['id'] }}">
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">Foto</label>
                                                 <input required class="form-control" type="file" id="firstName"
                                                     name="foto_celana_kiper" required autofocus />
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
-                            @if (!empty($formattedData['celana_1']))
-                            <input type="hidden" id="celana1Id" name="celana_1_id"
-                                value="{{ $formattedData['celana_1'][0]['id'] }}">
-                            <div class="col-md-12">
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <div class="row">
+                                            @endif
+                                            @if (!empty($formattedData['celana_1']))
+                                            <input type="hidden" id="celana1Id" name="celana_1_id"
+                                                value="{{ $formattedData['celana_1'][0]['id'] }}">
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">Foto</label>
                                                 <input required class="form-control" type="file" id="firstName"
                                                     name="foto_celana_1" required autofocus />
                                             </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            @endif
                         </div>
                         <button id="submitButton" type="submit" class="btn btn-primary">
                             <i id="submitIcon" class="menu-icon tf-icons bx bx-send"></i>

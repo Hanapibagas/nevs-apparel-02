@@ -349,22 +349,29 @@ class HomeController extends Controller
             'BarangMasukCs.UsersLk',
             'BarangMasukCs.BarangMasukDisainer',
             'BarangMasukLayout',
-            'BarangMasukLayout.UserLayout',
             'BarangMasukMesinAtexco',
             'BarangMasukMesinMimaki',
             'BarangMasukPressKain',
             'BarangMasukLaserCut',
-            'BarangMasukLaserCut.UserLaserCut',
             'BarangMasukManualcut',
             'BarangMasukSortir',
             'BarangMasukJahitBaju',
-            'BarangMasukJahitCelana',
             'BarangMasukPressTag',
-            'BarangMasukPacking',
-        )->get();
+        )
+            ->get();
 
         // return response()->json($laporans);
         return view('component.Admin.laporan-pengerjaan.index', compact('laporans'));
+    }
+
+    public function getDetailLaporan()
+    {
+        $laporans = Laporan::with('BarangMasukLayout')->get();
+
+        return response()->json($laporans);
+
+
+        return view('component.Admin.laporan-pengerjaan.details', compact('laporans'));
     }
 
     public function postUpdatePirmission(Request $request)

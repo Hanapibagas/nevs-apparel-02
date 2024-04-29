@@ -311,7 +311,7 @@ class SortirController extends Controller
                 'berat_celana_kiper' => $request->berat_celana_kiper,
                 'bahan_celana_kiper' => $request->bahan_celana_kiper,
                 'foto_celana_kiper' =>  $fileGambar,
-                'tanda_telah_mengerjakan' => 0
+                'tanda_telah_mengerjakan' => 1
             ]);
         }
         if ($request->celana_1_id) {

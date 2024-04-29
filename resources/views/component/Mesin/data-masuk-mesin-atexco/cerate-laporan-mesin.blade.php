@@ -15,126 +15,133 @@
                         @method('PUT')
                         <div class="row">
                             <div class="col-md-12">
-                                @if (!empty($formattedData['player']))
                                 <div class="card mb-4">
-                                    <input type="hidden" id="playerId" name="player_id"
-                                        value="{{ $formattedData['player'][0]['id'] }}">
                                     <div class="card-body">
                                         <div class="row">
+                                            @if (!empty($formattedData['player']))
                                             <div class="mb-3 col-md-6">
+                                                <input type="hidden" id="playerId" name="player_id"
+                                                    value="{{ $formattedData['player'][0]['id'] }}">
                                                 <label for="firstName" class="form-label">File foto</label>
                                                 <input class="form-control" name="file_foto" type="file" id="firstName"
                                                     required />
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endif
-                                @if (!empty($formattedData['pelatih']))
-                                <div class="card mb-4">
-                                    <input type="hidden" id="pelatihId" name="pelatih_id"
-                                        value="{{ $formattedData['pelatih'][0]['id'] }}">
-                                    <div class="card-body">
-                                        <div class="row">
+                                            @endif
+                                            @if (!empty($formattedData['pelatih']))
                                             <div class="mb-3 col-md-6">
+                                                <input type="hidden" id="pelatihId" name="pelatih_id"
+                                                    value="{{ $formattedData['pelatih'][0]['id'] }}">
                                                 <label for="firstName" class="form-label">File foto</label>
                                                 <input class="form-control" name="file_foto_pelatih" type="file"
                                                     id="firstName" required />
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endif
-                                @if (!empty($formattedData['kiper']))
-                                <div class="card mb-4">
-                                    <input type="hidden" id="kiperId" name="kiper_id"
-                                        value="{{ $formattedData['kiper'][0]['id'] }}">
-                                    <div class="card-body">
-                                        <div class="row">
+                                            @endif
+                                            @if (!empty($formattedData['kiper']))
                                             <div class="mb-3 col-md-6">
+                                                <input type="hidden" id="kiperId" name="kiper_id"
+                                                    value="{{ $formattedData['kiper'][0]['id'] }}">
                                                 <label for="firstName" class="form-label">File foto</label>
                                                 <input class="form-control" name="file_foto_kiper" type="file"
                                                     id="firstName" required />
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endif
-                                @if (!empty($formattedData['lk_1']))
-                                <div class="card mb-4">
-                                    <input type="hidden" id="lk1Id" name="lk1_id"
-                                        value="{{ $formattedData['lk_1'][0]['id'] }}">
-                                    <div class="card-body">
-                                        <div class="row">
+                                            @endif
+                                            @if (!empty($formattedData['lk_1']))
                                             <div class="mb-3 col-md-6">
+                                                <input type="hidden" id="lk1Id" name="lk1_id"
+                                                    value="{{ $formattedData['lk_1'][0]['id'] }}">
                                                 <label for="firstName" class="form-label">File foto</label>
                                                 <input class="form-control" name="file_foto_1" type="file"
                                                     id="firstName" required />
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endif
-                                @if (!empty($formattedData['celana_player']))
-                                <div class="card mb-4">
-                                    <input type="hidden" id="celanaPlayerId" name="celana_player_id"
-                                        value="{{ $formattedData['celana_player'][0]['id'] }}">
-                                    <div class="card-body">
-                                        <div class="row">
+                                            @endif
+                                            @if (!empty($formattedData['celana_player']))
                                             <div class="mb-3 col-md-6">
+                                                <input type="hidden" id="celanaPlayerId" name="celana_player_id"
+                                                    value="{{ $formattedData['celana_player'][0]['id'] }}">
                                                 <label for="firstName" class="form-label">File foto</label>
                                                 <input class="form-control" name="file_foto_celana_player" type="file"
                                                     id="firstName" required />
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endif
-                                @if (!empty($formattedData['celana_pelatih']))
-                                <div class="card mb-4">
-                                    <input type="hidden" id="celanaPelatihId" name="celana_pelatih_id"
-                                        value="{{ $formattedData['celana_pelatih'][0]['id'] }}">
-                                    <div class="card-body">
-                                        <div class="row">
+                                            @endif
+                                            @if (!empty($formattedData['celana_pelatih']))
                                             <div class="mb-3 col-md-6">
+                                                <input type="hidden" id="celanaPelatihId" name="celana_pelatih_id"
+                                                    value="{{ $formattedData['celana_pelatih'][0]['id'] }}">
                                                 <label for="firstName" class="form-label">File foto</label>
                                                 <input class="form-control" name="file_foto_celana_pelatih" type="file"
                                                     id="firstName" required />
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endif
-                                @if (!empty($formattedData['celana_kiper']))
-                                <div class="card mb-4">
-                                    <input type="hidden" id="celanaKiperId" name="celana_kiper_id"
-                                        value="{{ $formattedData['celana_kiper'][0]['id'] }}">
-                                    <div class="card-body">
-                                        <div class="row">
+                                            @endif
+                                            @if (!empty($formattedData['celana_kiper']))
                                             <div class="mb-3 col-md-6">
+                                                <input type="hidden" id="celanaKiperId" name="celana_kiper_id"
+                                                    value="{{ $formattedData['celana_kiper'][0]['id'] }}">
                                                 <label for="firstName" class="form-label">File foto</label>
                                                 <input class="form-control" name="file_foto_celana_kiper" type="file"
                                                     id="firstName" required />
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endif
-                                @if (!empty($formattedData['celana_1']))
-                                <div class="card mb-4">
-                                    <input type="hidden" id="celana1Id" name="celana_1_id"
-                                        value="{{ $formattedData['celana_1'][0]['id'] }}">
-                                    <div class="card-body">
-                                        <div class="row">
+                                            @endif
+                                            @if (!empty($formattedData['celana_1']))
                                             <div class="mb-3 col-md-6">
+                                                <input type="hidden" id="celana1Id" name="celana_1_id"
+                                                    value="{{ $formattedData['celana_1'][0]['id'] }}">
                                                 <label for="firstName" class="form-label">File foto</label>
                                                 <input class="form-control" name="file_foto_celana_1" type="file"
                                                     id="firstName" required />
                                             </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
-                                @endif
+                                {{-- <div class="card mb-4">
+                                    <div class="card-body">
+                                        <div class="row">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <div class="row">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <div class="row">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <div class="row">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <div class="row">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <div class="row">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <div class="row">
+
+                                        </div>
+                                    </div>
+                                </div> --}}
                             </div>
                         </div>
                         <button id="submitButton" type="submit" class="btn btn-primary">

@@ -28,7 +28,7 @@ class MesinMimaki extends Model
         'file_foto_pelatih',
         'file_foto_kiper',
         'file_foto_1',
-        'file_foto_celana_pelayer',
+        'file_foto_celana_player',
         'file_foto_celana_pelatih',
         'file_foto_celana_kiper',
         'file_foto_celana_1',
