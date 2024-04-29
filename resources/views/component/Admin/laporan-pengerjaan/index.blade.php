@@ -452,7 +452,7 @@
                                             @if ($laporan->BarangMasukMesinAtexco->penanggung_jawab_id)
                                             Belum melakukan pengisian data
                                             @elseif ($laporan->BarangMasukMesinAtexco->UserMesinAtexco)
-                                            {{ ($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }}
+                                            {{-- {{ ($laporan->BarangMasukMesinAtexco->UserMesinAtexco->name) }} --}}
                                             @endif
                                         </td>
                                         <td>
