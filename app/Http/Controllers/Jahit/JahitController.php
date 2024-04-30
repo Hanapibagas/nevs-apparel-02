@@ -28,7 +28,7 @@ class JahitController extends Controller
                     $query->where('kota_produksi', 'Makassar');
                 })
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_order_id')
                 ->map(function ($group) {
                     return $group->first();
                 });
@@ -43,7 +43,7 @@ class JahitController extends Controller
                     $query->where('kota_produksi', 'Jakarta');
                 })
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_order_id')
                 ->map(function ($group) {
                     return $group->first();
                 });
@@ -58,7 +58,7 @@ class JahitController extends Controller
                     $query->where('kota_produksi', 'Bandung');
                 })
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_order_id')
                 ->map(function ($group) {
                     return $group->first();
                 });
@@ -73,7 +73,7 @@ class JahitController extends Controller
                     $query->where('kota_produksi', 'Surabaya');
                 })
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_order_id')
                 ->map(function ($group) {
                     return $group->first();
                 });
@@ -85,7 +85,7 @@ class JahitController extends Controller
 
     public function getInputLaporan($id)
     {
-        $dataMasuk = Jahit::with('BarangMasukCs')->get();
+        $dataMasuk = Jahit::where('no_order_id', $id)->with('BarangMasukCs')->get();
 
         $formattedData = [];
 
@@ -130,7 +130,7 @@ class JahitController extends Controller
 
     public function getInputLaporanSerah($id)
     {
-        $dataMasuk = Jahit::with('BarangMasukCs')->get();
+        $dataMasuk = Jahit::where('no_order_id', $id)->with('BarangMasukCs')->get();
 
         $formattedData = [];
 
@@ -181,7 +181,7 @@ class JahitController extends Controller
         return view('component.Jahit.cerate-laporan-mesin-terima', compact('dataMasuk', 'formattedData'));
     }
 
-    public function putLaporan(Request $request, $id)
+    public function putLaporan(Request $request)
     {
         // return response()->json($request->all());
         $user = Auth::user();
@@ -365,7 +365,7 @@ class JahitController extends Controller
         return redirect()->route('getIndexJahit')->with('success', 'Selamat data yang anda input telah terkirim!');
     }
 
-    public function putLaporanSerahTerima(Request $request, $id)
+    public function putLaporanSerahTerima(Request $request)
     {
         // return response()->json($request->all());
         $user = Auth::user();
@@ -549,7 +549,7 @@ class JahitController extends Controller
 
         if ($dataMasukPlayer) {
             if ($request->player_id) {
-                $laporanPlayer = Laporan::find($request->player_id);
+                $laporanPlayer = Laporan::where('jahit_id', $request->player_id)->first();
                 if ($laporanPlayer) {
                     $laporanPlayer->update([
                         'status' => 'Finis',
@@ -557,7 +557,7 @@ class JahitController extends Controller
                 }
             }
             if ($request->pelatih_id) {
-                $laporanPelatih = Laporan::find($request->pelatih_id);
+                $laporanPelatih = Laporan::where('jahit_id', $request->pelatih_id)->first();
                 if ($laporanPelatih) {
                     $laporanPelatih->update([
                         'status' => 'Finis',
@@ -565,7 +565,7 @@ class JahitController extends Controller
                 }
             }
             if ($request->kiper_id) {
-                $laporanKiper = Laporan::find($request->kiper_id);
+                $laporanKiper = Laporan::where('jahit_id', $request->kiper_id)->first();
                 if ($laporanKiper) {
                     $laporanKiper->update([
                         'status' => 'Finis',
@@ -573,7 +573,7 @@ class JahitController extends Controller
                 }
             }
             if ($request->lk1_id) {
-                $laporan1 = Laporan::find($request->lk1_id);
+                $laporan1 = Laporan::where('jahit_id', $request->lk1_id)->first();
                 if ($laporan1) {
                     $laporan1->update([
                         'status' => 'Finis',
@@ -581,7 +581,7 @@ class JahitController extends Controller
                 }
             }
             if ($request->celana_player_id) {
-                $laporanCelanaPelayer = Laporan::find($request->celana_player_id);
+                $laporanCelanaPelayer = Laporan::where('jahit_id', $request->celana_player_id)->first();
                 if ($laporanCelanaPelayer) {
                     $laporanCelanaPelayer->update([
                         'status' => 'Finis',
@@ -589,7 +589,7 @@ class JahitController extends Controller
                 }
             }
             if ($request->celana_pelatih_id) {
-                $laporanCelanaPelatih = Laporan::find($request->celana_pelatih_id);
+                $laporanCelanaPelatih = Laporan::where('jahit_id', $request->celana_pelatih_id)->first();
                 if ($laporanCelanaPelatih) {
                     $laporanCelanaPelatih->update([
                         'status' => 'Finis',
@@ -597,7 +597,7 @@ class JahitController extends Controller
                 }
             }
             if ($request->celana_kiper_id) {
-                $laporanCelanaKiper = Laporan::find($request->celana_kiper_id);
+                $laporanCelanaKiper = Laporan::where('jahit_id', $request->celana_kiper_id)->first();
                 if ($laporanCelanaKiper) {
                     $laporanCelanaKiper->update([
                         'status' => 'Finis',
@@ -605,7 +605,7 @@ class JahitController extends Controller
                 }
             }
             if ($request->celana_1_id) {
-                $laporanCelana1 = Laporan::find($request->celana_1_id);
+                $laporanCelana1 = Laporan::where('jahit_id', $request->celana_1_id)->first();
                 if ($laporanCelana1) {
                     $laporanCelana1->update([
                         'status' => 'Finis',
@@ -630,7 +630,7 @@ class JahitController extends Controller
                     $query->where('kota_produksi', 'Makassar');
                 })
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_order_id')
                 ->map(function ($group) {
                     return $group->first();
                 });
@@ -645,7 +645,7 @@ class JahitController extends Controller
                     $query->where('kota_produksi', 'Jakarta');
                 })
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_order_id')
                 ->map(function ($group) {
                     return $group->first();
                 });
@@ -660,7 +660,7 @@ class JahitController extends Controller
                     $query->where('kota_produksi', 'Bandung');
                 })
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_order_id')
                 ->map(function ($group) {
                     return $group->first();
                 });
@@ -675,7 +675,7 @@ class JahitController extends Controller
                     $query->where('kota_produksi', 'Surabaya');
                 })
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_order_id')
                 ->map(function ($group) {
                     return $group->first();
                 });

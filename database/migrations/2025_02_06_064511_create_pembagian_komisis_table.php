@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('layout_id')->constrained('barang_masuk_datalayouts')->onUpdate('cascade')->onDelete('cascade');
+            // $table->string('layout_id')->nullable();
             $table->string('jumlah_komisi')->nullable();
             $table->string('tanggal')->nullable();
             $table->string('kota')->nullable();

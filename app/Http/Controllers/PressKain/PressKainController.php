@@ -33,7 +33,7 @@ class PressKainController extends Controller
                 })
                 ->where('tanda_telah_mengerjakan', 0)
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_order_id')
                 ->map(function ($group) {
                     return $group->first();
                 });
@@ -53,7 +53,7 @@ class PressKainController extends Controller
                 })
                 ->where('tanda_telah_mengerjakan', 0)
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_order_id')
                 ->map(function ($group) {
                     return $group->first();
                 });
@@ -73,7 +73,7 @@ class PressKainController extends Controller
                 })
                 ->where('tanda_telah_mengerjakan', 0)
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_order_id')
                 ->map(function ($group) {
                     return $group->first();
                 });
@@ -93,7 +93,7 @@ class PressKainController extends Controller
                 })
                 ->where('tanda_telah_mengerjakan', 0)
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_order_id')
                 ->map(function ($group) {
                     return $group->first();
                 });
@@ -105,7 +105,7 @@ class PressKainController extends Controller
 
     public function getInputLaporan($id)
     {
-        $dataMasuk = DataPressKain::with('BarangMasukCs')->get();
+        $dataMasuk = DataPressKain::where('no_order_id', $id)->with('BarangMasukCs')->get();
 
         $formattedData = [];
 
@@ -149,7 +149,7 @@ class PressKainController extends Controller
         return view('component.Press-Kain.cerate-laporan-mesin', compact('dataMasuk', 'formattedData'));
     }
 
-    public function putLaporan(Request $request, $id)
+    public function putLaporan(Request $request)
     {
         $user = Auth::user();
 
@@ -364,7 +364,7 @@ class PressKainController extends Controller
 
         if ($dataMasukPlayer) {
             if ($request->player_id) {
-                $laporanPlayer = Laporan::findOrFail($request->player_id);
+                $laporanPlayer = Laporan::where('barang_masuk_presskain_id', $request->player_id)->first();
                 if ($laporanPlayer) {
                     $laporanPlayer->update([
                         'status' => 'Laser Cut',
@@ -372,7 +372,7 @@ class PressKainController extends Controller
                 }
             }
             if ($request->pelatih_id) {
-                $laporanPelatih = Laporan::findOrFail($request->pelatih_id);
+                $laporanPelatih = Laporan::where('barang_masuk_presskain_id', $request->pelatih_id)->first();
                 if ($laporanPelatih) {
                     $laporanPelatih->update([
                         'status' => 'Laser Cut',
@@ -380,7 +380,7 @@ class PressKainController extends Controller
                 }
             }
             if ($request->kiper_id) {
-                $laporanKiper = Laporan::findOrFail($request->kiper_id);
+                $laporanKiper = Laporan::where('barang_masuk_presskain_id', $request->kiper_id)->first();
                 if ($laporanKiper) {
                     $laporanKiper->update([
                         'status' => 'Laser Cut',
@@ -388,7 +388,7 @@ class PressKainController extends Controller
                 }
             }
             if ($request->lk1_id) {
-                $laporan1 = Laporan::findOrFail($request->lk1_id);
+                $laporan1 = Laporan::where('barang_masuk_presskain_id', $request->lk1_id)->first();
                 if ($laporan1) {
                     $laporan1->update([
                         'status' => 'Laser Cut',
@@ -396,7 +396,7 @@ class PressKainController extends Controller
                 }
             }
             if ($request->celana_player_id) {
-                $laporanCelanaPlayer = Laporan::findOrFail($request->celana_player_id);
+                $laporanCelanaPlayer = Laporan::where('barang_masuk_presskain_id', $request->celana_player_id)->first();
                 if ($laporanCelanaPlayer) {
                     $laporanCelanaPlayer->update([
                         'status' => 'Laser Cut',
@@ -404,7 +404,7 @@ class PressKainController extends Controller
                 }
             }
             if ($request->celana_pelatih_id) {
-                $laporanCelanaPelatih = Laporan::findOrFail($request->celana_pelatih_id);
+                $laporanCelanaPelatih = Laporan::where('barang_masuk_presskain_id', $request->celana_pelatih_id)->first();
                 if ($laporanCelanaPelatih) {
                     $laporanCelanaPelatih->update([
                         'status' => 'Laser Cut',
@@ -412,7 +412,7 @@ class PressKainController extends Controller
                 }
             }
             if ($request->celana_kiper_id) {
-                $laporanCelanaKiper = Laporan::findOrFail($request->celana_kiper_id);
+                $laporanCelanaKiper = Laporan::where('barang_masuk_presskain_id', $request->celana_kiper_id)->first();
                 if ($laporanCelanaKiper) {
                     $laporanCelanaKiper->update([
                         'status' => 'Laser Cut',
@@ -420,7 +420,7 @@ class PressKainController extends Controller
                 }
             }
             if ($request->celana_1_id) {
-                $laporanCelana1 = Laporan::findOrFail($request->celana_1_id);
+                $laporanCelana1 = Laporan::where('barang_masuk_presskain_id', $request->celana_1_id)->first();
                 if ($laporanCelana1) {
                     $laporanCelana1->update([
                         'status' => 'Laser Cut',
@@ -450,7 +450,7 @@ class PressKainController extends Controller
                 })
                 ->where('tanda_telah_mengerjakan', 1)
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_orderd_id')
                 ->map(function ($group) {
                     return $group->first();
                 });
@@ -470,7 +470,7 @@ class PressKainController extends Controller
                 })
                 ->where('tanda_telah_mengerjakan', 1)
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_orderd_id')
                 ->map(function ($group) {
                     return $group->first();
                 });
@@ -490,7 +490,7 @@ class PressKainController extends Controller
                 })
                 ->where('tanda_telah_mengerjakan', 1)
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_orderd_id')
                 ->map(function ($group) {
                     return $group->first();
                 });
@@ -510,7 +510,7 @@ class PressKainController extends Controller
                 })
                 ->where('tanda_telah_mengerjakan', 1)
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_orderd_id')
                 ->map(function ($group) {
                     return $group->first();
                 });

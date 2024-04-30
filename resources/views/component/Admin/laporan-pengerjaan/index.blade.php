@@ -105,8 +105,9 @@
                                         class="btn btn-warning">
                                         <i class="menu-icon tf-icons bx bx-show"></i>
                                         Lihat Detail</button>
-                                    {{-- <a class="btn btn-primary" href="{{ route('getDetailLaporan') }}" type="button"
-                                        class="btn btn-warning">
+                                    {{-- <a class="btn btn-primary"
+                                        href="{{ route('getDetailLaporan', $laporan->barang_masuk_costumer_services_id) }}"
+                                        type="button" class="btn btn-warning">
                                         <i class="menu-icon tf-icons bx bx-show"></i>
                                         Lihat Detail</a> --}}
                                 </td>

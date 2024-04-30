@@ -39,6 +39,7 @@
                                 <th>nama timr</th>
                                 <th>no.order</th>
                                 <th>Selesai</th>
+                                {{-- <th>Aksi</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -57,6 +58,13 @@
                                     <strong style="text-transform: uppercase">{{ strftime("%A, %e %B %Y",
                                         strtotime($mesins->selesai)) }}</strong>
                                 </td>
+                                {{-- <td>
+                                    @if (Auth::user()->permission_create == 1)
+                                    <a href="{{ route('getInputLaporanFinis' , $mesins->no_order_id) }}"
+                                        class="btn btn-info">
+                                        <i class="menu-icon tf-icons bx bxs-inbox"></i>Input Laporan</a>
+                                    @endif
+                                </td> --}}
                             </tr>
                             @endforeach
                         </tbody>

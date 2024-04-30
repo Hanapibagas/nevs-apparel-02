@@ -9,8 +9,8 @@
             <div class="card">
                 <div class="container-xxl flex-grow-1 container-p-y">
                     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Input </span>data laporan</h4>
-                    <form id="submissionForm" action="{{ route('putLaporanPreskain', $dataMasuk->first()->id) }}"
-                        method="POST" enctype="multipart/form-data">
+                    <form id="submissionForm" action="{{ route('putLaporanPreskain') }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         @if (!empty($formattedData['player']))
@@ -248,7 +248,7 @@
                             <i id="submitIcon" class="menu-icon tf-icons bx bx-send"></i>
                             Input Laporan Press Kain
                         </button>
-                        <a href="{{ route('getIndexDataMasukMesinAtexco') }}" class="btn btn-outline-secondary"><i
+                        <a href="{{ route('getindexDataMasukPress') }}" class="btn btn-outline-secondary"><i
                                 class="menu-icon tf-icons bx bx-undo"></i>Kembali</a>
                     </form>
                 </div>

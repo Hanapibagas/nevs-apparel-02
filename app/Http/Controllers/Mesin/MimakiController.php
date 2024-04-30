@@ -111,7 +111,7 @@ class MimakiController extends Controller
 
     public function getInputLaporan($id)
     {
-        $dataMasuk = MesinMimaki::with('BarangMasukCs')->get();
+        $dataMasuk = MesinMimaki::where('no_order_id', $id)->with('BarangMasukCs')->get();
 
         foreach ($dataMasuk as $item) {
             if ($item->lk_player_id) {
@@ -160,7 +160,7 @@ class MimakiController extends Controller
         return view('component.Mesin.data-masuk-mesin-mimaki.cerate-laporan-mesin', compact('dataMasuk', 'formattedData'));
     }
 
-    public function putLaporanMesin(Request $request, $id)
+    public function putLaporanMesin(Request $request)
     {
         $user = Auth::user();
 
@@ -343,7 +343,7 @@ class MimakiController extends Controller
 
         if ($dataMasukPlayer) {
             if ($request->player_id) {
-                $laporanPlayer = Laporan::findOrFail($request->player_id);
+                $laporanPlayer = Laporan::where('barang_masuk_mesin_mimaki_id', $request->player_id)->first();
                 if ($laporanPlayer) {
                     $laporanPlayer->update([
                         'status' => 'Press Kain',
@@ -351,7 +351,7 @@ class MimakiController extends Controller
                 }
             }
             if ($request->pelatih_id) {
-                $laporanPelatih = Laporan::findOrFail($request->pelatih_id);
+                $laporanPelatih = Laporan::where('barang_masuk_mesin_mimaki_id', $request->pelatih_id)->first();
                 if ($laporanPelatih) {
                     $laporanPelatih->update([
                         'status' => 'Press Kain',
@@ -359,7 +359,7 @@ class MimakiController extends Controller
                 }
             }
             if ($request->kiper_id) {
-                $laporanKiper = Laporan::findOrFail($request->kiper_id);
+                $laporanKiper = Laporan::where('barang_masuk_mesin_mimaki_id', $request->kiper_id)->first();
                 if ($laporanKiper) {
                     $laporanKiper->update([
                         'status' => 'Press Kain',
@@ -367,7 +367,7 @@ class MimakiController extends Controller
                 }
             }
             if ($request->lk1_id) {
-                $laporan1 = Laporan::findOrFail($request->lk1_id);
+                $laporan1 = Laporan::where('barang_masuk_mesin_mimaki_id', $request->lk1_id)->first();
                 if ($laporan1) {
                     $laporan1->update([
                         'status' => 'Press Kain',
@@ -375,7 +375,7 @@ class MimakiController extends Controller
                 }
             }
             if ($request->celana_player_id) {
-                $laporanCelanaPlayer = Laporan::findOrFail($request->celana_player_id);
+                $laporanCelanaPlayer = Laporan::where('barang_masuk_mesin_mimaki_id', $request->celana_player_id)->first();
                 if ($laporanCelanaPlayer) {
                     $laporanCelanaPlayer->update([
                         'status' => 'Press Kain',
@@ -383,7 +383,7 @@ class MimakiController extends Controller
                 }
             }
             if ($request->celana_pelatih_id) {
-                $laporanCelanaPelatih = Laporan::findOrFail($request->celana_pelatih_id);
+                $laporanCelanaPelatih = Laporan::where('barang_masuk_mesin_mimaki_id', $request->celana_pelatih_id)->first();
                 if ($laporanCelanaPelatih) {
                     $laporanCelanaPelatih->update([
                         'status' => 'Press Kain',
@@ -391,7 +391,7 @@ class MimakiController extends Controller
                 }
             }
             if ($request->celana_kiper_id) {
-                $laporanCelanaKiper = Laporan::findOrFail($request->celana_kiper_id);
+                $laporanCelanaKiper = Laporan::where('barang_masuk_mesin_mimaki_id', $request->celana_kiper_id)->first();
                 if ($laporanCelanaKiper) {
                     $laporanCelanaKiper->update([
                         'status' => 'Press Kain',
@@ -399,7 +399,7 @@ class MimakiController extends Controller
                 }
             }
             if ($request->celana_1_id) {
-                $laporanCelana1 = Laporan::findOrFail($request->celana_1_id);
+                $laporanCelana1 = Laporan::where('barang_masuk_mesin_mimaki_id', $request->celana_1_id)->first();
                 if ($laporanCelana1) {
                     $laporanCelana1->update([
                         'status' => 'Press Kain',
@@ -424,7 +424,7 @@ class MimakiController extends Controller
                     $query->whereNotNull('selesai');
                 })
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_order_id')
                 ->map(function ($group) {
                     return $group->first();
                 });
@@ -439,7 +439,7 @@ class MimakiController extends Controller
                     $query->whereNotNull('selesai');
                 })
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_order_id')
                 ->map(function ($group) {
                     return $group->first();
                 });
@@ -454,7 +454,7 @@ class MimakiController extends Controller
                     $query->whereNotNull('selesai');
                 })
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_order_id')
                 ->map(function ($group) {
                     return $group->first();
                 });
@@ -469,7 +469,7 @@ class MimakiController extends Controller
                     $query->whereNotNull('selesai');
                 })
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_order_id')
                 ->map(function ($group) {
                     return $group->first();
                 });

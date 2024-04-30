@@ -71,7 +71,7 @@ class BarangMasukDatalayout extends Model
 
     public function BarangMasukCostumerServicesLkPlyer()
     {
-        return $this->hasMany(LkPlayer::class, 'barang_masuk_id');
+        return $this->hasOne(LkPlayer::class, 'id');
     }
 
     public function BarangMasukCostumerServicesLkPelatih()

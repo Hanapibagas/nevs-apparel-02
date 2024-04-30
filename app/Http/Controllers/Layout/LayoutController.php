@@ -201,7 +201,8 @@ class LayoutController extends Controller
 
     public function createLaporanLk($id)
     {
-        $dataLk = BarangMasukDatalayout::with('BarangMasukCsLK')->get();
+        // return response()->json($id);
+        $dataLk = BarangMasukDatalayout::where('barang_masuk_id', $id)->with('BarangMasukCsLK')->get();
 
         $formattedData = [];
 
@@ -278,98 +279,43 @@ class LayoutController extends Controller
         return view('component.Layout.layout-lk-pegawai.cerate-laporan-lk', compact('dataLk', 'formattedData'));
     }
 
-    public function putLaporanLs(Request $request, $id)
+    public function putLaporanLs(Request $request)
     {
+        // return response()->json($request->all());
         $user = Auth::user();
 
         if ($request->player_id) {
-            $dataPlayer = BarangMasukDatalayout::with(
-                'BarangMasukCsLK',
-                'BarangMasukCostumerServicesLkPlyer.LenganPlayer',
-                'BarangMasukCostumerServicesLkPelatih.LenganPelatih',
-                'BarangMasukCostumerServicesLkKiper.LenganKiper',
-                'BarangMasukCostumerServicesLk1.Lengan1',
-                'BarangMasukCostumerServicesLkCelanaPlyer.CelanaCelanaPlayer',
-                'BarangMasukCostumerServicesLkCelanaPelatih.CelanaCelanapelatih',
-                'BarangMasukCostumerServicesLkCelanaKiper.CelanaCealanaKiper',
-                'BarangMasukCostumerServicesLkCelana1.CelanaCelana1'
-            )->findOrFail($request->player_id);
+            $dataPlayer = BarangMasukDatalayout::join('lk_players', 'lk_players.id', '=', 'barang_masuk_datalayouts.lk_player_id')
+                ->join('barang_masuk_costumer_services', 'barang_masuk_costumer_services.id', '=', 'barang_masuk_datalayouts.barang_masuk_id')
+                ->leftJoin('pola_lengans', 'pola_lengans.id', '=', 'lk_players.pola_lengan_player_id')
+                ->select('barang_masuk_datalayouts.*', 'lk_players.*', 'pola_lengans.*', 'barang_masuk_costumer_services.*')
+                ->findOrFail($request->player_id);
 
-            $jumlahBajuPlayer = $dataPlayer->BarangMasukCostumerServicesLkPlyer;
-            $resulTotalBaju = 0;
-            $resulSatatusBaju = null;
-            foreach ($jumlahBajuPlayer as $item) {
-                $resulTotalBaju = $item->total_baju_player;
-                $resulSatatusBaju = $item->LenganPlayer->status;
-            }
-            $jumlahBajuPelatih = $dataPlayer->BarangMasukCostumerServicesLkPelatih;
-            $resulTotalBajuPelatih = 0;
-            $resulSatatusBajuPelatih = null;
-            foreach ($jumlahBajuPelatih as $item) {
-                $resulTotalBajuPelatih = $item->total_baju_pelatih;
-                $resulSatatusBajuPelatih = $item->LenganPelatih->status;
-            }
-            $jumlahBajuKiper = $dataPlayer->BarangMasukCostumerServicesLkKiper;
-            $resulTotalBajuKiper = 0;
-            $resulSatatusBajuKiper = null;
-            foreach ($jumlahBajuKiper as $item) {
-                $resulTotalBajuKiper = $item->total_baju_kiper;
-                $resulSatatusBajuKiper = $item->LenganKiper->status;
-            }
-            $jumlahBaju1 = $dataPlayer->BarangMasukCostumerServicesLk1;
-            $resulTotalBaju1 = 0;
-            $resulSatatusBaju1 = null;
-            foreach ($jumlahBaju1 as $item) {
-                $resulTotalBaju1 = $item->total_baju_1;
-                $resulSatatusBaju1 = $item->Lengan1->status;
-            }
-            $jumlahBajuCelanaPlayer = $dataPlayer->BarangMasukCostumerServicesLkCelanaPlyer;
-            $resulTotalBajuCelanaPlayer = 0;
-            $resulSatatusBajuCelanaPlayer = null;
-            foreach ($jumlahBajuCelanaPlayer as $item) {
-                $resulTotalBajuCelanaPlayer = $item->total_celana_player;
-                $resulSatatusBajuCelanaPlayer = $item->CelanaCelanaPlayer->status;
-            }
-            $jumlahBajuCelanaPelatih = $dataPlayer->BarangMasukCostumerServicesLkCelanaPelatih;
-            $resulTotalBajuCelanaPelatih = 0;
-            $resulSatatusBajuCelanaPelatih = null;
-            foreach ($jumlahBajuCelanaPelatih as $item) {
-                $resulTotalBajuCelanaPelatih = $item->total_celana_pelatih;
-                $resulSatatusBajuCelanaPelatih = $item->CelanaCelanapelatih->status;
-            }
-            $jumlahBajuCelanaKiper = $dataPlayer->BarangMasukCostumerServicesLkCelanaKiper;
-            $resulTotalBajuCelanaKiper = 0;
-            $resulSatatusBajuCelanaKiper = null;
-            foreach ($jumlahBajuCelanaKiper as $item) {
-                $resulTotalBajuCelanaKiper = $item->total_celana_kiper;
-                $resulSatatusBajuCelanaKiper = $item->CelanaCealanaKiper->status;
-            }
-            $jumlahBajuCelana1 = $dataPlayer->BarangMasukCostumerServicesLkCelana1;
-            $resulTotalBajuCelana1 = 0;
-            $resulSatatusBajuCelana1 = null;
-            foreach ($jumlahBajuCelana1 as $item) {
-                $resulTotalBajuCelana1 = $item->total_celana_1;
-                $resulSatatusBajuCelana1 = $item->CelanaCelana1->status;
-            }
+            $dataUpdate = BarangMasukDatalayout::findOrFail($request->player_id);
+
+            // return response()->json($dataPlayerID);
+
+            $resulTotalBaju = $dataPlayer->total_baju_player;
+            $resulSatatusBaju = $dataPlayer->status;
 
             if ($request->file('file_corel_layout')) {
                 $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-player', 'public');
-                if ($dataPlayer->file_corel_layout && file_exists(storage_path('app/public/' . $dataPlayer->file_corel_layout))) {
-                    Storage::delete('public/' . $dataPlayer->file_corel_layout);
+                if ($dataUpdate->file_corel_layout && file_exists(storage_path('app/public/' . $dataUpdate->file_corel_layout))) {
+                    Storage::delete('public/' . $dataUpdate->file_corel_layout);
                     $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-player', 'public');
                 }
             }
             if ($request->file('file_tangkap_layar_player')) {
                 $fileTangkapLayar = $request->file('file_tangkap_layar_player')->store('file-tangkap-layout-player', 'public');
-                if ($dataPlayer->file_tangkap_layar_player && file_exists(storage_path('app/public/' . $dataPlayer->file_tangkap_layar_player))) {
-                    Storage::delete('public/' . $dataPlayer->file_tangkap_layar_player);
+                if ($dataUpdate->file_tangkap_layar_player && file_exists(storage_path('app/public/' . $dataUpdate->file_tangkap_layar_player))) {
+                    Storage::delete('public/' . $dataUpdate->file_tangkap_layar_player);
                     $fileTangkapLayar = $request->file('file_tangkap_layar_player')->store('file-tangkap-layout-player', 'public');
                 }
             }
             if ($request->file('file_tangkap_layar_player') === null) {
-                $fileTangkapLayar = $dataPlayer->file_tangkap_layar_player;
+                $fileTangkapLayar = $dataUpdate->file_tangkap_layar_player;
             }
-            $dataPlayer->update([
+            $dataUpdate->update([
                 'selesai' => Carbon::now(),
 
                 'panjang_kertas_palayer' => $request->panjang_kertas_palayer,
@@ -380,28 +326,35 @@ class LayoutController extends Controller
                 'tanda_telah_mengerjakan' => 1,
             ]);
         }
-        if ($request->pelatih_id) {
-            $dataPelatih = BarangMasukDatalayout::with('BarangMasukCostumerServicesLkPelatih')->findOrFail($request->pelatih_id);
-            $dataPelatih->load('BarangMasukCostumerServicesLkPelatih');
 
+        if ($request->pelatih_id) {
+            $dataPelatih = BarangMasukDatalayout::join('lk_pelatihs', 'lk_pelatihs.id', '=', 'barang_masuk_datalayouts.lk_pelatih_id')
+                ->leftJoin('pola_lengans', 'pola_lengans.id', '=', 'lk_pelatihs.pola_lengan_pelatih_id')
+                ->select('barang_masuk_datalayouts.*', 'lk_pelatihs.*', 'pola_lengans.*')
+                ->findOrFail($request->pelatih_id);
+
+            $resulTotalBajuPlatih = $dataPelatih->total_baju_pelatih;
+            $resulSatatusBajuPlatih = $dataPelatih->status;
+
+            $dataUpdatePelatih = BarangMasukDatalayout::findOrFail($request->pelatih_id);
             if ($request->file('file_corel_layout')) {
                 $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-pelatih', 'public');
-                if ($dataPelatih->file_corel_layout && file_exists(storage_path('app/public/' . $dataPelatih->file_corel_layout))) {
-                    Storage::delete('public/' . $dataPelatih->file_corel_layout);
+                if ($dataUpdatePelatih->file_corel_layout && file_exists(storage_path('app/public/' . $dataUpdatePelatih->file_corel_layout))) {
+                    Storage::delete('public/' . $dataUpdatePelatih->file_corel_layout);
                     $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-pelatih', 'public');
                 }
             }
             if ($request->file('file_tangkap_layar_pelatih')) {
                 $fileTangkapLayar = $request->file('file_tangkap_layar_pelatih')->store('file-tangkap-layout-pelatih', 'public');
-                if ($dataPelatih->file_tangkap_layar_pelatih && file_exists(storage_path('app/public/' . $dataPelatih->file_tangkap_layar_pelatih))) {
-                    Storage::delete('public/' . $dataPelatih->file_tangkap_layar_pelatih);
+                if ($dataUpdatePelatih->file_tangkap_layar_pelatih && file_exists(storage_path('app/public/' . $dataUpdatePelatih->file_tangkap_layar_pelatih))) {
+                    Storage::delete('public/' . $dataUpdatePelatih->file_tangkap_layar_pelatih);
                     $fileTangkapLayar = $request->file('file_tangkap_layar_pelatih')->store('file-tangkap-layout-pelatih', 'public');
                 }
             }
             if ($request->file('file_tangkap_layar_pelatih') === null) {
-                $fileTangkapLayar = $dataPelatih->file_tangkap_layar_pelatih;
+                $fileTangkapLayar = $dataUpdatePelatih->file_tangkap_layar_pelatih;
             }
-            $dataPelatih->update([
+            $dataUpdatePelatih->update([
                 'selesai' => Carbon::now(),
 
                 'panjang_kertas_pelatih' => $request->panjang_kertas_pelatih,
@@ -411,28 +364,39 @@ class LayoutController extends Controller
                 'file_corel_layout' => $filebajuplayer,
                 'tanda_telah_mengerjakan' => 1,
             ]);
+        } else {
+            $resulTotalBajuPlatih = 0;
+            $resulSatatusBajuPlatih = null;
         }
         if ($request->kiper_id) {
-            $dataKiper = BarangMasukDatalayout::findOrFail($request->kiper_id);
+            $dataKiper = BarangMasukDatalayout::join('lk_kipers', 'lk_kipers.id', '=', 'barang_masuk_datalayouts.lk_kiper_id')
+                ->leftJoin('pola_lengans', 'pola_lengans.id', '=', 'lk_kipers.pola_lengan_kiper_id')
+                ->select('barang_masuk_datalayouts.*', 'lk_kipers.*', 'pola_lengans.*')
+                ->findOrFail($request->kiper_id);
+
+            $resulTotalBajuKiper = $dataKiper->total_baju_kiper;
+            $resulSatatusBajuKiper = $dataKiper->status;
+
+            $dataUpdateKiper = BarangMasukDatalayout::findOrFail($request->kiper_id);
 
             if ($request->file('file_corel_layout')) {
                 $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-kiper', 'public');
-                if ($dataKiper->file_corel_layout && file_exists(storage_path('app/public/' . $dataKiper->file_corel_layout))) {
-                    Storage::delete('public/' . $dataKiper->file_corel_layout);
+                if ($dataUpdateKiper->file_corel_layout && file_exists(storage_path('app/public/' . $dataUpdateKiper->file_corel_layout))) {
+                    Storage::delete('public/' . $dataUpdateKiper->file_corel_layout);
                     $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout', 'public');
                 }
             }
             if ($request->file('file_tangkap_layar_kiper')) {
                 $fileTangkapLayar = $request->file('file_tangkap_layar_kiper')->store('file-tangkap-layout-kiper', 'public');
-                if ($dataKiper->file_tangkap_layar_kiper && file_exists(storage_path('app/public/' . $dataKiper->file_tangkap_layar_kiper))) {
-                    Storage::delete('public/' . $dataKiper->file_tangkap_layar_kiper);
+                if ($dataUpdateKiper->file_tangkap_layar_kiper && file_exists(storage_path('app/public/' . $dataUpdateKiper->file_tangkap_layar_kiper))) {
+                    Storage::delete('public/' . $dataUpdateKiper->file_tangkap_layar_kiper);
                     $fileTangkapLayar = $request->file('file_tangkap_layar_kiper')->store('file-tangkap-layout-kiper', 'public');
                 }
             }
             if ($request->file('file_tangkap_layar_kiper') === null) {
-                $fileTangkapLayar = $dataKiper->file_tangkap_layar_kiper;
+                $fileTangkapLayar = $dataUpdateKiper->file_tangkap_layar_kiper;
             }
-            $dataKiper->update([
+            $dataUpdateKiper->update([
                 'selesai' => Carbon::now(),
 
                 'panjang_kertas_kiper' => $request->panjang_kertas_kiper,
@@ -442,28 +406,39 @@ class LayoutController extends Controller
                 'file_corel_layout' => $filebajuplayer,
                 'tanda_telah_mengerjakan' => 1,
             ]);
+        } else {
+            $resulTotalBajuKiper = 0;
+            $resulSatatusBajuKiper = null;
         }
         if ($request->lk1_id) {
-            $data1 = BarangMasukDatalayout::findOrFail($request->lk1_id);
+            $data1 = BarangMasukDatalayout::join('lk_baju1s', 'lk_baju1s.id', '=', 'barang_masuk_datalayouts.lk_1_id')
+                ->leftJoin('pola_lengans', 'pola_lengans.id', '=', 'lk_baju1s.pola_lengan_1_id')
+                ->select('barang_masuk_datalayouts.*', 'lk_baju1s.*', 'pola_lengans.*')
+                ->findOrFail($request->lk1_id);
+
+            $resulTotalBaju1 = $data1->total_baju_1;
+            $resulSatatusBaju1 = $data1->status;
+
+            $dataUpdate1 = BarangMasukDatalayout::findOrFail($request->lk1_id);
 
             if ($request->file('file_corel_layout')) {
                 $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-1', 'public');
-                if ($data1->file_corel_layout && file_exists(storage_path('app/public/' . $data1->file_corel_layout))) {
-                    Storage::delete('public/' . $data1->file_corel_layout);
+                if ($dataUpdate1->file_corel_layout && file_exists(storage_path('app/public/' . $dataUpdate1->file_corel_layout))) {
+                    Storage::delete('public/' . $dataUpdate1->file_corel_layout);
                     $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-1', 'public');
                 }
             }
             if ($request->file('file_tangkap_layar_1')) {
                 $fileTangkapLayar = $request->file('file_tangkap_layar_1')->store('file-tangkap-layout-1', 'public');
-                if ($data1->file_tangkap_layar_1 && file_exists(storage_path('app/public/' . $data1->file_tangkap_layar_1))) {
-                    Storage::delete('public/' . $data1->file_tangkap_layar_1);
+                if ($dataUpdate1->file_tangkap_layar_1 && file_exists(storage_path('app/public/' . $dataUpdate1->file_tangkap_layar_1))) {
+                    Storage::delete('public/' . $dataUpdate1->file_tangkap_layar_1);
                     $fileTangkapLayar = $request->file('file_tangkap_layar_1')->store('file-tangkap-layout-1', 'public');
                 }
             }
             if ($request->file('file_tangkap_layar_1') === null) {
-                $fileTangkapLayar = $data1->file_tangkap_layar_1;
+                $fileTangkapLayar = $dataUpdate1->file_tangkap_layar_1;
             }
-            $data1->update([
+            $dataUpdate1->update([
                 'selesai' => Carbon::now(),
 
                 'panjang_kertas_1' => $request->panjang_kertas_1,
@@ -473,29 +448,39 @@ class LayoutController extends Controller
                 'file_corel_layout' => $filebajuplayer,
                 'tanda_telah_mengerjakan' => 1,
             ]);
+        } else {
+            $resulTotalBaju1 = 0;
+            $resulSatatusBaju1 = null;
         }
         if ($request->celana_player_id) {
-            $dataCelanaPlayer = BarangMasukDatalayout::findOrFail($request->celana_player_id);
+            $dataCelanaPlayer = BarangMasukDatalayout::join('lk_celana_players', 'lk_celana_players.id', '=', 'barang_masuk_datalayouts.lk_celana_player_id')
+                ->leftJoin('pola_lengans', 'pola_lengans.id', '=', 'lk_celana_players.pola_celana_player_id')
+                ->select('barang_masuk_datalayouts.*', 'lk_celana_players.*', 'pola_lengans.*')
+                ->findOrFail($request->celana_player_id);
 
+            $resulTotalCelanaPlayer = $dataCelanaPlayer->total_celana_player;
+            $resulSatatusCelanaPlayer = $dataCelanaPlayer->status;
+
+            $dataUpdateCelanaPlayer = BarangMasukDatalayout::findOrFail($request->celana_player_id);
 
             if ($request->file('file_corel_layout')) {
                 $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-celana-player', 'public');
-                if ($dataCelanaPlayer->file_corel_layout && file_exists(storage_path('app/public/' . $dataCelanaPlayer->file_corel_layout))) {
-                    Storage::delete('public/' . $dataCelanaPlayer->file_corel_layout);
+                if ($dataUpdateCelanaPlayer->file_corel_layout && file_exists(storage_path('app/public/' . $dataUpdateCelanaPlayer->file_corel_layout))) {
+                    Storage::delete('public/' . $dataUpdateCelanaPlayer->file_corel_layout);
                     $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout', 'public');
                 }
             }
             if ($request->file('file_tangkap_layar_celana_pelayer')) {
                 $fileTangkapLayar = $request->file('file_tangkap_layar_celana_pelayer')->store('file-tangkap-layout-celana-player', 'public');
-                if ($dataCelanaPlayer->file_tangkap_layar_celana_pelayer && file_exists(storage_path('app/public/' . $dataCelanaPlayer->file_tangkap_layar_celana_pelayer))) {
-                    Storage::delete('public/' . $dataCelanaPlayer->file_tangkap_layar_celana_pelayer);
+                if ($dataUpdateCelanaPlayer->file_tangkap_layar_celana_pelayer && file_exists(storage_path('app/public/' . $dataUpdateCelanaPlayer->file_tangkap_layar_celana_pelayer))) {
+                    Storage::delete('public/' . $dataUpdateCelanaPlayer->file_tangkap_layar_celana_pelayer);
                     $fileTangkapLayar = $request->file('file_tangkap_layar_celana_pelayer')->store('file-tangkap-layout-celana-player', 'public');
                 }
             }
             if ($request->file('file_tangkap_layar_celana_pelayer') === null) {
-                $fileTangkapLayar = $dataCelanaPlayer->file_tangkap_layar_celana_pelayer;
+                $fileTangkapLayar = $dataUpdateCelanaPlayer->file_tangkap_layar_celana_pelayer;
             }
-            $dataCelanaPlayer->update([
+            $dataUpdateCelanaPlayer->update([
                 'selesai' => Carbon::now(),
 
                 'panjang_kertas_celana_pelayer' => $request->panjang_kertas_celana_pelayer,
@@ -505,28 +490,38 @@ class LayoutController extends Controller
                 'file_corel_layout' => $filebajuplayer,
                 'tanda_telah_mengerjakan' => 1,
             ]);
+        } else {
+            $resulTotalCelanaPlayer = 0;
+            $resulSatatusCelanaPlayer = null;
         }
         if ($request->celana_pelatih_id) {
-            $dataCelanaPelatih = BarangMasukDatalayout::findOrFail($request->celana_pelatih_id);
+            $dataCelanaPelatih = BarangMasukDatalayout::join('lk_celana_pelatihs', 'lk_celana_pelatihs.id', '=', 'barang_masuk_datalayouts.lk_celana_pelatih_id')
+                ->leftJoin('pola_lengans', 'pola_lengans.id', '=', 'lk_celana_pelatihs.pola_celana_pelatih_id')
+                ->select('barang_masuk_datalayouts.*', 'lk_celana_pelatihs.*', 'pola_lengans.*')
+                ->findOrFail($request->celana_pelatih_id);
 
+            $resulTotalCelanaPelatih = $dataCelanaPelatih->total_celana_pelatih;
+            $resulSatatusCelanaPelatih = $dataCelanaPelatih->status;
+
+            $dataUpdateCelanaPelatih = BarangMasukDatalayout::findOrFail($request->celana_pelatih_id);
             if ($request->file('file_corel_layout')) {
                 $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-celana-pelatih', 'public');
-                if ($dataCelanaPelatih->file_corel_layout && file_exists(storage_path('app/public/' . $dataCelanaPelatih->file_corel_layout))) {
-                    Storage::delete('public/' . $dataCelanaPelatih->file_corel_layout);
+                if ($dataUpdateCelanaPelatih->file_corel_layout && file_exists(storage_path('app/public/' . $dataUpdateCelanaPelatih->file_corel_layout))) {
+                    Storage::delete('public/' . $dataUpdateCelanaPelatih->file_corel_layout);
                     $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-celana-pelatih', 'public');
                 }
             }
             if ($request->file('file_tangkap_layar_celana_pelatih')) {
                 $fileTangkapLayar = $request->file('file_tangkap_layar_celana_pelatih')->store('file-tangkap-layout-celana-pelatih', 'public');
-                if ($dataCelanaPelatih->file_tangkap_layar_celana_pelatih && file_exists(storage_path('app/public/' . $dataCelanaPelatih->file_tangkap_layar_celana_pelatih))) {
-                    Storage::delete('public/' . $dataCelanaPelatih->file_tangkap_layar_celana_pelatih);
+                if ($dataUpdateCelanaPelatih->file_tangkap_layar_celana_pelatih && file_exists(storage_path('app/public/' . $dataUpdateCelanaPelatih->file_tangkap_layar_celana_pelatih))) {
+                    Storage::delete('public/' . $dataUpdateCelanaPelatih->file_tangkap_layar_celana_pelatih);
                     $fileTangkapLayar = $request->file('file_tangkap_layar_celana_pelatih')->store('file-tangkap-layout-celana-pelatih', 'public');
                 }
             }
             if ($request->file('file_tangkap_layar_celana_pelatih') === null) {
-                $fileTangkapLayar = $dataCelanaPelatih->file_tangkap_layar_celana_pelatih;
+                $fileTangkapLayar = $dataUpdateCelanaPelatih->file_tangkap_layar_celana_pelatih;
             }
-            $dataCelanaPelatih->update([
+            $dataUpdateCelanaPelatih->update([
                 'selesai' => Carbon::now(),
 
                 'panjang_kertas_celana_pelatih' => $request->panjang_kertas_celana_pelatih,
@@ -536,28 +531,38 @@ class LayoutController extends Controller
                 'file_corel_layout' => $filebajuplayer,
                 'tanda_telah_mengerjakan' => 1,
             ]);
+        } else {
+            $resulTotalCelanaPelatih = 0;
+            $resulSatatusCelanaPelatih = null;
         }
         if ($request->celana_kiper_id) {
-            $dataCelanaKiper = BarangMasukDatalayout::findOrFail($request->celana_kiper_id);
+            $dataCelanaKiper = BarangMasukDatalayout::join('lk_celana_kipers', 'lk_celana_kipers.id', '=', 'barang_masuk_datalayouts.lk_celana_kiper_id')
+                ->leftJoin('pola_lengans', 'pola_lengans.id', '=', 'lk_celana_kipers.pola_celana_kiper_id')
+                ->select('barang_masuk_datalayouts.*', 'lk_celana_kipers.*', 'pola_lengans.*')
+                ->findOrFail($request->celana_kiper_id);
 
+            $resulTotalCelanaKiper = $dataCelanaKiper->total_celana_kiper;
+            $resulSatatusCelanaKiper = $dataCelanaKiper->status;
+
+            $dataUpdateCelanaKiper = BarangMasukDatalayout::findOrFail($request->celana_kiper_id);
             if ($request->file('file_corel_layout')) {
                 $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-celana-kiper', 'public');
-                if ($dataCelanaKiper->file_corel_layout && file_exists(storage_path('app/public/' . $dataCelanaKiper->file_corel_layout))) {
-                    Storage::delete('public/' . $dataCelanaKiper->file_corel_layout);
+                if ($dataUpdateCelanaKiper->file_corel_layout && file_exists(storage_path('app/public/' . $dataUpdateCelanaKiper->file_corel_layout))) {
+                    Storage::delete('public/' . $dataUpdateCelanaKiper->file_corel_layout);
                     $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-celana-kiper', 'public');
                 }
             }
             if ($request->file('file_tangkap_layar_celana_kiper')) {
                 $fileTangkapLayar = $request->file('file_tangkap_layar_celana_kiper')->store('file-tangkap-layout-celana-kiper', 'public');
-                if ($dataCelanaKiper->file_tangkap_layar_celana_kiper && file_exists(storage_path('app/public/' . $dataCelanaKiper->file_tangkap_layar_celana_kiper))) {
-                    Storage::delete('public/' . $dataCelanaKiper->file_tangkap_layar_celana_kiper);
+                if ($dataUpdateCelanaKiper->file_tangkap_layar_celana_kiper && file_exists(storage_path('app/public/' . $dataUpdateCelanaKiper->file_tangkap_layar_celana_kiper))) {
+                    Storage::delete('public/' . $dataUpdateCelanaKiper->file_tangkap_layar_celana_kiper);
                     $fileTangkapLayar = $request->file('file_tangkap_layar_celana_kiper')->store('file-tangkap-layout-celana-kiper', 'public');
                 }
             }
             if ($request->file('file_tangkap_layar_celana_kiper') === null) {
-                $fileTangkapLayar = $dataCelanaKiper->file_tangkap_layar_celana_kiper;
+                $fileTangkapLayar = $dataUpdateCelanaKiper->file_tangkap_layar_celana_kiper;
             }
-            $dataCelanaKiper->update([
+            $dataUpdateCelanaKiper->update([
                 'selesai' => Carbon::now(),
 
                 'panjang_kertas_celana_kiper' => $request->panjang_kertas_celana_kiper,
@@ -567,28 +572,39 @@ class LayoutController extends Controller
                 'file_corel_layout' => $filebajuplayer,
                 'tanda_telah_mengerjakan' => 1,
             ]);
+        } else {
+            $resulTotalCelanaKiper = 0;
+            $resulSatatusCelanaKiper = null;
         }
         if ($request->celana_1_id) {
-            $dataCelana1 = BarangMasukDatalayout::findOrFail($request->celana_1_id);
+            $dataCelana1 = BarangMasukDatalayout::join('lk_celana1s', 'lk_celana1s.id', '=', 'barang_masuk_datalayouts.lk_celana_1_id')
+                ->leftJoin('pola_lengans', 'pola_lengans.id', '=', 'lk_celana1s.pola_celana_1_id')
+                ->select('barang_masuk_datalayouts.*', 'lk_celana1s.*', 'pola_lengans.*')
+                ->findOrFail($request->celana_1_id);
+
+            $resulTotalCelana1 = $dataPlayer->total_celana_1;
+            $resulSatatusCelana1 = $dataPlayer->status;
+
+            $dataUpdateCelana1 = BarangMasukDatalayout::findOrFail($request->celana_1_id);
 
             if ($request->file('file_corel_layout')) {
                 $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-celana-1', 'public');
-                if ($dataCelana1->file_corel_layout && file_exists(storage_path('app/public/' . $dataCelana1->file_corel_layout))) {
-                    Storage::delete('public/' . $dataCelana1->file_corel_layout);
+                if ($dataUpdateCelana1->file_corel_layout && file_exists(storage_path('app/public/' . $dataUpdateCelana1->file_corel_layout))) {
+                    Storage::delete('public/' . $dataUpdateCelana1->file_corel_layout);
                     $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-celana-1', 'public');
                 }
             }
             if ($request->file('file_tangkap_layar_celana_1')) {
                 $fileTangkapLayar = $request->file('file_tangkap_layar_celana_1')->store('file-tangkap-layout-celana-1', 'public');
-                if ($dataCelana1->file_tangkap_layar_celana_1 && file_exists(storage_path('app/public/' . $dataCelana1->file_tangkap_layar_celana_1))) {
-                    Storage::delete('public/' . $dataCelana1->file_tangkap_layar_celana_1);
+                if ($dataUpdateCelana1->file_tangkap_layar_celana_1 && file_exists(storage_path('app/public/' . $dataUpdateCelana1->file_tangkap_layar_celana_1))) {
+                    Storage::delete('public/' . $dataUpdateCelana1->file_tangkap_layar_celana_1);
                     $fileTangkapLayar = $request->file('file_tangkap_layar_celana_1')->store('file-tangkap-layout-celana-1', 'public');
                 }
             }
             if ($request->file('file_tangkap_layar_celana_1') === null) {
-                $fileTangkapLayar = $dataCelana1->file_tangkap_layar_celana_1;
+                $fileTangkapLayar = $dataUpdateCelana1->file_tangkap_layar_celana_1;
             }
-            $dataCelana1->update([
+            $dataUpdateCelana1->update([
                 'selesai' => Carbon::now(),
 
                 'panjang_kertas_celana_1' => $request->panjang_kertas_celana_1,
@@ -598,6 +614,9 @@ class LayoutController extends Controller
                 'file_corel_layout' => $filebajuplayer,
                 'tanda_telah_mengerjakan' => 1,
             ]);
+        } else {
+            $resulTotalCelana1 = 0;
+            $resulSatatusCelana1 = null;
         }
 
         if ($resulSatatusBaju == 1) {
@@ -606,8 +625,8 @@ class LayoutController extends Controller
             $dataBajuPlayer = 0;
         }
 
-        if ($resulSatatusBajuPelatih == 1) {
-            $dataBajuPelatih = $resulTotalBajuPelatih;
+        if ($resulSatatusBajuPlatih == 1) {
+            $dataBajuPelatih = $resulTotalBajuPlatih;
         } else {
             $dataBajuPelatih = 0;
         }
@@ -624,26 +643,26 @@ class LayoutController extends Controller
             $dataBaju1 = 0;
         }
 
-        if ($resulSatatusBajuCelanaPlayer == 1) {
-            $dataCelanaPlayer = $resulTotalBajuCelanaPlayer;
+        if ($resulSatatusCelanaPlayer == 1) {
+            $dataCelanaPlayer = $resulTotalCelanaPlayer;
         } else {
             $dataCelanaPlayer = 0;
         }
 
-        if ($resulSatatusBajuCelanaPelatih == 1) {
-            $dataCelanaPelatih = $resulTotalBajuCelanaPelatih;
+        if ($resulSatatusCelanaPelatih == 1) {
+            $dataCelanaPelatih = $resulTotalCelanaPelatih;
         } else {
             $dataCelanaPelatih = 0;
         }
 
-        if ($resulSatatusBajuCelanaKiper == 1) {
-            $dataCelanaKiper = $resulTotalBajuCelanaKiper;
+        if ($resulSatatusCelanaKiper == 1) {
+            $dataCelanaKiper = $resulTotalCelanaKiper;
         } else {
             $dataCelanaKiper = 0;
         }
 
-        if ($resulSatatusBajuCelana1 == 1) {
-            $dataCelana1 = $resulTotalBajuCelana1;
+        if ($resulSatatusCelana1 == 1) {
+            $dataCelana1 = $resulTotalCelana1;
         } else {
             $dataCelana1 = 0;
         }
@@ -676,10 +695,10 @@ class LayoutController extends Controller
         if ($keterangan == "- $selisihHari") {
             PembagianKomisi::create([
                 'user_id' => $user->id,
-                'layout_id' => $dataPlayer->id,
+                'layout_id' => $request->player_id,
                 'tanggal' => Carbon::now(),
                 'jumlah_komisi' => $totalHarga,
-                'kota' => $dataPlayer->BarangMasukCsLK->kota_produksi,
+                'kota' => $dataPlayer->kota_produksi,
             ]);
         } else {
             PembagianKomisi::create([
@@ -687,13 +706,14 @@ class LayoutController extends Controller
                 'layout_id' => $dataPlayer->id,
                 'tanggal' => Carbon::now(),
                 'jumlah_komisi' => "0",
-                'kota' => $dataPlayer->BarangMasukCsLK->kota_produksi,
+                'kota' => $dataPlayer->kota_produksi,
             ]);
         }
 
-        if ($dataPlayer->BarangMasukCsLK->jenis_mesin == 'mimaki') {
+        if ($dataPlayer->jenis_mesin == 'mimaki') {
+            return response()->json("heelo");
             if ($request->player_id) {
-                $laporanPlayer = Laporan::findOrFail($request->player_id);
+                $laporanPlayer = Laporan::where('barang_masuk_layout_id', $request->player_id)->first();
                 if ($laporanPlayer) {
                     $laporanPlayer->update([
                         'status' => 'Mesin Mimaki',
@@ -701,7 +721,7 @@ class LayoutController extends Controller
                 }
             }
             if ($request->pelatih_id) {
-                $laporanPelatih = Laporan::findOrFail($request->pelatih_id);
+                $laporanPelatih = Laporan::where('barang_masuk_layout_id', $request->pelatih_id)->first();
                 if ($laporanPelatih) {
                     $laporanPelatih->update([
                         'status' => 'Mesin Mimaki',
@@ -709,7 +729,7 @@ class LayoutController extends Controller
                 }
             }
             if ($request->kiper_id) {
-                $laporanKiper = Laporan::findOrFail($request->kiper_id);
+                $laporanKiper = Laporan::where('barang_masuk_layout_id', $request->kiper_id)->first();
                 if ($laporanKiper) {
                     $laporanKiper->update([
                         'status' => 'Mesin Mimaki',
@@ -717,7 +737,7 @@ class LayoutController extends Controller
                 }
             }
             if ($request->lk1_id) {
-                $laporan1 = Laporan::findOrFail($request->lk1_id);
+                $laporan1 = Laporan::where('barang_masuk_layout_id', $request->lk1_id)->first();
                 if ($laporan1) {
                     $laporan1->update([
                         'status' => 'Mesin Mimaki',
@@ -725,7 +745,7 @@ class LayoutController extends Controller
                 }
             }
             if ($request->celana_player_id) {
-                $laporanCealanaPlayer = Laporan::findOrFail($request->celana_player_id);
+                $laporanCealanaPlayer = Laporan::where('barang_masuk_layout_id', $request->celana_player_id)->first();
                 if ($laporanCealanaPlayer) {
                     $laporanCealanaPlayer->update([
                         'status' => 'Mesin Mimaki',
@@ -733,7 +753,7 @@ class LayoutController extends Controller
                 }
             }
             if ($request->celana_pelatih_id) {
-                $laporanCelanaPelatih = Laporan::findOrFail($request->celana_pelatih_id);
+                $laporanCelanaPelatih = Laporan::where('barang_masuk_layout_id', $request->celana_pelatih_id)->first();
                 if ($laporanCelanaPelatih) {
                     $laporanCelanaPelatih->update([
                         'status' => 'Mesin Mimaki',
@@ -741,7 +761,7 @@ class LayoutController extends Controller
                 }
             }
             if ($request->celana_kiper_id) {
-                $laporanCelanaKiper = Laporan::findOrFail($request->celana_kiper_id);
+                $laporanCelanaKiper = Laporan::where('barang_masuk_layout_id', $request->celana_kiper_id)->first();
                 if ($laporanCelanaKiper) {
                     $laporanCelanaKiper->update([
                         'status' => 'Mesin Mimaki',
@@ -749,16 +769,16 @@ class LayoutController extends Controller
                 }
             }
             if ($request->celana_1_id) {
-                $laporanCelana1 = Laporan::findOrFail($request->celana_1_id);
+                $laporanCelana1 = Laporan::where('barang_masuk_layout_id', $request->celana_1_id)->first();
                 if ($laporanCelana1) {
                     $laporanCelana1->update([
                         'status' => 'Mesin Mimaki',
                     ]);
                 }
             }
-        } elseif ($dataPlayer->BarangMasukCsLK->jenis_mesin == 'atexco') {
+        } elseif ($dataPlayer->jenis_mesin == 'atexco') {
             if ($request->player_id) {
-                $laporanPlayer = Laporan::findOrFail($request->player_id);
+                $laporanPlayer = Laporan::where('barang_masuk_layout_id', $request->player_id)->first();
                 if ($laporanPlayer) {
                     $laporanPlayer->update([
                         'status' => 'Mesin Atexco',
@@ -766,7 +786,7 @@ class LayoutController extends Controller
                 }
             }
             if ($request->pelatih_id) {
-                $laporanPelatih = Laporan::findOrFail($request->pelatih_id);
+                $laporanPelatih = Laporan::where('barang_masuk_layout_id', $request->pelatih_id)->first();
                 if ($laporanPelatih) {
                     $laporanPelatih->update([
                         'status' => 'Mesin Atexco',
@@ -774,7 +794,7 @@ class LayoutController extends Controller
                 }
             }
             if ($request->kiper_id) {
-                $laporanKiper = Laporan::findOrFail($request->kiper_id);
+                $laporanKiper = Laporan::where('barang_masuk_layout_id', $request->kiper_id)->first();
                 if ($laporanKiper) {
                     $laporanKiper->update([
                         'status' => 'Mesin Atexco',
@@ -782,7 +802,7 @@ class LayoutController extends Controller
                 }
             }
             if ($request->lk1_id) {
-                $laporan1 = Laporan::findOrFail($request->lk1_id);
+                $laporan1 = Laporan::where('barang_masuk_layout_id', $request->lk1_id)->first();
                 if ($laporan1) {
                     $laporan1->update([
                         'status' => 'Mesin Atexco',
@@ -790,7 +810,7 @@ class LayoutController extends Controller
                 }
             }
             if ($request->celana_player_id) {
-                $laporanCealanaPlayer = Laporan::findOrFail($request->celana_player_id);
+                $laporanCealanaPlayer = Laporan::where('barang_masuk_layout_id', $request->celana_player_id)->first();
                 if ($laporanCealanaPlayer) {
                     $laporanCealanaPlayer->update([
                         'status' => 'Mesin Atexco',
@@ -798,7 +818,7 @@ class LayoutController extends Controller
                 }
             }
             if ($request->celana_pelatih_id) {
-                $laporanCelanaPelatih = Laporan::findOrFail($request->celana_pelatih_id);
+                $laporanCelanaPelatih = Laporan::where('barang_masuk_layout_id', $request->celana_pelatih_id)->first();
                 if ($laporanCelanaPelatih) {
                     $laporanCelanaPelatih->update([
                         'status' => 'Mesin Atexco',
@@ -806,7 +826,7 @@ class LayoutController extends Controller
                 }
             }
             if ($request->celana_kiper_id) {
-                $laporanCelanaKiper = Laporan::findOrFail($request->celana_kiper_id);
+                $laporanCelanaKiper = Laporan::where('barang_masuk_layout_id', $request->celana_kiper_id)->first();
                 if ($laporanCelanaKiper) {
                     $laporanCelanaKiper->update([
                         'status' => 'Mesin Atexco',
@@ -814,21 +834,15 @@ class LayoutController extends Controller
                 }
             }
             if ($request->celana_1_id) {
-                $laporanCelana1 = Laporan::findOrFail($request->celana_1_id);
+                $laporanCelana1 = Laporan::where('barang_masuk_layout_id', $request->celana_1_id)->first();
                 if ($laporanCelana1) {
                     $laporanCelana1->update([
                         'status' => 'Mesin Atexco',
                     ]);
                 }
             }
-            // $laporan = Laporan::where('barang_masuk_layout_id', $dataPlayer->id)->first();
-            // if ($laporan) {
-            //     $laporan->update([
-            //         'status' => 'Mesin Atexco',
-            //     ]);
-            // }
         }
 
-        return redirect()->route('getIndexLkLayoutPegawai')->with('success', 'Selamat data yang anda input telah terkirim!');
+        return redirect()->route('getIndexLaporanLk')->with('success', 'Selamat data yang anda input telah terkirim!');
     }
 }

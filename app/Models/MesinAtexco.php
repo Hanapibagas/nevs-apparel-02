@@ -47,6 +47,6 @@ class MesinAtexco extends Model
 
     public function BarangMasukLayout()
     {
-        return $this->belongsTo(BarangMasukDatalayout::class, 'no_order_id');
+        return $this->belongsTo(BarangMasukDatalayout::class, 'barang_masuk_layout_id');
     }
 }

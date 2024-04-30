@@ -73,16 +73,17 @@
                                 </td>
                                 <td>
                                     <a target="_blank"
-                                        href="{{ route('getCetakDataLkMimaki', $mesins->BarangMasukLayout->id) }}"
+                                        href="{{ route('getCetakDataLkMimaki', $mesins->BarangMasukLayout->barang_masuk_id) }}"
                                         class="btn btn-danger">
                                         <i class="menu-icon tf-icons bx bxs-file-pdf"></i>Show LK</a>
                                     <a href="storage/{{ $mesins->BarangMasukLayout->file_corel_layout }}"
                                         class="btn btn-success" download>
                                         <i class="menu-icon tf-icons bx bxs-download"></i>Download File RAR</a>
-                                        @if (Auth::user()->permission_create == 1)
-                                    <a href="{{ route('getInputLaporanMimaki' , $mesins->id) }}" class="btn btn-info">
+                                    @if (Auth::user()->permission_create == 1)
+                                    <a href="{{ route('getInputLaporanMimaki' , $mesins->no_order_id) }}"
+                                        class="btn btn-info">
                                         <i class="menu-icon tf-icons bx bxs-inbox"></i>Input Laporan</a>
-                                        @endif
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

@@ -76,10 +76,11 @@
                                         <i class="menu-icon tf-icons bx bxs-file-pdf"></i>Show LK</a>
                                     @if (Auth::user()->permission_create == 1)
                                     @if ($mesins->serah_terima == 0)
-                                    <a href="{{ route('getInputLaporanJahit' , $mesins->id) }}" class="btn btn-info">
+                                    <a href="{{ route('getInputLaporanJahit' , $mesins->no_order_id) }}"
+                                        class="btn btn-info">
                                         <i class="menu-icon tf-icons bx bxs-inbox"></i>Input Laporan Serah</a>
                                     @else
-                                    <a href="{{ route('getInputLaporanJahitTerima' , $mesins->id) }}"
+                                    <a href="{{ route('getInputLaporanJahitTerima' , $mesins->no_order_id) }}"
                                         class="btn btn-info">
                                         <i class="menu-icon tf-icons bx bxs-inbox"></i>Input Laporan Terima</a>
                                     @endif

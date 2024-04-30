@@ -28,7 +28,7 @@ class SortirController extends Controller
                     $query->where('kota_produksi', 'Makassar');
                 })
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_order_id')
                 ->map(function ($group) {
                     return $group->first();
                 });
@@ -43,7 +43,7 @@ class SortirController extends Controller
                     $query->where('kota_produksi', 'Jakarta');
                 })
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_order_id')
                 ->map(function ($group) {
                     return $group->first();
                 });
@@ -58,7 +58,7 @@ class SortirController extends Controller
                     $query->where('kota_produksi', 'Bandung');
                 })
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_order_id')
                 ->map(function ($group) {
                     return $group->first();
                 });
@@ -73,7 +73,7 @@ class SortirController extends Controller
                     $query->where('kota_produksi', 'Surabaya');
                 })
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_order_id')
                 ->map(function ($group) {
                     return $group->first();
                 });
@@ -85,7 +85,7 @@ class SortirController extends Controller
 
     public function getInputLaporan($id)
     {
-        $dataMasuk = DataSortir::with('BarangMasukCs')->get();
+        $dataMasuk = DataSortir::where('no_order_id', $id)->with('BarangMasukCs')->get();
 
         $formattedData = [];
 
@@ -128,7 +128,7 @@ class SortirController extends Controller
         return view('component.Sortir.cerate-laporan-mesin', compact('dataMasuk', 'formattedData'));
     }
 
-    public function putLaporan(Request $request, $id)
+    public function putLaporan(Request $request)
     {
         // return response()->json($request->all());
         $user = Auth::user();
@@ -344,14 +344,14 @@ class SortirController extends Controller
         if ($dataMasukPlayer) {
             if ($request->player_id) {
             }
-            $laporanPlayer = Laporan::find($request->player_id);
+            $laporanPlayer = Laporan::where('barang_masuk_sortir_id', $request->player_id)->first();
             if ($laporanPlayer) {
                 $laporanPlayer->update([
                     'status' => 'Jahit',
                 ]);
             }
             if ($request->pelatih_id) {
-                $laporanPelatih = Laporan::find($request->pelatih_id);
+                $laporanPelatih = Laporan::where('barang_masuk_sortir_id', $request->pelatih_id)->first();
                 if ($laporanPelatih) {
                     $laporanPelatih->update([
                         'status' => 'Jahit',
@@ -359,7 +359,7 @@ class SortirController extends Controller
                 }
             }
             if ($request->kiper_id) {
-                $laporanKiper = Laporan::find($request->kiper_id);
+                $laporanKiper = Laporan::where('barang_masuk_sortir_id', $request->kiper_id)->first();
                 if ($laporanKiper) {
                     $laporanKiper->update([
                         'status' => 'Jahit',
@@ -367,7 +367,7 @@ class SortirController extends Controller
                 }
             }
             if ($request->lk1_id) {
-                $laporan1 = Laporan::find($request->lk1_id);
+                $laporan1 = Laporan::where('barang_masuk_sortir_id', $request->lk1_id)->first();
                 if ($laporan1) {
                     $laporan1->update([
                         'status' => 'Jahit',
@@ -375,7 +375,7 @@ class SortirController extends Controller
                 }
             }
             if ($request->celana_player_id) {
-                $laporanCelanaPlayer = Laporan::find($request->celana_player_id);
+                $laporanCelanaPlayer = Laporan::where('barang_masuk_sortir_id', $request->celana_player_id)->first();
                 if ($laporanCelanaPlayer) {
                     $laporanCelanaPlayer->update([
                         'status' => 'Jahit',
@@ -383,7 +383,7 @@ class SortirController extends Controller
                 }
             }
             if ($request->celana_pelatih_id) {
-                $laporanCelanaPelatih = Laporan::find($request->celana_pelatih_id);
+                $laporanCelanaPelatih = Laporan::where('barang_masuk_sortir_id', $request->celana_pelatih_id)->first();
                 if ($laporanCelanaPelatih) {
                     $laporanCelanaPelatih->update([
                         'status' => 'Jahit',
@@ -391,7 +391,7 @@ class SortirController extends Controller
                 }
             }
             if ($request->celana_kiper_id) {
-                $laporanCelanaKiper = Laporan::find($request->celana_kiper_id);
+                $laporanCelanaKiper = Laporan::where('barang_masuk_sortir_id', $request->celana_kiper_id)->first();
                 if ($laporanCelanaKiper) {
                     $laporanCelanaKiper->update([
                         'status' => 'Jahit',
@@ -399,7 +399,7 @@ class SortirController extends Controller
                 }
             }
             if ($request->celana_1_id) {
-                $laporanCelana1 = Laporan::find($request->celana_1_id);
+                $laporanCelana1 = Laporan::where('barang_masuk_sortir_id', $request->celana_1_id)->first();
                 if ($laporanCelana1) {
                     $laporanCelana1->update([
                         'status' => 'Jahit',
@@ -424,7 +424,7 @@ class SortirController extends Controller
                     $query->where('kota_produksi', 'Makassar');
                 })
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_order_id')
                 ->map(function ($group) {
                     return $group->first();
                 });
@@ -439,7 +439,7 @@ class SortirController extends Controller
                     $query->where('kota_produksi', 'Jakarta');
                 })
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_order_id')
                 ->map(function ($group) {
                     return $group->first();
                 });
@@ -454,7 +454,7 @@ class SortirController extends Controller
                     $query->where('kota_produksi', 'Bandung');
                 })
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_order_id')
                 ->map(function ($group) {
                     return $group->first();
                 });
@@ -469,7 +469,7 @@ class SortirController extends Controller
                     $query->where('kota_produksi', 'Surabaya');
                 })
                 ->get()
-                ->groupBy('barang_masuk_id')
+                ->groupBy('no_order_id')
                 ->map(function ($group) {
                     return $group->first();
                 });

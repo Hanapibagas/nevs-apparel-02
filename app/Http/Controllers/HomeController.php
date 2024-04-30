@@ -368,13 +368,31 @@ class HomeController extends Controller
         )
             ->get();
 
+        // $laporans = Laporan::with('BarangMasukLayout')->get()->groupBy('barang_masuk_costumer_services_id')->map(function ($group) {
+        //     return $group->map(function ($laporan) {
+        //         // Dapatkan semua data relasi BarangMasukLayout
+        //         $laporan->barang_masuk_layout = $laporan->barang_masuk_layout;
+        //         return $laporan;
+        //     })->first(); // Ambil hanya satu entri dari setiap kelompok
+        // });
+
+        // $laporans = Laporan::with('BarangMasukLayout')->get()->groupBy('barang_masuk_costumer_services_id')->map(function ($group) {
+        //     $group->each(function ($laporan) {
+        //         // Dapatkan semua data relasi BarangMasukLayout
+        //         $laporan->barang_masuk_layout = $laporan->barang_masuk_layout;
+        //     });
+        //     return $group;
+        // });
+
+        // $laporans = $laporans->values()->all();
+
         // return response()->json($laporans);
         return view('component.Admin.laporan-pengerjaan.index', compact('laporans'));
     }
 
-    public function getDetailLaporan()
+    public function getDetailLaporan($barang_masuk_costumer_services_id)
     {
-        $laporans = Laporan::with('BarangMasukLayout')->get();
+        $laporans = Laporan::with('BarangMasukLayout')->where('barang_masuk_costumer_services_id', $barang_masuk_costumer_services_id)->get();
 
         return response()->json($laporans);
 
