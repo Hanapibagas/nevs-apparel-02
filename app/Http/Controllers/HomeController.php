@@ -846,68 +846,76 @@ class HomeController extends Controller
             if ($itemMimaki) {
                 // mimaki
                 if ($itemMimaki->lk_player_id) {
+                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemAtexco->UserMesinAtexco->name : 'Belum melakukan update data';
                     $laporanDataMimaki['player'][] = [
                         'id' => $itemMimaki->id,
                         'deadline' => $itemMimaki->deadline,
                         'selesai' => $itemMimaki->selesai,
                         'file_foto' => $itemMimaki->file_foto,
-                        'penanggung_jawab_id' => $itemMimaki->UserMesinAtexco->name,
+                        'penanggung_jawab_id' =>  $penanggung_jawab_id
                     ];
                 } elseif ($itemMimaki->lk_pelatih_id) {
+                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemAtexco->UserMesinAtexco->name : 'Belum melakukan update data';
                     $laporanDataMimaki['pelatih'][] = [
                         'id' => $itemMimaki->id,
                         'deadline' => $itemMimaki->deadline,
                         'selesai' => $itemMimaki->selesai,
                         'file_foto_pelatih' => $itemMimaki->file_foto_pelatih,
-                        'penanggung_jawab_id' => $itemMimaki->UserMesinAtexco->name,
+                        'penanggung_jawab_id' =>  $penanggung_jawab_id
                     ];
                 } elseif ($itemMimaki->lk_kiper_id) {
+                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemAtexco->UserMesinAtexco->name : 'Belum melakukan update data';
                     $laporanDataMimaki['kiper'][] = [
                         'id' => $itemMimaki->id,
                         'deadline' => $itemMimaki->deadline,
                         'selesai' => $itemMimaki->selesai,
                         'file_foto_kiper' => $itemMimaki->file_foto_kiper,
-                        'penanggung_jawab_id' => $itemMimaki->UserMesinAtexco->name,
+                        'penanggung_jawab_id' =>  $penanggung_jawab_id
                     ];
                 } elseif ($itemMimaki->lk_1_id) {
+                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemAtexco->UserMesinAtexco->name : 'Belum melakukan update data';
                     $laporanDataMimaki['lk_1'][] = [
                         'id' => $itemMimaki->id,
                         'deadline' => $itemMimaki->deadline,
                         'selesai' => $itemMimaki->selesai,
                         'file_foto_1' => $itemMimaki->file_foto_1,
-                        'penanggung_jawab_id' => $itemMimaki->UserMesinAtexco->name,
+                        'penanggung_jawab_id' =>  $penanggung_jawab_id
                     ];
                 } elseif ($itemMimaki->lk_celana_player_id) {
+                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemAtexco->UserMesinAtexco->name : 'Belum melakukan update data';
                     $laporanDataMimaki['celana_player'][] = [
                         'id' => $itemMimaki->id,
                         'deadline' => $itemMimaki->deadline,
                         'selesai' => $itemMimaki->selesai,
                         'file_foto_celana_player' => $itemMimaki->file_foto_celana_player,
-                        'penanggung_jawab_id' => $itemMimaki->UserMesinAtexco->name,
+                        'penanggung_jawab_id' =>  $penanggung_jawab_id
                     ];
                 } elseif ($itemMimaki->lk_celana_pelatih_id) {
+                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemAtexco->UserMesinAtexco->name : 'Belum melakukan update data';
                     $laporanDataMimaki['celana_pelatih'][] = [
                         'id' => $itemMimaki->id,
                         'deadline' => $itemMimaki->deadline,
                         'selesai' => $itemMimaki->selesai,
                         'file_foto_celana_pelatih' => $itemMimaki->file_foto_celana_pelatih,
-                        'penanggung_jawab_id' => $itemMimaki->UserMesinAtexco->name,
+                        'penanggung_jawab_id' =>  $penanggung_jawab_id
                     ];
                 } elseif ($itemMimaki->lk_celana_kiper_id) {
+                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemAtexco->UserMesinAtexco->name : 'Belum melakukan update data';
                     $laporanDataMimaki['celana_kiper'][] = [
                         'id' => $itemMimaki->id,
                         'deadline' => $itemMimaki->deadline,
                         'selesai' => $itemMimaki->selesai,
                         'file_foto_celana_kiper' => $itemMimaki->file_foto_celana_kiper,
-                        'penanggung_jawab_id' => $itemMimaki->UserMesinAtexco->name,
+                        'penanggung_jawab_id' =>  $penanggung_jawab_id
                     ];
                 } elseif ($itemMimaki->lk_celana_1_id) {
+                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemAtexco->UserMesinAtexco->name : 'Belum melakukan update data';
                     $laporanDataMimaki['celana_1'][] = [
                         'id' => $itemMimaki->id,
                         'deadline' => $itemMimaki->deadline,
                         'selesai' => $itemMimaki->selesai,
                         'file_foto_celana_1' => $itemMimaki->file_foto_celana_1,
-                        'penanggung_jawab_id' => $itemMimaki->UserMesinAtexco->name,
+                        'penanggung_jawab_id' =>  $penanggung_jawab_id
                     ];
                 }
             }
@@ -915,68 +923,76 @@ class HomeController extends Controller
             if ($itemAtexco) {
                 // atexco
                 if ($itemAtexco->lk_player_id) {
+                    $penanggung_jawab_id = $itemAtexco->UserMesinAtexco ? $itemAtexco->UserMesinAtexco->name : 'Belum melakukan update data';
                     $laporanDataAtexco['player'][] = [
                         'id' => $itemAtexco->id,
                         'deadline' => $itemAtexco->deadline,
                         'selesai' => $itemAtexco->selesai,
                         'file_foto' => $itemAtexco->file_foto,
-                        'penanggung_jawab_id' => $itemAtexco->UserMesinAtexco->name,
+                        'penanggung_jawab_id' => $penanggung_jawab_id,
                     ];
                 } elseif ($itemAtexco->lk_pelatih_id) {
+                    $penanggung_jawab_id = $itemAtexco->UserMesinAtexco ? $itemAtexco->UserMesinAtexco->name : 'Belum melakukan update data';
                     $laporanDataAtexco['pelatih'][] = [
                         'id' => $itemAtexco->id,
                         'deadline' => $itemAtexco->deadline,
                         'selesai' => $itemAtexco->selesai,
                         'file_foto_pelatih' => $itemAtexco->file_foto_pelatih,
-                        'penanggung_jawab_id' => $itemAtexco->UserMesinAtexco->name,
+                        'penanggung_jawab_id' => $penanggung_jawab_id,
                     ];
                 } elseif ($itemAtexco->lk_kiper_id) {
+                    $penanggung_jawab_id = $itemAtexco->UserMesinAtexco ? $itemAtexco->UserMesinAtexco->name : 'Belum melakukan update data';
                     $laporanDataAtexco['kiper'][] = [
                         'id' => $itemAtexco->id,
                         'deadline' => $itemAtexco->deadline,
                         'selesai' => $itemAtexco->selesai,
                         'file_foto_kiper' => $itemAtexco->file_foto_kiper,
-                        'penanggung_jawab_id' => $itemAtexco->UserMesinAtexco->name,
+                        'penanggung_jawab_id' => $penanggung_jawab_id,
                     ];
                 } elseif ($itemAtexco->lk_1_id) {
+                    $penanggung_jawab_id = $itemAtexco->UserMesinAtexco ? $itemAtexco->UserMesinAtexco->name : 'Belum melakukan update data';
                     $laporanDataAtexco['lk_1'][] = [
                         'id' => $itemAtexco->id,
                         'deadline' => $itemAtexco->deadline,
                         'selesai' => $itemAtexco->selesai,
                         'file_foto_1' => $itemAtexco->file_foto_1,
-                        'penanggung_jawab_id' => $itemAtexco->UserMesinAtexco->name,
+                        'penanggung_jawab_id' => $penanggung_jawab_id,
                     ];
                 } elseif ($itemAtexco->lk_celana_player_id) {
+                    $penanggung_jawab_id = $itemAtexco->UserMesinAtexco ? $itemAtexco->UserMesinAtexco->name : 'Belum melakukan update data';
                     $laporanDataAtexco['celana_player'][] = [
                         'id' => $itemAtexco->id,
                         'deadline' => $itemAtexco->deadline,
                         'selesai' => $itemAtexco->selesai,
                         'file_foto_celana_player' => $itemAtexco->file_foto_celana_player,
-                        'penanggung_jawab_id' => $itemAtexco->UserMesinAtexco->name,
+                        'penanggung_jawab_id' => $penanggung_jawab_id,
                     ];
                 } elseif ($itemAtexco->lk_celana_pelatih_id) {
+                    $penanggung_jawab_id = $itemAtexco->UserMesinAtexco ? $itemAtexco->UserMesinAtexco->name : 'Belum melakukan update data';
                     $laporanDataAtexco['celana_pelatih'][] = [
                         'id' => $itemAtexco->id,
                         'deadline' => $itemAtexco->deadline,
                         'selesai' => $itemAtexco->selesai,
                         'file_foto_celana_pelatih' => $itemAtexco->file_foto_celana_pelatih,
-                        'penanggung_jawab_id' => $itemAtexco->UserMesinAtexco->name,
+                        'penanggung_jawab_id' => $penanggung_jawab_id,
                     ];
                 } elseif ($itemAtexco->lk_celana_kiper_id) {
+                    $penanggung_jawab_id = $itemAtexco->UserMesinAtexco ? $itemAtexco->UserMesinAtexco->name : 'Belum melakukan update data';
                     $laporanDataAtexco['celana_kiper'][] = [
                         'id' => $itemAtexco->id,
                         'deadline' => $itemAtexco->deadline,
                         'selesai' => $itemAtexco->selesai,
                         'file_foto_celana_kiper' => $itemAtexco->file_foto_celana_kiper,
-                        'penanggung_jawab_id' => $itemAtexco->UserMesinAtexco->name,
+                        'penanggung_jawab_id' => $penanggung_jawab_id,
                     ];
                 } elseif ($itemAtexco->lk_celana_1_id) {
+                    $penanggung_jawab_id = $itemAtexco->UserMesinAtexco ? $itemAtexco->UserMesinAtexco->name : 'Belum melakukan update data';
                     $laporanDataAtexco['celana_1'][] = [
                         'id' => $itemAtexco->id,
                         'deadline' => $itemAtexco->deadline,
                         'selesai' => $itemAtexco->selesai,
                         'file_foto_celana_1' => $itemAtexco->file_foto_celana_1,
-                        'penanggung_jawab_id' => $itemAtexco->UserMesinAtexco->name,
+                        'penanggung_jawab_id' => $penanggung_jawab_id,
                     ];
                 }
             }

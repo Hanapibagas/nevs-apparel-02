@@ -531,7 +531,9 @@
                                     @endif
                                 </td>
                                 <td>
-                                    {{ strtoupper($laporanDataMimaki['player'][0]['penanggung_jawab_id']) }}
+                                    {{ isset($laporanDataMimaki['player'][0]['penanggung_jawab_id']) ?
+                                    strtoupper($laporanDataMimaki['player'][0]['penanggung_jawab_id']) : 'Belum
+                                    melakukan pengisian data' }}
                                 </td>
                                 <td>
                                     <img style="height: 200px; width: 200px"
@@ -557,7 +559,9 @@
                                     @endif
                                 </td>
                                 <td>
-                                    {{ strtoupper($laporanDataMimaki['pelatih'][0]['penanggung_jawab_id']) }}
+                                    {{ isset($laporanDataMimaki['player'][0]['penanggung_jawab_id']) ?
+                                    strtoupper($laporanDataMimaki['player'][0]['penanggung_jawab_id']) : 'Belum
+                                    melakukan pengisian data' }}
                                 </td>
                                 <td>
                                     <img style="height: 200px; width: 200px"
@@ -583,7 +587,9 @@
                                     @endif
                                 </td>
                                 <td>
-                                    {{ strtoupper($laporanDataMimaki['kiper'][0]['penanggung_jawab_id']) }}
+                                    {{ isset($laporanDataMimaki['player'][0]['penanggung_jawab_id']) ?
+                                    strtoupper($laporanDataMimaki['player'][0]['penanggung_jawab_id']) : 'Belum
+                                    melakukan pengisian data' }}
                                 </td>
                                 <td>
                                     <img style="height: 200px; width: 200px"
@@ -609,7 +615,9 @@
                                     @endif
                                 </td>
                                 <td>
-                                    {{ strtoupper($laporanDataMimaki['lk_1'][0]['penanggung_jawab_id']) }}
+                                    {{ isset($laporanDataMimaki['player'][0]['penanggung_jawab_id']) ?
+                                    strtoupper($laporanDataMimaki['player'][0]['penanggung_jawab_id']) : 'Belum
+                                    melakukan pengisian data' }}
                                 </td>
                                 <td>
                                     <img style="height: 200px; width: 200px"
@@ -639,7 +647,9 @@
                                     @endif
                                 </td>
                                 <td>
-                                    {{ strtoupper($laporanDataMimaki['celana_player'][0]['penanggung_jawab_id']) }}
+                                    {{ isset($laporanDataMimaki['player'][0]['penanggung_jawab_id']) ?
+                                    strtoupper($laporanDataMimaki['player'][0]['penanggung_jawab_id']) : 'Belum
+                                    melakukan pengisian data' }}
                                 </td>
                                 <td>
                                     <img style="height: 200px; width: 200px"
@@ -669,7 +679,9 @@
                                     @endif
                                 </td>
                                 <td>
-                                    {{ strtoupper($laporanDataMimaki['celana_pelatih'][0]['penanggung_jawab_id']) }}
+                                    {{ isset($laporanDataMimaki['player'][0]['penanggung_jawab_id']) ?
+                                    strtoupper($laporanDataMimaki['player'][0]['penanggung_jawab_id']) : 'Belum
+                                    melakukan pengisian data' }}
                                 </td>
                                 <td>
                                     <img style="height: 200px; width: 200px"
@@ -698,7 +710,9 @@
                                     @endif
                                 </td>
                                 <td>
-                                    {{ strtoupper($laporanDataMimaki['celana_kiper'][0]['penanggung_jawab_id']) }}
+                                    {{ isset($laporanDataMimaki['player'][0]['penanggung_jawab_id']) ?
+                                    strtoupper($laporanDataMimaki['player'][0]['penanggung_jawab_id']) : 'Belum
+                                    melakukan pengisian data' }}
                                 </td>
                                 <td>
                                     <img style="height: 200px; width: 200px"
@@ -724,7 +738,9 @@
                                     @endif
                                 </td>
                                 <td>
-                                    {{ strtoupper($laporanDataMimaki['celana_1'][0]['penanggung_jawab_id']) }}
+                                    {{ isset($laporanDataMimaki['player'][0]['penanggung_jawab_id']) ?
+                                    strtoupper($laporanDataMimaki['player'][0]['penanggung_jawab_id']) : 'Belum
+                                    melakukan pengisian data' }}
                                 </td>
                                 <td>
                                     <img style="height: 200px; width: 200px"
