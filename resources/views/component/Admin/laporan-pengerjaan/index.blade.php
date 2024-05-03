@@ -100,16 +100,16 @@
                                         echo '<p style="text-transform: uppercase">Selesai tepat pada Deadline</p>' ; }
                                         } else { echo "" ; } @endphp </td>
                                 <td>
-                                    <button class="btn btn-primary" data-bs-toggle="modal"
+                                    {{-- <button class="btn btn-primary" data-bs-toggle="modal"
                                         data-bs-target="#exLargeModal{{ $laporan->id }}" type="button"
                                         class="btn btn-warning">
                                         <i class="menu-icon tf-icons bx bx-show"></i>
-                                        Lihat Detail</button>
-                                    {{-- <a class="btn btn-primary"
+                                        Lihat Detail</button> --}}
+                                    <a class="btn btn-primary"
                                         href="{{ route('getDetailLaporan', $laporan->barang_masuk_costumer_services_id) }}"
                                         type="button" class="btn btn-warning">
                                         <i class="menu-icon tf-icons bx bx-show"></i>
-                                        Lihat Detail</a> --}}
+                                        Lihat Detail</a>
                                 </td>
                             </tr>
                             @endforeach

@@ -325,6 +325,9 @@ class LayoutController extends Controller
                 'file_corel_layout' => $filebajuplayer,
                 'tanda_telah_mengerjakan' => 1,
             ]);
+        } else {
+            $resulTotalBaju = 0;
+            $resulSatatusBaju = null;
         }
 
         if ($request->pelatih_id) {

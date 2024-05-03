@@ -45,7 +45,7 @@ $activeList = $listData ? 'active' : '';
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Super Admin</span>
         </li>
-        <li class="menu-item {{ request()->is('laporan')  ? 'active' : '' }}">
+        <li class="menu-item {{ request()->is('laporan')|| request()->is('laporan-details/*')  ? 'active' : '' }}">
             <a href="{{ route('getIndexLaporan') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-list-ul"></i>
                 <div data-i18n="Analytics">Laporan pengerjaan</div>
@@ -203,7 +203,7 @@ $activeList = $listData ? 'active' : '';
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Admin</span>
         </li>
-        <li class="menu-item {{ request()->is('laporan')  ? 'active' : '' }}">
+        <li class="menu-item {{ request()->is('laporan') || request()->is('laporan-details/*') ? 'active' : '' }}">
             <a href="{{ route('getIndexLaporan') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-list-ul"></i>
                 <div data-i18n="Analytics">Laporan pengerjaan</div>

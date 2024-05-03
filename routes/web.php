@@ -35,7 +35,8 @@ Route::middleware(['auth', 'checkroll:super_admin,jahit,finis,cut,disainer,layou
 
     // route admin cs
     Route::get('/laporan', [HomeController::class, 'getLaporan'])->name('getIndexLaporan');
-    // Route::get('/laporan-details/{barang_masuk_costumer_services_id}', [HomeController::class, 'getDetailLaporan'])->name('getDetailLaporan');
+    Route::get('/laporan-details/{id}', [HomeController::class, 'getDetailLaporan'])->name('getDetailLaporan');
+
     Route::get('/pemabagain-komisi', [HomeController::class, 'getPembagianKomisi'])->name('getPembagianKomisi');
     Route::get('/filtering-pemabagain-komisi', [HomeController::class, 'getFilterPembagianKomisi'])->name('getFilterPembagianKomisi');
 

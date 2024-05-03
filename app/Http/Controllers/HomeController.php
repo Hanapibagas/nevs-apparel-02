@@ -366,38 +366,713 @@ class HomeController extends Controller
             'BarangMasukJahitBaju',
             'BarangMasukPressTag',
         )
-            ->get();
-
-        // $laporans = Laporan::with('BarangMasukLayout')->get()->groupBy('barang_masuk_costumer_services_id')->map(function ($group) {
-        //     return $group->map(function ($laporan) {
-        //         // Dapatkan semua data relasi BarangMasukLayout
-        //         $laporan->barang_masuk_layout = $laporan->barang_masuk_layout;
-        //         return $laporan;
-        //     })->first(); // Ambil hanya satu entri dari setiap kelompok
-        // });
-
-        // $laporans = Laporan::with('BarangMasukLayout')->get()->groupBy('barang_masuk_costumer_services_id')->map(function ($group) {
-        //     $group->each(function ($laporan) {
-        //         // Dapatkan semua data relasi BarangMasukLayout
-        //         $laporan->barang_masuk_layout = $laporan->barang_masuk_layout;
-        //     });
-        //     return $group;
-        // });
-
-        // $laporans = $laporans->values()->all();
+            ->get()
+            ->groupBy('barang_masuk_costumer_services_id')
+            ->map(function ($group) {
+                return $group->first();
+            });
+        $laporans = $laporans->values()->all();
 
         // return response()->json($laporans);
         return view('component.Admin.laporan-pengerjaan.index', compact('laporans'));
     }
 
-    public function getDetailLaporan($barang_masuk_costumer_services_id)
+    public function getDetailLaporan($id)
     {
-        $laporans = Laporan::with('BarangMasukLayout')->where('barang_masuk_costumer_services_id', $barang_masuk_costumer_services_id)->get();
+        $laporans = Laporan::with(
+            'BarangMasukLayout',
+            'BarangMasukMesinAtexco',
+            'BarangMasukMesinMimaki',
+            'BarangMasukPressKain',
+            'BarangMasukLaserCut',
+            'BarangMasukManualcut',
+            'BarangMasukSortir',
+            'BarangMasukJahitBaju',
+            'BarangMasukPressTag',
+        )->where('barang_masuk_costumer_services_id', $id)->get();
 
-        return response()->json($laporans);
+        $laporanData = [];
+        $laporanDataAtexco = [];
+        $laporanDataMimaki = [];
+        $laporanDataPressKain = [];
+        $laporanDataLaserCut = [];
+        $laporanDataManualCut = [];
+        $laporanDataSortir = [];
+        $laporanDataJahit = [];
+        $laporanDataFinis = [];
+
+        foreach ($laporans as $laporan) {
+            $item = $laporan->BarangMasukLayout;
+            $itemAtexco = $laporan->BarangMasukMesinAtexco;
+            $itemMimaki = $laporan->BarangMasukMesinMimaki;
+            $itemPressKain = $laporan->BarangMasukPressKain;
+            $itemLaserCut = $laporan->BarangMasukLaserCut;
+            $itemManualCut = $laporan->BarangMasukManualcut;
+            $itemSortir = $laporan->BarangMasukSortir;
+            $itemJahit = $laporan->BarangMasukJahitBaju;
+            $itemFinis = $laporan->BarangMasukPressTag;
+
+            if ($itemFinis) {
+                // manual cut
+                if ($itemFinis->lk_player_id) {
+                    $laporanDataFinis['player'][] = [
+                        'id' => $itemFinis->id,
+                        'deadline' => $itemFinis->deadline,
+                        'selesai' => $itemFinis->selesai,
+                        'foto' => $itemFinis->foto,
+                    ];
+                } elseif ($itemFinis->lk_pelatih_id) {
+                    $laporanDataFinis['pelatih'][] = [
+                        'id' => $itemFinis->id,
+                        'deadline' => $itemFinis->deadline,
+                        'selesai' => $itemFinis->selesai,
+                        'foto_pelatih' => $itemFinis->foto_pelatih,
+                    ];
+                } elseif ($itemFinis->lk_kiper_id) {
+                    $laporanDataFinis['kiper'][] = [
+                        'id' => $itemFinis->id,
+                        'deadline' => $itemFinis->deadline,
+                        'selesai' => $itemFinis->selesai,
+                        'foto_kiper' => $itemFinis->foto_kiper,
+                    ];
+                } elseif ($itemFinis->lk_1_id) {
+                    $laporanDataFinis['lk_1'][] = [
+                        'id' => $itemFinis->id,
+                        'deadline' => $itemFinis->deadline,
+                        'selesai' => $itemFinis->selesai,
+                        'foto_1' => $itemFinis->foto_1,
+                    ];
+                } elseif ($itemFinis->lk_celana_player_id) {
+                    $laporanDataFinis['celana_player'][] = [
+                        'id' => $itemFinis->id,
+                        'deadline' => $itemFinis->deadline,
+                        'selesai' => $itemFinis->selesai,
+                        'foto_celana_pelayer' => $itemFinis->foto_celana_pelayer,
+                    ];
+                } elseif ($itemFinis->lk_celana_pelatih_id) {
+                    $laporanDataFinis['celana_pelatih'][] = [
+                        'id' => $itemFinis->id,
+                        'deadline' => $itemFinis->deadline,
+                        'selesai' => $itemFinis->selesai,
+                        'foto_celana_pelatih' => $itemFinis->foto_celana_pelatih,
+                    ];
+                } elseif ($itemFinis->lk_celana_kiper_id) {
+                    $laporanDataFinis['celana_kiper'][] = [
+                        'id' => $itemFinis->id,
+                        'deadline' => $itemFinis->deadline,
+                        'selesai' => $itemFinis->selesai,
+                        'foto_celana_kiper' => $itemFinis->foto_celana_kiper,
+                    ];
+                } elseif ($itemFinis->lk_celana_1_id) {
+                    $laporanDataFinis['celana_1'][] = [
+                        'id' => $itemFinis->id,
+                        'deadline' => $itemFinis->deadline,
+                        'selesai' => $itemFinis->selesai,
+                        'foto_celana_1' => $itemFinis->foto_celana_1,
+                    ];
+                }
+            }
+
+            if ($itemJahit) {
+                // manual cut
+                if ($itemJahit->lk_player_id) {
+                    $laporanDataJahit['player'][] = [
+                        'id' => $itemJahit->id,
+                        'deadline' => $itemJahit->deadline,
+                        'selesai' => $itemJahit->selesai,
+                        'leher' => $itemJahit->leher,
+                        'pola_badan' => $itemJahit->pola_badan,
+                        'foto' => $itemJahit->foto,
+                    ];
+                } elseif ($itemJahit->lk_pelatih_id) {
+                    $laporanDataJahit['pelatih'][] = [
+                        'id' => $itemJahit->id,
+                        'deadline' => $itemJahit->deadline,
+                        'selesai' => $itemJahit->selesai,
+                        'leher_pelatih' => $itemJahit->leher_pelatih,
+                        'pola_badan_pelatih' => $itemJahit->pola_badan_pelatih,
+                        'foto_pelatih' => $itemJahit->foto_pelatih,
+                    ];
+                } elseif ($itemJahit->lk_kiper_id) {
+                    $laporanDataJahit['kiper'][] = [
+                        'id' => $itemJahit->id,
+                        'deadline' => $itemJahit->deadline,
+                        'selesai' => $itemJahit->selesai,
+                        'leher_kiper' => $itemJahit->leher_kiper,
+                        'pola_badan_kiper' => $itemJahit->pola_badan_kiper,
+                        'foto_kiper' => $itemJahit->foto_kiper,
+                    ];
+                } elseif ($itemJahit->lk_1_id) {
+                    $laporanDataJahit['lk_1'][] = [
+                        'id' => $itemJahit->id,
+                        'deadline' => $itemJahit->deadline,
+                        'selesai' => $itemJahit->selesai,
+                        'leher_1' => $itemJahit->leher_1,
+                        'pola_badan_1' => $itemJahit->pola_badan_1,
+                        'foto_1' => $itemJahit->foto_1,
+                    ];
+                } elseif ($itemJahit->lk_celana_player_id) {
+                    $laporanDataJahit['celana_player'][] = [
+                        'id' => $itemJahit->id,
+                        'deadline' => $itemJahit->deadline,
+                        'selesai' => $itemJahit->selesai,
+                        'leher_celana_pelayer' => $itemJahit->leher_celana_pelayer,
+                        'pola_badan_celana_pelayer' => $itemJahit->pola_badan_celana_pelayer,
+                        'foto_celana_pelayer' => $itemJahit->foto_celana_pelayer,
+                    ];
+                } elseif ($itemJahit->lk_celana_pelatih_id) {
+                    $laporanDataJahit['celana_pelatih'][] = [
+                        'id' => $itemJahit->id,
+                        'deadline' => $itemJahit->deadline,
+                        'selesai' => $itemJahit->selesai,
+                        'leher_celana_pelatih' => $itemJahit->leher_celana_pelatih,
+                        'pola_badan_celana_pelatih' => $itemJahit->pola_badan_celana_pelatih,
+                        'foto_celana_pelatih' => $itemJahit->foto_celana_pelatih,
+                    ];
+                } elseif ($itemJahit->lk_celana_kiper_id) {
+                    $laporanDataJahit['celana_kiper'][] = [
+                        'id' => $itemJahit->id,
+                        'deadline' => $itemJahit->deadline,
+                        'selesai' => $itemJahit->selesai,
+                        'leher_celana_kiper' => $itemJahit->leher_celana_kiper,
+                        'pola_badan_celana_kiper' => $itemJahit->pola_badan_celana_kiper,
+                        'foto_celana_kiper' => $itemJahit->foto_celana_kiper,
+                    ];
+                } elseif ($itemJahit->lk_celana_1_id) {
+                    $laporanDataJahit['celana_1'][] = [
+                        'id' => $itemJahit->id,
+                        'deadline' => $itemJahit->deadline,
+                        'selesai' => $itemJahit->selesai,
+                        'leher_celana_1' => $itemJahit->leher_celana_1,
+                        'pola_badan_celana_1' => $itemJahit->pola_badan_celana_1,
+                        'foto_celana_1' => $itemJahit->foto_celana_1,
+                    ];
+                }
+            }
 
 
-        return view('component.Admin.laporan-pengerjaan.details', compact('laporans'));
+            if ($itemSortir) {
+                // manual cut
+                if ($itemSortir->lk_player_id) {
+                    $laporanDataSortir['player'][] = [
+                        'id' => $itemSortir->id,
+                        'deadline' => $itemSortir->deadline,
+                        'selesai' => $itemSortir->selesai,
+                        'no_error' => $itemSortir->no_error,
+                        'panjang_kertas' => $itemSortir->panjang_kertas,
+                        'berat' => $itemSortir->berat,
+                        'bahan' => $itemSortir->bahan,
+                        'foto' => $itemSortir->foto,
+                    ];
+                } elseif ($itemSortir->lk_pelatih_id) {
+                    $laporanDataSortir['pelatih'][] = [
+                        'id' => $itemSortir->id,
+                        'deadline' => $itemSortir->deadline,
+                        'selesai' => $itemSortir->selesai,
+                        'no_error_pelatih' => $itemSortir->no_error_pelatih,
+                        'panjang_kertas_pelatih' => $itemSortir->panjang_kertas_pelatih,
+                        'berat_pelatih' => $itemSortir->berat_pelatih,
+                        'bahan_pelatih' => $itemSortir->bahan_pelatih,
+                        'foto_pelatih' => $itemSortir->foto_pelatih,
+                    ];
+                } elseif ($itemSortir->lk_kiper_id) {
+                    $laporanDataSortir['kiper'][] = [
+                        'id' => $itemSortir->id,
+                        'deadline' => $itemSortir->deadline,
+                        'selesai' => $itemSortir->selesai,
+                        'no_error_kiper' => $itemSortir->no_error_kiper,
+                        'panjang_kertas_kiper' => $itemSortir->panjang_kertas_kiper,
+                        'berat_kiper' => $itemSortir->berat_kiper,
+                        'bahan_kiper' => $itemSortir->bahan_kiper,
+                        'foto_kiper' => $itemSortir->foto_kiper,
+                    ];
+                } elseif ($itemSortir->lk_1_id) {
+                    $laporanDataSortir['lk_1'][] = [
+                        'id' => $itemSortir->id,
+                        'deadline' => $itemSortir->deadline,
+                        'selesai' => $itemSortir->selesai,
+                        'no_error_1' => $itemSortir->no_error_1,
+                        'panjang_kertas_1' => $itemSortir->panjang_kertas_1,
+                        'berat_1' => $itemSortir->berat_1,
+                        'bahan_1' => $itemSortir->bahan_1,
+                        'foto_1' => $itemSortir->foto_1,
+                    ];
+                } elseif ($itemSortir->lk_celana_player_id) {
+                    $laporanDataSortir['celana_player'][] = [
+                        'id' => $itemSortir->id,
+                        'deadline' => $itemSortir->deadline,
+                        'selesai' => $itemSortir->selesai,
+                        'no_error_celana_pelayer' => $itemSortir->no_error_celana_pelayer,
+                        'panjang_kertas_celana_pelayer' => $itemSortir->panjang_kertas_celana_pelayer,
+                        'berat_celana_pelayer' => $itemSortir->berat_celana_pelayer,
+                        'bahan_celana_pelayer' => $itemSortir->bahan_celana_pelayer,
+                        'foto_celana_pelayer' => $itemSortir->foto_celana_pelayer,
+                    ];
+                } elseif ($itemSortir->lk_celana_pelatih_id) {
+                    $laporanDataSortir['celana_pelatih'][] = [
+                        'id' => $itemSortir->id,
+                        'deadline' => $itemSortir->deadline,
+                        'selesai' => $itemSortir->selesai,
+                        'no_error_celana_pelatih' => $itemSortir->no_error_celana_pelatih,
+                        'panjang_kertas_celana_pelatih' => $itemSortir->panjang_kertas_celana_pelatih,
+                        'berat_celana_pelatih' => $itemSortir->berat_celana_pelatih,
+                        'bahan_celana_pelatih' => $itemSortir->bahan_celana_pelatih,
+                        'foto_celana_pelatih' => $itemSortir->foto_celana_pelatih,
+                    ];
+                } elseif ($itemSortir->lk_celana_kiper_id) {
+                    $laporanDataSortir['celana_kiper'][] = [
+                        'id' => $itemSortir->id,
+                        'deadline' => $itemSortir->deadline,
+                        'selesai' => $itemSortir->selesai,
+                        'no_error_celana_kiper' => $itemSortir->no_error_celana_kiper,
+                        'panjang_kertas_celana_kiper' => $itemSortir->panjang_kertas_celana_kiper,
+                        'berat_celana_kiper' => $itemSortir->berat_celana_kiper,
+                        'bahan_celana_kiper' => $itemSortir->bahan_celana_kiper,
+                        'foto_celana_kiper' => $itemSortir->foto_celana_kiper,
+                    ];
+                } elseif ($itemSortir->lk_celana_1_id) {
+                    $laporanDataSortir['celana_1'][] = [
+                        'id' => $itemSortir->id,
+                        'deadline' => $itemSortir->deadline,
+                        'selesai' => $itemSortir->selesai,
+                        'no_error_celana_1' => $itemSortir->no_error_celana_1,
+                        'panjang_kertas_celana_1' => $itemSortir->panjang_kertas_celana_1,
+                        'berat_celana_1' => $itemSortir->berat_celana_1,
+                        'bahan_celana_1' => $itemSortir->bahan_celana_1,
+                        'foto_celana_1' => $itemSortir->foto_celana_1,
+                    ];
+                }
+            }
+
+            if ($itemManualCut) {
+                // manual cut
+                if ($itemManualCut->lk_player_id) {
+                    $laporanDataManualCut['player'][] = [
+                        'id' => $itemManualCut->id,
+                        'deadline' => $itemManualCut->deadline,
+                        'selesai' => $itemManualCut->selesai,
+                        'file_foto' => $itemManualCut->file_foto,
+                    ];
+                } elseif ($itemManualCut->lk_pelatih_id) {
+                    $laporanDataManualCut['pelatih'][] = [
+                        'id' => $itemManualCut->id,
+                        'deadline' => $itemManualCut->deadline,
+                        'selesai' => $itemManualCut->selesai,
+                        'file_foto_pelatih' => $itemManualCut->file_foto_pelatih,
+                    ];
+                } elseif ($itemManualCut->lk_kiper_id) {
+                    $laporanDataManualCut['kiper'][] = [
+                        'id' => $itemManualCut->id,
+                        'deadline' => $itemManualCut->deadline,
+                        'selesai' => $itemManualCut->selesai,
+                        'file_foto_kiper' => $itemManualCut->file_foto_kiper,
+                    ];
+                } elseif ($itemManualCut->lk_1_id) {
+                    $laporanDataManualCut['lk_1'][] = [
+                        'id' => $itemManualCut->id,
+                        'deadline' => $itemManualCut->deadline,
+                        'selesai' => $itemManualCut->selesai,
+                        'file_foto_1' => $itemManualCut->file_foto_1,
+                    ];
+                } elseif ($itemManualCut->lk_celana_player_id) {
+                    $laporanDataManualCut['celana_player'][] = [
+                        'id' => $itemManualCut->id,
+                        'deadline' => $itemManualCut->deadline,
+                        'selesai' => $itemManualCut->selesai,
+                        'file_foto_celana_player' => $itemManualCut->file_foto_celana_player,
+                    ];
+                } elseif ($itemManualCut->lk_celana_pelatih_id) {
+                    $laporanDataManualCut['celana_pelatih'][] = [
+                        'id' => $itemManualCut->id,
+                        'deadline' => $itemManualCut->deadline,
+                        'selesai' => $itemManualCut->selesai,
+                        'file_foto_celana_pelatih' => $itemManualCut->file_foto_celana_pelatih,
+                    ];
+                } elseif ($itemManualCut->lk_celana_kiper_id) {
+                    $laporanDataManualCut['celana_kiper'][] = [
+                        'id' => $itemManualCut->id,
+                        'deadline' => $itemManualCut->deadline,
+                        'selesai' => $itemManualCut->selesai,
+                        'file_foto_celana_kiper' => $itemManualCut->file_foto_celana_kiper,
+                    ];
+                } elseif ($itemManualCut->lk_celana_1_id) {
+                    $laporanDataManualCut['celana_1'][] = [
+                        'id' => $itemManualCut->id,
+                        'deadline' => $itemManualCut->deadline,
+                        'selesai' => $itemManualCut->selesai,
+                        'file_foto_celana_1' => $itemManualCut->file_foto_celana_1,
+                    ];
+                }
+            }
+
+            if ($itemLaserCut) {
+                // press kain
+                if ($itemLaserCut->lk_player_id) {
+                    $laporanDataLaserCut['player'][] = [
+                        'id' => $itemLaserCut->id,
+                        'deadline' => $itemLaserCut->deadline,
+                        'selesai' => $itemLaserCut->selesai,
+                        'file_foto' => $itemLaserCut->file_foto,
+                    ];
+                } elseif ($itemLaserCut->lk_pelatih_id) {
+                    $laporanDataLaserCut['pelatih'][] = [
+                        'id' => $itemLaserCut->id,
+                        'deadline' => $itemLaserCut->deadline,
+                        'selesai' => $itemLaserCut->selesai,
+                        'file_foto_pelatih' => $itemLaserCut->file_foto_pelatih,
+                    ];
+                } elseif ($itemLaserCut->lk_kiper_id) {
+                    $laporanDataLaserCut['kiper'][] = [
+                        'id' => $itemLaserCut->id,
+                        'deadline' => $itemLaserCut->deadline,
+                        'selesai' => $itemLaserCut->selesai,
+                        'file_foto_kiper' => $itemLaserCut->file_foto_kiper,
+                    ];
+                } elseif ($itemLaserCut->lk_1_id) {
+                    $laporanDataLaserCut['lk_1'][] = [
+                        'id' => $itemLaserCut->id,
+                        'deadline' => $itemLaserCut->deadline,
+                        'selesai' => $itemLaserCut->selesai,
+                        'file_foto_1' => $itemLaserCut->file_foto_1,
+                    ];
+                } elseif ($itemLaserCut->lk_celana_player_id) {
+                    $laporanDataLaserCut['celana_player'][] = [
+                        'id' => $itemLaserCut->id,
+                        'deadline' => $itemLaserCut->deadline,
+                        'selesai' => $itemLaserCut->selesai,
+                        'file_foto_celana_player' => $itemLaserCut->file_foto_celana_player,
+                    ];
+                } elseif ($itemLaserCut->lk_celana_pelatih_id) {
+                    $laporanDataLaserCut['celana_pelatih'][] = [
+                        'id' => $itemLaserCut->id,
+                        'deadline' => $itemLaserCut->deadline,
+                        'selesai' => $itemLaserCut->selesai,
+                        'file_foto_celana_pelatih' => $itemLaserCut->file_foto_celana_pelatih,
+                    ];
+                } elseif ($itemLaserCut->lk_celana_kiper_id) {
+                    $laporanDataLaserCut['celana_kiper'][] = [
+                        'id' => $itemLaserCut->id,
+                        'deadline' => $itemLaserCut->deadline,
+                        'selesai' => $itemLaserCut->selesai,
+                        'file_foto_celana_kiper' => $itemLaserCut->file_foto_celana_kiper,
+                    ];
+                } elseif ($itemLaserCut->lk_celana_1_id) {
+                    $laporanDataLaserCut['celana_1'][] = [
+                        'id' => $itemLaserCut->id,
+                        'deadline' => $itemLaserCut->deadline,
+                        'selesai' => $itemLaserCut->selesai,
+                        'file_foto_celana_1' => $itemLaserCut->file_foto_celana_1,
+                    ];
+                }
+            }
+
+            if ($itemPressKain) {
+                // press kain
+                if ($itemPressKain->lk_player_id) {
+                    $laporanDataPressKain['player'][] = [
+                        'id' => $itemPressKain->id,
+                        'deadline' => $itemPressKain->deadline,
+                        'selesai' => $itemPressKain->selesai,
+                        'kain' => $itemPressKain->kain,
+                        'berat' => $itemPressKain->berat,
+                        'gambar' => $itemPressKain->gambar,
+                    ];
+                } elseif ($itemPressKain->lk_pelatih_id) {
+                    $laporanDataPressKain['pelatih'][] = [
+                        'id' => $itemPressKain->id,
+                        'deadline' => $itemPressKain->deadline,
+                        'selesai' => $itemPressKain->selesai,
+                        'kain_pelatih' => $itemPressKain->kain_pelatih,
+                        'berat_pelatih' => $itemPressKain->berat_pelatih,
+                        'gambar_pelatih' => $itemPressKain->gambar_pelatih,
+                    ];
+                } elseif ($itemPressKain->lk_kiper_id) {
+                    $laporanDataPressKain['kiper'][] = [
+                        'id' => $itemPressKain->id,
+                        'deadline' => $itemPressKain->deadline,
+                        'selesai' => $itemPressKain->selesai,
+                        'kain_kiper' => $itemPressKain->kain_kiper,
+                        'berat_kiper' => $itemPressKain->berat_kiper,
+                        'gambar_kiper' => $itemPressKain->gambar_kiper,
+                    ];
+                } elseif ($itemPressKain->lk_1_id) {
+                    $laporanDataPressKain['lk_1'][] = [
+                        'id' => $itemPressKain->id,
+                        'deadline' => $itemPressKain->deadline,
+                        'selesai' => $itemPressKain->selesai,
+                        'kain_1' => $itemPressKain->kain_1,
+                        'berat_1' => $itemPressKain->berat_1,
+                        'gambar_1' => $itemPressKain->gambar_1,
+                    ];
+                } elseif ($itemPressKain->lk_celana_player_id) {
+                    $laporanDataPressKain['celana_player'][] = [
+                        'id' => $itemPressKain->id,
+                        'deadline' => $itemPressKain->deadline,
+                        'selesai' => $itemPressKain->selesai,
+                        'kain_celana_player' => $itemPressKain->kain_celana_player,
+                        'berat_celana_player' => $itemPressKain->berat_celana_player,
+                        'gambar_celana_player' => $itemPressKain->gambar_celana_player,
+                    ];
+                } elseif ($itemPressKain->lk_celana_pelatih_id) {
+                    $laporanDataPressKain['celana_pelatih'][] = [
+                        'id' => $itemPressKain->id,
+                        'deadline' => $itemPressKain->deadline,
+                        'selesai' => $itemPressKain->selesai,
+                        'kain_celana_pelatih' => $itemPressKain->kain_celana_pelatih,
+                        'berat_celana_pelatih' => $itemPressKain->berat_celana_pelatih,
+                        'gambar_celana_pelatih' => $itemPressKain->gambar_celana_pelatih,
+                    ];
+                } elseif ($itemPressKain->lk_celana_kiper_id) {
+                    $laporanDataPressKain['celana_kiper'][] = [
+                        'id' => $itemPressKain->id,
+                        'deadline' => $itemPressKain->deadline,
+                        'selesai' => $itemPressKain->selesai,
+                        'kain_celana_kiper' => $itemPressKain->kain_celana_kiper,
+                        'berat_celana_kiper' => $itemPressKain->berat_celana_kiper,
+                        'gambar_celana_kiper' => $itemPressKain->gambar_celana_kiper,
+                    ];
+                } elseif ($itemPressKain->lk_celana_1_id) {
+                    $laporanDataPressKain['celana_1'][] = [
+                        'id' => $itemPressKain->id,
+                        'deadline' => $itemPressKain->deadline,
+                        'selesai' => $itemPressKain->selesai,
+                        'kain_celana_1' => $itemPressKain->kain_celana_1,
+                        'berat_celana_1' => $itemPressKain->berat_celana_1,
+                        'gambar_celana_1' => $itemPressKain->gambar_celana_1,
+                    ];
+                }
+            }
+
+            if ($itemMimaki) {
+                // mimaki
+                if ($itemMimaki->lk_player_id) {
+                    $laporanDataMimaki['player'][] = [
+                        'id' => $itemMimaki->id,
+                        'deadline' => $itemMimaki->deadline,
+                        'selesai' => $itemMimaki->selesai,
+                        'file_foto' => $itemMimaki->file_foto,
+                        'penanggung_jawab_id' => $itemMimaki->UserMesinAtexco->name,
+                    ];
+                } elseif ($itemMimaki->lk_pelatih_id) {
+                    $laporanDataMimaki['pelatih'][] = [
+                        'id' => $itemMimaki->id,
+                        'deadline' => $itemMimaki->deadline,
+                        'selesai' => $itemMimaki->selesai,
+                        'file_foto_pelatih' => $itemMimaki->file_foto_pelatih,
+                        'penanggung_jawab_id' => $itemMimaki->UserMesinAtexco->name,
+                    ];
+                } elseif ($itemMimaki->lk_kiper_id) {
+                    $laporanDataMimaki['kiper'][] = [
+                        'id' => $itemMimaki->id,
+                        'deadline' => $itemMimaki->deadline,
+                        'selesai' => $itemMimaki->selesai,
+                        'file_foto_kiper' => $itemMimaki->file_foto_kiper,
+                        'penanggung_jawab_id' => $itemMimaki->UserMesinAtexco->name,
+                    ];
+                } elseif ($itemMimaki->lk_1_id) {
+                    $laporanDataMimaki['lk_1'][] = [
+                        'id' => $itemMimaki->id,
+                        'deadline' => $itemMimaki->deadline,
+                        'selesai' => $itemMimaki->selesai,
+                        'file_foto_1' => $itemMimaki->file_foto_1,
+                        'penanggung_jawab_id' => $itemMimaki->UserMesinAtexco->name,
+                    ];
+                } elseif ($itemMimaki->lk_celana_player_id) {
+                    $laporanDataMimaki['celana_player'][] = [
+                        'id' => $itemMimaki->id,
+                        'deadline' => $itemMimaki->deadline,
+                        'selesai' => $itemMimaki->selesai,
+                        'file_foto_celana_player' => $itemMimaki->file_foto_celana_player,
+                        'penanggung_jawab_id' => $itemMimaki->UserMesinAtexco->name,
+                    ];
+                } elseif ($itemMimaki->lk_celana_pelatih_id) {
+                    $laporanDataMimaki['celana_pelatih'][] = [
+                        'id' => $itemMimaki->id,
+                        'deadline' => $itemMimaki->deadline,
+                        'selesai' => $itemMimaki->selesai,
+                        'file_foto_celana_pelatih' => $itemMimaki->file_foto_celana_pelatih,
+                        'penanggung_jawab_id' => $itemMimaki->UserMesinAtexco->name,
+                    ];
+                } elseif ($itemMimaki->lk_celana_kiper_id) {
+                    $laporanDataMimaki['celana_kiper'][] = [
+                        'id' => $itemMimaki->id,
+                        'deadline' => $itemMimaki->deadline,
+                        'selesai' => $itemMimaki->selesai,
+                        'file_foto_celana_kiper' => $itemMimaki->file_foto_celana_kiper,
+                        'penanggung_jawab_id' => $itemMimaki->UserMesinAtexco->name,
+                    ];
+                } elseif ($itemMimaki->lk_celana_1_id) {
+                    $laporanDataMimaki['celana_1'][] = [
+                        'id' => $itemMimaki->id,
+                        'deadline' => $itemMimaki->deadline,
+                        'selesai' => $itemMimaki->selesai,
+                        'file_foto_celana_1' => $itemMimaki->file_foto_celana_1,
+                        'penanggung_jawab_id' => $itemMimaki->UserMesinAtexco->name,
+                    ];
+                }
+            }
+
+            if ($itemAtexco) {
+                // atexco
+                if ($itemAtexco->lk_player_id) {
+                    $laporanDataAtexco['player'][] = [
+                        'id' => $itemAtexco->id,
+                        'deadline' => $itemAtexco->deadline,
+                        'selesai' => $itemAtexco->selesai,
+                        'file_foto' => $itemAtexco->file_foto,
+                        'penanggung_jawab_id' => $itemAtexco->UserMesinAtexco->name,
+                    ];
+                } elseif ($itemAtexco->lk_pelatih_id) {
+                    $laporanDataAtexco['pelatih'][] = [
+                        'id' => $itemAtexco->id,
+                        'deadline' => $itemAtexco->deadline,
+                        'selesai' => $itemAtexco->selesai,
+                        'file_foto_pelatih' => $itemAtexco->file_foto_pelatih,
+                        'penanggung_jawab_id' => $itemAtexco->UserMesinAtexco->name,
+                    ];
+                } elseif ($itemAtexco->lk_kiper_id) {
+                    $laporanDataAtexco['kiper'][] = [
+                        'id' => $itemAtexco->id,
+                        'deadline' => $itemAtexco->deadline,
+                        'selesai' => $itemAtexco->selesai,
+                        'file_foto_kiper' => $itemAtexco->file_foto_kiper,
+                        'penanggung_jawab_id' => $itemAtexco->UserMesinAtexco->name,
+                    ];
+                } elseif ($itemAtexco->lk_1_id) {
+                    $laporanDataAtexco['lk_1'][] = [
+                        'id' => $itemAtexco->id,
+                        'deadline' => $itemAtexco->deadline,
+                        'selesai' => $itemAtexco->selesai,
+                        'file_foto_1' => $itemAtexco->file_foto_1,
+                        'penanggung_jawab_id' => $itemAtexco->UserMesinAtexco->name,
+                    ];
+                } elseif ($itemAtexco->lk_celana_player_id) {
+                    $laporanDataAtexco['celana_player'][] = [
+                        'id' => $itemAtexco->id,
+                        'deadline' => $itemAtexco->deadline,
+                        'selesai' => $itemAtexco->selesai,
+                        'file_foto_celana_player' => $itemAtexco->file_foto_celana_player,
+                        'penanggung_jawab_id' => $itemAtexco->UserMesinAtexco->name,
+                    ];
+                } elseif ($itemAtexco->lk_celana_pelatih_id) {
+                    $laporanDataAtexco['celana_pelatih'][] = [
+                        'id' => $itemAtexco->id,
+                        'deadline' => $itemAtexco->deadline,
+                        'selesai' => $itemAtexco->selesai,
+                        'file_foto_celana_pelatih' => $itemAtexco->file_foto_celana_pelatih,
+                        'penanggung_jawab_id' => $itemAtexco->UserMesinAtexco->name,
+                    ];
+                } elseif ($itemAtexco->lk_celana_kiper_id) {
+                    $laporanDataAtexco['celana_kiper'][] = [
+                        'id' => $itemAtexco->id,
+                        'deadline' => $itemAtexco->deadline,
+                        'selesai' => $itemAtexco->selesai,
+                        'file_foto_celana_kiper' => $itemAtexco->file_foto_celana_kiper,
+                        'penanggung_jawab_id' => $itemAtexco->UserMesinAtexco->name,
+                    ];
+                } elseif ($itemAtexco->lk_celana_1_id) {
+                    $laporanDataAtexco['celana_1'][] = [
+                        'id' => $itemAtexco->id,
+                        'deadline' => $itemAtexco->deadline,
+                        'selesai' => $itemAtexco->selesai,
+                        'file_foto_celana_1' => $itemAtexco->file_foto_celana_1,
+                        'penanggung_jawab_id' => $itemAtexco->UserMesinAtexco->name,
+                    ];
+                }
+            }
+
+            if ($item) {
+                // layout
+                if ($item->lk_player_id) {
+                    $laporanData['player'][] = [
+                        'id' => $item->id,
+                        'deadline' => $item->deadline,
+                        'selesai' => $item->selesai,
+                        'users_layout_id' => $item->UserLayout->name,
+                        'panjang_kertas_palayer' => $item->panjang_kertas_palayer,
+                        'poly_player' => $item->poly_player,
+                    ];
+                } elseif ($item->lk_pelatih_id) {
+                    $laporanData['pelatih'][] = [
+                        'id' => $item->id,
+                        'deadline' => $item->deadline,
+                        'selesai' => $item->selesai,
+                        'users_layout_id' => $item->UserLayout->name,
+                        'panjang_kertas_pelatih' => $item->panjang_kertas_pelatih,
+                        'poly_pelatih' => $item->poly_pelatih,
+                    ];
+                } elseif ($item->lk_kiper_id) {
+                    $laporanData['kiper'][] = [
+                        'id' => $item->id,
+                        'deadline' => $item->deadline,
+                        'selesai' => $item->selesai,
+                        'users_layout_id' => $item->UserLayout->name,
+                        'panjang_kertas_kiper' => $item->panjang_kertas_kiper,
+                        'poly_kiper' => $item->poly_kiper,
+                    ];
+                } elseif ($item->lk_1_id) {
+                    $laporanData['lk_1'][] = [
+                        'id' => $item->id,
+                        'deadline' => $item->deadline,
+                        'selesai' => $item->selesai,
+                        'users_layout_id' => $item->UserLayout->name,
+                        'panjang_kertas_1' => $item->panjang_kertas_1,
+                        'poly_1' => $item->poly_1,
+                    ];
+                } elseif ($item->lk_celana_player_id) {
+                    $laporanData['celana_player'][] = [
+                        'id' => $item->id,
+                        'deadline' => $item->deadline,
+                        'selesai' => $item->selesai,
+                        'users_layout_id' => $item->UserLayout->name,
+                        'panjang_kertas_celana_pelayer' => $item->panjang_kertas_celana_pelayer,
+                        'poly_celana_pelayer' => $item->poly_celana_pelayer,
+                    ];
+                } elseif ($item->lk_celana_pelatih_id) {
+                    $laporanData['celana_pelatih'][] = [
+                        'id' => $item->id,
+                        'deadline' => $item->deadline,
+                        'selesai' => $item->selesai,
+                        'users_layout_id' => $item->UserLayout->name,
+                        'panjang_kertas_celana_pelatih' => $item->panjang_kertas_celana_pelatih,
+                        'poly_celana_pelatih' => $item->poly_celana_pelatih,
+                    ];
+                } elseif ($item->lk_celana_kiper_id) {
+                    $laporanData['celana_kiper'][] = [
+                        'id' => $item->id,
+                        'deadline' => $item->deadline,
+                        'selesai' => $item->selesai,
+                        'users_layout_id' => $item->UserLayout->name,
+                        'panjang_kertas_celana_kiper' => $item->panjang_kertas_celana_kiper,
+                        'poly_celana_kiper' => $item->poly_celana_kiper,
+                    ];
+                } elseif ($item->lk_celana_1_id) {
+                    $laporanData['celana_1'][] = [
+                        'id' => $item->id,
+                        'deadline' => $item->deadline,
+                        'selesai' => $item->selesai,
+                        'users_layout_id' => $item->UserLayout->name,
+                        'panjang_kertas_celana_1' => $item->panjang_kertas_celana_1,
+                        'poly_celana_1' => $item->poly_celana_1,
+                    ];
+                }
+            }
+        }
+
+        // return response()->json($laporanDataJahit);
+
+        return view('component.Admin.laporan-pengerjaan.details', compact(
+            'laporans',
+            'laporanDataSortir',
+            'laporanDataFinis',
+            'laporanDataJahit',
+            'laporanData',
+            'laporanDataManualCut',
+            'laporanDataLaserCut',
+            'laporanDataAtexco',
+            'laporanDataMimaki',
+            'laporanDataPressKain'
+        ));
     }
 
     public function postUpdatePirmission(Request $request)
