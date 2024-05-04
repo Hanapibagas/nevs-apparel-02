@@ -818,7 +818,65 @@
             /* page-break-before: always; */
         }
     </style>
-    @if(isset($formattedData['player']))
+    @foreach ($layout as $item)
+    @foreach ($item->GamarTangkaplayar as $gambar)
+    <div class="containerKeteranganLengkap1">
+        <img style="margin-top: 100px; margin-left: 20px; width: 700px; height: 700px; transform: rotate(90deg);"
+            src="{{ public_path('storage/'. $gambar->file_tangkap_layar_player) }}" alt="" loading="lazy">
+    </div>
+    @if ($gambar->file_tangkap_layar_pelatih)
+    <div class="containerKeteranganLengkap1">
+        <img style="margin-top: 100px; margin-left: 20px; width: 700px; height: 700px; transform: rotate(90deg);"
+            src="{{ public_path('storage/'. $gambar->file_tangkap_layar_pelatih) }}" alt="" loading="lazy">
+    </div>
+    @endif
+
+    @if ($gambar->file_tangkap_layar_kiper)
+    <div class="containerKeteranganLengkap1">
+        <img style="margin-top: 100px; margin-left: 20px; width: 700px; height: 700px; transform: rotate(90deg);"
+            src="{{ public_path('storage/'. $gambar->file_tangkap_layar_kiper) }}" alt="" loading="lazy">
+    </div>
+    @endif
+
+    @if ($gambar->file_tangkap_layar_1)
+    <div class="containerKeteranganLengkap1">
+        <img style="margin-top: 100px; margin-left: 20px; width: 700px; height: 700px; transform: rotate(90deg);"
+            src="{{ public_path('storage/'. $gambar->file_tangkap_layar_1) }}" alt="" loading="lazy">
+    </div>
+    @endif
+
+    @if ( $gambar->file_tangkap_layar_celana_pelayer)
+    <div class="containerKeteranganLengkap1">
+        <img style="margin-top: 100px; margin-left: 20px; width: 700px; height: 700px; transform: rotate(90deg);"
+            src="{{ public_path('storage/'. $gambar->file_tangkap_layar_celana_pelayer) }}" alt="" loading="lazy">
+    </div>
+    @endif
+
+    @if ($gambar->file_tangkap_layar_celana_pelatih)
+    <div class="containerKeteranganLengkap1">
+        <img style="margin-top: 100px; margin-left: 20px; width: 700px; height: 700px; transform: rotate(90deg);"
+            src="{{ public_path('storage/'. $gambar->file_tangkap_layar_celana_pelatih) }}" alt="" loading="lazy">
+    </div>
+    @endif
+
+    @if ($gambar->file_tangkap_layar_celana_kiper)
+    <div class="containerKeteranganLengkap1">
+        <img style="margin-top: 100px; margin-left: 20px; width: 700px; height: 700px; transform: rotate(90deg);"
+            src="{{ public_path('storage/'. $gambar->file_tangkap_layar_celana_kiper) }}" alt="" loading="lazy">
+    </div>
+    @endif
+
+    @if ($gambar->file_tangkap_layar_celana_1)
+    <div class="containerKeteranganLengkap1">
+        <img style="margin-top: 100px; margin-left: 20px; width: 700px; height: 700px; transform: rotate(90deg);"
+            src="{{ public_path('storage/'. $gambar->file_tangkap_layar_celana_1) }}" alt="" loading="lazy">
+    </div>
+    @endif
+
+    @endforeach
+    @endforeach
+
+    {{-- @if(isset($formattedData['player']))
     <div class="containerKeteranganLengkap1">
         <img style="margin-top: 100px; margin-left: 20px; width: 700px; height: 700px; transform: rotate(90deg);"
             src="{{ public_path('storage/'. $formattedData['player']['file_tangkap_layar_player']) }}" alt=""
@@ -869,7 +927,7 @@
         <img style="margin-top: 100px; margin-left: 20px; width: 700px; height: 700px; transform: rotate(90deg);"
             src="{{ public_path('storage/'. $formattedData['celana_1']['file_tangkap_layar_celana_1']) }}" alt="">
     </div>
-    @endif
+    @endif --}}
 </body>
 
 </html>

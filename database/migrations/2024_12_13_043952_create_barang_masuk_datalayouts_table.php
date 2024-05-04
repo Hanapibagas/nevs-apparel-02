@@ -30,35 +30,27 @@ return new class extends Migration
             // AWAL
             $table->string('panjang_kertas_palayer')->nullable();
             $table->string('poly_player')->nullable();
-            $table->string('file_tangkap_layar_player')->nullable();
 
             $table->string('panjang_kertas_pelatih')->nullable();
             $table->string('poly_pelatih')->nullable();
-            $table->string('file_tangkap_layar_pelatih')->nullable();
 
             $table->string('panjang_kertas_kiper')->nullable();
             $table->string('poly_kiper')->nullable();
-            $table->string('file_tangkap_layar_kiper')->nullable();
 
             $table->string('panjang_kertas_1')->nullable();
             $table->string('poly_1')->nullable();
-            $table->string('file_tangkap_layar_1')->nullable();
 
             $table->string('panjang_kertas_celana_pelayer')->nullable();
             $table->string('poly_celana_pelayer')->nullable();
-            $table->string('file_tangkap_layar_celana_pelayer')->nullable();
 
             $table->string('panjang_kertas_celana_pelatih')->nullable();
             $table->string('poly_celana_pelatih')->nullable();
-            $table->string('file_tangkap_layar_celana_pelatih')->nullable();
 
             $table->string('panjang_kertas_celana_kiper')->nullable();
             $table->string('poly_celana_kiper')->nullable();
-            $table->string('file_tangkap_layar_celana_kiper')->nullable();
 
             $table->string('panjang_kertas_celana_1')->nullable();
             $table->string('poly_celana_1')->nullable();
-            $table->string('file_tangkap_layar_celana_1')->nullable();
             // AKHIR
             $table->string('file_corel_layout')->nullable();
             $table->string('tanda_telah_mengerjakan')->default('0');

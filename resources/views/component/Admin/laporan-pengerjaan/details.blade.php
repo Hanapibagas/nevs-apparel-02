@@ -27,7 +27,8 @@
 
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Details laporan</h4>
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Details laporan
+        </h4>
 
         @if ($laporans->whereNotNull('barang_masuk_layout_id')->count() > 0)
         <div class="card">
@@ -1584,20 +1585,20 @@
                                     @endif
                                 </td>
                                 <td>
-                                    {{ strtoupper($laporanDataSortir['kiper'][0]['no_error_kiper_1']) }}
+                                    {{ strtoupper($laporanDataSortir['kiper'][0]['no_error_kiper']) }}
                                 </td>
                                 <td>
-                                    {{ strtoupper($laporanDataSortir['kiper'][0]['panjang_kertas_kiper_1']) }} Meter
+                                    {{ strtoupper($laporanDataSortir['kiper'][0]['panjang_kertas_kiper']) }} Meter
                                 </td>
                                 <td>
-                                    {{ strtoupper($laporanDataSortir['kiper'][0]['berat_kiper_1']) }} Meter
+                                    {{ strtoupper($laporanDataSortir['kiper'][0]['berat_kiper']) }} Meter
                                 </td>
                                 <td>
-                                    {{ strtoupper($laporanDataSortir['kiper'][0]['bahan']) }} Meter
+                                    {{ strtoupper($laporanDataSortir['kiper'][0]['bahan_kiper']) }} Meter
                                 </td>
                                 <td>
                                     <img style="height: 200px; width: 200px"
-                                        src="{{ asset('storage/'.$laporanDataSortir['kiper'][0]['foto_kiper_1']) }}"
+                                        src="{{ asset('storage/'.$laporanDataSortir['kiper'][0]['foto_kiper']) }}"
                                         alt="" srcset="">
                                 </td>
                             </tr>
@@ -2314,6 +2315,8 @@
             </div>
         </div><br>
         @endif
+        <a href="{{ route('getIndexLaporan') }}" class="btn btn-outline-secondary"><i
+                class="menu-icon tf-icons bx bx-undo"></i>Kembali</a>
 
     </div>
 </div>

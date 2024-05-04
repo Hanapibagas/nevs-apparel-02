@@ -89,7 +89,10 @@ class CostumerServicesController extends Controller
     {
         $auth = Auth::user();
         $users = User::where('roles', 'disainer')->get();
-        $disainer = BarangMasukDisainer::where('nama_cs', $auth->id)->with('Users', 'DataMesin')->get();
+        $disainer = BarangMasukDisainer::where('nama_cs', $auth->id)
+            ->orderBy('created_at', 'desc')
+            ->with('Users', 'DataMesin')
+            ->get();
 
         $userCounts = [];
         foreach ($users as $user) {

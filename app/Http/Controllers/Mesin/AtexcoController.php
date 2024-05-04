@@ -525,51 +525,11 @@ class AtexcoController extends Controller
             'BarangMasukCostumerServicesLkCelana1.CelanaCelana1',
         )->findOrFail($id);
 
-        $layout = BarangMasukDatalayout::where('barang_masuk_id', $dataLk->BarangMasukDisainer->id)->get();
-
-        $formattedData = [];
-
-        foreach ($layout as $item) {
-            if ($item->lk_player_id) {
-                $formattedData['player'] = [
-                    'file_tangkap_layar_player' => $item->file_tangkap_layar_player
-                ];
-            } elseif ($item->lk_pelatih_id) {
-                $formattedData['pelatih'] = [
-                    'file_tangkap_layar_pelatih' => $item->file_tangkap_layar_pelatih,
-                ];
-            } elseif ($item->lk_kiper_id) {
-                $formattedData['kiper'] = [
-                    'file_tangkap_layar_kiper' => $item->file_tangkap_layar_kiper
-                ];
-            } elseif ($item->lk_1_id) {
-                $formattedData['lk_1'] = [
-                    'file_tangkap_layar_1' => $item->file_tangkap_layar_1,
-                ];
-            } elseif ($item->lk_celana_player_id) {
-                $formattedData['celana_player'] = [
-                    'file_tangkap_layar_celana_pelayer' => $item->file_tangkap_layar_celana_pelayer,
-                ];
-            } elseif ($item->lk_celana_pelatih_id) {
-                $formattedData['celana_pelatih'] = [
-                    'file_tangkap_layar_celana_pelatih' => $item->file_tangkap_layar_celana_pelatih
-                ];
-            } elseif ($item->lk_celana_kiper_id) {
-                $formattedData['celana_kiper'] = [
-                    'file_tangkap_layar_celana_kiper' => $item->file_tangkap_layar_celana_kiper
-                ];
-            } elseif ($item->lk_celana_1_id) {
-                $formattedData['celana_1'] = [
-                    'file_tangkap_layar_celana_1' => $item->file_tangkap_layar_celana_1,
-                ];
-            }
-        }
-
-        // return response()->json($layout);
+        $layout = BarangMasukDatalayout::with('GamarTangkaplayar')->where('barang_masuk_id', $dataLk->BarangMasukDisainer->id)->get();
 
         view()->share('dataLk', $dataLk->BarangMasukDisainer->nama_tim);
 
-        $pdf = PDF::loadview('component.Mesin.export-data-baju', compact('dataLk', 'formattedData'));
+        $pdf = PDF::loadview('component.Mesin.export-data-baju', compact('dataLk', 'layout'));
         $pdf->setPaper('A4', 'potrait');
 
         // return $pdf->stream('data-baju.pdf');

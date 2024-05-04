@@ -550,7 +550,6 @@ class HomeController extends Controller
                 }
             }
 
-
             if ($itemSortir) {
                 // manual cut
                 if ($itemSortir->lk_player_id) {
@@ -846,16 +845,16 @@ class HomeController extends Controller
             if ($itemMimaki) {
                 // mimaki
                 if ($itemMimaki->lk_player_id) {
-                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemAtexco->UserMesinAtexco->name : 'Belum melakukan update data';
+                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemMimaki->UserMesinAtexco->name : 'Belum melakukan update data';
                     $laporanDataMimaki['player'][] = [
                         'id' => $itemMimaki->id,
                         'deadline' => $itemMimaki->deadline,
                         'selesai' => $itemMimaki->selesai,
                         'file_foto' => $itemMimaki->file_foto,
-                        'penanggung_jawab_id' =>  $penanggung_jawab_id
+                        'penanggung_jawab_id' => $penanggung_jawab_id
                     ];
                 } elseif ($itemMimaki->lk_pelatih_id) {
-                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemAtexco->UserMesinAtexco->name : 'Belum melakukan update data';
+                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemMimaki->UserMesinAtexco->name : 'Belum melakukan update data';
                     $laporanDataMimaki['pelatih'][] = [
                         'id' => $itemMimaki->id,
                         'deadline' => $itemMimaki->deadline,
@@ -864,7 +863,7 @@ class HomeController extends Controller
                         'penanggung_jawab_id' =>  $penanggung_jawab_id
                     ];
                 } elseif ($itemMimaki->lk_kiper_id) {
-                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemAtexco->UserMesinAtexco->name : 'Belum melakukan update data';
+                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemMimaki->UserMesinAtexco->name : 'Belum melakukan update data';
                     $laporanDataMimaki['kiper'][] = [
                         'id' => $itemMimaki->id,
                         'deadline' => $itemMimaki->deadline,
@@ -873,7 +872,7 @@ class HomeController extends Controller
                         'penanggung_jawab_id' =>  $penanggung_jawab_id
                     ];
                 } elseif ($itemMimaki->lk_1_id) {
-                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemAtexco->UserMesinAtexco->name : 'Belum melakukan update data';
+                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemMimaki->UserMesinAtexco->name : 'Belum melakukan update data';
                     $laporanDataMimaki['lk_1'][] = [
                         'id' => $itemMimaki->id,
                         'deadline' => $itemMimaki->deadline,
@@ -882,7 +881,7 @@ class HomeController extends Controller
                         'penanggung_jawab_id' =>  $penanggung_jawab_id
                     ];
                 } elseif ($itemMimaki->lk_celana_player_id) {
-                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemAtexco->UserMesinAtexco->name : 'Belum melakukan update data';
+                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemMimaki->UserMesinAtexco->name : 'Belum melakukan update data';
                     $laporanDataMimaki['celana_player'][] = [
                         'id' => $itemMimaki->id,
                         'deadline' => $itemMimaki->deadline,
@@ -891,7 +890,7 @@ class HomeController extends Controller
                         'penanggung_jawab_id' =>  $penanggung_jawab_id
                     ];
                 } elseif ($itemMimaki->lk_celana_pelatih_id) {
-                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemAtexco->UserMesinAtexco->name : 'Belum melakukan update data';
+                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemMimaki->UserMesinAtexco->name : 'Belum melakukan update data';
                     $laporanDataMimaki['celana_pelatih'][] = [
                         'id' => $itemMimaki->id,
                         'deadline' => $itemMimaki->deadline,
@@ -900,7 +899,7 @@ class HomeController extends Controller
                         'penanggung_jawab_id' =>  $penanggung_jawab_id
                     ];
                 } elseif ($itemMimaki->lk_celana_kiper_id) {
-                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemAtexco->UserMesinAtexco->name : 'Belum melakukan update data';
+                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemMimaki->UserMesinAtexco->name : 'Belum melakukan update data';
                     $laporanDataMimaki['celana_kiper'][] = [
                         'id' => $itemMimaki->id,
                         'deadline' => $itemMimaki->deadline,
@@ -909,7 +908,7 @@ class HomeController extends Controller
                         'penanggung_jawab_id' =>  $penanggung_jawab_id
                     ];
                 } elseif ($itemMimaki->lk_celana_1_id) {
-                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemAtexco->UserMesinAtexco->name : 'Belum melakukan update data';
+                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemMimaki->UserMesinAtexco->name : 'Belum melakukan update data';
                     $laporanDataMimaki['celana_1'][] = [
                         'id' => $itemMimaki->id,
                         'deadline' => $itemMimaki->deadline,
@@ -1075,7 +1074,7 @@ class HomeController extends Controller
             }
         }
 
-        // return response()->json($laporanDataJahit);
+        // return response()->json($laporanDataMimaki);
 
         return view('component.Admin.laporan-pengerjaan.details', compact(
             'laporans',
@@ -1169,12 +1168,12 @@ class HomeController extends Controller
 
         $user = Auth::user();
 
-        $passwordUser = PasswordUser::find($user->id);
+        $passwordUser = User::find($user->id);
 
+        // return response()->json($passwordUser);
         $passwordUser->update([
             'password_user' => $request->password_user
         ]);
-        // return response()->json($passwordUser);
 
         $user->password = Hash::make($request->password);
 

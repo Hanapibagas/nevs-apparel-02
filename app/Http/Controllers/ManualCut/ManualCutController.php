@@ -324,74 +324,74 @@ class ManualCutController extends Controller
                 'tanda_telah_mengerjakan' => 1
             ]);
         }
+        // return response()->json($dataMasukPlayer);
 
-
-        if ($dataMasukPlayer) {
-            if ($request->player_id) {
-                $laporanPlayer = Laporan::where('barang_masuk_manualcut_id', $request->player_id)->first();
-                if ($laporanPlayer) {
-                    $laporanPlayer->update([
-                        'status' => 'Sortir',
-                    ]);
-                }
-            }
-            if ($request->pelatih_id) {
-                $laporanPelatih = Laporan::where('barang_masuk_manualcut_id', $request->pelatih_id)->first();
-                if ($laporanPelatih) {
-                    $laporanPelatih->update([
-                        'status' => 'Sortir',
-                    ]);
-                }
-            }
-            if ($request->kiper_id) {
-                $laporanKiper = Laporan::where('barang_masuk_manualcut_id', $request->kiper_id)->first();
-                if ($laporanKiper) {
-                    $laporanKiper->update([
-                        'status' => 'Sortir',
-                    ]);
-                }
-            }
-            if ($request->lk1_id) {
-                $laporan1 = Laporan::where('barang_masuk_manualcut_id', $request->lk1_id)->first();
-                if ($laporan1) {
-                    $laporan1->update([
-                        'status' => 'Sortir',
-                    ]);
-                }
-            }
-            if ($request->celana_player_id) {
-                $laporanCelanaPlayer = Laporan::where('barang_masuk_manualcut_id', $request->celana_player_id)->first();
-                if ($laporanCelanaPlayer) {
-                    $laporanCelanaPlayer->update([
-                        'status' => 'Sortir',
-                    ]);
-                }
-            }
-            if ($request->celana_pelatih_id) {
-                $laporanCelanaPelatih = Laporan::where('barang_masuk_manualcut_id', $request->celana_pelatih_id)->first();
-                if ($laporanCelanaPelatih) {
-                    $laporanCelanaPelatih->update([
-                        'status' => 'Sortir',
-                    ]);
-                }
-            }
-            if ($request->celana_kiper_id) {
-                $laporanCelanaKiper = Laporan::where('barang_masuk_manualcut_id', $request->celana_kiper_id)->first();
-                if ($laporanCelanaKiper) {
-                    $laporanCelanaKiper->update([
-                        'status' => 'Sortir',
-                    ]);
-                }
-            }
-            if ($request->celana_1_id) {
-                $laporanCelana1 = Laporan::where('barang_masuk_manualcut_id', $request->celana_1_id)->first();
-                if ($laporanCelana1) {
-                    $laporanCelana1->update([
-                        'status' => 'Sortir',
-                    ]);
-                }
+        // if ($dataMasukPlayer) {
+        if ($request->player_id) {
+            $laporanPlayer = Laporan::where('barang_masuk_manualcut_id', $request->player_id)->first();
+            if ($laporanPlayer) {
+                $laporanPlayer->update([
+                    'status' => 'Sortir',
+                ]);
             }
         }
+        if ($request->pelatih_id) {
+            $laporanPelatih = Laporan::where('barang_masuk_manualcut_id', $request->pelatih_id)->first();
+            if ($laporanPelatih) {
+                $laporanPelatih->update([
+                    'status' => 'Sortir',
+                ]);
+            }
+        }
+        if ($request->kiper_id) {
+            $laporanKiper = Laporan::where('barang_masuk_manualcut_id', $request->kiper_id)->first();
+            if ($laporanKiper) {
+                $laporanKiper->update([
+                    'status' => 'Sortir',
+                ]);
+            }
+        }
+        if ($request->lk1_id) {
+            $laporan1 = Laporan::where('barang_masuk_manualcut_id', $request->lk1_id)->first();
+            if ($laporan1) {
+                $laporan1->update([
+                    'status' => 'Sortir',
+                ]);
+            }
+        }
+        if ($request->celana_player_id) {
+            $laporanCelanaPlayer = Laporan::where('barang_masuk_manualcut_id', $request->celana_player_id)->first();
+            if ($laporanCelanaPlayer) {
+                $laporanCelanaPlayer->update([
+                    'status' => 'Sortir',
+                ]);
+            }
+        }
+        if ($request->celana_pelatih_id) {
+            $laporanCelanaPelatih = Laporan::where('barang_masuk_manualcut_id', $request->celana_pelatih_id)->first();
+            if ($laporanCelanaPelatih) {
+                $laporanCelanaPelatih->update([
+                    'status' => 'Sortir',
+                ]);
+            }
+        }
+        if ($request->celana_kiper_id) {
+            $laporanCelanaKiper = Laporan::where('barang_masuk_manualcut_id', $request->celana_kiper_id)->first();
+            if ($laporanCelanaKiper) {
+                $laporanCelanaKiper->update([
+                    'status' => 'Sortir',
+                ]);
+            }
+        }
+        if ($request->celana_1_id) {
+            $laporanCelana1 = Laporan::where('barang_masuk_manualcut_id', $request->celana_1_id)->first();
+            if ($laporanCelana1) {
+                $laporanCelana1->update([
+                    'status' => 'Sortir',
+                ]);
+            }
+        }
+        // }
 
         return redirect()->route('getIndexFixManualCut')->with('success', 'Selamat data yang anda input telah terkirim!');
     }
@@ -505,49 +505,11 @@ class ManualCutController extends Controller
             'BarangMasukCostumerServicesLkCelana1.CelanaCelana1',
         )->findOrFail($id);
 
-        $layout = BarangMasukDatalayout::where('barang_masuk_id', $dataLk->BarangMasukDisainer->id)->get();
-
-        $formattedData = [];
-
-        foreach ($layout as $item) {
-            if ($item->lk_player_id) {
-                $formattedData['player'] = [
-                    'file_tangkap_layar_player' => $item->file_tangkap_layar_player
-                ];
-            } elseif ($item->lk_pelatih_id) {
-                $formattedData['pelatih'] = [
-                    'file_tangkap_layar_pelatih' => $item->file_tangkap_layar_pelatih,
-                ];
-            } elseif ($item->lk_kiper_id) {
-                $formattedData['kiper'] = [
-                    'file_tangkap_layar_kiper' => $item->file_tangkap_layar_kiper
-                ];
-            } elseif ($item->lk_1_id) {
-                $formattedData['lk_1'] = [
-                    'file_tangkap_layar_1' => $item->file_tangkap_layar_1,
-                ];
-            } elseif ($item->lk_celana_player_id) {
-                $formattedData['celana_player'] = [
-                    'file_tangkap_layar_celana_pelayer' => $item->file_tangkap_layar_celana_pelayer,
-                ];
-            } elseif ($item->lk_celana_pelatih_id) {
-                $formattedData['celana_pelatih'] = [
-                    'file_tangkap_layar_celana_pelatih' => $item->file_tangkap_layar_celana_pelatih
-                ];
-            } elseif ($item->lk_celana_kiper_id) {
-                $formattedData['celana_kiper'] = [
-                    'file_tangkap_layar_celana_kiper' => $item->file_tangkap_layar_celana_kiper
-                ];
-            } elseif ($item->lk_celana_1_id) {
-                $formattedData['celana_1'] = [
-                    'file_tangkap_layar_celana_1' => $item->file_tangkap_layar_celana_1,
-                ];
-            }
-        }
+        $layout = BarangMasukDatalayout::with('GamarTangkaplayar')->where('barang_masuk_id', $id)->get();
         // return response()->json($layout);
         view()->share('dataLk', $dataLk->BarangMasukDisainer->nama_tim);
 
-        $pdf = PDF::loadview('component.Mesin.export-data-baju', compact('dataLk', 'formattedData'));
+        $pdf = PDF::loadview('component.Mesin.export-data-baju', compact('dataLk', 'layout'));
         $pdf->setPaper('A4', 'potrait');
 
         // return $pdf->stream('data-baju.pdf');

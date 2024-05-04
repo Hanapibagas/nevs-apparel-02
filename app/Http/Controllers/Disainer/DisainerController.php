@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Disainer;
 
 use App\Http\Controllers\Controller;
 use App\Models\BarangMasukCostumerServices;
+use App\Models\BarangMasukDatalayout;
 use App\Models\BarangMasukDisainer;
 use App\Models\BarangMasukMesin;
 use App\Models\Gambar;
@@ -15,6 +16,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use PDO;
+use PDOException;
 
 class DisainerController extends Controller
 {
@@ -127,7 +130,21 @@ class DisainerController extends Controller
     public function postToCustomerServices(Request $request, $nama_tim)
     {
         $user = Auth::user();
-        $no_order = '#10-12' . str_pad(mt_rand(1, 999), 3, '0', STR_PAD_LEFT);
+        $bulan_sekarang = date('m');
+        $tahun_sekarang = substr(date('Y'), -2);
+
+        $last_order_number = BarangMasukCostumerServices::latest()->value('no_order');
+        if ($last_order_number) {
+            $last_sequence = substr($last_order_number, -3);
+            $next_sequence = intval($last_sequence) + 1;
+        } else {
+            $next_sequence = 1;
+        }
+
+        $new_order_number = '#' . $bulan_sekarang . '-' . $tahun_sekarang . str_pad($next_sequence, 3, '0', STR_PAD_LEFT);
+
+        // return response()->json($new_order_number);
+
 
         $filebajuplayer = null;
         $filebajupelatih = null;
@@ -188,7 +205,7 @@ class DisainerController extends Controller
         }
 
         $barangMasuk = BarangMasukCostumerServices::create([
-            'no_order' => $no_order,
+            'no_order' => $new_order_number,
             'barang_masuk_disainer_id' => $request->barang_masuk_disainer_id,
             'disainer_id' => $user->id,
             'cs_id' => $request->cs_id,

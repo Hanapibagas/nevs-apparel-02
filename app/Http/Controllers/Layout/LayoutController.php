@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Layout;
 use App\Http\Controllers\Controller;
 use App\Models\BarangMasukCostumerServices;
 use App\Models\BarangMasukDatalayout;
+use App\Models\GambarTangkapLayar;
 use App\Models\Laporan;
 use App\Models\LaporanLkLayout;
 use App\Models\PembagianKomisi;
@@ -285,15 +286,72 @@ class LayoutController extends Controller
         $user = Auth::user();
 
         if ($request->player_id) {
+
             $dataPlayer = BarangMasukDatalayout::join('lk_players', 'lk_players.id', '=', 'barang_masuk_datalayouts.lk_player_id')
                 ->join('barang_masuk_costumer_services', 'barang_masuk_costumer_services.id', '=', 'barang_masuk_datalayouts.barang_masuk_id')
                 ->leftJoin('pola_lengans', 'pola_lengans.id', '=', 'lk_players.pola_lengan_player_id')
                 ->select('barang_masuk_datalayouts.*', 'lk_players.*', 'pola_lengans.*', 'barang_masuk_costumer_services.*')
                 ->findOrFail($request->player_id);
 
-            $dataUpdate = BarangMasukDatalayout::findOrFail($request->player_id);
+            if ($request->file('file_tangkap_layar_player')) {
+                $fileTangkapLayarPlayer = $request->file('file_tangkap_layar_player')->store('file-tangkap-layout-player', 'public');
+            }
 
-            // return response()->json($dataPlayerID);
+            if ($request->file('file_tangkap_layar_pelatih')) {
+                $fileTangkapLayarPelatih = $request->file('file_tangkap_layar_pelatih')->store('file-tangkap-layout-pelatih', 'public');
+            } else {
+                $fileTangkapLayarPelatih = null;
+            }
+
+            if ($request->file('file_tangkap_layar_kiper')) {
+                $fileTangkapLayarKiper = $request->file('file_tangkap_layar_kiper')->store('file-tangkap-layout-kiper', 'public');
+            } else {
+                $fileTangkapLayarKiper = null;
+            }
+
+            if ($request->file('file_tangkap_layar_1')) {
+                $fileTangkapLayar1 = $request->file('file_tangkap_layar_1')->store('file-tangkap-layout-1', 'public');
+            } else {
+                $fileTangkapLayar1 = null;
+            }
+
+            if ($request->file('file_tangkap_layar_celana_pelayer')) {
+                $fileTangkapLayarCelanaPlayer = $request->file('file_tangkap_layar_celana_pelayer')->store('file-tangkap-layout-celana-player', 'public');
+            } else {
+                $fileTangkapLayarCelanaPlayer = null;
+            }
+
+            if ($request->file('file_tangkap_layar_celana_pelatih')) {
+                $fileTangkapLayarCelanaPelatih = $request->file('file_tangkap_layar_celana_pelatih')->store('file-tangkap-layout-celana-pelatih', 'public');
+            } else {
+                $fileTangkapLayarCelanaPelatih = null;
+            }
+
+            if ($request->file('file_tangkap_layar_celana_kiper')) {
+                $fileTangkapLayarCelanaKiper = $request->file('file_tangkap_layar_celana_kiper')->store('file-tangkap-layout-celana-kiper', 'public');
+            } else {
+                $fileTangkapLayarCelanaKiper = null;
+            }
+
+            if ($request->file('file_tangkap_layar_celana_1')) {
+                $fileTangkapLayarCelana1 = $request->file('file_tangkap_layar_celana_1')->store('file-tangkap-layout-celana-1', 'public');
+            } else {
+                $fileTangkapLayarCelana1 = null;
+            }
+
+            $test = GambarTangkapLayar::create([
+                'barang_masuk_datalayouts_id' => $request->player_id,
+                'file_tangkap_layar_player' => $fileTangkapLayarPlayer,
+                'file_tangkap_layar_pelatih' => $fileTangkapLayarPelatih,
+                'file_tangkap_layar_kiper' => $fileTangkapLayarKiper,
+                'file_tangkap_layar_1' => $fileTangkapLayar1,
+                'file_tangkap_layar_celana_pelayer' => $fileTangkapLayarCelanaPlayer,
+                'file_tangkap_layar_celana_pelatih' => $fileTangkapLayarCelanaPelatih,
+                'file_tangkap_layar_celana_kiper' => $fileTangkapLayarCelanaKiper,
+                'file_tangkap_layar_celana_1' => $fileTangkapLayarCelana1,
+            ]);
+
+            $dataUpdate = BarangMasukDatalayout::findOrFail($request->player_id);
 
             $resulTotalBaju = $dataPlayer->total_baju_player;
             $resulSatatusBaju = $dataPlayer->status;
@@ -305,22 +363,11 @@ class LayoutController extends Controller
                     $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-player', 'public');
                 }
             }
-            if ($request->file('file_tangkap_layar_player')) {
-                $fileTangkapLayar = $request->file('file_tangkap_layar_player')->store('file-tangkap-layout-player', 'public');
-                if ($dataUpdate->file_tangkap_layar_player && file_exists(storage_path('app/public/' . $dataUpdate->file_tangkap_layar_player))) {
-                    Storage::delete('public/' . $dataUpdate->file_tangkap_layar_player);
-                    $fileTangkapLayar = $request->file('file_tangkap_layar_player')->store('file-tangkap-layout-player', 'public');
-                }
-            }
-            if ($request->file('file_tangkap_layar_player') === null) {
-                $fileTangkapLayar = $dataUpdate->file_tangkap_layar_player;
-            }
             $dataUpdate->update([
                 'selesai' => Carbon::now(),
 
                 'panjang_kertas_palayer' => $request->panjang_kertas_palayer,
                 'poly_player' => $request->poly_player,
-                'file_tangkap_layar_player' => $fileTangkapLayar,
 
                 'file_corel_layout' => $filebajuplayer,
                 'tanda_telah_mengerjakan' => 1,
@@ -362,7 +409,6 @@ class LayoutController extends Controller
 
                 'panjang_kertas_pelatih' => $request->panjang_kertas_pelatih,
                 'poly_pelatih' => $request->poly_pelatih,
-                'file_tangkap_layar_pelatih' => $fileTangkapLayar,
 
                 'file_corel_layout' => $filebajuplayer,
                 'tanda_telah_mengerjakan' => 1,
@@ -404,7 +450,6 @@ class LayoutController extends Controller
 
                 'panjang_kertas_kiper' => $request->panjang_kertas_kiper,
                 'poly_kiper' => $request->poly_kiper,
-                'file_tangkap_layar_kiper' => $fileTangkapLayar,
 
                 'file_corel_layout' => $filebajuplayer,
                 'tanda_telah_mengerjakan' => 1,
@@ -446,7 +491,6 @@ class LayoutController extends Controller
 
                 'panjang_kertas_1' => $request->panjang_kertas_1,
                 'poly_1' => $request->poly_1,
-                'file_tangkap_layar_1' => $fileTangkapLayar,
 
                 'file_corel_layout' => $filebajuplayer,
                 'tanda_telah_mengerjakan' => 1,
@@ -488,7 +532,6 @@ class LayoutController extends Controller
 
                 'panjang_kertas_celana_pelayer' => $request->panjang_kertas_celana_pelayer,
                 'poly_celana_pelayer' => $request->poly_celana_pelayer,
-                'file_tangkap_layar_celana_pelayer' => $fileTangkapLayar,
 
                 'file_corel_layout' => $filebajuplayer,
                 'tanda_telah_mengerjakan' => 1,
@@ -529,7 +572,6 @@ class LayoutController extends Controller
 
                 'panjang_kertas_celana_pelatih' => $request->panjang_kertas_celana_pelatih,
                 'poly_celana_pelatih' => $request->poly_celana_pelatih,
-                'file_tangkap_layar_celana_pelatih' => $fileTangkapLayar,
 
                 'file_corel_layout' => $filebajuplayer,
                 'tanda_telah_mengerjakan' => 1,
@@ -570,7 +612,6 @@ class LayoutController extends Controller
 
                 'panjang_kertas_celana_kiper' => $request->panjang_kertas_celana_kiper,
                 'poly_celana_kiper' => $request->poly_celana_kiper,
-                'file_tangkap_layar_celana_kiper' => $fileTangkapLayar,
 
                 'file_corel_layout' => $filebajuplayer,
                 'tanda_telah_mengerjakan' => 1,
@@ -612,7 +653,6 @@ class LayoutController extends Controller
 
                 'panjang_kertas_celana_1' => $request->panjang_kertas_celana_1,
                 'poly_celana_1' => $request->poly_celana_1,
-                'file_tangkap_layar_celana_1' => $fileTangkapLayar,
 
                 'file_corel_layout' => $filebajuplayer,
                 'tanda_telah_mengerjakan' => 1,
@@ -714,7 +754,6 @@ class LayoutController extends Controller
         }
 
         if ($dataPlayer->jenis_mesin == 'mimaki') {
-            return response()->json("heelo");
             if ($request->player_id) {
                 $laporanPlayer = Laporan::where('barang_masuk_layout_id', $request->player_id)->first();
                 if ($laporanPlayer) {

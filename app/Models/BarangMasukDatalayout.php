@@ -59,6 +59,11 @@ class BarangMasukDatalayout extends Model
         'file_corel_layout',
     ];
 
+    public function GamarTangkaplayar()
+    {
+        return $this->hasMany(GambarTangkapLayar::class, 'barang_masuk_datalayouts_id');
+    }
+
     public function UserLayout()
     {
         return $this->belongsTo(User::class, 'users_layout_id');

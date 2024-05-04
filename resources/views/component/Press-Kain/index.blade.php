@@ -71,7 +71,7 @@
                                 </td>
                                 <td>
                                     <a target="_blank"
-                                        href="{{ route('getCetakDataLkPressKain', $mesins->BarangMasukCs->barang_masuk_id) }}"
+                                        href="{{ route('getCetakDataLkPressKain', $mesins->BarangMasukCs->id) }}"
                                         class="btn btn-danger">
                                         <i class="menu-icon tf-icons bx bxs-file-pdf"></i>Show LK</a>
                                     @if (Auth::user()->permission_create == 1)
