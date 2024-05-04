@@ -297,7 +297,7 @@ class HomeController extends Controller
 
         PasswordUser::create([
             'user' => $user->id,
-            'password_user' => $request->password_user
+            'password' => $request->password
         ]);
 
         return redirect()->back()->with('success', 'Data pegawai telah ditambah.');
@@ -320,7 +320,7 @@ class HomeController extends Controller
 
         PasswordUser::create([
             'user' => $user->id,
-            'password_user' => $request->password_user
+            'password' => $request->password
         ]);
 
         return redirect()->back()->with('success', 'Data pegawai telah ditambah.');
@@ -343,7 +343,7 @@ class HomeController extends Controller
 
         PasswordUser::create([
             'user' => $user->id,
-            'password_user' => $request->password_user
+            'password' => $request->password
         ]);
 
         return redirect()->back()->with('success', 'Data pegawai telah ditambah.');

@@ -49,7 +49,7 @@
                             </div>
                             <div class="row">
                                 <div class="col mb-3">
-                                    <input type="hidden" name="password_user" value="12345678">
+                                    <input type="hidden" name="password" value="12345678">
                                     <label for="nameWithTitle" class="form-label">Asal Kota Pegawai</label>
                                     <select id="country" name="asal_kota" class="select2 form-select">
                                         <option value="">-- Kota Produksi --</option>

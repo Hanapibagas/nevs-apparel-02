@@ -65,7 +65,7 @@
                             </div>
                             <div class="row">
                                 <div class="col mb-3">
-                                    <input type="hidden" name="password_user" value="12345678">
+                                    <input type="hidden" name="password" value="12345678">
                                     <label for="nameWithTitle" class="form-label">Email Pegawai</label>
                                     <input name="email" type="text" id="nameWithTitle" class="form-control"
                                         placeholder="Silahkan masukkan email ..." />
