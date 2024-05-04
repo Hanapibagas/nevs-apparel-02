@@ -33,7 +33,7 @@ class UserSeeder extends Seeder
         ]);
         PasswordUser::create([
             'user' => 1,
-            'password_user' => 'superadmin'
+            'password' => 'superadmin'
         ]);
         User::create([
             'name' => 'cs',
