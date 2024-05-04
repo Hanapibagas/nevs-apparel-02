@@ -110,7 +110,7 @@
                                     <td class="text-nowrap">{{ $user->asal_kota }}</td>
                                     <td class="text-nowrap">
                                         @foreach ($user->PasswordUser as $passwordUser)
-                                        {{ $passwordUser->password_user }}
+                                        {{ $passwordUser->password }}
                                         @endforeach
                                     </td>
                                     <td>

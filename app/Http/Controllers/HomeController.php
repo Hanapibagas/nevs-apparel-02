@@ -1168,16 +1168,21 @@ class HomeController extends Controller
 
         $user = Auth::user();
 
-        $passwordUser = User::find($user->id);
-
-        // return response()->json($passwordUser);
-        $passwordUser->update([
-            'password_user' => $request->password_user
-        ]);
+        User::find($user->id);
 
         $user->password = Hash::make($request->password);
 
+        $userShow = PasswordUser::where('user', $user->id)->first();
+
+        $userShow->update([
+            'password' => $request->password
+        ]);
+
         $user->save();
+
+        // return response()->json($userShow);
+
+
 
         return redirect()->back()->with('success', 'Permission telah diperbarui.');
     }
