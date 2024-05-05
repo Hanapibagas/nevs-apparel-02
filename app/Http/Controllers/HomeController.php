@@ -999,6 +999,7 @@ class HomeController extends Controller
             if ($item) {
                 // layout
                 if ($item->lk_player_id) {
+                    // $tanda_selesai = $item->selesai ? $item->selesai : 'Bbelum melakukann update'
                     $laporanData['player'][] = [
                         'id' => $item->id,
                         'deadline' => $item->deadline,

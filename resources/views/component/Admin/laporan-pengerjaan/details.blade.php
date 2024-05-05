@@ -57,17 +57,25 @@
                                     {{ \Carbon\Carbon::parse($laporanData['player'][0]['selesai'])->format('d F Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
                                     {{ strtoupper($laporanData['player'][0]['users_layout_id']) }}
                                 </td>
                                 <td>
+                                    @if($laporanData['player'][0]['panjang_kertas_palayer'])
                                     {{ $laporanData['player'][0]['panjang_kertas_palayer'] }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanData['player'][0]['poly_player'])
                                     {{ $laporanData['player'][0]['poly_player'] }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -82,17 +90,25 @@
                                     {{ \Carbon\Carbon::parse($laporanData['pelatih'][0]['selesai'])->format('d F Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
                                     {{ strtoupper($laporanData['pelatih'][0]['users_layout_id']) }}
                                 </td>
                                 <td>
+                                    @if($laporanData['pelatih'][0]['panjang_kertas_pelatih'])
                                     {{ $laporanData['pelatih'][0]['panjang_kertas_pelatih'] }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanData['pelatih'][0]['poly_pelatih'])
                                     {{ $laporanData['pelatih'][0]['poly_pelatih'] }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -107,17 +123,25 @@
                                     {{ \Carbon\Carbon::parse($laporanData['kiper'][0]['selesai'])->format('d F Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
                                     {{ strtoupper($laporanData['kiper'][0]['users_layout_id']) }}
                                 </td>
                                 <td>
+                                    @if($laporanData['kiper'][0]['panjang_kertas_kiper'])
                                     {{ $laporanData['kiper'][0]['panjang_kertas_kiper'] }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanData['kiper'][0]['poly_kiper'])
                                     {{ $laporanData['kiper'][0]['poly_kiper'] }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -132,17 +156,25 @@
                                     {{ \Carbon\Carbon::parse($laporanData['lk_1'][0]['selesai'])->format('d F Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
                                     {{ strtoupper($laporanData['lk_1'][0]['users_layout_id']) }}
                                 </td>
                                 <td>
+                                    @if($laporanData['lk_1'][0]['panjang_kertas_1'])
                                     {{ $laporanData['lk_1'][0]['panjang_kertas_1'] }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanData['lk_1'][0]['poly_1'])
                                     {{ $laporanData['lk_1'][0]['poly_1'] }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -159,17 +191,25 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
                                     {{ strtoupper($laporanData['celana_player'][0]['users_layout_id']) }}
                                 </td>
                                 <td>
+                                    @if($laporanData['celana_player'][0]['panjang_kertas_celana_pelayer'])
                                     {{ $laporanData['celana_player'][0]['panjang_kertas_celana_pelayer'] }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanData['celana_player'][0]['poly_celana_pelayer'])
                                     {{ $laporanData['celana_player'][0]['poly_celana_pelayer'] }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -186,17 +226,25 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
                                     {{ strtoupper($laporanData['celana_pelatih'][0]['users_layout_id']) }}
                                 </td>
                                 <td>
+                                    @if($laporanData['celana_pelatih'][0]['panjang_kertas_celana_pelatih'])
                                     {{ $laporanData['celana_pelatih'][0]['panjang_kertas_celana_pelatih'] }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanData['celana_pelatih'][0]['poly_celana_pelatih'])
                                     {{ $laporanData['celana_pelatih'][0]['poly_celana_pelatih'] }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -213,17 +261,25 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
                                     {{ strtoupper($laporanData['celana_kiper'][0]['users_layout_id']) }}
                                 </td>
                                 <td>
+                                    @if($laporanData['celana_kiper'][0]['panjang_kertas_celana_kiper'])
                                     {{ $laporanData['celana_kiper'][0]['panjang_kertas_celana_kiper'] }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanData['celana_kiper'][0]['poly_celana_kiper'])
                                     {{ $laporanData['celana_kiper'][0]['poly_celana_kiper'] }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -238,17 +294,25 @@
                                     {{ \Carbon\Carbon::parse($laporanData['celana_1'][0]['selesai'])->format('d F Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
                                     {{ strtoupper($laporanData['celana_1'][0]['users_layout_id']) }}
                                 </td>
                                 <td>
+                                    @if($laporanData['celana_1'][0]['panjang_kertas_celana_1'])
                                     {{ $laporanData['celana_1'][0]['panjang_kertas_celana_1'] }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanData['celana_1'][0]['poly_celana_1'])
                                     {{ $laporanData['celana_1'][0]['poly_celana_1'] }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -287,16 +351,20 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
                                     {{ strtoupper($laporanDataAtexco['player'][0]['penanggung_jawab_id']) }}
                                 </td>
                                 <td>
+                                    @if($laporanDataAtexco['player'][0]['file_foto'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataAtexco['player'][0]['file_foto']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -313,16 +381,20 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
                                     {{ strtoupper($laporanDataAtexco['pelatih'][0]['penanggung_jawab_id']) }}
                                 </td>
                                 <td>
+                                    @if($laporanDataAtexco['pelatih'][0]['file_foto_pelatih'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataAtexco['pelatih'][0]['file_foto_pelatih']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -339,16 +411,20 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
                                     {{ strtoupper($laporanDataAtexco['kiper'][0]['penanggung_jawab_id']) }}
                                 </td>
                                 <td>
+                                    @if($laporanDataAtexco['kiper'][0]['file_foto_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataAtexco['kiper'][0]['file_foto_kiper']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -365,16 +441,20 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
                                     {{ strtoupper($laporanDataAtexco['lk_1'][0]['penanggung_jawab_id']) }}
                                 </td>
                                 <td>
+                                    @if($laporanDataAtexco['lk_1'][0]['file_foto_1'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataAtexco['lk_1'][0]['file_foto_1']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -395,16 +475,20 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
                                     {{ strtoupper($laporanDataAtexco['celana_player'][0]['penanggung_jawab_id']) }}
                                 </td>
                                 <td>
+                                    @if($laporanDataAtexco['celana_player'][0]['file_foto_celana_player'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataAtexco['celana_player'][0]['file_foto_celana_player']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -425,16 +509,20 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
                                     {{ strtoupper($laporanDataAtexco['celana_pelatih'][0]['penanggung_jawab_id']) }}
                                 </td>
                                 <td>
+                                    @if($laporanDataAtexco['celana_pelatih'][0]['file_foto_celana_pelatih'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataAtexco['celana_pelatih'][0]['file_foto_celana_pelatih']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -454,16 +542,20 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
                                     {{ strtoupper($laporanDataAtexco['celana_kiper'][0]['penanggung_jawab_id']) }}
                                 </td>
                                 <td>
+                                    @if($laporanDataAtexco['celana_kiper'][0]['file_foto_celana_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataAtexco['celana_kiper'][0]['file_foto_celana_kiper']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -480,16 +572,20 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
                                     {{ strtoupper($laporanDataAtexco['celana_1'][0]['penanggung_jawab_id']) }}
                                 </td>
                                 <td>
+                                    @if($laporanDataAtexco['celana_1'][0]['file_foto_celana_1'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataAtexco['celana_1'][0]['file_foto_celana_1']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -528,7 +624,7 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
@@ -537,9 +633,13 @@
                                     melakukan pengisian data' }}
                                 </td>
                                 <td>
+                                    @if($laporanDataMimaki['player'][0]['file_foto'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataMimaki['player'][0]['file_foto']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -556,7 +656,7 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
@@ -565,9 +665,13 @@
                                     melakukan pengisian data' }}
                                 </td>
                                 <td>
+                                    @if($laporanDataMimaki['pelatih'][0]['file_foto_pelatih'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataMimaki['pelatih'][0]['file_foto_pelatih']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -584,7 +688,7 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
@@ -593,9 +697,13 @@
                                     melakukan pengisian data' }}
                                 </td>
                                 <td>
+                                    @if($laporanDataMimaki['kiper'][0]['file_foto_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataMimaki['kiper'][0]['file_foto_kiper']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -612,7 +720,7 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
@@ -621,9 +729,13 @@
                                     melakukan pengisian data' }}
                                 </td>
                                 <td>
+                                    @if($laporanDataMimaki['lk_1'][0]['file_foto_1'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataMimaki['lk_1'][0]['file_foto_1']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -644,7 +756,7 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
@@ -653,9 +765,13 @@
                                     melakukan pengisian data' }}
                                 </td>
                                 <td>
+                                    @if($laporanDataMimaki['celana_player'][0]['file_foto_celana_player'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataMimaki['celana_player'][0]['file_foto_celana_player']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -676,7 +792,7 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
@@ -685,9 +801,13 @@
                                     melakukan pengisian data' }}
                                 </td>
                                 <td>
+                                    @if($laporanDataMimaki['celana_pelatih'][0]['file_foto_celana_pelatih'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataMimaki['celana_pelatih'][0]['file_foto_celana_pelatih']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -707,7 +827,7 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
@@ -716,9 +836,13 @@
                                     melakukan pengisian data' }}
                                 </td>
                                 <td>
+                                    @if($laporanDataMimaki['celana_kiper'][0]['file_foto_celana_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataMimaki['celana_kiper'][0]['file_foto_celana_kiper']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -735,7 +859,7 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
@@ -744,9 +868,13 @@
                                     melakukan pengisian data' }}
                                 </td>
                                 <td>
+                                    @if($laporanDataMimaki['celana_1'][0]['file_foto_celana_1'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataMimaki['celana_1'][0]['file_foto_celana_1']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -787,19 +915,31 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['player'][0]['kain'])
                                     {{ $laporanDataPressKain['player'][0]['kain'] }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['player'][0]['berat'])
                                     {{ $laporanDataPressKain['player'][0]['berat'] }} Kg
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['player'][0]['gambar'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataPressKain['player'][0]['gambar']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -818,19 +958,31 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['pelatih'][0]['kain_pelatih'])
                                     {{ $laporanDataPressKain['pelatih'][0]['kain_pelatih'] }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['pelatih'][0]['berat_pelatih'])
                                     {{ $laporanDataPressKain['pelatih'][0]['berat_pelatih'] }} Kg
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['pelatih'][0]['gambar_pelatih'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataPressKain['pelatih'][0]['gambar_pelatih']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -848,19 +1000,31 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['kiper'][0]['kain_kiper'])
                                     {{ $laporanDataPressKain['kiper'][0]['kain_kiper'] }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['kiper'][0]['berat_kiper'])
                                     {{ $laporanDataPressKain['kiper'][0]['berat_kiper'] }} Kg
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['kiper'][0]['gambar_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataPressKain['kiper'][0]['gambar_kiper']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -878,19 +1042,31 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['lk_1'][0]['kain_1'])
                                     {{ $laporanDataPressKain['lk_1'][0]['kain_1'] }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['lk_1'][0]['berat_1'])
                                     {{ $laporanDataPressKain['lk_1'][0]['berat_1'] }} Kg
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['lk_1'][0]['gambar_1'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataPressKain['lk_1'][0]['gambar_1']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -911,19 +1087,31 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['celana_player'][0]['kain_celana_player'])
                                     {{ $laporanDataPressKain['celana_player'][0]['kain_celana_player'] }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['celana_player'][0]['berat_celana_player'])
                                     {{ $laporanDataPressKain['celana_player'][0]['berat_celana_player'] }} Kg
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['celana_player'][0]['gambar_celana_player'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataPressKain['celana_player'][0]['gambar_celana_player']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -944,19 +1132,31 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['celana_pelatih'][0]['kain_celana_pelatih'])
                                     {{ $laporanDataPressKain['celana_pelatih'][0]['kain_celana_pelatih'] }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['celana_pelatih'][0]['berat_celana_pelatih'])
                                     {{ $laporanDataPressKain['celana_pelatih'][0]['berat_celana_pelatih'] }} Kg
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['celana_pelatih'][0]['gambar_celana_pelatih'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataPressKain['player'][0]['gambar_celana_pelatih']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -977,19 +1177,31 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['celana_kiper'][0]['kain_celana_kiper'])
                                     {{ $laporanDataPressKain['celana_kiper'][0]['kain_celana_kiper'] }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['celana_kiper'][0]['berat_celana_kiper'])
                                     {{ $laporanDataPressKain['celana_kiper'][0]['berat_celana_kiper'] }} Kg
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['celana_kiper'][0]['gambar_celana_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataPressKain['celana_kiper'][0]['gambar_celana_kiper']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1009,19 +1221,31 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['celana_1'][0]['kain_celana_1'])
                                     {{ $laporanDataPressKain['celana_1'][0]['kain_celana_1'] }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['celana_1'][0]['berat_celana_1'])
                                     {{ $laporanDataPressKain['celana_1'][0]['berat_celana_1'] }} Kg
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['celana_1'][0]['gambar_celana_1'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataPressKain['celana_1'][0]['gambar_celana_1']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1059,13 +1283,17 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataLaserCut['player'][0]['file_foto'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataLaserCut['player'][0]['file_foto']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1083,13 +1311,17 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataLaserCut['pelatih'][0]['file_foto_pelatih'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataLaserCut['pelatih'][0]['file_foto_pelatih']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1106,13 +1338,17 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataLaserCut['kiper'][0]['file_foto_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataLaserCut['kiper'][0]['file_foto_kiper']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1129,13 +1365,17 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataLaserCut['lk_1'][0]['file_foto_1'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataLaserCut['lk_1'][0]['file_foto_1']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1156,13 +1396,17 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataLaserCut['celana_player'][0]['file_foto_celana_player'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataLaserCut['celana_player'][0]['file_foto_celana_player']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1183,13 +1427,17 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataLaserCut['celana_pelatih'][0]['file_foto_celana_pelatih'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataLaserCut['celana_pelatih'][0]['file_foto_celana_pelatih']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1210,13 +1458,17 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataLaserCut['celana_kiper'][0]['file_foto_celana_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataLaserCut['celana_kiper'][0]['file_foto_celana_kiper']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1235,13 +1487,17 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataLaserCut['celana_1'][0]['file_foto_celana_1'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataLaserCut['celana_1'][0]['file_foto_celana_1']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1280,13 +1536,17 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataManualCut['player'][0]['file_foto'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataManualCut['player'][0]['file_foto']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1305,13 +1565,17 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataManualCut['pelatih'][0]['file_foto_pelatih'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataManualCut['pelatih'][0]['file_foto_pelatih']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1328,13 +1592,17 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataManualCut['kiper'][0]['file_foto_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataManualCut['kiper'][0]['file_foto_kiper']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1351,13 +1619,17 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataManualCut['lk_1'][0]['file_foto_1'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataManualCut['lk_1'][0]['file_foto_1']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1378,13 +1650,17 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataManualCut['celana_player'][0]['file_foto_celana_player'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataManualCut['celana_player'][0]['file_foto_celana_player']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1405,13 +1681,17 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataManualCut['celana_pelatih'][0]['file_foto_celana_pelatih'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataManualCut['celana_pelatih'][0]['file_foto_celana_pelatih']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1432,13 +1712,17 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataManualCut['celana_kiper'][0]['file_foto_celana_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataManualCut['celana_kiper'][0]['file_foto_celana_kiper']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1458,13 +1742,17 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataManualCut['celana_1'][0]['file_foto_celana_1'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataManualCut['celana_1'][0]['file_foto_celana_1']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1507,25 +1795,45 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['player'][0]['no_error'])
                                     {{ strtoupper($laporanDataSortir['player'][0]['no_error']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['player'][0]['panjang_kertas'])
                                     {{ strtoupper($laporanDataSortir['player'][0]['panjang_kertas']) }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['player'][0]['berat'])
                                     {{ strtoupper($laporanDataSortir['player'][0]['berat']) }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['player'][0]['bahan'])
                                     {{ strtoupper($laporanDataSortir['player'][0]['bahan']) }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['player'][0]['foto'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataSortir['player'][0]['foto']) }}" alt=""
                                         srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1543,27 +1851,47 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
-                                    {{ strtoupper($laporanDataSortir['pelatih'][0]['no_error_pelatih_pelatih_kiper_1'])
+                                    @if($laporanDataSortir['pelatih'][0]['no_error_pelatih'])
+                                    {{ strtoupper($laporanDataSortir['pelatih'][0]['no_error_pelatih'])
                                     }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
-                                    {{ strtoupper($laporanDataSortir['pelatih'][0]['panjang_kertas_pelatih_kiper_1']) }}
+                                    @if($laporanDataSortir['pelatih'][0]['panjang_kertas_pelatih'])
+                                    {{ strtoupper($laporanDataSortir['pelatih'][0]['panjang_kertas_pelatih']) }}
                                     Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
-                                    {{ strtoupper($laporanDataSortir['pelatih'][0]['berat_pelatih_kiper_1']) }} Meter
+                                    @if($laporanDataSortir['pelatih'][0]['berat_pelatih'])
+                                    {{ strtoupper($laporanDataSortir['pelatih'][0]['berat_pelatih']) }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
-                                    {{ strtoupper($laporanDataSortir['pelatih'][0]['bahan_pelatih_kiper_1']) }} Meter
+                                    @if($laporanDataSortir['pelatih'][0]['bahan_pelatih'])
+                                    {{ strtoupper($laporanDataSortir['pelatih'][0]['bahan_pelatih']) }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['pelatih'][0]['foto_pelatih'])
                                     <img style="height: 200px; width: 200px"
-                                        src="{{ asset('storage/'.$laporanDataSortir['pelatih'][0]['foto_pelatih_kiper_1']) }}"
+                                        src="{{ asset('storage/'.$laporanDataSortir['pelatih'][0]['foto_pelatih']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1581,25 +1909,45 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['kiper'][0]['no_error_kiper'])
                                     {{ strtoupper($laporanDataSortir['kiper'][0]['no_error_kiper']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['kiper'][0]['panjang_kertas_kiper'])
                                     {{ strtoupper($laporanDataSortir['kiper'][0]['panjang_kertas_kiper']) }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['kiper'][0]['berat_kiper'])
                                     {{ strtoupper($laporanDataSortir['kiper'][0]['berat_kiper']) }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['kiper'][0]['bahan_kiper'])
                                     {{ strtoupper($laporanDataSortir['kiper'][0]['bahan_kiper']) }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['kiper'][0]['foto_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataSortir['kiper'][0]['foto_kiper']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1617,25 +1965,45 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['lk_1'][0]['no_error_1'])
                                     {{ strtoupper($laporanDataSortir['lk_1'][0]['no_error_1']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['lk_1'][0]['panjang_kertas_1'])
                                     {{ strtoupper($laporanDataSortir['lk_1'][0]['panjang_kertas_1']) }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['lk_1'][0]['berat_1'])
                                     {{ strtoupper($laporanDataSortir['lk_1'][0]['berat_1']) }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['lk_1'][0]['bahan_1'])
                                     {{ strtoupper($laporanDataSortir['lk_1'][0]['bahan_1']) }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['lk_1'][0]['foto_1'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataSortir['lk_1'][0]['foto_1']) }}" alt=""
                                         srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1656,29 +2024,49 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_player'][0]['no_error_celana_pelayer'])
                                     {{ strtoupper($laporanDataSortir['celana_player'][0]['no_error_celana_pelayer']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_player'][0]['panjang_kertas_celana_pelayer'])
                                     {{
                                     strtoupper($laporanDataSortir['celana_player'][0]['panjang_kertas_celana_pelayer'])
                                     }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_player'][0]['berat_celana_pelayer'])
                                     {{ strtoupper($laporanDataSortir['celana_player'][0]['berat_celana_pelayer']) }}
                                     Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_player'][0]['bahan_celana_pelayer'])
                                     {{ strtoupper($laporanDataSortir['celana_player'][0]['bahan_celana_pelayer']) }}
                                     Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_player'][0]['foto_celana_pelayer'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataSortir['celana_player'][0]['foto_celana_pelayer']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1699,29 +2087,49 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_pelatih'][0]['no_error_celana_pelatih'])
                                     {{ strtoupper($laporanDataSortir['celana_pelatih'][0]['no_error_celana_pelatih']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_pelatih'][0]['panjang_kertas_celana_pelatih'])
                                     {{
                                     strtoupper($laporanDataSortir['celana_pelatih'][0]['panjang_kertas_celana_pelatih'])
                                     }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_pelatih'][0]['berat_celana_pelatih'])
                                     {{ strtoupper($laporanDataSortir['celana_pelatih'][0]['berat_celana_pelatih']) }}
                                     Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_pelatih'][0]['bahan_celana_pelatih'])
                                     {{ strtoupper($laporanDataSortir['celana_pelatih'][0]['bahan_celana_pelatih']) }}
                                     Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_pelatih'][0]['foto_celana_pelatih'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataSortir['celana_pelatih'][0]['foto_celana_pelatih']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1741,26 +2149,46 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_kiper'][0]['no_error_celana_kiper'])
                                     {{ strtoupper($laporanDataSortir['celana_kiper'][0]['no_error_celana_kiper']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_kiper'][0]['panjang_kertas_celana_kiper'])
                                     {{ strtoupper($laporanDataSortir['celana_kiper'][0]['panjang_kertas_celana_kiper'])
                                     }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_kiper'][0]['berat_celana_kiper'])
                                     {{ strtoupper($laporanDataSortir['celana_kiper'][0]['berat_celana_kiper']) }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_kiper'][0]['bahan_celana_kiper'])
                                     {{ strtoupper($laporanDataSortir['celana_kiper'][0]['bahan_celana_kiper']) }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_kiper'][0]['foto_celana_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataSortir['celana_kiper'][0]['foto_celana_kiper']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1778,25 +2206,45 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_1'][0]['no_error_celana_1'])
                                     {{ strtoupper($laporanDataSortir['celana_1'][0]['no_error_celana_1']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_1'][0]['panjang_kertas_celana_1'])
                                     {{ strtoupper($laporanDataSortir['celana_1'][0]['panjang_kertas_celana_1']) }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_1'][0]['berat_celana_1'])
                                     {{ strtoupper($laporanDataSortir['celana_1'][0]['berat_celana_1']) }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_1'][0]['bahan_celana_1'])
                                     {{ strtoupper($laporanDataSortir['celana_1'][0]['bahan_celana_1']) }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_1'][0]['foto_celana_1'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataSortir['celana_1'][0]['foto_celana_1']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1837,21 +2285,33 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataJahit['player'][0]['leher'])
                                     {{ strtoupper($laporanDataJahit['player'][0]['leher']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataJahit['player'][0]['pola_badan'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataJahit['player'][0]['pola_badan']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataJahit['player'][0]['foto'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataJahit['player'][0]['foto']) }}" alt=""
                                         srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1869,21 +2329,33 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataJahit['pelatih'][0]['leher_pelatih'])
                                     {{ strtoupper($laporanDataJahit['pelatih'][0]['leher_pelatih']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataJahit['pelatih'][0]['pola_badan_pelatih'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataJahit['pelatih'][0]['pola_badan_pelatih']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataJahit['pelatih'][0]['foto_pelatih'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataJahit['pelatih'][0]['foto_pelatih']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1901,21 +2373,33 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataJahit['kiper'][0]['leher_kiper'])
                                     {{ strtoupper($laporanDataJahit['kiper'][0]['leher_kiper']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataJahit['kiper'][0]['pola_badan_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataJahit['kiper'][0]['pola_badan_kiper']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataJahit['kiper'][0]['foto_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataJahit['kiper'][0]['foto_kiper']) }}" alt=""
                                         srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1933,21 +2417,33 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataJahit['lk_1'][0]['leher_1'])
                                     {{ strtoupper($laporanDataJahit['lk_1'][0]['leher_1']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataJahit['lk_1'][0]['pola_badan_lk_1'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataJahit['lk_1'][0]['pola_badan_lk_1']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataJahit['lk_1'][0]['foto_lk_1'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataJahit['lk_1'][0]['foto_lk_1']) }}" alt=""
                                         srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -1967,21 +2463,33 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataJahit['celana_player'][0]['leher_celana_pelayer'])
                                     {{ strtoupper($laporanDataJahit['celana_player'][0]['leher_celana_pelayer']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataJahit['celana_player'][0]['pola_badan_celana_pelayer'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataJahit['celana_player'][0]['pola_badan_celana_pelayer']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataJahit['celana_player'][0]['foto_celana_pelayer'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataJahit['celana_player'][0]['foto_celana_pelayer']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -2002,21 +2510,33 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataJahit['celana_pelatih'][0]['leher_celana_pelatih'])
                                     {{ strtoupper($laporanDataJahit['celana_pelatih'][0]['leher_celana_pelatih']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataJahit['celana_pelatih'][0]['pola_badan_celana_pelatih'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataJahit['celana_pelatih'][0]['pola_badan_celana_pelatih']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataJahit['celana_pelatih'][0]['foto_celana_pelatih'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataJahit['celana_pelatih'][0]['foto_celana_pelatih']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -2036,21 +2556,33 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataJahit['celana_kiper'][0]['leher_celana_kiper'])
                                     {{ strtoupper($laporanDataJahit['celana_kiper'][0]['leher_celana_kiper']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataJahit['celana_kiper'][0]['pola_badan_celana_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataJahit['celana_kiper'][0]['pola_badan_celana_kiper']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataJahit['celana_kiper'][0]['foto_celana_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataJahit['celana_kiper'][0]['foto_celana_kiper']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -2068,21 +2600,33 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataJahit['celana_1'][0]['leher_celana_1'])
                                     {{ strtoupper($laporanDataJahit['celana_1'][0]['leher_celana_1']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataJahit['celana_1'][0]['pola_badan_celana_1'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataJahit['celana_1'][0]['pola_badan_celana_1']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataJahit['celana_1'][0]['foto_celana_1'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataJahit['celana_1'][0]['foto_celana_1']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -2121,13 +2665,17 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataFinis['player'][0]['foto'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataFinis['player'][0]['foto']) }}" alt=""
                                         srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -2146,13 +2694,17 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataFinis['pelatih'][0]['foto_pelatih'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataFinis['pelatih'][0]['foto_pelatih']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -2169,13 +2721,17 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataFinis['kiper'][0]['foto_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataFinis['kiper'][0]['foto_kiper']) }}" alt=""
                                         srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -2192,13 +2748,17 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataFinis['lk_1'][0]['foto_1'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataFinis['lk_1'][0]['foto_1']) }}" alt=""
                                         srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -2219,13 +2779,17 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataFinis['celana_player'][0]['foto_celana_pelayer'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataFinis['celana_player'][0]['foto_celana_pelayer']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -2246,13 +2810,17 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataFinis['celana_pelatih'][0]['foto_celana_pelatih'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataFinis['celana_pelatih'][0]['foto_celana_pelatih']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -2273,13 +2841,17 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataFinis['celana_kiper'][0]['foto_celana_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataFinis['celana_kiper'][0]['foto_celana_kiper']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -2299,13 +2871,17 @@
                                     Y')
                                     }}
                                     @else
-                                    <!-- Tidak ada yang ditampilkan -->
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataFinis['celana_1'][0]['foto_celana_1'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataFinis['celana_1'][0]['foto_celana_1']) }}"
                                         alt="" srcset="">
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
                                 </td>
                             </tr>
                             @endif
