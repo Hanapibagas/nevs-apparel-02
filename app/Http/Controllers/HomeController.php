@@ -1074,7 +1074,7 @@ class HomeController extends Controller
             }
         }
 
-        // return response()->json($laporanDataMimaki);
+        // return response()->json($laporanDataSortir);
 
         return view('component.Admin.laporan-pengerjaan.details', compact(
             'laporans',

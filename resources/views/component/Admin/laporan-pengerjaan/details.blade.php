@@ -1529,7 +1529,7 @@
                                 </td>
                             </tr>
                             @endif
-                            @if (!empty($laporanDataManualCut['pelatih']))
+                            @if (!empty($laporanDataSortir['pelatih']))
                             <tr>
                                 <td>
                                     {{ \Carbon\Carbon::parse($laporanDataSortir['pelatih'][0]['deadline'])->format('d
@@ -1567,7 +1567,7 @@
                                 </td>
                             </tr>
                             @endif
-                            @if (!empty($laporanDataManualCut['kiper']))
+                            @if (!empty($laporanDataSortir['kiper']))
                             <tr>
                                 <td>
                                     {{ \Carbon\Carbon::parse($laporanDataSortir['kiper'][0]['deadline'])->format('d
@@ -1603,7 +1603,7 @@
                                 </td>
                             </tr>
                             @endif
-                            @if (!empty($laporanDataManualCut['lk_1']))
+                            @if (!empty($laporanDataSortir['lk_1']))
                             <tr>
                                 <td>
                                     {{ \Carbon\Carbon::parse($laporanDataSortir['lk_1'][0]['deadline'])->format('d
@@ -1639,7 +1639,7 @@
                                 </td>
                             </tr>
                             @endif
-                            @if (!empty($laporanDataManualCut['celana_player']))
+                            @if (!empty($laporanDataSortir['celana_player']))
                             <tr>
                                 <td>
                                     {{
@@ -1682,7 +1682,7 @@
                                 </td>
                             </tr>
                             @endif
-                            @if (!empty($laporanDataManualCut['celana_pelatih']))
+                            @if (!empty($laporanDataSortir['celana_pelatih']))
                             <tr>
                                 <td>
                                     {{
@@ -1725,7 +1725,7 @@
                                 </td>
                             </tr>
                             @endif
-                            @if (!empty($laporanDataManualCut['celana_kiper']))
+                            @if (!empty($laporanDataSortir['celana_kiper']))
                             <tr>
                                 <td>
                                     {{
@@ -1855,7 +1855,7 @@
                                 </td>
                             </tr>
                             @endif
-                            @if (!empty($laporanDataManualCut['pelatih']))
+                            @if (!empty($laporanDataJahit['pelatih']))
                             <tr>
                                 <td>
                                     {{ \Carbon\Carbon::parse($laporanDataJahit['pelatih'][0]['deadline'])->format('d
@@ -1887,7 +1887,7 @@
                                 </td>
                             </tr>
                             @endif
-                            @if (!empty($laporanDataManualCut['kiper']))
+                            @if (!empty($laporanDataJahit['kiper']))
                             <tr>
                                 <td>
                                     {{ \Carbon\Carbon::parse($laporanDataJahit['kiper'][0]['deadline'])->format('d
@@ -1919,7 +1919,7 @@
                                 </td>
                             </tr>
                             @endif
-                            @if (!empty($laporanDataManualCut['lk_1']))
+                            @if (!empty($laporanDataJahit['lk_1']))
                             <tr>
                                 <td>
                                     {{ \Carbon\Carbon::parse($laporanDataJahit['lk_1'][0]['deadline'])->format('d
@@ -1951,7 +1951,7 @@
                                 </td>
                             </tr>
                             @endif
-                            @if (!empty($laporanDataManualCut['celana_player']))
+                            @if (!empty($laporanDataJahit['celana_player']))
                             <tr>
                                 <td>
                                     {{
@@ -1985,7 +1985,7 @@
                                 </td>
                             </tr>
                             @endif
-                            @if (!empty($laporanDataManualCut['celana_pelatih']))
+                            @if (!empty($laporanDataJahit['celana_pelatih']))
                             <tr>
                                 <td>
                                     {{
@@ -2020,7 +2020,7 @@
                                 </td>
                             </tr>
                             @endif
-                            @if (!empty($laporanDataManualCut['celana_kiper']))
+                            @if (!empty($laporanDataJahit['celana_kiper']))
                             <tr>
                                 <td>
                                     {{
@@ -2054,7 +2054,7 @@
                                 </td>
                             </tr>
                             @endif
-                            @if (!empty($laporanDataManualCut['celana_1']))
+                            @if (!empty($laporanDataJahit['celana_1']))
                             <tr>
                                 <td>
                                     {{ \Carbon\Carbon::parse($laporanDataJahit['celana_1'][0]['deadline'])->format('d
