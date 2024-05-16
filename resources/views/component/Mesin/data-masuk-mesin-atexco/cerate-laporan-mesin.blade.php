@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Input data laporan mesin atexco
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Input data laporan mesin
     </h4>
     <div class="row">
         <div class="col-12">
@@ -146,7 +146,7 @@
                         </div>
                         <button id="submitButton" type="submit" class="btn btn-primary">
                             <i id="submitIcon" class="menu-icon tf-icons bx bx-send"></i>
-                            Input Laporan Mesin Atexco
+                            Input Laporan Mesin
                         </button>
                         <a href="{{ route('getIndexDataMasukMesinAtexco') }}" class="btn btn-outline-secondary"><i
                                 class="menu-icon tf-icons bx bx-undo"></i>Kembali</a>

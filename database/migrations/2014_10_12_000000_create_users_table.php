@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('permission_hapus')->default(0);
             $table->string('permission_create')->default(0);
             $table->string('permission_show')->default(0);
+            $table->string('non_aktif')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

@@ -74,7 +74,16 @@ class DataSortir extends Model
 
         'selesai',
         'tanda_telah_mengerjakan',
-        'deadline'
+        'deadline',
+
+        'keterangan',
+        'keterangan2',
+        'keterangan3',
+        'keterangan4',
+        'keterangan5',
+        'keterangan6',
+        'keterangan7',
+        'keterangan8',
     ];
 
     public function BarangMasukCs()

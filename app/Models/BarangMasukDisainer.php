@@ -27,6 +27,11 @@ class BarangMasukDisainer extends Model
         return $this->belongsTo(User::class, 'nama_cs');
     }
 
+    public function DataMesinCs()
+    {
+        return $this->hasMany(BarangMasukMesin::class, 'barang_masuk_disainer_id', 'id');
+    }
+
     public function DataMesin()
     {
         return $this->hasMany(BarangMasukMesin::class, 'barang_masuk_disainer_id', 'id');

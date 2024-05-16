@@ -26,6 +26,7 @@ class User extends Authenticatable
         'permission_hapus',
         'permission_create',
         'permission_show',
+        'non_aktif',
         'password',
     ];
 

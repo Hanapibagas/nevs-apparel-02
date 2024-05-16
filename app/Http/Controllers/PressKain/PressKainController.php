@@ -20,13 +20,8 @@ class PressKainController extends Controller
         $user = Auth::user();
         if ($user->asal_kota == 'makassar') {
             $dataMasuk = DataPressKain::with('BarangMasukCs', 'MesinAtexco', 'MesinMimaki', 'BarangMasukCs.BarangMasukDisainer')
-                ->where(function ($query) {
-                    $query->whereHas('MesinAtexco', function ($subquery) {
-                        $subquery->whereNotNull('selesai');
-                    })
-                        ->orWhereHas('MesinMimaki', function ($query) {
-                            $query->whereNotNull('selesai');
-                        });
+                ->whereHas('MesinMimaki', function ($query) {
+                    $query->whereNotNull('selesai');
                 })
                 ->whereHas('BarangMasukCs', function ($query) use ($user) {
                     $query->where('kota_produksi', 'Makassar');
@@ -40,13 +35,8 @@ class PressKainController extends Controller
             $dataMasuk = $dataMasuk->values()->all();
         } elseif ($user->asal_kota == 'jakarta') {
             $dataMasuk = DataPressKain::with('BarangMasukCs', 'MesinAtexco', 'MesinMimaki', 'BarangMasukCs.BarangMasukDisainer')
-                ->where(function ($query) {
-                    $query->whereHas('MesinAtexco', function ($subquery) {
-                        $subquery->whereNotNull('selesai');
-                    })
-                        ->orWhereHas('MesinMimaki', function ($query) {
-                            $query->whereNotNull('selesai');
-                        });
+                ->whereHas('MesinMimaki', function ($query) {
+                    $query->whereNotNull('selesai');
                 })
                 ->whereHas('BarangMasukCs', function ($query) use ($user) {
                     $query->where('kota_produksi', 'Jakarta');
@@ -60,13 +50,8 @@ class PressKainController extends Controller
             $dataMasuk = $dataMasuk->values()->all();
         } elseif ($user->asal_kota == 'bandung') {
             $dataMasuk = DataPressKain::with('BarangMasukCs', 'MesinAtexco', 'MesinMimaki', 'BarangMasukCs.BarangMasukDisainer')
-                ->where(function ($query) {
-                    $query->whereHas('MesinAtexco', function ($subquery) {
-                        $subquery->whereNotNull('selesai');
-                    })
-                        ->orWhereHas('MesinMimaki', function ($query) {
-                            $query->whereNotNull('selesai');
-                        });
+                ->whereHas('MesinMimaki', function ($query) {
+                    $query->whereNotNull('selesai');
                 })
                 ->whereHas('BarangMasukCs', function ($query) use ($user) {
                     $query->where('kota_produksi', 'Bandung');
@@ -80,13 +65,8 @@ class PressKainController extends Controller
             $dataMasuk = $dataMasuk->values()->all();
         } else {
             $dataMasuk = DataPressKain::with('BarangMasukCs', 'MesinAtexco', 'MesinMimaki', 'BarangMasukCs.BarangMasukDisainer')
-                ->where(function ($query) {
-                    $query->whereHas('MesinAtexco', function ($subquery) {
-                        $subquery->whereNotNull('selesai');
-                    })
-                        ->orWhereHas('MesinMimaki', function ($query) {
-                            $query->whereNotNull('selesai');
-                        });
+                ->whereHas('MesinMimaki', function ($query) {
+                    $query->whereNotNull('selesai');
                 })
                 ->whereHas('BarangMasukCs', function ($query) use ($user) {
                     $query->where('kota_produksi', 'Surabaya');
@@ -437,13 +417,8 @@ class PressKainController extends Controller
         $user = Auth::user();
         if ($user->asal_kota == 'makassar') {
             $dataMasuk = DataPressKain::with('BarangMasukCs', 'MesinAtexco', 'MesinMimaki', 'BarangMasukCs.BarangMasukDisainer')
-                ->where(function ($query) {
-                    $query->whereHas('MesinAtexco', function ($subquery) {
-                        $subquery->whereNotNull('selesai');
-                    })
-                        ->orWhereHas('MesinMimaki', function ($query) {
-                            $query->whereNotNull('selesai');
-                        });
+                ->whereHas('MesinMimaki', function ($query) {
+                    $query->whereNotNull('selesai');
                 })
                 ->whereHas('BarangMasukCs', function ($query) use ($user) {
                     $query->where('kota_produksi', 'Makassar');
@@ -457,13 +432,8 @@ class PressKainController extends Controller
             $dataMasuk = $dataMasuk->values()->all();
         } elseif ($user->asal_kota == 'jakarta') {
             $dataMasuk = DataPressKain::with('BarangMasukCs', 'MesinAtexco', 'MesinMimaki', 'BarangMasukCs.BarangMasukDisainer')
-                ->where(function ($query) {
-                    $query->whereHas('MesinAtexco', function ($subquery) {
-                        $subquery->whereNotNull('selesai');
-                    })
-                        ->orWhereHas('MesinMimaki', function ($query) {
-                            $query->whereNotNull('selesai');
-                        });
+                ->whereHas('MesinMimaki', function ($query) {
+                    $query->whereNotNull('selesai');
                 })
                 ->whereHas('BarangMasukCs', function ($query) use ($user) {
                     $query->where('kota_produksi', 'Jakarta');
@@ -477,13 +447,8 @@ class PressKainController extends Controller
             $dataMasuk = $dataMasuk->values()->all();
         } elseif ($user->asal_kota == 'bandung') {
             $dataMasuk = DataPressKain::with('BarangMasukCs', 'MesinAtexco', 'MesinMimaki', 'BarangMasukCs.BarangMasukDisainer')
-                ->where(function ($query) {
-                    $query->whereHas('MesinAtexco', function ($subquery) {
-                        $subquery->whereNotNull('selesai');
-                    })
-                        ->orWhereHas('MesinMimaki', function ($query) {
-                            $query->whereNotNull('selesai');
-                        });
+                ->whereHas('MesinMimaki', function ($query) {
+                    $query->whereNotNull('selesai');
                 })
                 ->whereHas('BarangMasukCs', function ($query) use ($user) {
                     $query->where('kota_produksi', 'Bandung');
@@ -497,13 +462,8 @@ class PressKainController extends Controller
             $dataMasuk = $dataMasuk->values()->all();
         } else {
             $dataMasuk = DataPressKain::with('BarangMasukCs', 'MesinAtexco', 'MesinMimaki', 'BarangMasukCs.BarangMasukDisainer')
-                ->where(function ($query) {
-                    $query->whereHas('MesinAtexco', function ($subquery) {
-                        $subquery->whereNotNull('selesai');
-                    })
-                        ->orWhereHas('MesinMimaki', function ($query) {
-                            $query->whereNotNull('selesai');
-                        });
+                ->whereHas('MesinMimaki', function ($query) {
+                    $query->whereNotNull('selesai');
                 })
                 ->whereHas('BarangMasukCs', function ($query) use ($user) {
                     $query->where('kota_produksi', 'Surabaya');

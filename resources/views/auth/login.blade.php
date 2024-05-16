@@ -43,7 +43,7 @@
                         </div>
                         <h4 class="mb-2">Selamat datang di Nevs Apparel</h4>
 
-                        <form id="formAuthentication" class="mb-3" method="POST" action="{{ route('login') }}">
+                        <form id="formAuthentication" class="mb-3" method="POST" action="{{ route('loginuser') }}">
                             @csrf
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>

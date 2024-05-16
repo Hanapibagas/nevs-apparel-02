@@ -139,41 +139,49 @@ class JahitController extends Controller
                 $formattedData['player'][] = [
                     'id' => $item->id,
                     'leher' => $item->leher,
+                    'keterangan' => $item->keterangan,
                 ];
             } elseif ($item->lk_pelatih_id) {
                 $formattedData['pelatih'][] = [
                     'id' => $item->id,
                     'leher_pelatih' => $item->leher_pelatih,
+                    'keterangan2' => $item->keterangan2,
                 ];
             } elseif ($item->lk_kiper_id) {
                 $formattedData['kiper'][] = [
                     'id' => $item->id,
                     'leher_kiper' => $item->leher_kiper,
+                    'keterangan3' => $item->keterangan3,
                 ];
             } elseif ($item->lk_1_id) {
                 $formattedData['lk_1'][] = [
                     'id' => $item->id,
                     'leher_1' => $item->leher_1,
+                    'keterangan4' => $item->keterangan4,
                 ];
             } elseif ($item->lk_celana_player_id) {
                 $formattedData['celana_player'][] = [
                     'id' => $item->id,
                     'leher_celana_pelayer' => $item->leher_celana_pelayer,
+                    'keterangan5' => $item->keterangan5,
                 ];
             } elseif ($item->lk_celana_pelatih_id) {
                 $formattedData['celana_pelatih'][] = [
                     'id' => $item->id,
                     'leher_celana_pelatih' => $item->leher_celana_pelatih,
+                    'keterangan6' => $item->keterangan6,
                 ];
             } elseif ($item->lk_celana_kiper_id) {
                 $formattedData['celana_kiper'][] = [
                     'id' => $item->id,
                     'leher_celana_kiper' => $item->leher_celana_kiper,
+                    'keterangan7' => $item->keterangan7,
                 ];
             } elseif ($item->lk_celana_1_id) {
                 $formattedData['celana_1'][] = [
                     'id' => $item->id,
                     'leher_celana_1' => $item->leher_celana_1,
+                    'keterangan8' => $item->keterangan8,
                 ];
             }
         }
@@ -203,6 +211,7 @@ class JahitController extends Controller
             $dataMasukPlayer->update([
                 'penanggung_jawab_id' => $user->id,
                 'leher' => $request->leher,
+                'keterangan' => $request->keterangan,
                 'pola_badan' => $fileGambar,
                 'serah_terima' => 1
             ]);
@@ -225,6 +234,7 @@ class JahitController extends Controller
             $dataMasukPelatih->update([
                 'penanggung_jawab_id' => $user->id,
                 'leher_pelatih' => $request->leher_pelatih,
+                'keterangan2' => $request->keterangan2,
                 'pola_badan_pelatih' => $fileGambar,
                 'serah_terima' => 1
             ]);
@@ -247,6 +257,7 @@ class JahitController extends Controller
             $dataMasukKiper->update([
                 'penanggung_jawab_id' => $user->id,
                 'leher_kiper' => $request->leher_kiper,
+                'keterangan3' => $request->keterangan3,
                 'pola_badan_kiper' => $fileGambar,
                 'serah_terima' => 1
             ]);
@@ -269,6 +280,7 @@ class JahitController extends Controller
             $dataMasuk1->update([
                 'penanggung_jawab_id' => $user->id,
                 'leher_1' => $request->leher_1,
+                'keterangan4' => $request->keterangan4,
                 'pola_badan_1' => $fileGambar,
                 'serah_terima' => 1
             ]);
@@ -291,6 +303,7 @@ class JahitController extends Controller
             $dataMasukCelanaPlayer->update([
                 'penanggung_jawab_id' => $user->id,
                 'leher_celana_pelayer' => $request->leher_celana_pelayer,
+                'keterangan5' => $request->keterangan5,
                 'pola_badan_celana_pelayer' => $fileGambar,
                 'serah_terima' => 1
             ]);
@@ -313,6 +326,7 @@ class JahitController extends Controller
             $dataMasukCelanaPelatih->update([
                 'penanggung_jawab_id' => $user->id,
                 'leher_celana_pelatih' => $request->leher_celana_pelatih,
+                'keterangan6' => $request->keterangan6,
                 'pola_badan_celana_pelatih' => $fileGambar,
                 'serah_terima' => 1
             ]);
@@ -335,6 +349,7 @@ class JahitController extends Controller
             $dataMasukCelanaKiper->update([
                 'penanggung_jawab_id' => $user->id,
                 'leher_celana_kiper' => $request->leher_celana_kiper,
+                'keterangan7' => $request->keterangan7,
                 'pola_badan_celana_kiper' => $fileGambar,
                 'serah_terima' => 1
             ]);
@@ -357,6 +372,7 @@ class JahitController extends Controller
             $dataMasukCelana1->update([
                 'penanggung_jawab_id' => $user->id,
                 'leher_celana_1' => $request->leher_celana_1,
+                'keterangan8' => $request->keterangan8,
                 'pola_badan_celana_1' => $fileGambar,
                 'serah_terima' => 1
             ]);
@@ -389,6 +405,7 @@ class JahitController extends Controller
                 'penanggung_jawab_id' => $user->id,
                 'selesai' => Carbon::now(),
                 'foto' => $fileGambar,
+                'keterangan' => $request->keterangan,
                 'tanda_telah_mengerjakan' => 1
             ]);
         }
@@ -411,6 +428,7 @@ class JahitController extends Controller
                 'penanggung_jawab_id' => $user->id,
                 'selesai' => Carbon::now(),
                 'foto_pelatih' => $fileGambar,
+                'keterangan2' => $request->keterangan2,
                 'tanda_telah_mengerjakan' => 1
             ]);
         }
@@ -433,6 +451,7 @@ class JahitController extends Controller
                 'penanggung_jawab_id' => $user->id,
                 'selesai' => Carbon::now(),
                 'foto_kiper' => $fileGambar,
+                'keterangan3' => $request->keterangan3,
                 'tanda_telah_mengerjakan' => 1
             ]);
         }
@@ -455,6 +474,7 @@ class JahitController extends Controller
                 'penanggung_jawab_id' => $user->id,
                 'selesai' => Carbon::now(),
                 'foto_1' => $fileGambar,
+                'keterangan4' => $request->keterangan4,
                 'tanda_telah_mengerjakan' => 1
             ]);
         }
@@ -477,6 +497,7 @@ class JahitController extends Controller
                 'penanggung_jawab_id' => $user->id,
                 'selesai' => Carbon::now(),
                 'foto_celana_pelayer' => $fileGambar,
+                'keterangan5' => $request->keterangan5,
                 'tanda_telah_mengerjakan' => 1
             ]);
         }
@@ -499,6 +520,7 @@ class JahitController extends Controller
                 'penanggung_jawab_id' => $user->id,
                 'selesai' => Carbon::now(),
                 'foto_celana_pelatih' => $fileGambar,
+                'keterangan6' => $request->keterangan6,
                 'tanda_telah_mengerjakan' => 1
             ]);
         }
@@ -521,6 +543,7 @@ class JahitController extends Controller
                 'penanggung_jawab_id' => $user->id,
                 'selesai' => Carbon::now(),
                 'foto_celana_kiper' => $fileGambar,
+                'keterangan7' => $request->keterangan7,
                 'tanda_telah_mengerjakan' => 1
             ]);
         }
@@ -543,6 +566,7 @@ class JahitController extends Controller
                 'penanggung_jawab_id' => $user->id,
                 'selesai' => Carbon::now(),
                 'foto_celana_1' => $fileGambar,
+                'keterangan8' => $request->keterangan8,
                 'tanda_telah_mengerjakan' => 1
             ]);
         }

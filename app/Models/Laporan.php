@@ -13,7 +13,7 @@ class Laporan extends Model
         'barang_masuk_costumer_services_id',
         'barang_masuk_layout_id',
         'barang_masuk_mesin_atexco_id',
-        'barang_masuk_mesin_mimaki_id',
+        // 'barang_masuk_mesin_mimaki_id',
         'barang_masuk_presskain_id',
         // 'cut_id',
         'barang_masuk_lasercut_id',
@@ -36,7 +36,7 @@ class Laporan extends Model
 
     public function BarangMasukMesinAtexco()
     {
-        return $this->belongsTo(MesinAtexco::class, 'barang_masuk_mesin_atexco_id');
+        return $this->belongsTo(DataPress::class, 'barang_masuk_mesin_atexco_id');
     }
 
     public function BarangMasukMesinMimaki()

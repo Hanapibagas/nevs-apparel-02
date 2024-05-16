@@ -69,7 +69,7 @@ class DataPressKain extends Model
 
     public function MesinMimaki()
     {
-        return $this->belongsTo(MesinMimaki::class, 'mesin_mimaki_id');
+        return $this->belongsTo(DataPress::class, 'mesin_atexco_id');
     }
 
     public function MesinAtexco()

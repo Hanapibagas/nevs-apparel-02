@@ -43,6 +43,7 @@
                                 <th>Nama layout</th>
                                 <th>Panjang kertas</th>
                                 <th>Panjang poly/DTF</th>
+                                <th>Keterangan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,7 +55,8 @@
                                 </td>
                                 <td>
                                     @if($laporanData['player'][0]['selesai'])
-                                    {{ \Carbon\Carbon::parse($laporanData['player'][0]['selesai'])->format('d F Y')
+                                    {{ \Carbon\Carbon::parse($laporanData['player'][0]['selesai'])->format('d F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -77,17 +79,25 @@
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
+                                <td>
+                                    @if($laporanData['player'][0]['keterangan1'])
+                                    {{ $laporanData['player'][0]['keterangan1'] }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
                             </tr>
                             @endif
                             @if (!empty($laporanData['pelatih']))
                             <tr>
                                 <td>
-                                    {{ \Carbon\Carbon::parse($laporanData['pelatih'][0]['deadline'])->format('d F Y')
+                                    {{ \Carbon\Carbon::parse($laporanData['pelatih'][0]['deadline'])->format('d F Y,')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanData['pelatih'][0]['selesai'])
-                                    {{ \Carbon\Carbon::parse($laporanData['pelatih'][0]['selesai'])->format('d F Y')
+                                    {{ \Carbon\Carbon::parse($laporanData['pelatih'][0]['selesai'])->format('d F Y,
+                                    H:i:s A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -110,6 +120,13 @@
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
+                                <td>
+                                    @if($laporanData['pelatih'][0]['keterangan2'])
+                                    {{ $laporanData['pelatih'][0]['keterangan2'] }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
                             </tr>
                             @endif
                             @if (!empty($laporanData['kiper']))
@@ -120,7 +137,8 @@
                                 </td>
                                 <td>
                                     @if($laporanData['kiper'][0]['selesai'])
-                                    {{ \Carbon\Carbon::parse($laporanData['kiper'][0]['selesai'])->format('d F Y')
+                                    {{ \Carbon\Carbon::parse($laporanData['kiper'][0]['selesai'])->format('d F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -143,6 +161,13 @@
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
+                                <td>
+                                    @if($laporanData['kiper'][0]['keterangan3'])
+                                    {{ $laporanData['kiper'][0]['keterangan3'] }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
                             </tr>
                             @endif
                             @if (!empty($laporanData['lk_1']))
@@ -153,7 +178,8 @@
                                 </td>
                                 <td>
                                     @if($laporanData['lk_1'][0]['selesai'])
-                                    {{ \Carbon\Carbon::parse($laporanData['lk_1'][0]['selesai'])->format('d F Y')
+                                    {{ \Carbon\Carbon::parse($laporanData['lk_1'][0]['selesai'])->format('d F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -176,6 +202,13 @@
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
+                                <td>
+                                    @if($laporanData['lk_1'][0]['keterangan4'])
+                                    {{ $laporanData['lk_1'][0]['keterangan4'] }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
                             </tr>
                             @endif
                             @if (!empty($laporanData['celana_player']))
@@ -188,7 +221,7 @@
                                 <td>
                                     @if($laporanData['celana_player'][0]['selesai'])
                                     {{ \Carbon\Carbon::parse($laporanData['celana_player'][0]['selesai'])->format('d F
-                                    Y')
+                                    Y, H:i:s A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -211,6 +244,13 @@
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
+                                <td>
+                                    @if($laporanData['celana_player'][0]['keterangan5'])
+                                    {{ $laporanData['celana_player'][0]['keterangan5'] }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
                             </tr>
                             @endif
                             @if (!empty($laporanData['celana_pelatih']))
@@ -223,7 +263,7 @@
                                 <td>
                                     @if($laporanData['celana_pelatih'][0]['selesai'])
                                     {{ \Carbon\Carbon::parse($laporanData['celana_pelatih'][0]['selesai'])->format('d F
-                                    Y')
+                                    Y, H:i:s A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -246,6 +286,13 @@
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
+                                <td>
+                                    @if($laporanData['celana_pelatih'][0]['keterangan6'])
+                                    {{ $laporanData['celana_pelatih'][0]['keterangan6'] }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
                             </tr>
                             @endif
                             @if (!empty($laporanData['celana_kiper']))
@@ -257,8 +304,8 @@
                                 </td>
                                 <td>
                                     @if($laporanData['celana_kiper'][0]['selesai'])
-                                    {{ \Carbon\Carbon::parse($laporanData['celana_kiper'][0]['selesai'])->format('d F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanData['celana_kiper'][0]['selesai'])->format('d F Y,
+                                    H:i:s A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -281,6 +328,13 @@
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
+                                <td>
+                                    @if($laporanData['celana_kiper'][0]['keterangan7'])
+                                    {{ $laporanData['celana_kiper'][0]['keterangan7'] }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
                             </tr>
                             @endif
                             @if (!empty($laporanData['celana_1']))
@@ -291,7 +345,8 @@
                                 </td>
                                 <td>
                                     @if($laporanData['celana_1'][0]['selesai'])
-                                    {{ \Carbon\Carbon::parse($laporanData['celana_1'][0]['selesai'])->format('d F Y')
+                                    {{ \Carbon\Carbon::parse($laporanData['celana_1'][0]['selesai'])->format('d F Y,
+                                    H:i:s A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -314,6 +369,13 @@
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
+                                <td>
+                                    @if($laporanData['celana_1'][0]['keterangan8'])
+                                    {{ $laporanData['celana_1'][0]['keterangan8'] }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
                             </tr>
                             @endif
                         </tbody>
@@ -325,7 +387,7 @@
 
         @if ($laporans->whereNotNull('barang_masuk_mesin_atexco_id')->count() > 0)
         <div class="card">
-            <h5 class="card-header">Data masuk atexco</h5>
+            <h5 class="card-header">Data masuk press mesin</h5>
             <div class="card-body">
                 <div class="table-responsive text-nowrap">
                     <table id="atexco" class="table">
@@ -347,8 +409,9 @@
                                 </td>
                                 <td>
                                     @if($laporanDataAtexco['player'][0]['selesai'])
-                                    {{ \Carbon\Carbon::parse($laporanDataAtexco['player'][0]['selesai'])->format('d F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataAtexco['player'][0]['selesai'])->format('d F Y,
+                                    H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -372,13 +435,14 @@
                             <tr>
                                 <td>
                                     {{ \Carbon\Carbon::parse($laporanDataAtexco['pelatih'][0]['deadline'])->format('d F
-                                    Y')
+                                    Y,')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataAtexco['pelatih'][0]['selesai'])
                                     {{ \Carbon\Carbon::parse($laporanDataAtexco['pelatih'][0]['selesai'])->format('d F
-                                    Y')
+                                    Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -407,8 +471,9 @@
                                 </td>
                                 <td>
                                     @if($laporanDataAtexco['kiper'][0]['selesai'])
-                                    {{ \Carbon\Carbon::parse($laporanDataAtexco['kiper'][0]['selesai'])->format('d F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataAtexco['kiper'][0]['selesai'])->format('d F Y,
+                                    H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -431,14 +496,14 @@
                             @if (!empty($laporanDataAtexco['lk_1']))
                             <tr>
                                 <td>
-                                    {{ \Carbon\Carbon::parse($laporanDataAtexco['lk_1'][0]['deadline'])->format('d F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataAtexco['lk_1'][0]['deadline'])->format('d F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataAtexco['lk_1'][0]['selesai'])
-                                    {{ \Carbon\Carbon::parse($laporanDataAtexco['lk_1'][0]['selesai'])->format('d F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataAtexco['lk_1'][0]['selesai'])->format('d F Y,
+                                    H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -463,16 +528,15 @@
                                 <td>
                                     {{
                                     \Carbon\Carbon::parse($laporanDataAtexco['celana_player'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataAtexco['celana_player'][0]['selesai'])
                                     {{
                                     \Carbon\Carbon::parse($laporanDataAtexco['celana_player'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -497,16 +561,15 @@
                                 <td>
                                     {{
                                     \Carbon\Carbon::parse($laporanDataAtexco['celana_pelatih'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataAtexco['celana_pelatih'][0]['selesai'])
                                     {{
                                     \Carbon\Carbon::parse($laporanDataAtexco['celana_pelatih'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -531,15 +594,15 @@
                                 <td>
                                     {{
                                     \Carbon\Carbon::parse($laporanDataAtexco['celana_kiper'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataAtexco['celana_kiper'][0]['selesai'])
                                     {{
                                     \Carbon\Carbon::parse($laporanDataAtexco['celana_kiper'][0]['selesai'])->format('d F
-                                    Y')
+                                    Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -569,7 +632,8 @@
                                 <td>
                                     @if($laporanDataAtexco['celana_1'][0]['selesai'])
                                     {{ \Carbon\Carbon::parse($laporanDataAtexco['celana_1'][0]['selesai'])->format('d F
-                                    Y')
+                                    Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -596,7 +660,7 @@
         </div><br>
         @endif
 
-        @if ($laporans->whereNotNull('barang_masuk_mesin_mimaki_id')->count() > 0)
+        {{-- @if ($laporans->whereNotNull('barang_masuk_mesin_mimaki_id')->count() > 0)
         <div class="card">
             <h5 class="card-header">Data masuk mimaki</h5>
             <div class="card-body">
@@ -615,13 +679,15 @@
                             <tr>
                                 <td>
                                     {{ \Carbon\Carbon::parse($laporanDataMimaki['player'][0]['deadline'])->format('d F
-                                    Y')
+                                    Y, H:i:s
+                                    A')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataMimaki['player'][0]['selesai'])
-                                    {{ \Carbon\Carbon::parse($laporanDataMimaki['player'][0]['selesai'])->format('d F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataMimaki['player'][0]['selesai'])->format('d F Y,
+                                    H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -647,13 +713,15 @@
                             <tr>
                                 <td>
                                     {{ \Carbon\Carbon::parse($laporanDataMimaki['pelatih'][0]['deadline'])->format('d F
-                                    Y')
+                                    Y, H:i:s
+                                    A')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataMimaki['pelatih'][0]['selesai'])
                                     {{ \Carbon\Carbon::parse($laporanDataMimaki['pelatih'][0]['selesai'])->format('d F
-                                    Y')
+                                    Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -678,14 +746,16 @@
                             @if (!empty($laporanDataMimaki['kiper']))
                             <tr>
                                 <td>
-                                    {{ \Carbon\Carbon::parse($laporanDataMimaki['kiper'][0]['deadline'])->format('d F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataMimaki['kiper'][0]['deadline'])->format('d F Y,
+                                    H:i:s
+                                    A')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataMimaki['kiper'][0]['selesai'])
-                                    {{ \Carbon\Carbon::parse($laporanDataMimaki['kiper'][0]['selesai'])->format('d F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataMimaki['kiper'][0]['selesai'])->format('d F Y,
+                                    H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -710,14 +780,16 @@
                             @if (!empty($laporanDataMimaki['lk_1']))
                             <tr>
                                 <td>
-                                    {{ \Carbon\Carbon::parse($laporanDataMimaki['lk_1'][0]['deadline'])->format('d F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataMimaki['lk_1'][0]['deadline'])->format('d F Y,
+                                    H:i:s
+                                    A')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataMimaki['lk_1'][0]['selesai'])
-                                    {{ \Carbon\Carbon::parse($laporanDataMimaki['lk_1'][0]['selesai'])->format('d F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataMimaki['lk_1'][0]['selesai'])->format('d F Y,
+                                    H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -744,16 +816,16 @@
                                 <td>
                                     {{
                                     \Carbon\Carbon::parse($laporanDataMimaki['celana_player'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataMimaki['celana_player'][0]['selesai'])
                                     {{
                                     \Carbon\Carbon::parse($laporanDataMimaki['celana_player'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -780,16 +852,16 @@
                                 <td>
                                     {{
                                     \Carbon\Carbon::parse($laporanDataMimaki['celana_pelatih'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataMimaki['celana_pelatih'][0]['selesai'])
                                     {{
                                     \Carbon\Carbon::parse($laporanDataMimaki['celana_pelatih'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -816,15 +888,16 @@
                                 <td>
                                     {{
                                     \Carbon\Carbon::parse($laporanDataMimaki['celana_kiper'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataMimaki['celana_kiper'][0]['selesai'])
                                     {{
                                     \Carbon\Carbon::parse($laporanDataMimaki['celana_kiper'][0]['selesai'])->format('d F
-                                    Y')
+                                    Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -850,13 +923,15 @@
                             <tr>
                                 <td>
                                     {{ \Carbon\Carbon::parse($laporanDataMimaki['celana_1'][0]['deadline'])->format('d F
-                                    Y')
+                                    Y, H:i:s
+                                    A')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataMimaki['celana_1'][0]['selesai'])
                                     {{ \Carbon\Carbon::parse($laporanDataMimaki['celana_1'][0]['selesai'])->format('d F
-                                    Y')
+                                    Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -883,7 +958,7 @@
                 </div>
             </div>
         </div><br>
-        @endif
+        @endif --}}
 
         @if ($laporans->whereNotNull('barang_masuk_presskain_id')->count() > 0)
         <div class="card">
@@ -905,14 +980,14 @@
                             <tr>
                                 <td>
                                     {{ \Carbon\Carbon::parse($laporanDataPressKain['player'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataPressKain['player'][0]['selesai'])
                                     {{ \Carbon\Carbon::parse($laporanDataPressKain['player'][0]['selesai'])->format('d F
-                                    Y')
+                                    Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -947,15 +1022,14 @@
                             <tr>
                                 <td>
                                     {{ \Carbon\Carbon::parse($laporanDataPressKain['pelatih'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataPressKain['pelatih'][0]['selesai'])
                                     {{ \Carbon\Carbon::parse($laporanDataPressKain['pelatih'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -989,15 +1063,15 @@
                             @if (!empty($laporanDataPressKain['kiper']))
                             <tr>
                                 <td>
-                                    {{ \Carbon\Carbon::parse($laporanDataPressKain['kiper'][0]['deadline'])->format('d
-                                    F
+                                    {{ \Carbon\Carbon::parse($laporanDataPressKain['kiper'][0]['deadline'])->format('d F
                                     Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataPressKain['kiper'][0]['selesai'])
                                     {{ \Carbon\Carbon::parse($laporanDataPressKain['kiper'][0]['selesai'])->format('d F
-                                    Y')
+                                    Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1031,15 +1105,15 @@
                             @if (!empty($laporanDataPressKain['lk_1']))
                             <tr>
                                 <td>
-                                    {{ \Carbon\Carbon::parse($laporanDataPressKain['lk_1'][0]['deadline'])->format('d
-                                    F
+                                    {{ \Carbon\Carbon::parse($laporanDataPressKain['lk_1'][0]['deadline'])->format('d F
                                     Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataPressKain['lk_1'][0]['selesai'])
                                     {{ \Carbon\Carbon::parse($laporanDataPressKain['lk_1'][0]['selesai'])->format('d F
-                                    Y')
+                                    Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1075,16 +1149,15 @@
                                 <td>
                                     {{
                                     \Carbon\Carbon::parse($laporanDataPressKain['celana_player'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataPressKain['celana_player'][0]['selesai'])
                                     {{
                                     \Carbon\Carbon::parse($laporanDataPressKain['celana_player'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1120,16 +1193,15 @@
                                 <td>
                                     {{
                                     \Carbon\Carbon::parse($laporanDataPressKain['celana_pelatih'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataPressKain['celana_pelatih'][0]['selesai'])
                                     {{
                                     \Carbon\Carbon::parse($laporanDataPressKain['celana_pelatih'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1152,7 +1224,7 @@
                                 <td>
                                     @if($laporanDataPressKain['celana_pelatih'][0]['gambar_celana_pelatih'])
                                     <img style="height: 200px; width: 200px"
-                                        src="{{ asset('storage/'.$laporanDataPressKain['player'][0]['gambar_celana_pelatih']) }}"
+                                        src="{{ asset('storage/'.$laporanDataPressKain['celana_pelatih'][0]['gambar_celana_pelatih']) }}"
                                         alt="" srcset="">
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1165,16 +1237,15 @@
                                 <td>
                                     {{
                                     \Carbon\Carbon::parse($laporanDataPressKain['celana_kiper'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataPressKain['celana_kiper'][0]['selesai'])
                                     {{
                                     \Carbon\Carbon::parse($laporanDataPressKain['celana_kiper'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1209,16 +1280,15 @@
                             <tr>
                                 <td>
                                     {{
-                                    \Carbon\Carbon::parse($laporanDataPressKain['celana_1'][0]['deadline'])->format('d
-                                    F
+                                    \Carbon\Carbon::parse($laporanDataPressKain['celana_1'][0]['deadline'])->format('d F
                                     Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataPressKain['celana_1'][0]['selesai'])
                                     {{ \Carbon\Carbon::parse($laporanDataPressKain['celana_1'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1280,7 +1350,8 @@
                                 <td>
                                     @if($laporanDataLaserCut['player'][0]['selesai'])
                                     {{ \Carbon\Carbon::parse($laporanDataLaserCut['player'][0]['selesai'])->format('d F
-                                    Y')
+                                    Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1301,14 +1372,14 @@
                             <tr>
                                 <td>
                                     {{ \Carbon\Carbon::parse($laporanDataLaserCut['pelatih'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataLaserCut['pelatih'][0]['selesai'])
                                     {{ \Carbon\Carbon::parse($laporanDataLaserCut['pelatih'][0]['selesai'])->format('d F
-                                    Y')
+                                    Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1335,7 +1406,8 @@
                                 <td>
                                     @if($laporanDataLaserCut['kiper'][0]['selesai'])
                                     {{ \Carbon\Carbon::parse($laporanDataLaserCut['kiper'][0]['selesai'])->format('d F
-                                    Y')
+                                    Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1361,8 +1433,9 @@
                                 </td>
                                 <td>
                                     @if($laporanDataLaserCut['lk_1'][0]['selesai'])
-                                    {{ \Carbon\Carbon::parse($laporanDataLaserCut['lk_1'][0]['selesai'])->format('d F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataLaserCut['lk_1'][0]['selesai'])->format('d F Y,
+                                    H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1384,16 +1457,15 @@
                                 <td>
                                     {{
                                     \Carbon\Carbon::parse($laporanDataLaserCut['celana_player'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataLaserCut['celana_player'][0]['selesai'])
                                     {{
                                     \Carbon\Carbon::parse($laporanDataLaserCut['celana_player'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1415,16 +1487,15 @@
                                 <td>
                                     {{
                                     \Carbon\Carbon::parse($laporanDataLaserCut['celana_pelatih'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataLaserCut['celana_pelatih'][0]['selesai'])
                                     {{
                                     \Carbon\Carbon::parse($laporanDataLaserCut['celana_pelatih'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1446,16 +1517,15 @@
                                 <td>
                                     {{
                                     \Carbon\Carbon::parse($laporanDataLaserCut['celana_kiper'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataLaserCut['celana_kiper'][0]['selesai'])
                                     {{
                                     \Carbon\Carbon::parse($laporanDataLaserCut['celana_kiper'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1476,15 +1546,14 @@
                             <tr>
                                 <td>
                                     {{ \Carbon\Carbon::parse($laporanDataLaserCut['celana_1'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataLaserCut['celana_1'][0]['selesai'])
                                     {{ \Carbon\Carbon::parse($laporanDataLaserCut['celana_1'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1526,14 +1595,14 @@
                             <tr>
                                 <td>
                                     {{ \Carbon\Carbon::parse($laporanDataManualCut['player'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataManualCut['player'][0]['selesai'])
                                     {{ \Carbon\Carbon::parse($laporanDataManualCut['player'][0]['selesai'])->format('d F
-                                    Y')
+                                    Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1554,15 +1623,14 @@
                             <tr>
                                 <td>
                                     {{ \Carbon\Carbon::parse($laporanDataManualCut['pelatih'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataManualCut['pelatih'][0]['selesai'])
                                     {{ \Carbon\Carbon::parse($laporanDataManualCut['pelatih'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1589,7 +1657,8 @@
                                 <td>
                                     @if($laporanDataManualCut['kiper'][0]['selesai'])
                                     {{ \Carbon\Carbon::parse($laporanDataManualCut['kiper'][0]['selesai'])->format('d F
-                                    Y')
+                                    Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1616,7 +1685,8 @@
                                 <td>
                                     @if($laporanDataManualCut['lk_1'][0]['selesai'])
                                     {{ \Carbon\Carbon::parse($laporanDataManualCut['lk_1'][0]['selesai'])->format('d F
-                                    Y')
+                                    Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1638,16 +1708,15 @@
                                 <td>
                                     {{
                                     \Carbon\Carbon::parse($laporanDataManualCut['celana_player'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataManualCut['celana_player'][0]['selesai'])
                                     {{
                                     \Carbon\Carbon::parse($laporanDataManualCut['celana_player'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1669,16 +1738,15 @@
                                 <td>
                                     {{
                                     \Carbon\Carbon::parse($laporanDataManualCut['celana_pelatih'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataManualCut['celana_pelatih'][0]['selesai'])
                                     {{
                                     \Carbon\Carbon::parse($laporanDataManualCut['celana_pelatih'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1700,16 +1768,15 @@
                                 <td>
                                     {{
                                     \Carbon\Carbon::parse($laporanDataManualCut['celana_kiper'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataManualCut['celana_kiper'][0]['selesai'])
                                     {{
                                     \Carbon\Carbon::parse($laporanDataManualCut['celana_kiper'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1730,16 +1797,15 @@
                             <tr>
                                 <td>
                                     {{
-                                    \Carbon\Carbon::parse($laporanDataManualCut['celana_1'][0]['deadline'])->format('d
-                                    F
+                                    \Carbon\Carbon::parse($laporanDataManualCut['celana_1'][0]['deadline'])->format('d F
                                     Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataManualCut['celana_1'][0]['selesai'])
                                     {{ \Carbon\Carbon::parse($laporanDataManualCut['celana_1'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1777,6 +1843,7 @@
                                 <th>Panjang kertas</th>
                                 <th>Berat</th>
                                 <th>Bahan</th>
+                                <th>keterangan</th>
                                 <th>foto</th>
                             </tr>
                         </thead>
@@ -1784,15 +1851,15 @@
                             @if (!empty($laporanDataSortir['player']))
                             <tr>
                                 <td>
-                                    {{ \Carbon\Carbon::parse($laporanDataSortir['player'][0]['deadline'])->format('d
-                                    F
+                                    {{ \Carbon\Carbon::parse($laporanDataSortir['player'][0]['deadline'])->format('d F
                                     Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataSortir['player'][0]['selesai'])
-                                    {{ \Carbon\Carbon::parse($laporanDataSortir['player'][0]['selesai'])->format('d F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataSortir['player'][0]['selesai'])->format('d F Y,
+                                    H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1827,6 +1894,13 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['player'][0]['keterangan'])
+                                    {{ strtoupper($laporanDataSortir['player'][0]['keterangan']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataSortir['player'][0]['foto'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataSortir['player'][0]['foto']) }}" alt=""
@@ -1840,15 +1914,15 @@
                             @if (!empty($laporanDataSortir['pelatih']))
                             <tr>
                                 <td>
-                                    {{ \Carbon\Carbon::parse($laporanDataSortir['pelatih'][0]['deadline'])->format('d
-                                    F
+                                    {{ \Carbon\Carbon::parse($laporanDataSortir['pelatih'][0]['deadline'])->format('d F
                                     Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataSortir['pelatih'][0]['selesai'])
                                     {{ \Carbon\Carbon::parse($laporanDataSortir['pelatih'][0]['selesai'])->format('d F
-                                    Y')
+                                    Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1885,6 +1959,13 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['pelatih'][0]['keterangan2'])
+                                    {{ strtoupper($laporanDataSortir['pelatih'][0]['keterangan2']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataSortir['pelatih'][0]['foto_pelatih'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataSortir['pelatih'][0]['foto_pelatih']) }}"
@@ -1898,15 +1979,15 @@
                             @if (!empty($laporanDataSortir['kiper']))
                             <tr>
                                 <td>
-                                    {{ \Carbon\Carbon::parse($laporanDataSortir['kiper'][0]['deadline'])->format('d
-                                    F
+                                    {{ \Carbon\Carbon::parse($laporanDataSortir['kiper'][0]['deadline'])->format('d F
                                     Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataSortir['kiper'][0]['selesai'])
-                                    {{ \Carbon\Carbon::parse($laporanDataSortir['kiper'][0]['selesai'])->format('d F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataSortir['kiper'][0]['selesai'])->format('d F Y,
+                                    H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1941,6 +2022,13 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['kiper'][0]['keterangan3'])
+                                    {{ strtoupper($laporanDataSortir['kiper'][0]['keterangan3']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataSortir['kiper'][0]['foto_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataSortir['kiper'][0]['foto_kiper']) }}"
@@ -1954,15 +2042,14 @@
                             @if (!empty($laporanDataSortir['lk_1']))
                             <tr>
                                 <td>
-                                    {{ \Carbon\Carbon::parse($laporanDataSortir['lk_1'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataSortir['lk_1'][0]['deadline'])->format('d F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataSortir['lk_1'][0]['selesai'])
-                                    {{ \Carbon\Carbon::parse($laporanDataSortir['lk_1'][0]['selesai'])->format('d F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataSortir['lk_1'][0]['selesai'])->format('d F Y,
+                                    H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -1997,6 +2084,13 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['lk_1'][0]['keterangan4'])
+                                    {{ strtoupper($laporanDataSortir['lk_1'][0]['keterangan4']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataSortir['lk_1'][0]['foto_1'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataSortir['lk_1'][0]['foto_1']) }}" alt=""
@@ -2012,16 +2106,15 @@
                                 <td>
                                     {{
                                     \Carbon\Carbon::parse($laporanDataSortir['celana_player'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataSortir['celana_player'][0]['selesai'])
                                     {{
                                     \Carbon\Carbon::parse($laporanDataSortir['celana_player'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -2060,6 +2153,13 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_player'][0]['keterangan5'])
+                                    {{ strtoupper($laporanDataSortir['celana_player'][0]['keterangan5']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataSortir['celana_player'][0]['foto_celana_pelayer'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataSortir['celana_player'][0]['foto_celana_pelayer']) }}"
@@ -2075,16 +2175,15 @@
                                 <td>
                                     {{
                                     \Carbon\Carbon::parse($laporanDataSortir['celana_pelatih'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataSortir['celana_pelatih'][0]['selesai'])
                                     {{
                                     \Carbon\Carbon::parse($laporanDataSortir['celana_pelatih'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -2123,6 +2222,13 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_pelatih'][0]['keterangan6'])
+                                    {{ strtoupper($laporanDataSortir['celana_pelatih'][0]['keterangan6']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataSortir['celana_pelatih'][0]['foto_celana_pelatih'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataSortir['celana_pelatih'][0]['foto_celana_pelatih']) }}"
@@ -2138,15 +2244,15 @@
                                 <td>
                                     {{
                                     \Carbon\Carbon::parse($laporanDataSortir['celana_kiper'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataSortir['celana_kiper'][0]['selesai'])
                                     {{
                                     \Carbon\Carbon::parse($laporanDataSortir['celana_kiper'][0]['selesai'])->format('d F
-                                    Y')
+                                    Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -2182,6 +2288,13 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_kiper'][0]['keterangan7'])
+                                    {{ strtoupper($laporanDataSortir['celana_kiper'][0]['keterangan7']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataSortir['celana_kiper'][0]['foto_celana_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataSortir['celana_kiper'][0]['foto_celana_kiper']) }}"
@@ -2195,15 +2308,15 @@
                             @if (!empty($laporanDataManualCut['celana_1']))
                             <tr>
                                 <td>
-                                    {{ \Carbon\Carbon::parse($laporanDataSortir['celana_1'][0]['deadline'])->format('d
-                                    F
+                                    {{ \Carbon\Carbon::parse($laporanDataSortir['celana_1'][0]['deadline'])->format('d F
                                     Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataSortir['celana_1'][0]['selesai'])
                                     {{ \Carbon\Carbon::parse($laporanDataSortir['celana_1'][0]['selesai'])->format('d F
-                                    Y')
+                                    Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -2238,6 +2351,13 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_1'][0]['keterangan8'])
+                                    {{ strtoupper($laporanDataSortir['celana_1'][0]['keterangan8']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataSortir['celana_1'][0]['foto_celana_1'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataSortir['celana_1'][0]['foto_celana_1']) }}"
@@ -2266,6 +2386,7 @@
                                 <th>Deadline</th>
                                 <th>Selesai</th>
                                 <th>Nama Penjahit</th>
+                                <th>Keterangan</th>
                                 <th>Foto serah</th>
                                 <th>Foto terima</th>
                             </tr>
@@ -2274,15 +2395,15 @@
                             @if (!empty($laporanDataJahit['player']))
                             <tr>
                                 <td>
-                                    {{ \Carbon\Carbon::parse($laporanDataJahit['player'][0]['deadline'])->format('d
-                                    F
+                                    {{ \Carbon\Carbon::parse($laporanDataJahit['player'][0]['deadline'])->format('d F
                                     Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataJahit['player'][0]['selesai'])
-                                    {{ \Carbon\Carbon::parse($laporanDataJahit['player'][0]['selesai'])->format('d F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataJahit['player'][0]['selesai'])->format('d F Y,
+                                    H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -2291,6 +2412,13 @@
                                 <td>
                                     @if($laporanDataJahit['player'][0]['leher'])
                                     {{ strtoupper($laporanDataJahit['player'][0]['leher']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataJahit['player'][0]['keterangan'])
+                                    {{ strtoupper($laporanDataJahit['player'][0]['keterangan']) }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -2318,15 +2446,15 @@
                             @if (!empty($laporanDataJahit['pelatih']))
                             <tr>
                                 <td>
-                                    {{ \Carbon\Carbon::parse($laporanDataJahit['pelatih'][0]['deadline'])->format('d
-                                    F
+                                    {{ \Carbon\Carbon::parse($laporanDataJahit['pelatih'][0]['deadline'])->format('d F
                                     Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataJahit['pelatih'][0]['selesai'])
-                                    {{ \Carbon\Carbon::parse($laporanDataJahit['pelatih'][0]['selesai'])->format('d F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataJahit['pelatih'][0]['selesai'])->format('d F Y,
+                                    H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -2335,6 +2463,13 @@
                                 <td>
                                     @if($laporanDataJahit['pelatih'][0]['leher_pelatih'])
                                     {{ strtoupper($laporanDataJahit['pelatih'][0]['leher_pelatih']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataJahit['pelatih'][0]['keterangan2'])
+                                    {{ strtoupper($laporanDataJahit['pelatih'][0]['keterangan2']) }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -2362,15 +2497,14 @@
                             @if (!empty($laporanDataJahit['kiper']))
                             <tr>
                                 <td>
-                                    {{ \Carbon\Carbon::parse($laporanDataJahit['kiper'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataJahit['kiper'][0]['deadline'])->format('d F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataJahit['kiper'][0]['selesai'])
-                                    {{ \Carbon\Carbon::parse($laporanDataJahit['kiper'][0]['selesai'])->format('d F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataJahit['kiper'][0]['selesai'])->format('d F Y,
+                                    H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -2379,6 +2513,13 @@
                                 <td>
                                     @if($laporanDataJahit['kiper'][0]['leher_kiper'])
                                     {{ strtoupper($laporanDataJahit['kiper'][0]['leher_kiper']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataJahit['kiper'][0]['keterangan3'])
+                                    {{ strtoupper($laporanDataJahit['kiper'][0]['keterangan3']) }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -2406,15 +2547,14 @@
                             @if (!empty($laporanDataJahit['lk_1']))
                             <tr>
                                 <td>
-                                    {{ \Carbon\Carbon::parse($laporanDataJahit['lk_1'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataJahit['lk_1'][0]['deadline'])->format('d F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataJahit['lk_1'][0]['selesai'])
-                                    {{ \Carbon\Carbon::parse($laporanDataJahit['lk_1'][0]['selesai'])->format('d F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataJahit['lk_1'][0]['selesai'])->format('d F Y,
+                                    H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -2428,18 +2568,25 @@
                                     @endif
                                 </td>
                                 <td>
-                                    @if($laporanDataJahit['lk_1'][0]['pola_badan_lk_1'])
+                                    @if($laporanDataJahit['lk_1'][0]['keterangan4'])
+                                    {{ strtoupper($laporanDataJahit['lk_1'][0]['keterangan4']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataJahit['lk_1'][0]['pola_badan_1'])
                                     <img style="height: 200px; width: 200px"
-                                        src="{{ asset('storage/'.$laporanDataJahit['lk_1'][0]['pola_badan_lk_1']) }}"
+                                        src="{{ asset('storage/'.$laporanDataJahit['lk_1'][0]['pola_badan_1']) }}"
                                         alt="" srcset="">
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
                                 </td>
                                 <td>
-                                    @if($laporanDataJahit['lk_1'][0]['foto_lk_1'])
+                                    @if($laporanDataJahit['lk_1'][0]['foto_1'])
                                     <img style="height: 200px; width: 200px"
-                                        src="{{ asset('storage/'.$laporanDataJahit['lk_1'][0]['foto_lk_1']) }}" alt=""
+                                        src="{{ asset('storage/'.$laporanDataJahit['lk_1'][0]['foto_1']) }}" alt=""
                                         srcset="">
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -2452,15 +2599,15 @@
                                 <td>
                                     {{
                                     \Carbon\Carbon::parse($laporanDataJahit['celana_player'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataJahit['celana_player'][0]['selesai'])
                                     {{
                                     \Carbon\Carbon::parse($laporanDataJahit['celana_player'][0]['selesai'])->format('d F
-                                    Y')
+                                    Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -2469,6 +2616,13 @@
                                 <td>
                                     @if($laporanDataJahit['celana_player'][0]['leher_celana_pelayer'])
                                     {{ strtoupper($laporanDataJahit['celana_player'][0]['leher_celana_pelayer']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataJahit['celana_player'][0]['keterangan5'])
+                                    {{ strtoupper($laporanDataJahit['celana_player'][0]['keterangan5']) }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -2498,16 +2652,15 @@
                                 <td>
                                     {{
                                     \Carbon\Carbon::parse($laporanDataJahit['celana_pelatih'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataJahit['celana_pelatih'][0]['selesai'])
                                     {{
                                     \Carbon\Carbon::parse($laporanDataJahit['celana_pelatih'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -2516,6 +2669,13 @@
                                 <td>
                                     @if($laporanDataJahit['celana_pelatih'][0]['leher_celana_pelatih'])
                                     {{ strtoupper($laporanDataJahit['celana_pelatih'][0]['leher_celana_pelatih']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataJahit['celana_pelatih'][0]['keterangan6'])
+                                    {{ strtoupper($laporanDataJahit['celana_pelatih'][0]['keterangan6']) }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -2544,16 +2704,15 @@
                             <tr>
                                 <td>
                                     {{
-                                    \Carbon\Carbon::parse($laporanDataJahit['celana_kiper'][0]['deadline'])->format('d
-                                    F
+                                    \Carbon\Carbon::parse($laporanDataJahit['celana_kiper'][0]['deadline'])->format('d F
                                     Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataJahit['celana_kiper'][0]['selesai'])
                                     {{ \Carbon\Carbon::parse($laporanDataJahit['celana_kiper'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -2562,6 +2721,13 @@
                                 <td>
                                     @if($laporanDataJahit['celana_kiper'][0]['leher_celana_kiper'])
                                     {{ strtoupper($laporanDataJahit['celana_kiper'][0]['leher_celana_kiper']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataJahit['celana_kiper'][0]['keterangan7'])
+                                    {{ strtoupper($laporanDataJahit['celana_kiper'][0]['keterangan7']) }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -2589,15 +2755,15 @@
                             @if (!empty($laporanDataJahit['celana_1']))
                             <tr>
                                 <td>
-                                    {{ \Carbon\Carbon::parse($laporanDataJahit['celana_1'][0]['deadline'])->format('d
-                                    F
+                                    {{ \Carbon\Carbon::parse($laporanDataJahit['celana_1'][0]['deadline'])->format('d F
                                     Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataJahit['celana_1'][0]['selesai'])
                                     {{ \Carbon\Carbon::parse($laporanDataJahit['celana_1'][0]['selesai'])->format('d F
-                                    Y')
+                                    Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -2606,6 +2772,13 @@
                                 <td>
                                     @if($laporanDataJahit['celana_1'][0]['leher_celana_1'])
                                     {{ strtoupper($laporanDataJahit['celana_1'][0]['leher_celana_1']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataJahit['celana_1'][0]['keterangan8'])
+                                    {{ strtoupper($laporanDataJahit['celana_1'][0]['keterangan8']) }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -2639,7 +2812,7 @@
 
         @if ($laporans->whereNotNull('finis_id')->count() > 0)
         <div class="card">
-            <h5 class="card-header">Data masuk layout</h5>
+            <h5 class="card-header">Data masuk finish</h5>
             <div class="card-body">
                 <div class="table-responsive text-nowrap">
                     <table id="atexco" class="table">
@@ -2654,15 +2827,15 @@
                             @if (!empty($laporanDataFinis['player']))
                             <tr>
                                 <td>
-                                    {{ \Carbon\Carbon::parse($laporanDataFinis['player'][0]['deadline'])->format('d
-                                    F
+                                    {{ \Carbon\Carbon::parse($laporanDataFinis['player'][0]['deadline'])->format('d F
                                     Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataFinis['player'][0]['selesai'])
-                                    {{ \Carbon\Carbon::parse($laporanDataFinis['player'][0]['selesai'])->format('d F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataFinis['player'][0]['selesai'])->format('d F Y,
+                                    H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -2682,16 +2855,15 @@
                             @if (!empty($laporanDataFinis['pelatih']))
                             <tr>
                                 <td>
-                                    {{ \Carbon\Carbon::parse($laporanDataFinis['pelatih'][0]['deadline'])->format('d
-                                    F
+                                    {{ \Carbon\Carbon::parse($laporanDataFinis['pelatih'][0]['deadline'])->format('d F
                                     Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataFinis['pelatih'][0]['selesai'])
-                                    {{ \Carbon\Carbon::parse($laporanDataFinis['pelatih'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataFinis['pelatih'][0]['selesai'])->format('d F Y,
+                                    H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -2711,14 +2883,14 @@
                             @if (!empty($laporanDataFinis['kiper']))
                             <tr>
                                 <td>
-                                    {{ \Carbon\Carbon::parse($laporanDataFinis['kiper'][0]['deadline'])->format('d F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataFinis['kiper'][0]['deadline'])->format('d F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataFinis['kiper'][0]['selesai'])
-                                    {{ \Carbon\Carbon::parse($laporanDataFinis['kiper'][0]['selesai'])->format('d F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataFinis['kiper'][0]['selesai'])->format('d F Y,
+                                    H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -2738,14 +2910,14 @@
                             @if (!empty($laporanDataFinis['lk_1']))
                             <tr>
                                 <td>
-                                    {{ \Carbon\Carbon::parse($laporanDataFinis['lk_1'][0]['deadline'])->format('d F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataFinis['lk_1'][0]['deadline'])->format('d F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataFinis['lk_1'][0]['selesai'])
-                                    {{ \Carbon\Carbon::parse($laporanDataFinis['lk_1'][0]['selesai'])->format('d F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataFinis['lk_1'][0]['selesai'])->format('d F Y,
+                                    H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -2767,16 +2939,15 @@
                                 <td>
                                     {{
                                     \Carbon\Carbon::parse($laporanDataFinis['celana_player'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataFinis['celana_player'][0]['selesai'])
                                     {{
-                                    \Carbon\Carbon::parse($laporanDataFinis['celana_player'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    \Carbon\Carbon::parse($laporanDataFinis['celana_player'][0]['selesai'])->format('d F
+                                    Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -2798,16 +2969,15 @@
                                 <td>
                                     {{
                                     \Carbon\Carbon::parse($laporanDataFinis['celana_pelatih'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataFinis['celana_pelatih'][0]['selesai'])
                                     {{
                                     \Carbon\Carbon::parse($laporanDataFinis['celana_pelatih'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    F Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -2828,17 +2998,16 @@
                             <tr>
                                 <td>
                                     {{
-                                    \Carbon\Carbon::parse($laporanDataFinis['celana_kiper'][0]['deadline'])->format('d
-                                    F
+                                    \Carbon\Carbon::parse($laporanDataFinis['celana_kiper'][0]['deadline'])->format('d F
                                     Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataFinis['celana_kiper'][0]['selesai'])
                                     {{
-                                    \Carbon\Carbon::parse($laporanDataFinis['celana_kiper'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    \Carbon\Carbon::parse($laporanDataFinis['celana_kiper'][0]['selesai'])->format('d F
+                                    Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
@@ -2859,16 +3028,14 @@
                             <tr>
                                 <td>
                                     {{
-                                    \Carbon\Carbon::parse($laporanDataFinis['celana_1'][0]['deadline'])->format('d
-                                    F
-                                    Y')
+                                    \Carbon\Carbon::parse($laporanDataFinis['celana_1'][0]['deadline'])->format('d F Y')
                                     }}
                                 </td>
                                 <td>
                                     @if($laporanDataFinis['celana_1'][0]['selesai'])
-                                    {{ \Carbon\Carbon::parse($laporanDataFinis['celana_1'][0]['selesai'])->format('d
-                                    F
-                                    Y')
+                                    {{ \Carbon\Carbon::parse($laporanDataFinis['celana_1'][0]['selesai'])->format('d F
+                                    Y, H:i:s
+                                    A')
                                     }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>

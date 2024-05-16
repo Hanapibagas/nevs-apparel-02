@@ -57,6 +57,21 @@ class BarangMasukDatalayout extends Model
         'selesai',
         'tanda_telah_mengerjakan',
         'file_corel_layout',
+        'file_corel_layout2',
+        'file_corel_layout3',
+        'file_corel_layout4',
+        'file_corel_layout5',
+        'file_corel_layout6',
+        'file_corel_layout7',
+        'file_corel_layout8',
+        'keterangan1',
+        'keterangan2',
+        'keterangan3',
+        'keterangan4',
+        'keterangan5',
+        'keterangan6',
+        'keterangan7',
+        'keterangan8',
     ];
 
     public function GamarTangkaplayar()

@@ -32,6 +32,11 @@
                                                 <input required class="form-control" type="file" id="firstName"
                                                     name="foto" autofocus />
                                             </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="firstName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control"
+                                                    name="keterangan">{{ $formattedData['player'][0]['keterangan'] }}</textarea>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -52,6 +57,11 @@
                                                 <label for="firstName" class="form-label">foto terima</label>
                                                 <input required class="form-control" type="file" id="firstName"
                                                     name="foto_pelatih" autofocus />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="firstName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control"
+                                                    name="keterangan2">{{ $formattedData['pelatih'][0]['keterangan2'] }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -74,6 +84,11 @@
                                                 <input required class="form-control" type="file" id="firstName"
                                                     name="foto_kiper" autofocus />
                                             </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="firstName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control"
+                                                    name="keterangan3">{{ $formattedData['kiper'][0]['keterangan3'] }}</textarea>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -94,6 +109,11 @@
                                                 <label for="firstName" class="form-label">foto terima</label>
                                                 <input required class="form-control" type="file" id="firstName"
                                                     name="foto_1" autofocus />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="firstName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control"
+                                                    name="keterangan4">{{ $formattedData['lk_1'][0]['keterangan4'] }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -116,6 +136,11 @@
                                                 <input required class="form-control" type="file" id="firstName"
                                                     name="foto_celana_pelayer" autofocus />
                                             </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="firstName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control"
+                                                    name="keterangan5">{{ $formattedData['celana_player'][0]['keterangan5'] }}</textarea>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -136,6 +161,11 @@
                                                 <label for="firstName" class="form-label">foto terima</label>
                                                 <input required class="form-control" type="file" id="firstName"
                                                     name="foto_celana_pelatih" autofocus />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="firstName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control"
+                                                    name="keterangan6">{{ $formattedData['celana_pelatih'][0]['keterangan6'] }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -158,6 +188,11 @@
                                                 <input required class="form-control" type="file" id="firstName"
                                                     name="foto_celana_kiper" autofocus />
                                             </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="firstName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control"
+                                                    name="keterangan7">{{ $formattedData['celana_kiper'][0]['keterangan7'] }}</textarea>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -178,6 +213,11 @@
                                                 <label for="firstName" class="form-label">foto terima</label>
                                                 <input required class="form-control" type="file" id="firstName"
                                                     name="foto_celana_1" autofocus />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="firstName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control"
+                                                    name="keterangan8">{{ $formattedData['celana_1'][0]['keterangan8'] }}</textarea>
                                             </div>
                                         </div>
                                     </div>

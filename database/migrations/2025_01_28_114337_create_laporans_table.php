@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('barang_masuk_costumer_services_id')->nullable()->constrained('barang_masuk_costumer_services')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('barang_masuk_layout_id')->nullable()->constrained('barang_masuk_datalayouts')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('barang_masuk_mesin_atexco_id')->nullable()->constrained('mesin_atexcos')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('barang_masuk_mesin_mimaki_id')->nullable()->constrained('mesin_mimakis')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('barang_masuk_mesin_atexco_id')->nullable()->constrained('data_presses')->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreignId('barang_masuk_mesin_mimaki_id')->nullable()->constrained('mesin_mimakis')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('barang_masuk_presskain_id')->nullable()->constrained('data_press_kains')->onUpdate('cascade')->onDelete('cascade');
             // $table->foreignId('cut_id')->nullable()->constrained('cuts')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('barang_masuk_lasercut_id')->nullable()->constrained('data_laser_cuts')->onUpdate('cascade')->onDelete('cascade');

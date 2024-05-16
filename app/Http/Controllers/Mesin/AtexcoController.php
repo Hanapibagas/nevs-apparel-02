@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\BarangMasukCostumerServices;
 use App\Models\BarangMasukMesin;
 use App\Models\BarangMasukDatalayout;
+use App\Models\DataPress;
 use App\Models\Laporan;
 use App\Models\MesinAtexco;
 use Carbon\Carbon;
@@ -45,8 +46,9 @@ class AtexcoController extends Controller
     {
         $user = Auth::user();
         if ($user->asal_kota == 'makassar') {
-            $dataMasuk = MesinAtexco::with('BarangMasukCs', 'BarangMasukLayout', 'BarangMasukCs.BarangMasukDisainer')
+            $dataMasuk = DataPress::with('BarangMasukCs', 'BarangMasukLayout', 'BarangMasukCs.BarangMasukDisainer')
                 ->where('tanda_telah_mengerjakan', 0)
+                ->where('penanggung_jawab_id', $user->id)
                 ->whereHas('BarangMasukCs', function ($query) use ($user) {
                     $query->where('kota_produksi', 'Makassar');
                 })
@@ -60,8 +62,9 @@ class AtexcoController extends Controller
                 });
             $dataMasuk = $dataMasuk->values()->all();
         } elseif ($user->asal_kota == 'jakarta') {
-            $dataMasuk = MesinAtexco::with('BarangMasukCs', 'BarangMasukLayout', 'BarangMasukCs.BarangMasukDisainer')
+            $dataMasuk = DataPress::with('BarangMasukCs', 'BarangMasukLayout', 'BarangMasukCs.BarangMasukDisainer')
                 ->where('tanda_telah_mengerjakan', 0)
+                ->where('penanggung_jawab_id', $user->id)
                 ->whereHas('BarangMasukCs', function ($query) use ($user) {
                     $query->where('kota_produksi', 'Jakarta');
                 })
@@ -75,8 +78,9 @@ class AtexcoController extends Controller
                 });
             $dataMasuk = $dataMasuk->values()->all();
         } elseif ($user->asal_kota == 'bandung') {
-            $dataMasuk = MesinAtexco::with('BarangMasukCs', 'BarangMasukLayout', 'BarangMasukCs.BarangMasukDisainer')
+            $dataMasuk = DataPress::with('BarangMasukCs', 'BarangMasukLayout', 'BarangMasukCs.BarangMasukDisainer')
                 ->where('tanda_telah_mengerjakan', 0)
+                ->where('penanggung_jawab_id', $user->id)
                 ->whereHas('BarangMasukCs', function ($query) use ($user) {
                     $query->where('kota_produksi', 'Bandung');
                 })
@@ -90,8 +94,9 @@ class AtexcoController extends Controller
                 });
             $dataMasuk = $dataMasuk->values()->all();
         } else {
-            $dataMasuk = MesinAtexco::with('BarangMasukCs', 'BarangMasukLayout', 'BarangMasukCs.BarangMasukDisainer')
+            $dataMasuk = DataPress::with('BarangMasukCs', 'BarangMasukLayout', 'BarangMasukCs.BarangMasukDisainer')
                 ->where('tanda_telah_mengerjakan', 0)
+                ->where('penanggung_jawab_id', $user->id)
                 ->whereHas('BarangMasukCs', function ($query) use ($user) {
                     $query->where('kota_produksi', 'Surabaya');
                 })
@@ -112,7 +117,7 @@ class AtexcoController extends Controller
 
     public function getInputLaporan($id)
     {
-        $dataMasuk = MesinAtexco::where('no_order_id', $id)->with('BarangMasukCs')->get();
+        $dataMasuk = DataPress::where('no_order_id', $id)->with('BarangMasukCs')->get();
 
         $formattedData = [];
 
@@ -169,7 +174,7 @@ class AtexcoController extends Controller
         $user = Auth::user();
 
         if ($request->player_id) {
-            $dataMasukPlayer = MesinAtexco::findOrFail($request->player_id);
+            $dataMasukPlayer = DataPress::findOrFail($request->player_id);
 
             if ($request->file('file_foto')) {
                 $fileTangkapLayar = $request->file('file_foto')->store('file-laporan-atexco-player', 'public');
@@ -191,7 +196,7 @@ class AtexcoController extends Controller
             ]);
         }
         if ($request->pelatih_id) {
-            $dataMasukPelatih = MesinAtexco::findOrFail($request->pelatih_id);
+            $dataMasukPelatih = DataPress::findOrFail($request->pelatih_id);
 
             if ($request->file('file_foto_pelatih')) {
                 $fileTangkapLayar = $request->file('file_foto_pelatih')->store('file-laporan-atexco-pelatih', 'public');
@@ -213,7 +218,7 @@ class AtexcoController extends Controller
             ]);
         }
         if ($request->kiper_id) {
-            $dataMasukKiper = MesinAtexco::findOrFail($request->kiper_id);
+            $dataMasukKiper = DataPress::findOrFail($request->kiper_id);
 
             if ($request->file('file_foto_kiper')) {
                 $fileTangkapLayar = $request->file('file_foto_kiper')->store('file-laporan-atexco-kiper', 'public');
@@ -235,7 +240,7 @@ class AtexcoController extends Controller
             ]);
         }
         if ($request->lk1_id) {
-            $dataMasuk1 = MesinAtexco::findOrFail($request->lk1_id);
+            $dataMasuk1 = DataPress::findOrFail($request->lk1_id);
 
             if ($request->file('file_foto_1')) {
                 $fileTangkapLayar = $request->file('file_foto_1')->store('file-laporan-atexco-1', 'public');
@@ -257,7 +262,7 @@ class AtexcoController extends Controller
             ]);
         }
         if ($request->celana_player_id) {
-            $dataMasukCelanaPlayer = MesinAtexco::findOrFail($request->celana_player_id);
+            $dataMasukCelanaPlayer = DataPress::findOrFail($request->celana_player_id);
 
             if ($request->file('file_foto_celana_player')) {
                 $fileTangkapLayar = $request->file('file_foto_celana_player')->store('file-laporan-atexco-celana-player', 'public');
@@ -279,7 +284,7 @@ class AtexcoController extends Controller
             ]);
         }
         if ($request->celana_pelatih_id) {
-            $dataMasukCelanaPelatih = MesinAtexco::findOrFail($request->celana_pelatih_id);
+            $dataMasukCelanaPelatih = DataPress::findOrFail($request->celana_pelatih_id);
 
             if ($request->file('file_foto_celana_pelatih')) {
                 $fileTangkapLayar = $request->file('file_foto_celana_pelatih')->store('file-laporan-atexco-celana-pelatih', 'public');
@@ -301,7 +306,7 @@ class AtexcoController extends Controller
             ]);
         }
         if ($request->celana_kiper_id) {
-            $dataMasukCelanaKiper = MesinAtexco::findOrFail($request->celana_kiper_id);
+            $dataMasukCelanaKiper = DataPress::findOrFail($request->celana_kiper_id);
 
             if ($request->file('file_foto_celana_kiper')) {
                 $fileTangkapLayar = $request->file('file_foto_celana_kiper')->store('file-laporan-atexco-celana-kiper', 'public');
@@ -323,7 +328,7 @@ class AtexcoController extends Controller
             ]);
         }
         if ($request->celana_1_id) {
-            $dataMasukCelana1 = MesinAtexco::findOrFail($request->celana_1_id);
+            $dataMasukCelana1 = DataPress::findOrFail($request->celana_1_id);
 
             if ($request->file('file_foto_celana_1')) {
                 $fileTangkapLayar = $request->file('file_foto_celana_1')->store('file-laporan-atexco-celana-1', 'public');
@@ -419,8 +424,9 @@ class AtexcoController extends Controller
     {
         $user = Auth::user();
         if ($user->asal_kota == 'makassar') {
-            $dataMasuk = MesinAtexco::with('BarangMasukCs', 'BarangMasukLayout', 'BarangMasukCs.BarangMasukDisainer')
+            $dataMasuk = DataPress::with('BarangMasukCs', 'BarangMasukLayout', 'BarangMasukCs.BarangMasukDisainer')
                 ->where('tanda_telah_mengerjakan', 1)
+                ->where('penanggung_jawab_id', $user->id)
                 ->whereHas('BarangMasukCs', function ($query) use ($user) {
                     $query->where('kota_produksi', 'Makassar');
                 })
@@ -434,8 +440,9 @@ class AtexcoController extends Controller
                 });
             $dataMasuk = $dataMasuk->values()->all();
         } elseif ($user->asal_kota == 'jakarta') {
-            $dataMasuk = MesinAtexco::with('BarangMasukCs', 'BarangMasukLayout', 'BarangMasukCs.BarangMasukDisainer')
+            $dataMasuk = DataPress::with('BarangMasukCs', 'BarangMasukLayout', 'BarangMasukCs.BarangMasukDisainer')
                 ->where('tanda_telah_mengerjakan', 1)
+                ->where('penanggung_jawab_id', $user->id)
                 ->whereHas('BarangMasukCs', function ($query) use ($user) {
                     $query->where('kota_produksi', 'Jakarta');
                 })
@@ -449,8 +456,9 @@ class AtexcoController extends Controller
                 });
             $dataMasuk = $dataMasuk->values()->all();
         } elseif ($user->asal_kota == 'bandung') {
-            $dataMasuk = MesinAtexco::with('BarangMasukCs', 'BarangMasukLayout', 'BarangMasukCs.BarangMasukDisainer')
+            $dataMasuk = DataPress::with('BarangMasukCs', 'BarangMasukLayout', 'BarangMasukCs.BarangMasukDisainer')
                 ->where('tanda_telah_mengerjakan', 1)
+                ->where('penanggung_jawab_id', $user->id)
                 ->whereHas('BarangMasukCs', function ($query) use ($user) {
                     $query->where('kota_produksi', 'Bandung');
                 })
@@ -464,8 +472,9 @@ class AtexcoController extends Controller
                 });
             $dataMasuk = $dataMasuk->values()->all();
         } else {
-            $dataMasuk = MesinAtexco::with('BarangMasukCs', 'BarangMasukLayout', 'BarangMasukCs.BarangMasukDisainer')
+            $dataMasuk = DataPress::with('BarangMasukCs', 'BarangMasukLayout', 'BarangMasukCs.BarangMasukDisainer')
                 ->where('tanda_telah_mengerjakan', 1)
+                ->where('penanggung_jawab_id', $user->id)
                 ->whereHas('BarangMasukCs', function ($query) use ($user) {
                     $query->where('kota_produksi', 'Surabaya');
                 })

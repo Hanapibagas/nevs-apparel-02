@@ -67,7 +67,15 @@ class Jahit extends Model
         'foto_celana_1',
 
         'serah_terima',
-        'tanda_telah_mengerjakan'
+        'tanda_telah_mengerjakan',
+        'keterangan',
+        'keterangan2',
+        'keterangan3',
+        'keterangan4',
+        'keterangan5',
+        'keterangan6',
+        'keterangan7',
+        'keterangan8',
     ];
 
     public function BarangMasukCs()

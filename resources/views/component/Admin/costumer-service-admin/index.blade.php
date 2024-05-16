@@ -101,6 +101,7 @@
                                 <th class="text-nowrap text-center">Hapus</th>
                                 <th class="text-nowrap text-center">Updload</th>
                                 <th class="text-nowrap text-center">Show</th>
+                                <th class="text-nowrap text-center">Non aktif</th>
                             </tr>
                         </thead>
                         <form method="POST" action="{{ route('postPirmission') }}">
@@ -147,6 +148,15 @@
                                             <input type="hidden" name="permission_show[{{ $user->id }}]" value="off">
                                             <input class="form-check-input" type="checkbox" id="defaultCheck3"
                                                 name="permission_show[{{ $user->id }}]" {{ $user->permission_show ==
+                                            1 ?
+                                            'checked' : '' }} />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check d-flex justify-content-center">
+                                            <input type="hidden" name="non_aktif[{{ $user->id }}]" value="off">
+                                            <input class="form-check-input" type="checkbox" id="defaultCheck3"
+                                                name="non_aktif[{{ $user->id }}]" {{ $user->non_aktif ==
                                             1 ?
                                             'checked' : '' }} />
                                         </div>

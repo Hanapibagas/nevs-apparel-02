@@ -122,6 +122,10 @@
                                         </p>
                                     </td>
                                     <td>
+                                        <a target="_blank"
+                                            href="{{ route('getCetakDataLkSuperAdmin', $laporan->BarangMasukLayout->barang_masuk_id) }}"
+                                            class="btn btn-danger">
+                                            <i class="menu-icon tf-icons bx bxs-file-pdf"></i>Show LK</a>
                                         <a class="btn btn-primary"
                                             href="{{ route('getDetailLaporan', $laporan->barang_masuk_costumer_services_id) }}"
                                             type="button" class="btn btn-warning">

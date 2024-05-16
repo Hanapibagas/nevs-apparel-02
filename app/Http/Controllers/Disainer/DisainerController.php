@@ -36,8 +36,8 @@ class DisainerController extends Controller
     public function getCreateToTeamMesin($nama_tim)
     {
         $disainer = BarangMasukDisainer::where('nama_tim', $nama_tim)->first();
-        $mesin = User::whereIn('roles', ['atexco', 'mimaki'])->get();
-        $user = User::where('roles', 'atexco')->orWhere('roles', 'mimaki')->get();
+        $mesin = User::where('roles', 'atexco')->where('non_aktif', '1')->get();
+        $user = User::where('roles', 'atexco')->get();
 
         $userCounts = [];
         foreach ($mesin as $v) {
@@ -80,7 +80,7 @@ class DisainerController extends Controller
     public function getUpdateToTeamMesin($id)
     {
         $disainer = BarangMasukMesin::find($id);
-        $mesin = User::whereIn('roles', ['atexco', 'mimaki'])->get();
+        $mesin = User::whereIn('roles', ['atexco'])->get();
         $userCounts = [];
         foreach ($mesin as $v) {
             $userId = $v->id;
@@ -90,7 +90,7 @@ class DisainerController extends Controller
             $userCounts[$userId] = $barangMasukCount;
         }
 
-        // return response()->json($userCounts);
+        // return response()->json($disainer);
 
         return view('component.Disainer.disainer-pegawai.update', compact('disainer', 'mesin', 'userCounts'));
     }
@@ -112,7 +112,7 @@ class DisainerController extends Controller
         }
 
         $disainer->update([
-            'nama_mesin' => $request->nama_mesin,
+            'nama_mesin_id' => $request->nama_mesin_id,
             'file' => $file,
             'keterangan' => $request->keterangan
         ]);
@@ -122,9 +122,20 @@ class DisainerController extends Controller
 
     public function getCreateToTeamCs($nama_tim)
     {
-        $disainer = BarangMasukDisainer::where('nama_tim', $nama_tim)->first();
+        $disainer = BarangMasukDisainer::with('DataMesinCs.User')->where('nama_tim', $nama_tim)->first();
 
-        return view('component.Disainer.disainer-pegawai.create-Cs', compact('disainer'));
+        $mesin = User::whereIn('roles', ['atexco'])->get();
+        $userCounts = [];
+        foreach ($mesin as $v) {
+            $userId = $v->id;
+            $barangMasukCount = BarangMasukMesin::where('nama_mesin_id', $userId)
+                ->where('status', 0)
+                ->count();
+            $userCounts[$userId] = $barangMasukCount;
+        }
+
+
+        return view('component.Disainer.disainer-pegawai.create-Cs', compact('disainer', 'userCounts', 'mesin'));
     }
 
     public function postToCustomerServices(Request $request, $nama_tim)
@@ -142,9 +153,6 @@ class DisainerController extends Controller
         }
 
         $new_order_number = '#' . $bulan_sekarang . '-' . $tahun_sekarang . str_pad($next_sequence, 3, '0', STR_PAD_LEFT);
-
-        // return response()->json($new_order_number);
-
 
         $filebajuplayer = null;
         $filebajupelatih = null;

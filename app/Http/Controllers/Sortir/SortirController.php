@@ -154,6 +154,7 @@ class SortirController extends Controller
                 'panjang_kertas' => $request->panjang_kertas,
                 'berat' => $request->berat,
                 'bahan' => $request->bahan,
+                'keterangan' => $request->keterangan,
                 'foto' =>  $fileGambar,
                 'tanda_telah_mengerjakan' => 1
             ]);
@@ -180,6 +181,7 @@ class SortirController extends Controller
                 'panjang_kertas_pelatih' => $request->panjang_kertas_pelatih,
                 'berat_pelatih' => $request->berat_pelatih,
                 'bahan_pelatih' => $request->bahan_pelatih,
+                'keterangan2' => $request->keterangan2,
                 'foto_pelatih' =>  $fileGambar,
                 'tanda_telah_mengerjakan' => 1
             ]);
@@ -206,6 +208,7 @@ class SortirController extends Controller
                 'panjang_kertas_kiper' => $request->panjang_kertas_kiper,
                 'berat_kiper' => $request->berat_kiper,
                 'bahan_kiper' => $request->bahan_kiper,
+                'keterangan3' => $request->keterangan3,
                 'foto_kiper' =>  $fileGambar,
                 'tanda_telah_mengerjakan' => 1
             ]);
@@ -232,6 +235,7 @@ class SortirController extends Controller
                 'panjang_kertas_1' => $request->panjang_kertas_1,
                 'berat_1' => $request->berat_1,
                 'bahan_1' => $request->bahan_1,
+                'keterangan4' => $request->keterangan4,
                 'foto_1' =>  $fileGambar,
                 'tanda_telah_mengerjakan' => 1
             ]);
@@ -258,6 +262,7 @@ class SortirController extends Controller
                 'panjang_kertas_celana_pelayer' => $request->panjang_kertas_celana_pelayer,
                 'berat_celana_pelayer' => $request->berat_celana_pelayer,
                 'bahan_celana_pelayer' => $request->bahan_celana_pelayer,
+                'keterangan5' => $request->keterangan5,
                 'foto_celana_pelayer' =>  $fileGambar,
                 'tanda_telah_mengerjakan' => 1
             ]);
@@ -284,6 +289,7 @@ class SortirController extends Controller
                 'panjang_kertas_celana_pelatih' => $request->panjang_kertas_celana_pelatih,
                 'berat_celana_pelatih' => $request->berat_celana_pelatih,
                 'bahan_celana_pelatih' => $request->bahan_celana_pelatih,
+                'keterangan6' => $request->keterangan6,
                 'foto_celana_pelatih' =>  $fileGambar,
                 'tanda_telah_mengerjakan' => 1
             ]);
@@ -310,6 +316,7 @@ class SortirController extends Controller
                 'panjang_kertas_celana_kiper' => $request->panjang_kertas_celana_kiper,
                 'berat_celana_kiper' => $request->berat_celana_kiper,
                 'bahan_celana_kiper' => $request->bahan_celana_kiper,
+                'keterangan7' => $request->keterangan7,
                 'foto_celana_kiper' =>  $fileGambar,
                 'tanda_telah_mengerjakan' => 1
             ]);
@@ -336,6 +343,7 @@ class SortirController extends Controller
                 'panjang_kertas_celana_1' => $request->panjang_kertas_celana_1,
                 'berat_celana_1' => $request->berat_celana_1,
                 'bahan_celana_1' => $request->bahan_celana_1,
+                'keterangan8' => $request->keterangan8,
                 'foto_celana_1' =>  $fileGambar,
                 'tanda_telah_mengerjakan' => 1
             ]);

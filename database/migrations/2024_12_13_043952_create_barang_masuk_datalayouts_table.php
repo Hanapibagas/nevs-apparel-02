@@ -53,6 +53,21 @@ return new class extends Migration
             $table->string('poly_celana_1')->nullable();
             // AKHIR
             $table->string('file_corel_layout')->nullable();
+            $table->string('file_corel_layout2')->nullable();
+            $table->string('file_corel_layout3')->nullable();
+            $table->string('file_corel_layout4')->nullable();
+            $table->string('file_corel_layout5')->nullable();
+            $table->string('file_corel_layout6')->nullable();
+            $table->string('file_corel_layout7')->nullable();
+            $table->string('file_corel_layout8')->nullable();
+            $table->string('keterangan1')->nullable();
+            $table->string('keterangan2')->nullable();
+            $table->string('keterangan3')->nullable();
+            $table->string('keterangan4')->nullable();
+            $table->string('keterangan5')->nullable();
+            $table->string('keterangan6')->nullable();
+            $table->string('keterangan7')->nullable();
+            $table->string('keterangan8')->nullable();
             $table->string('tanda_telah_mengerjakan')->default('0');
             $table->timestamps();
         });

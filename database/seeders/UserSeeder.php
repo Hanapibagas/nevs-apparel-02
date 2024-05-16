@@ -28,6 +28,7 @@ class UserSeeder extends Seeder
             'permission_hapus' => 1,
             'permission_create' => 1,
             'permission_show' => 1,
+            'non_aktif' => 1,
             'asal_kota' => "owner",
             'password' => bcrypt('superadmin')
         ]);
@@ -44,6 +45,7 @@ class UserSeeder extends Seeder
             'permission_hapus' => 1,
             'permission_create' => 1,
             'permission_show' => 1,
+            'non_aktif' => 1,
             'asal_kota' => "makassar",
             'password' => bcrypt('12345678')
         ]);
@@ -56,6 +58,7 @@ class UserSeeder extends Seeder
             'permission_hapus' => 1,
             'permission_create' => 1,
             'permission_show' => 1,
+            'non_aktif' => 1,
             'asal_kota' => "makassar",
             'password' => bcrypt('12345678')
         ]);
@@ -68,6 +71,7 @@ class UserSeeder extends Seeder
             'permission_hapus' => 1,
             'permission_create' => 1,
             'permission_show' => 1,
+            'non_aktif' => 1,
             'asal_kota' => "makassar",
             'password' => bcrypt('12345678')
         ]);
@@ -80,18 +84,20 @@ class UserSeeder extends Seeder
             'permission_hapus' => 1,
             'permission_create' => 1,
             'permission_show' => 1,
+            'non_aktif' => 1,
             'asal_kota' => "makassar",
             'password' => bcrypt('12345678')
         ]);
         User::create([
             'name' => 'mimaki makassar',
             'email' => 'mimaki@gmail.com',
-            'roles' => 'mimaki',
+            'roles' => 'atexco',
             'gambar' => 'mimaki.jpg',
             'permission_edit' => 1,
             'permission_hapus' => 1,
             'permission_hapus' => 1,
             'permission_show' => 1,
+            'non_aktif' => 1,
             'asal_kota' => "makassar",
             'password' => bcrypt('12345678')
         ]);
@@ -104,6 +110,7 @@ class UserSeeder extends Seeder
             'permission_hapus' => 1,
             'permission_hapus' => 1,
             'permission_show' => 1,
+            'non_aktif' => 1,
             'asal_kota' => "makassar",
             'password' => bcrypt('12345678')
         ]);
@@ -116,6 +123,7 @@ class UserSeeder extends Seeder
             'permission_hapus' => 1,
             'permission_hapus' => 1,
             'permission_show' => 1,
+            'non_aktif' => 1,
             'asal_kota' => "makassar",
             'password' => bcrypt('12345678')
         ]);
@@ -128,6 +136,7 @@ class UserSeeder extends Seeder
             'permission_hapus' => 1,
             'permission_hapus' => 1,
             'permission_show' => 1,
+            'non_aktif' => 1,
             'asal_kota' => "makassar",
             'password' => bcrypt('12345678')
         ]);
@@ -140,6 +149,7 @@ class UserSeeder extends Seeder
             'permission_hapus' => 1,
             'permission_hapus' => 1,
             'permission_show' => 1,
+            'non_aktif' => 1,
             'asal_kota' => "makassar",
             'password' => bcrypt('12345678')
         ]);
@@ -152,6 +162,7 @@ class UserSeeder extends Seeder
             'permission_hapus' => 1,
             'permission_hapus' => 1,
             'permission_show' => 1,
+            'non_aktif' => 1,
             'asal_kota' => "makassar",
             'password' => bcrypt('12345678')
         ]);
@@ -164,6 +175,7 @@ class UserSeeder extends Seeder
             'permission_hapus' => 1,
             'permission_hapus' => 1,
             'permission_show' => 1,
+            'non_aktif' => 1,
             'asal_kota' => "makassar",
             'password' => bcrypt('12345678')
         ]);

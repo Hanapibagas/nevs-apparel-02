@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Cs\CostumerServicesController;
 use App\Http\Controllers\Disainer\DataMesinController;
 use App\Http\Controllers\Disainer\DisainerController;
@@ -28,10 +29,13 @@ Route::get('/migrate-fresh-seed', function () {
     return 'Database migrated fresh and seeded successfully!';
 });
 
+Route::post('/loginuser', [LoginController::class, 'loginuser'])->name('loginuser');
 
 Route::middleware(['auth', 'checkroll:super_admin,jahit,finis,cut,disainer,layout,cs,atexco,mimaki,pres_kain,laser_cut,manual_cut,sortir,jahit_baju,jahit_celana,press_tag,packing,admin'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('indexHome');
     Route::get('/filtering-ahit', [HomeController::class, 'fiterTotaljahit'])->name('fiterTotaljahit');
+
+    Route::get('/show-data-lk-super-admin/{id}', [HomeController::class, 'cetakDataLk'])->name('getCetakDataLkSuperAdmin');
 
     // route admin cs
     Route::get('/laporan', [HomeController::class, 'getLaporan'])->name('getIndexLaporan');
@@ -83,7 +87,7 @@ Route::middleware(['auth', 'checkroll:super_admin,jahit,finis,cut,disainer,layou
     Route::put('/update-password-user', [HomeController::class, 'postUpdatePassword'])->name('postUpdatePassword');
 });
 
-Route::middleware(['auth', 'checkroll:cs'])->group(function () {
+Route::middleware(['auth', 'checkroll:cs,admin'])->group(function () {
     // route pegawai cs
     Route::get('/data-order-disainer', [CostumerServicesController::class, 'getIndexOrderCs'])->name('getIndexOrderCsPegawai');
     Route::get('/data-order', [CostumerServicesController::class, 'getIndexCs'])->name('getIndexCsPegawai');
@@ -100,7 +104,7 @@ Route::middleware(['auth', 'checkroll:cs'])->group(function () {
     // Route::put('update-password-cs/post', [CostumerServicesController::class, 'postUpdatePassword'])->name('postUpdatePassword');
 });
 
-Route::middleware(['auth', 'checkroll:disainer'])->group(function () {
+Route::middleware(['auth', 'checkroll:disainer,admin'])->group(function () {
     // route pegawai disainer
     Route::get('/disainer', [DisainerController::class, 'getIndexUserDisainer'])->name('getIndexDisainerPegawai');
     Route::get('/disainer/create/{nama_tim}', [DisainerController::class, 'getCreateToTeamMesin'])->name('getCreateToTeamMesinPegawai');
@@ -116,7 +120,7 @@ Route::middleware(['auth', 'checkroll:disainer'])->group(function () {
     Route::get('/data-mesin-disainer-mimaki', [DataMesinController::class, 'getDataMesinMimaki'])->name('getIndexDataMesinMimakiPegawai');
 });
 
-Route::middleware(['auth', 'checkroll:atexco'])->group(function () {
+Route::middleware(['auth', 'checkroll:atexco,admin'])->group(function () {
     Route::get('/mesin-atexco', [AtexcoController::class, 'getIndexAtexco'])->name('getIndexMesinAtexcoPegawai');
     Route::get('/data-masuk-mesin-atexco', [AtexcoController::class, 'getIndexDataMasukAtexco'])->name('getIndexDataMasukMesinAtexco');
 
@@ -128,7 +132,7 @@ Route::middleware(['auth', 'checkroll:atexco'])->group(function () {
     Route::put('/mesin-atxco/{id}', [AtexcoController::class, 'putFeedBackToDisainer'])->name('putFeedbackByAtexcoPegawai');
 });
 
-Route::middleware(['auth', 'checkroll:mimaki'])->group(function () {
+Route::middleware(['auth', 'checkroll:mimaki,admin'])->group(function () {
     Route::get('/mesin-mimaki', [MimakiController::class, 'getIndexMimaki'])->name('getIndexMesinMimakiPegawai');
     Route::get('/data-masuk-mesin-mimaki', [MimakiController::class, 'getIndexDataMasukMimaki'])->name('getIndexDataMasukMimaki');
 
@@ -140,7 +144,7 @@ Route::middleware(['auth', 'checkroll:mimaki'])->group(function () {
     Route::put('/mesin-mimaki/{id}', [MimakiController::class, 'putFeedBackToDisainer'])->name('putFeedbackByMimakiPegawai');
 });
 
-Route::middleware(['auth', 'checkroll:layout'])->group(function () {
+Route::middleware(['auth', 'checkroll:layout,admin'])->group(function () {
     Route::get('/data-Lk-Layout', [LayoutController::class, 'getIndexLkCs'])->name('getIndexLkLayoutPegawai');
     Route::get('/create-laporan-lk/{id}', [LayoutController::class, 'createLaporanLk'])->name('getCreateLaporanLkLayout');
 
@@ -149,7 +153,7 @@ Route::middleware(['auth', 'checkroll:layout'])->group(function () {
     Route::get('cetak-data-lk-fix/{id}', [LayoutController::class, 'cetakDataLk'])->name('getCetakDataLkLayout');
 });
 
-Route::middleware(['auth', 'checkroll:pres_kain'])->group(function () {
+Route::middleware(['auth', 'checkroll:pres_kain,admin'])->group(function () {
     Route::get('/data-masuk-press-kain', [PressKainController::class, 'getindexDataMasukPress'])->name('getindexDataMasukPress');
     Route::get('/data-masuk-press-kain/{id}', [PressKainController::class, 'getInputLaporan'])->name('getInputLaporanPresKain');
     Route::put('/data-masuk-press-kain', [PressKainController::class, 'putLaporan'])->name('putLaporanPreskain');
@@ -157,7 +161,7 @@ Route::middleware(['auth', 'checkroll:pres_kain'])->group(function () {
     Route::get('/show-data-lk-presskain/{id}', [PressKainController::class, 'cetakDataLk'])->name('getCetakDataLkPressKain');
 });
 
-Route::middleware(['auth', 'checkroll:cut'])->group(function () {
+Route::middleware(['auth', 'checkroll:cut,admin'])->group(function () {
     Route::get('/data-masuk-cut', [CutController::class, 'getindexDataMasukPress'])->name('getindexDataMasukCut');
     Route::get('/data-masuk-cut/{id}', [CutController::class, 'getInputLaporan'])->name('getInputLaporanCut');
     Route::put('/data-masuk-cut/{id}', [CutController::class, 'putLaporan'])->name('putLaporanCut');
@@ -165,7 +169,7 @@ Route::middleware(['auth', 'checkroll:cut'])->group(function () {
     Route::get('/show-data-lk-cut/{id}', [CutController::class, 'cetakDataLk'])->name('getCetakDataLkCut');
 });
 
-Route::middleware(['auth', 'checkroll:laser_cut'])->group(function () {
+Route::middleware(['auth', 'checkroll:laser_cut,admin'])->group(function () {
     Route::get('/data-masuk-laser-cut', [LaserCutController::class, 'getIndex'])->name('getIndexLaserCut');
     Route::get('/data-masuk-laser-cut/{id}', [LaserCutController::class, 'getInputLaporan'])->name('getInputLaporanLaserCut');
     Route::put('/data-masuk-laser-cut', [LaserCutController::class, 'putLaporan'])->name('putLaporanLaserCut');
@@ -173,7 +177,7 @@ Route::middleware(['auth', 'checkroll:laser_cut'])->group(function () {
     Route::get('/show-data-lk-lasercut/{id}', [LaserCutController::class, 'cetakDataLk'])->name('getCetakDataLklaserCut');
 });
 
-Route::middleware(['auth', 'checkroll:manual_cut'])->group(function () {
+Route::middleware(['auth', 'checkroll:manual_cut,admin'])->group(function () {
     Route::get('/data-masuk-manual-cut', [ManualCutController::class, 'getIndex'])->name('getIndexManualCut');
     Route::get('/data-masuk-manual-cut/{id}', [ManualCutController::class, 'getInputLaporan'])->name('getInputLaporanManualCut');
     Route::put('/data-masuk-manual-cut', [ManualCutController::class, 'putLaporan'])->name('putLaporanManualCut');
@@ -181,7 +185,7 @@ Route::middleware(['auth', 'checkroll:manual_cut'])->group(function () {
     Route::get('/show-data-lk-manualcut/{id}', [ManualCutController::class, 'cetakDataLk'])->name('getCetakDataLkManualCut');
 });
 
-Route::middleware(['auth', 'checkroll:sortir'])->group(function () {
+Route::middleware(['auth', 'checkroll:sortir,admin'])->group(function () {
     Route::get('/data-masuk-sortir', [SortirController::class, 'getIndex'])->name('getIndexSortir');
     Route::get('/data-masuk-sortir/{id}', [SortirController::class, 'getInputLaporan'])->name('getInputLaporanSortir');
     Route::put('/data-masuk-sortir', [SortirController::class, 'putLaporan'])->name('putLaporanSortir');
@@ -189,7 +193,7 @@ Route::middleware(['auth', 'checkroll:sortir'])->group(function () {
     Route::get('/show-data-lk-sortir/{id}', [SortirController::class, 'cetakDataLk'])->name('getCetakDataLkSortir');
 });
 
-Route::middleware(['auth', 'checkroll:jahit'])->group(function () {
+Route::middleware(['auth', 'checkroll:jahit,admin'])->group(function () {
     Route::get('/data-masuk-jahit', [JahitController::class, 'getIndex'])->name('getIndexJahit');
     Route::get('/data-masuk-jahit-serah/{id}', [JahitController::class, 'getInputLaporan'])->name('getInputLaporanJahit');
     Route::get('/data-masuk-jahit-terima/{id}', [JahitController::class, 'getInputLaporanSerah'])->name('getInputLaporanJahitTerima');
@@ -199,7 +203,7 @@ Route::middleware(['auth', 'checkroll:jahit'])->group(function () {
     Route::get('/show-data-lk-jahit/{id}', [JahitController::class, 'cetakDataLk'])->name('getCetakDataLkJahit');
 });
 
-Route::middleware(['auth', 'checkroll:finis'])->group(function () {
+Route::middleware(['auth', 'checkroll:finis,admin'])->group(function () {
     Route::get('/data-masuk-finis', [FinisController::class, 'getIndex'])->name('getIndexFinis');
     Route::get('/data-masuk-finis/{id}', [FinisController::class, 'getInputLaporan'])->name('getInputLaporanFinis');
     Route::put('/data-masuk-finis', [FinisController::class, 'putLaporan'])->name('putLaporanFinis');
@@ -207,28 +211,28 @@ Route::middleware(['auth', 'checkroll:finis'])->group(function () {
     Route::get('/show-data-lk-finis/{id}', [FinisController::class, 'cetakDataLk'])->name('getCetakDataLkFinis');
 });
 
-Route::middleware(['auth', 'checkroll:jahit_baju'])->group(function () {
+Route::middleware(['auth', 'checkroll:jahit_baju,admin'])->group(function () {
     Route::get('/data-masuk-jahit-baju', [JahitBajuController::class, 'getIndex'])->name('getIndexJahitBaju');
     Route::get('/data-masuk-jahit-baju/{id}', [JahitBajuController::class, 'getInputLaporan'])->name('getInputLaporanJahitBaju');
     Route::put('/data-masuk-jahit-baju/{id}', [JahitBajuController::class, 'putLaporan'])->name('putLaporanJahitBaju');
     Route::get('/data-masuk-jahit-baju-fix', [JahitBajuController::class, 'getIndexFix'])->name('getIndexFixJahitBaju');
 });
 
-Route::middleware(['auth', 'checkroll:jahit_celana'])->group(function () {
+Route::middleware(['auth', 'checkroll:jahit_celana,admin'])->group(function () {
     Route::get('/data-masuk-jahit-celana', [JahitCelanaController::class, 'getIndex'])->name('getIndexJahitCelana');
     Route::get('/data-masuk-jahit-celana/{id}', [JahitCelanaController::class, 'getInputLaporan'])->name('getInputLaporanJahitCelana');
     Route::put('/data-masuk-jahit-celana/{id}', [JahitCelanaController::class, 'putLaporan'])->name('putLaporanJahitCelana');
     Route::get('/data-masuk-jahit-celana-fix', [JahitCelanaController::class, 'getIndexFix'])->name('getIndexFixJahitCelana');
 });
 
-Route::middleware(['auth', 'checkroll:press_tag'])->group(function () {
+Route::middleware(['auth', 'checkroll:press_tag,admin'])->group(function () {
     Route::get('/data-masuk-press-tag', [PressTagController::class, 'getIndex'])->name('getIndexPressTag');
     Route::get('/data-masuk-press-tag/{id}', [PressTagController::class, 'getInputLaporan'])->name('getInputLaporanPressTag');
     Route::put('/data-masuk-press-tag/{id}', [PressTagController::class, 'putLaporan'])->name('putLaporanPressTag');
     Route::get('/data-masuk-press-tag-fix', [PressTagController::class, 'getIndexFix'])->name('getIndexFixPressTag');
 });
 
-Route::middleware(['auth', 'checkroll:packing'])->group(function () {
+Route::middleware(['auth', 'checkroll:packing,admin'])->group(function () {
     Route::get('/data-masuk-packing', [PackingController::class, 'getIndex'])->name('getIndexPacking');
     Route::get('/data-masuk-packing/{id}', [PackingController::class, 'getInputLaporan'])->name('getInputLaporanPacking');
     Route::put('/data-masuk-packing/{id}', [PackingController::class, 'putLaporan'])->name('putLaporanPacking');

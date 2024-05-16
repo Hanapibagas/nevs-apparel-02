@@ -20,7 +20,8 @@ return new class extends Migration
             $table->foreignId('barang_masuk_disainer_id')->constrained('barang_masuk_disainers')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('cs_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('disainer_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('jenis_mesin')->nullable();
+            $table->foreignId('jenis_mesin')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            // $table->string('jenis_mesin')->nullable();
             $table->string('no_nota')->nullable();
 
             $table->foreignId('layout_id')->nullable()->constrained('users')->onUpdate('cascade')->onDelete('cascade');

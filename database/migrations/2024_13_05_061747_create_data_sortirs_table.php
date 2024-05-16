@@ -79,6 +79,15 @@ return new class extends Migration
             $table->string('berat_celana_1')->nullable();
             $table->string('bahan_celana_1')->nullable();
             $table->string('foto_celana_1')->nullable();
+
+            $table->string('keterangan')->nullable();
+            $table->string('keterangan2')->nullable();
+            $table->string('keterangan3')->nullable();
+            $table->string('keterangan4')->nullable();
+            $table->string('keterangan5')->nullable();
+            $table->string('keterangan6')->nullable();
+            $table->string('keterangan7')->nullable();
+            $table->string('keterangan8')->nullable();
             // AKHIR
             $table->string('tanda_telah_mengerjakan')->default('0');
             $table->timestamps();

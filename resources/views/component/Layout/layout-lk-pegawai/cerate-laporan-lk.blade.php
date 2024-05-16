@@ -25,6 +25,38 @@
                         @method('PUT')
                         <div class="row">
                             <div class="col-md-12">
+                                @if (!empty($formattedData['player']))
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <input type="hidden" id="playerId" name="player_id"
+                                                value="{{ $formattedData['player'][0]['id'] }}">
+                                            <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">Panjang Kertas (Meter)</label>
+                                                <input required class="form-control" type="number"
+                                                    name="panjang_kertas_palayer" id="lastName"
+                                                    pattern="[0-9]+(\.[0-9]+)?" placeholder="Contoh: 10 meter" />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">Panjang Poly / DTF
+                                                    (Meter)</label>
+                                                <input required class="form-control" type="number" name="poly_player"
+                                                    id="lastName" pattern="[0-9]+(\.[0-9]+)?"
+                                                    placeholder="Contoh: 10 meter" />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">File Corel Layout</label>
+                                                <input class="form-control" type="file" accept=".rar"
+                                                    name="file_corel_layout" id="lastName" />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control" name="keterangan1"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
                                 @if (!empty($formattedData['pelatih']))
                                 <div class="card mb-4">
                                     <div class="card-body">
@@ -46,8 +78,12 @@
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="lastName" class="form-label">File Corel Layout</label>
-                                                <input required class="form-control" type="file" accept=".rar"
-                                                    name="file_corel_layout" id="lastName" />
+                                                <input class="form-control" type="file" accept=".rar"
+                                                    name="file_corel_layout2" id="lastName" />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control" name="keterangan2"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -74,8 +110,12 @@
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="lastName" class="form-label">File Corel Layout</label>
-                                                <input required class="form-control" type="file" accept=".rar"
-                                                    name="file_corel_layout" id="lastName" />
+                                                <input class="form-control" type="file" accept=".rar"
+                                                    name="file_corel_layou3" id="lastName" />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control" name="keterangan3"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -102,8 +142,12 @@
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="lastName" class="form-label">File Corel Layout</label>
-                                                <input required class="form-control" type="file" accept=".rar"
-                                                    name="file_corel_layout" id="lastName" />
+                                                <input class="form-control" type="file" accept=".rar"
+                                                    name="file_corel_layou4" id="lastName" />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control" name="keterangan4"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -130,8 +174,12 @@
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="lastName" class="form-label">File Corel Layout</label>
-                                                <input required class="form-control" type="file" accept=".rar"
-                                                    name="file_corel_layout" id="lastName" />
+                                                <input class="form-control" type="file" accept=".rar"
+                                                    name="file_corel_layou5" id="lastName" />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control" name="keterangan5"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -158,8 +206,12 @@
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="lastName" class="form-label">File Corel Layout</label>
-                                                <input required class="form-control" type="file" accept=".rar"
-                                                    name="file_corel_layout" id="lastName" />
+                                                <input class="form-control" type="file" accept=".rar"
+                                                    name="file_corel_layou6" id="lastName" />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control" name="keterangan6"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -186,8 +238,12 @@
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="lastName" class="form-label">File Corel Layout</label>
-                                                <input required class="form-control" type="file" accept=".rar"
-                                                    name="file_corel_layout" id="lastName" />
+                                                <input class="form-control" type="file" accept=".rar"
+                                                    name="file_corel_layou7" id="lastName" />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control" name="keterangan7"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -214,59 +270,40 @@
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="lastName" class="form-label">File Corel Layout</label>
-                                                <input required class="form-control" type="file" accept=".rar"
-                                                    name="file_corel_layout" id="lastName" />
+                                                <input class="form-control" type="file" accept=".rar"
+                                                    name="file_corel_layout8" id="lastName" />
                                             </div>
-                                        </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control" name="keterangan8"></textarea>
+                                            </div>
+                                        </div><br>
                                     </div>
                                 </div>
                                 @endif
-                                @if (!empty($formattedData['player']))
                                 <div class="card mb-4">
                                     <div class="card-body">
                                         <div class="row">
-                                            <input type="hidden" id="playerId" name="player_id"
-                                                value="{{ $formattedData['player'][0]['id'] }}">
-                                            <div class="mb-3 col-md-6">
-                                                <label for="lastName" class="form-label">Panjang Kertas (Meter)</label>
-                                                <input required class="form-control" type="number"
-                                                    name="panjang_kertas_palayer" id="lastName"
-                                                    pattern="[0-9]+(\.[0-9]+)?" placeholder="Contoh: 10 meter" />
-                                            </div>
-                                            <div class="mb-3 col-md-6">
-                                                <label for="lastName" class="form-label">Panjang Poly / DTF
-                                                    (Meter)</label>
-                                                <input required class="form-control" type="number" name="poly_player"
-                                                    id="lastName" pattern="[0-9]+(\.[0-9]+)?"
-                                                    placeholder="Contoh: 10 meter" />
-                                            </div>
-                                            <div class="mb-3 col-md-6">
-                                                <label for="lastName" class="form-label">File Corel Layout</label>
-                                                <input required class="form-control" type="file" accept=".rar"
-                                                    name="file_corel_layout" id="lastName" />
-                                            </div>
-                                        </div><br>
-                                        <div class="row">
-                                            <div class="row mb-3">
-                                                <label class="col-sm-2 col-form-label"
-                                                    for="basic-default-company">Upload Tangkap
-                                                    Layar</label>
-                                                <div class="col-sm-10">
-                                                    <div id="imageUploads">
-                                                        <input type="file" class="form-control mb-2" required
-                                                            name="file_tangkap_layar_player" accept=".jpg, .png" />
+                                            <div class="row">
+                                                <div class="row mb-3">
+                                                    <label class="col-sm-2 col-form-label"
+                                                        for="basic-default-company">Upload Tangkap
+                                                        Layar</label>
+                                                    <div class="col-sm-10">
+                                                        <div id="imageUploads">
+                                                            <input type="file" class="form-control mb-2" required
+                                                                name="file_tangkap_layar_player" accept=".jpg, .png" />
+                                                        </div>
+                                                        <button type="button" class="btn btn-sm btn-success"
+                                                            onclick="addImageUpload()">Tambah
+                                                            Upload</button>
                                                     </div>
-                                                    <button type="button" class="btn btn-sm btn-success"
-                                                        onclick="addImageUpload()">Tambah
-                                                        Upload</button>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div><br>
                                     </div>
                                 </div>
-                                @endif
                             </div>
-
                         </div>
                         <button id="submitButton" type="submit" class="btn btn-primary">
                             <i id="submitIcon" class="menu-icon tf-icons bx bx-send"></i>
@@ -353,5 +390,17 @@
         icon.classList.remove('bx-send');
         icon.classList.add('bx-loader');
     });
+</script>
+<script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
+<script>
+    // CKEDITOR.replace('keterangan1');
+    CKEDITOR.replace('keterangan_baju_pelayer');
+    CKEDITOR.replace('keterangan_baju_pelatih');
+    CKEDITOR.replace('keterangan_baju_kiper');
+    CKEDITOR.replace('keterangan_baju_1');
+    CKEDITOR.replace('keterangan_celana_pelayer');
+    CKEDITOR.replace('keterangan_celana_pelatih');
+    CKEDITOR.replace('keterangan_celana_kiper');
+    CKEDITOR.replace('keterangan_celana_1');
 </script>
 @endpush

@@ -20,6 +20,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use PDF;
 
 class HomeController extends Controller
 {
@@ -393,7 +394,7 @@ class HomeController extends Controller
 
         $laporanData = [];
         $laporanDataAtexco = [];
-        $laporanDataMimaki = [];
+        // $laporanDataMimaki = [];
         $laporanDataPressKain = [];
         $laporanDataLaserCut = [];
         $laporanDataManualCut = [];
@@ -404,7 +405,7 @@ class HomeController extends Controller
         foreach ($laporans as $laporan) {
             $item = $laporan->BarangMasukLayout;
             $itemAtexco = $laporan->BarangMasukMesinAtexco;
-            $itemMimaki = $laporan->BarangMasukMesinMimaki;
+            // $itemMimaki = $laporan->BarangMasukMesinMimaki;
             $itemPressKain = $laporan->BarangMasukPressKain;
             $itemLaserCut = $laporan->BarangMasukLaserCut;
             $itemManualCut = $laporan->BarangMasukManualcut;
@@ -482,6 +483,7 @@ class HomeController extends Controller
                         'selesai' => $itemJahit->selesai,
                         'leher' => $itemJahit->leher,
                         'pola_badan' => $itemJahit->pola_badan,
+                        'keterangan' => $itemJahit->keterangan,
                         'foto' => $itemJahit->foto,
                     ];
                 } elseif ($itemJahit->lk_pelatih_id) {
@@ -491,6 +493,7 @@ class HomeController extends Controller
                         'selesai' => $itemJahit->selesai,
                         'leher_pelatih' => $itemJahit->leher_pelatih,
                         'pola_badan_pelatih' => $itemJahit->pola_badan_pelatih,
+                        'keterangan2' => $itemJahit->keterangan2,
                         'foto_pelatih' => $itemJahit->foto_pelatih,
                     ];
                 } elseif ($itemJahit->lk_kiper_id) {
@@ -500,6 +503,7 @@ class HomeController extends Controller
                         'selesai' => $itemJahit->selesai,
                         'leher_kiper' => $itemJahit->leher_kiper,
                         'pola_badan_kiper' => $itemJahit->pola_badan_kiper,
+                        'keterangan3' => $itemJahit->keterangan3,
                         'foto_kiper' => $itemJahit->foto_kiper,
                     ];
                 } elseif ($itemJahit->lk_1_id) {
@@ -509,6 +513,7 @@ class HomeController extends Controller
                         'selesai' => $itemJahit->selesai,
                         'leher_1' => $itemJahit->leher_1,
                         'pola_badan_1' => $itemJahit->pola_badan_1,
+                        'keterangan4' => $itemJahit->keterangan4,
                         'foto_1' => $itemJahit->foto_1,
                     ];
                 } elseif ($itemJahit->lk_celana_player_id) {
@@ -518,6 +523,7 @@ class HomeController extends Controller
                         'selesai' => $itemJahit->selesai,
                         'leher_celana_pelayer' => $itemJahit->leher_celana_pelayer,
                         'pola_badan_celana_pelayer' => $itemJahit->pola_badan_celana_pelayer,
+                        'keterangan5' => $itemJahit->keterangan5,
                         'foto_celana_pelayer' => $itemJahit->foto_celana_pelayer,
                     ];
                 } elseif ($itemJahit->lk_celana_pelatih_id) {
@@ -527,6 +533,7 @@ class HomeController extends Controller
                         'selesai' => $itemJahit->selesai,
                         'leher_celana_pelatih' => $itemJahit->leher_celana_pelatih,
                         'pola_badan_celana_pelatih' => $itemJahit->pola_badan_celana_pelatih,
+                        'keterangan6' => $itemJahit->keterangan6,
                         'foto_celana_pelatih' => $itemJahit->foto_celana_pelatih,
                     ];
                 } elseif ($itemJahit->lk_celana_kiper_id) {
@@ -536,6 +543,7 @@ class HomeController extends Controller
                         'selesai' => $itemJahit->selesai,
                         'leher_celana_kiper' => $itemJahit->leher_celana_kiper,
                         'pola_badan_celana_kiper' => $itemJahit->pola_badan_celana_kiper,
+                        'keterangan7' => $itemJahit->keterangan7,
                         'foto_celana_kiper' => $itemJahit->foto_celana_kiper,
                     ];
                 } elseif ($itemJahit->lk_celana_1_id) {
@@ -545,6 +553,7 @@ class HomeController extends Controller
                         'selesai' => $itemJahit->selesai,
                         'leher_celana_1' => $itemJahit->leher_celana_1,
                         'pola_badan_celana_1' => $itemJahit->pola_badan_celana_1,
+                        'keterangan8' => $itemJahit->keterangan8,
                         'foto_celana_1' => $itemJahit->foto_celana_1,
                     ];
                 }
@@ -561,6 +570,7 @@ class HomeController extends Controller
                         'panjang_kertas' => $itemSortir->panjang_kertas,
                         'berat' => $itemSortir->berat,
                         'bahan' => $itemSortir->bahan,
+                        'keterangan' => $itemSortir->keterangan,
                         'foto' => $itemSortir->foto,
                     ];
                 } elseif ($itemSortir->lk_pelatih_id) {
@@ -572,6 +582,7 @@ class HomeController extends Controller
                         'panjang_kertas_pelatih' => $itemSortir->panjang_kertas_pelatih,
                         'berat_pelatih' => $itemSortir->berat_pelatih,
                         'bahan_pelatih' => $itemSortir->bahan_pelatih,
+                        'keterangan2' => $itemSortir->keterangan2,
                         'foto_pelatih' => $itemSortir->foto_pelatih,
                     ];
                 } elseif ($itemSortir->lk_kiper_id) {
@@ -583,6 +594,7 @@ class HomeController extends Controller
                         'panjang_kertas_kiper' => $itemSortir->panjang_kertas_kiper,
                         'berat_kiper' => $itemSortir->berat_kiper,
                         'bahan_kiper' => $itemSortir->bahan_kiper,
+                        'keterangan3' => $itemSortir->bahan_kiper,
                         'foto_kiper' => $itemSortir->foto_kiper,
                     ];
                 } elseif ($itemSortir->lk_1_id) {
@@ -594,6 +606,7 @@ class HomeController extends Controller
                         'panjang_kertas_1' => $itemSortir->panjang_kertas_1,
                         'berat_1' => $itemSortir->berat_1,
                         'bahan_1' => $itemSortir->bahan_1,
+                        'keterangan4' => $itemSortir->keterangan4,
                         'foto_1' => $itemSortir->foto_1,
                     ];
                 } elseif ($itemSortir->lk_celana_player_id) {
@@ -605,6 +618,7 @@ class HomeController extends Controller
                         'panjang_kertas_celana_pelayer' => $itemSortir->panjang_kertas_celana_pelayer,
                         'berat_celana_pelayer' => $itemSortir->berat_celana_pelayer,
                         'bahan_celana_pelayer' => $itemSortir->bahan_celana_pelayer,
+                        'keterangan5' => $itemSortir->keterangan5,
                         'foto_celana_pelayer' => $itemSortir->foto_celana_pelayer,
                     ];
                 } elseif ($itemSortir->lk_celana_pelatih_id) {
@@ -615,6 +629,7 @@ class HomeController extends Controller
                         'no_error_celana_pelatih' => $itemSortir->no_error_celana_pelatih,
                         'panjang_kertas_celana_pelatih' => $itemSortir->panjang_kertas_celana_pelatih,
                         'berat_celana_pelatih' => $itemSortir->berat_celana_pelatih,
+                        'keterangan6' => $itemSortir->keterangan6,
                         'bahan_celana_pelatih' => $itemSortir->bahan_celana_pelatih,
                         'foto_celana_pelatih' => $itemSortir->foto_celana_pelatih,
                     ];
@@ -627,6 +642,7 @@ class HomeController extends Controller
                         'panjang_kertas_celana_kiper' => $itemSortir->panjang_kertas_celana_kiper,
                         'berat_celana_kiper' => $itemSortir->berat_celana_kiper,
                         'bahan_celana_kiper' => $itemSortir->bahan_celana_kiper,
+                        'keterangan7' => $itemSortir->keterangan7,
                         'foto_celana_kiper' => $itemSortir->foto_celana_kiper,
                     ];
                 } elseif ($itemSortir->lk_celana_1_id) {
@@ -638,6 +654,7 @@ class HomeController extends Controller
                         'panjang_kertas_celana_1' => $itemSortir->panjang_kertas_celana_1,
                         'berat_celana_1' => $itemSortir->berat_celana_1,
                         'bahan_celana_1' => $itemSortir->bahan_celana_1,
+                        'keterangan8' => $itemSortir->keterangan8,
                         'foto_celana_1' => $itemSortir->foto_celana_1,
                     ];
                 }
@@ -842,82 +859,82 @@ class HomeController extends Controller
                 }
             }
 
-            if ($itemMimaki) {
-                // mimaki
-                if ($itemMimaki->lk_player_id) {
-                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemMimaki->UserMesinAtexco->name : 'Belum melakukan update data';
-                    $laporanDataMimaki['player'][] = [
-                        'id' => $itemMimaki->id,
-                        'deadline' => $itemMimaki->deadline,
-                        'selesai' => $itemMimaki->selesai,
-                        'file_foto' => $itemMimaki->file_foto,
-                        'penanggung_jawab_id' => $penanggung_jawab_id
-                    ];
-                } elseif ($itemMimaki->lk_pelatih_id) {
-                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemMimaki->UserMesinAtexco->name : 'Belum melakukan update data';
-                    $laporanDataMimaki['pelatih'][] = [
-                        'id' => $itemMimaki->id,
-                        'deadline' => $itemMimaki->deadline,
-                        'selesai' => $itemMimaki->selesai,
-                        'file_foto_pelatih' => $itemMimaki->file_foto_pelatih,
-                        'penanggung_jawab_id' =>  $penanggung_jawab_id
-                    ];
-                } elseif ($itemMimaki->lk_kiper_id) {
-                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemMimaki->UserMesinAtexco->name : 'Belum melakukan update data';
-                    $laporanDataMimaki['kiper'][] = [
-                        'id' => $itemMimaki->id,
-                        'deadline' => $itemMimaki->deadline,
-                        'selesai' => $itemMimaki->selesai,
-                        'file_foto_kiper' => $itemMimaki->file_foto_kiper,
-                        'penanggung_jawab_id' =>  $penanggung_jawab_id
-                    ];
-                } elseif ($itemMimaki->lk_1_id) {
-                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemMimaki->UserMesinAtexco->name : 'Belum melakukan update data';
-                    $laporanDataMimaki['lk_1'][] = [
-                        'id' => $itemMimaki->id,
-                        'deadline' => $itemMimaki->deadline,
-                        'selesai' => $itemMimaki->selesai,
-                        'file_foto_1' => $itemMimaki->file_foto_1,
-                        'penanggung_jawab_id' =>  $penanggung_jawab_id
-                    ];
-                } elseif ($itemMimaki->lk_celana_player_id) {
-                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemMimaki->UserMesinAtexco->name : 'Belum melakukan update data';
-                    $laporanDataMimaki['celana_player'][] = [
-                        'id' => $itemMimaki->id,
-                        'deadline' => $itemMimaki->deadline,
-                        'selesai' => $itemMimaki->selesai,
-                        'file_foto_celana_player' => $itemMimaki->file_foto_celana_player,
-                        'penanggung_jawab_id' =>  $penanggung_jawab_id
-                    ];
-                } elseif ($itemMimaki->lk_celana_pelatih_id) {
-                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemMimaki->UserMesinAtexco->name : 'Belum melakukan update data';
-                    $laporanDataMimaki['celana_pelatih'][] = [
-                        'id' => $itemMimaki->id,
-                        'deadline' => $itemMimaki->deadline,
-                        'selesai' => $itemMimaki->selesai,
-                        'file_foto_celana_pelatih' => $itemMimaki->file_foto_celana_pelatih,
-                        'penanggung_jawab_id' =>  $penanggung_jawab_id
-                    ];
-                } elseif ($itemMimaki->lk_celana_kiper_id) {
-                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemMimaki->UserMesinAtexco->name : 'Belum melakukan update data';
-                    $laporanDataMimaki['celana_kiper'][] = [
-                        'id' => $itemMimaki->id,
-                        'deadline' => $itemMimaki->deadline,
-                        'selesai' => $itemMimaki->selesai,
-                        'file_foto_celana_kiper' => $itemMimaki->file_foto_celana_kiper,
-                        'penanggung_jawab_id' =>  $penanggung_jawab_id
-                    ];
-                } elseif ($itemMimaki->lk_celana_1_id) {
-                    $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemMimaki->UserMesinAtexco->name : 'Belum melakukan update data';
-                    $laporanDataMimaki['celana_1'][] = [
-                        'id' => $itemMimaki->id,
-                        'deadline' => $itemMimaki->deadline,
-                        'selesai' => $itemMimaki->selesai,
-                        'file_foto_celana_1' => $itemMimaki->file_foto_celana_1,
-                        'penanggung_jawab_id' =>  $penanggung_jawab_id
-                    ];
-                }
-            }
+            // if ($itemMimaki) {
+            //     // mimaki
+            //     if ($itemMimaki->lk_player_id) {
+            //         $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemMimaki->UserMesinAtexco->name : 'Belum melakukan update data';
+            //         $laporanDataMimaki['player'][] = [
+            //             'id' => $itemMimaki->id,
+            //             'deadline' => $itemMimaki->deadline,
+            //             'selesai' => $itemMimaki->selesai,
+            //             'file_foto' => $itemMimaki->file_foto,
+            //             'penanggung_jawab_id' => $penanggung_jawab_id
+            //         ];
+            //     } elseif ($itemMimaki->lk_pelatih_id) {
+            //         $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemMimaki->UserMesinAtexco->name : 'Belum melakukan update data';
+            //         $laporanDataMimaki['pelatih'][] = [
+            //             'id' => $itemMimaki->id,
+            //             'deadline' => $itemMimaki->deadline,
+            //             'selesai' => $itemMimaki->selesai,
+            //             'file_foto_pelatih' => $itemMimaki->file_foto_pelatih,
+            //             'penanggung_jawab_id' =>  $penanggung_jawab_id
+            //         ];
+            //     } elseif ($itemMimaki->lk_kiper_id) {
+            //         $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemMimaki->UserMesinAtexco->name : 'Belum melakukan update data';
+            //         $laporanDataMimaki['kiper'][] = [
+            //             'id' => $itemMimaki->id,
+            //             'deadline' => $itemMimaki->deadline,
+            //             'selesai' => $itemMimaki->selesai,
+            //             'file_foto_kiper' => $itemMimaki->file_foto_kiper,
+            //             'penanggung_jawab_id' =>  $penanggung_jawab_id
+            //         ];
+            //     } elseif ($itemMimaki->lk_1_id) {
+            //         $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemMimaki->UserMesinAtexco->name : 'Belum melakukan update data';
+            //         $laporanDataMimaki['lk_1'][] = [
+            //             'id' => $itemMimaki->id,
+            //             'deadline' => $itemMimaki->deadline,
+            //             'selesai' => $itemMimaki->selesai,
+            //             'file_foto_1' => $itemMimaki->file_foto_1,
+            //             'penanggung_jawab_id' =>  $penanggung_jawab_id
+            //         ];
+            //     } elseif ($itemMimaki->lk_celana_player_id) {
+            //         $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemMimaki->UserMesinAtexco->name : 'Belum melakukan update data';
+            //         $laporanDataMimaki['celana_player'][] = [
+            //             'id' => $itemMimaki->id,
+            //             'deadline' => $itemMimaki->deadline,
+            //             'selesai' => $itemMimaki->selesai,
+            //             'file_foto_celana_player' => $itemMimaki->file_foto_celana_player,
+            //             'penanggung_jawab_id' =>  $penanggung_jawab_id
+            //         ];
+            //     } elseif ($itemMimaki->lk_celana_pelatih_id) {
+            //         $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemMimaki->UserMesinAtexco->name : 'Belum melakukan update data';
+            //         $laporanDataMimaki['celana_pelatih'][] = [
+            //             'id' => $itemMimaki->id,
+            //             'deadline' => $itemMimaki->deadline,
+            //             'selesai' => $itemMimaki->selesai,
+            //             'file_foto_celana_pelatih' => $itemMimaki->file_foto_celana_pelatih,
+            //             'penanggung_jawab_id' =>  $penanggung_jawab_id
+            //         ];
+            //     } elseif ($itemMimaki->lk_celana_kiper_id) {
+            //         $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemMimaki->UserMesinAtexco->name : 'Belum melakukan update data';
+            //         $laporanDataMimaki['celana_kiper'][] = [
+            //             'id' => $itemMimaki->id,
+            //             'deadline' => $itemMimaki->deadline,
+            //             'selesai' => $itemMimaki->selesai,
+            //             'file_foto_celana_kiper' => $itemMimaki->file_foto_celana_kiper,
+            //             'penanggung_jawab_id' =>  $penanggung_jawab_id
+            //         ];
+            //     } elseif ($itemMimaki->lk_celana_1_id) {
+            //         $penanggung_jawab_id  = $itemMimaki->UserMesinAtexco ? $itemMimaki->UserMesinAtexco->name : 'Belum melakukan update data';
+            //         $laporanDataMimaki['celana_1'][] = [
+            //             'id' => $itemMimaki->id,
+            //             'deadline' => $itemMimaki->deadline,
+            //             'selesai' => $itemMimaki->selesai,
+            //             'file_foto_celana_1' => $itemMimaki->file_foto_celana_1,
+            //             'penanggung_jawab_id' =>  $penanggung_jawab_id
+            //         ];
+            //     }
+            // }
 
             if ($itemAtexco) {
                 // atexco
@@ -1004,6 +1021,7 @@ class HomeController extends Controller
                         'id' => $item->id,
                         'deadline' => $item->deadline,
                         'selesai' => $item->selesai,
+                        'keterangan1' => $item->keterangan1,
                         'users_layout_id' => $item->UserLayout->name,
                         'panjang_kertas_palayer' => $item->panjang_kertas_palayer,
                         'poly_player' => $item->poly_player,
@@ -1013,6 +1031,7 @@ class HomeController extends Controller
                         'id' => $item->id,
                         'deadline' => $item->deadline,
                         'selesai' => $item->selesai,
+                        'keterangan2' => $item->keterangan2,
                         'users_layout_id' => $item->UserLayout->name,
                         'panjang_kertas_pelatih' => $item->panjang_kertas_pelatih,
                         'poly_pelatih' => $item->poly_pelatih,
@@ -1022,6 +1041,7 @@ class HomeController extends Controller
                         'id' => $item->id,
                         'deadline' => $item->deadline,
                         'selesai' => $item->selesai,
+                        'keterangan3' => $item->keterangan3,
                         'users_layout_id' => $item->UserLayout->name,
                         'panjang_kertas_kiper' => $item->panjang_kertas_kiper,
                         'poly_kiper' => $item->poly_kiper,
@@ -1031,6 +1051,7 @@ class HomeController extends Controller
                         'id' => $item->id,
                         'deadline' => $item->deadline,
                         'selesai' => $item->selesai,
+                        'keterangan4' => $item->keterangan4,
                         'users_layout_id' => $item->UserLayout->name,
                         'panjang_kertas_1' => $item->panjang_kertas_1,
                         'poly_1' => $item->poly_1,
@@ -1040,6 +1061,7 @@ class HomeController extends Controller
                         'id' => $item->id,
                         'deadline' => $item->deadline,
                         'selesai' => $item->selesai,
+                        'keterangan5' => $item->keterangan5,
                         'users_layout_id' => $item->UserLayout->name,
                         'panjang_kertas_celana_pelayer' => $item->panjang_kertas_celana_pelayer,
                         'poly_celana_pelayer' => $item->poly_celana_pelayer,
@@ -1049,6 +1071,7 @@ class HomeController extends Controller
                         'id' => $item->id,
                         'deadline' => $item->deadline,
                         'selesai' => $item->selesai,
+                        'keterangan6' => $item->keterangan6,
                         'users_layout_id' => $item->UserLayout->name,
                         'panjang_kertas_celana_pelatih' => $item->panjang_kertas_celana_pelatih,
                         'poly_celana_pelatih' => $item->poly_celana_pelatih,
@@ -1058,6 +1081,7 @@ class HomeController extends Controller
                         'id' => $item->id,
                         'deadline' => $item->deadline,
                         'selesai' => $item->selesai,
+                        'keterangan7' => $item->keterangan7,
                         'users_layout_id' => $item->UserLayout->name,
                         'panjang_kertas_celana_kiper' => $item->panjang_kertas_celana_kiper,
                         'poly_celana_kiper' => $item->poly_celana_kiper,
@@ -1067,6 +1091,7 @@ class HomeController extends Controller
                         'id' => $item->id,
                         'deadline' => $item->deadline,
                         'selesai' => $item->selesai,
+                        'keterangan8' => $item->keterangan8,
                         'users_layout_id' => $item->UserLayout->name,
                         'panjang_kertas_celana_1' => $item->panjang_kertas_celana_1,
                         'poly_celana_1' => $item->poly_celana_1,
@@ -1075,7 +1100,17 @@ class HomeController extends Controller
             }
         }
 
-        // return response()->json($laporanDataSortir);
+        // return response()->json([
+        //     $laporanData,
+        //     $laporanDataAtexco,
+        //     $laporanDataPressKain,
+        //     $laporanDataLaserCut,
+        //     $laporanDataManualCut,
+        //     $laporanDataSortir,
+        //     $laporanDataJahit,
+        //     $laporanDataFinis,
+        // ]);
+        // return response()->json($laporanDataJahit);
 
         return view('component.Admin.laporan-pengerjaan.details', compact(
             'laporans',
@@ -1086,7 +1121,7 @@ class HomeController extends Controller
             'laporanDataManualCut',
             'laporanDataLaserCut',
             'laporanDataAtexco',
-            'laporanDataMimaki',
+            // 'laporanDataMimaki',
             'laporanDataPressKain'
         ));
     }
@@ -1099,12 +1134,14 @@ class HomeController extends Controller
             $hapus = $request->permission_hapus[$request->id[$i]] == 'on' ? 1 : 0;
             $create = $request->permission_create[$request->id[$i]] == 'on' ? 1 : 0;
             $show = $request->permission_show[$request->id[$i]] == 'on' ? 1 : 0;
+            $nonaktif = $request->non_aktif[$request->id[$i]] == 'on' ? 1 : 0;
             $user = User::findOrFail($request->id[$i]);
             $user->update([
                 'permission_edit' => $edit,
                 'permission_hapus' => $hapus,
                 'permission_create' => $create,
-                'permission_show' => $show
+                'permission_show' => $show,
+                'non_aktif' => $nonaktif
             ]);
         }
 
@@ -1186,5 +1223,59 @@ class HomeController extends Controller
 
 
         return redirect()->back()->with('success', 'Permission telah diperbarui.');
+    }
+
+    public function cetakDataLk($id)
+    {
+        $dataLk = BarangMasukCostumerServices::with(
+            'BarangMasukDisainer',
+            'Users',
+            'UsersOrder',
+            'UsersLk',
+            'Gambar',
+
+            'BarangMasukCostumerServicesLkPlyer',
+            'BarangMasukCostumerServicesLkPlyer.LenganPlayer',
+            'BarangMasukCostumerServicesLkPlyer.KeraPlayer',
+
+            'BarangMasukCostumerServicesLkPelatih',
+            'BarangMasukCostumerServicesLkPelatih.LenganPelatih',
+            'BarangMasukCostumerServicesLkPelatih.KeraPelatih',
+
+            'BarangMasukCostumerServicesLkKiper',
+            'BarangMasukCostumerServicesLkKiper.LenganKiper',
+            'BarangMasukCostumerServicesLkKiper.KeraKiper',
+
+            'BarangMasukCostumerServicesLk1',
+            'BarangMasukCostumerServicesLk1.Lengan1',
+            'BarangMasukCostumerServicesLk1.Kera1',
+
+            'BarangMasukCostumerServicesLkCelanaPlyer',
+            'BarangMasukCostumerServicesLkCelanaPlyer.KeraCelanaPlayer',
+            'BarangMasukCostumerServicesLkCelanaPlyer.CelanaCelanaPlayer',
+
+            'BarangMasukCostumerServicesLkCelanaPelatih',
+            'BarangMasukCostumerServicesLkCelanaPelatih.KeraCelanapelatih',
+            'BarangMasukCostumerServicesLkCelanaPelatih.CelanaCelanapelatih',
+
+            'BarangMasukCostumerServicesLkCelanaKiper',
+            'BarangMasukCostumerServicesLkCelanaKiper.CelanaCealanaKiper',
+            'BarangMasukCostumerServicesLkCelanaKiper.KeraCealanaKiper',
+
+            'BarangMasukCostumerServicesLkCelana1',
+            'BarangMasukCostumerServicesLkCelana1.KeraCealana1',
+            'BarangMasukCostumerServicesLkCelana1.CelanaCelana1',
+        )->findOrFail($id);
+
+        $layout = BarangMasukDatalayout::with('GamarTangkaplayar')->where('barang_masuk_id', $dataLk->BarangMasukDisainer->id)->get();
+
+        view()->share('dataLk', $dataLk->BarangMasukDisainer->nama_tim);
+
+        $pdf = PDF::loadview('component.Mesin.export-data-baju', compact('dataLk', 'layout'));
+        $pdf->setPaper('A4', 'potrait');
+
+        // return $pdf->stream('data-baju.pdf');
+        $namaTimClean = preg_replace('/[^A-Za-z0-9\-]/', '', $dataLk->BarangMasukDisainer->nama_tim);
+        return $pdf->stream($namaTimClean . '.pdf');
     }
 }

@@ -44,13 +44,13 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="basic-default-company">Nama mesin</label>
+                            <label class="col-sm-2 col-form-label" for="basic-default-company">Nama oprator
+                                mesin</label>
                             <div class="col-sm-10">
-                                <select name="jenis_mesin" class="form-control">
-                                    <option selected>-- Silahkan Pilih Mesin --</option>
-                                    <option style="text-transform: uppercase" value="atexco">atexco</option>
-                                    <option style="text-transform: uppercase" value="mimaki">mimaki</option>
-                                </select>
+                                <input type="text" class="form-control" id="basic-default-name"
+                                    value="{{ $disainer->DataMesinCs->first()->User->name ?? '' }}" readonly />
+                                <input type="hidden" class="form-control" name="jenis_mesin" id="basic-default-name"
+                                    value="{{ $disainer->DataMesinCs->first()->User->id ?? '' }}" readonly />
                             </div>
                         </div>
                         <div class="row mb-3">
