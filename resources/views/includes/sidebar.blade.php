@@ -379,6 +379,20 @@ $activeList = $listData ? 'active' : '';
             </a>
         </li>
         <li
+            class="menu-item {{ request()->is('laporan-semua-produksi')|| request()->is('laporan-details/*')  ? 'active' : '' }}">
+            <a href="{{ route('getLaporanSemuaProduksi') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-list-ul"></i>
+                <div data-i18n="Analytics">Laporan Produksi</div>
+            </a>
+        </li>
+        <li
+            class="menu-item {{ request()->is('laporan-jahit')|| request()->is('laporan-details/*')  ? 'active' : '' }}">
+            <a href="{{ route('getLaporanProduksi') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-list-ul"></i>
+                <div data-i18n="Analytics">Laporan Jahit</div>
+            </a>
+        </li>
+        <li
             class="menu-item {{ request()->is('pemabagain-komisi') || request()->is('filtering-pemabagain-komisi*')  ? 'active' : '' }}">
             <a href="{{ route('getPembagianKomisi') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-list-ul"></i>
