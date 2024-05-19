@@ -125,41 +125,49 @@ class AtexcoController extends Controller
             if ($item->lk_player_id) {
                 $formattedData['player'][] = [
                     'id' => $item->id,
+                    'keterangan' => $item->keterangan,
                     'file_foto' => $item->file_foto
                 ];
             } elseif ($item->lk_pelatih_id) {
                 $formattedData['pelatih'][] = [
                     'id' => $item->id,
+                    'keterangan2' => $item->keterangan2,
                     'file_foto_pelatih' => $item->file_foto_pelatih,
                 ];
             } elseif ($item->lk_kiper_id) {
                 $formattedData['kiper'][] = [
                     'id' => $item->id,
+                    'keterangan3' => $item->keterangan3,
                     'file_foto_kiper' => $item->file_foto_kiper
                 ];
             } elseif ($item->lk_1_id) {
                 $formattedData['lk_1'][] = [
                     'id' => $item->id,
+                    'keterangan4' => $item->keterangan4,
                     'file_foto_1' => $item->file_foto_1,
                 ];
             } elseif ($item->lk_celana_player_id) {
                 $formattedData['celana_player'][] = [
                     'id' => $item->id,
+                    'keterangan5' => $item->keterangan5,
                     'file_foto_celana_pelayer' => $item->file_foto_celana_pelayer,
                 ];
             } elseif ($item->lk_celana_pelatih_id) {
                 $formattedData['celana_pelatih'][] = [
                     'id' => $item->id,
+                    'keterangan6' => $item->keterangan6,
                     'file_foto_celana_pelatih' => $item->file_foto_celana_pelatih
                 ];
             } elseif ($item->lk_celana_kiper_id) {
                 $formattedData['celana_kiper'][] = [
                     'id' => $item->id,
+                    'keterangan7' => $item->keterangan7,
                     'file_foto_celana_kiper' => $item->file_foto_celana_kiper
                 ];
             } elseif ($item->lk_celana_1_id) {
                 $formattedData['celana_1'][] = [
                     'id' => $item->id,
+                    'keterangan8' => $item->keterangan8,
                     'file_foto_celana_1' => $item->file_foto_celana_1,
                 ];
             }
@@ -188,10 +196,14 @@ class AtexcoController extends Controller
                 $fileTangkapLayar = $dataMasukPlayer->file_foto;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukPlayer->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
                 'file_foto' => $fileTangkapLayar,
+                'keterangan' => $request->keterangan,
                 'tanda_telah_mengerjakan' => 1
             ]);
         }
@@ -210,9 +222,13 @@ class AtexcoController extends Controller
                 $fileTangkapLayar = $dataMasukPelatih->file_foto_pelatih;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukPelatih->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
+                'keterangan' => $request->keterangan,
                 'file_foto_pelatih' => $fileTangkapLayar,
                 'tanda_telah_mengerjakan' => 1
             ]);
@@ -232,9 +248,13 @@ class AtexcoController extends Controller
                 $fileTangkapLayar = $dataMasukKiper->file_foto_kiper;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukKiper->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
+                'keterangan' => $request->keterangan,
                 'file_foto_kiper' => $fileTangkapLayar,
                 'tanda_telah_mengerjakan' => 1
             ]);
@@ -254,9 +274,13 @@ class AtexcoController extends Controller
                 $fileTangkapLayar = $dataMasuk1->file_foto_1;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasuk1->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
+                'keterangan' => $request->keterangan,
                 'file_foto_1' => $fileTangkapLayar,
                 'tanda_telah_mengerjakan' => 1
             ]);
@@ -276,9 +300,13 @@ class AtexcoController extends Controller
                 $fileTangkapLayar = $dataMasukCelanaPlayer->file_foto_celana_player;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukCelanaPlayer->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
+                'keterangan' => $request->keterangan,
                 'file_foto_celana_player' => $fileTangkapLayar,
                 'tanda_telah_mengerjakan' => 1
             ]);
@@ -298,9 +326,13 @@ class AtexcoController extends Controller
                 $fileTangkapLayar = $dataMasukCelanaPelatih->file_foto_celana_pelatih;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukCelanaPelatih->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
+                'keterangan' => $request->keterangan,
                 'file_foto_celana_pelatih' => $fileTangkapLayar,
                 'tanda_telah_mengerjakan' => 1
             ]);
@@ -320,9 +352,13 @@ class AtexcoController extends Controller
                 $fileTangkapLayar = $dataMasukCelanaKiper->file_foto_celana_kiper;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukCelanaKiper->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
+                'keterangan' => $request->keterangan,
                 'file_foto_celana_kiper' => $fileTangkapLayar,
                 'tanda_telah_mengerjakan' => 1
             ]);
@@ -342,9 +378,13 @@ class AtexcoController extends Controller
                 $fileTangkapLayar = $dataMasukCelana1->file_foto_celana_1;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukCelana1->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
+                'keterangan' => $request->keterangan,
                 'file_foto_celana_1' => $fileTangkapLayar,
                 'tanda_telah_mengerjakan' => 1
             ]);

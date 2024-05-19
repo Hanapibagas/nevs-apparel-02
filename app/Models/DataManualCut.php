@@ -16,6 +16,7 @@ class DataManualCut extends Model
         'lk_player_id',
         'lk_pelatih_id',
         'lk_kiper_id',
+        'kain_id',
         'lk_1_id',
         'lk_celana_player_id',
         'lk_celana_pelatih_id',
@@ -31,8 +32,29 @@ class DataManualCut extends Model
         'file_foto_celana_pelatih',
         'file_foto_celana_kiper',
         'file_foto_celana_1',
+        'kain',
+        'kain_pelatih',
+        'kain_kiper',
+        'kain_1',
+        'kain_celana_player',
+        'kain_celana_pelatih',
+        'kain_celana_kiper',
+        'kain_celana_1',
+        'keterangan',
+        'keterangan2',
+        'keterangan3',
+        'keterangan4',
+        'keterangan5',
+        'keterangan6',
+        'keterangan7',
+        'keterangan8',
         'tanda_telah_mengerjakan',
     ];
+
+    public function Kain()
+    {
+        return $this->belongsTo(BahanKain::class, 'kain_id');
+    }
 
     public function BarangMasukCs()
     {

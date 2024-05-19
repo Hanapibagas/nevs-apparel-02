@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Sortir;
 
 use App\Http\Controllers\Controller;
+use App\Models\BahanCetak;
+use App\Models\BahanKain;
 use App\Models\DataSortir;
 use App\Models\Laporan;
 use Carbon\Carbon;
@@ -10,6 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\BarangMasukCostumerServices;
 use App\Models\BarangMasukDatalayout;
+use App\Models\LaporanCetakSortir;
+use App\Models\LaporanKainSortir;
 use PDF;
 use Illuminate\Support\Facades\Storage;
 
@@ -87,6 +91,9 @@ class SortirController extends Controller
     {
         $dataMasuk = DataSortir::where('no_order_id', $id)->with('BarangMasukCs')->get();
 
+        $bahanKertas = BahanCetak::all();
+        $bahanKain = BahanKain::all();
+
         $formattedData = [];
 
         foreach ($dataMasuk as $item) {
@@ -125,7 +132,7 @@ class SortirController extends Controller
             }
         }
 
-        return view('component.Sortir.cerate-laporan-mesin', compact('dataMasuk', 'formattedData'));
+        return view('component.Sortir.cerate-laporan-mesin', compact('dataMasuk', 'bahanKain', 'bahanKertas', 'formattedData'));
     }
 
     public function putLaporan(Request $request)
@@ -133,7 +140,7 @@ class SortirController extends Controller
         // return response()->json($request->all());
         $user = Auth::user();
         if ($request->player_id) {
-            $dataMasukPlayer = DataSortir::find($request->player_id);
+            $dataMasukPlayer = DataSortir::with('BarangMasukCs')->find($request->player_id);
 
             if ($request->file('foto')) {
                 $fileGambar = $request->file('foto')->store('sortir-player', 'public');
@@ -147,20 +154,39 @@ class SortirController extends Controller
                 $fileGambar = $dataMasukPlayer->foto;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukPlayer->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
                 'no_error' => $request->no_error,
                 'panjang_kertas' => $request->panjang_kertas,
                 'berat' => $request->berat,
                 'bahan' => $request->bahan,
+                'kertas_id' => $request->kertas_id,
+                'cetak_id' => $request->kain_id,
                 'keterangan' => $request->keterangan,
                 'foto' =>  $fileGambar,
                 'tanda_telah_mengerjakan' => 1
             ]);
+
+            LaporanKainSortir::create([
+                'layout_id' => $dataMasukPlayer->id,
+                'kertas_id' => $request->kertas_id,
+                'daerah' => $dataMasukPlayer->BarangMasukCs->kota_produksi,
+                'total_kertas' => $request->panjang_kertas
+            ]);
+
+            LaporanCetakSortir::create([
+                'press_kain_id' => $dataMasukPlayer->id,
+                'kain_id' => $request->kain_id,
+                'daerah' => $dataMasukPlayer->BarangMasukCs->kota_produksi,
+                'total_kain' => $request->berat
+            ]);
         }
         if ($request->pelatih_id) {
-            $dataMasukPelatih = DataSortir::find($request->pelatih_id);
+            $dataMasukPelatih = DataSortir::with('BarangMasukCs')->find($request->pelatih_id);
 
             if ($request->file('foto_pelatih')) {
                 $fileGambar = $request->file('foto_pelatih')->store('sortir-pelatih', 'public');
@@ -174,20 +200,39 @@ class SortirController extends Controller
                 $fileGambar = $dataMasukPelatih->foto_pelatih;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukPelatih->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
                 'no_error_pelatih' => $request->no_error_pelatih,
                 'panjang_kertas_pelatih' => $request->panjang_kertas_pelatih,
                 'berat_pelatih' => $request->berat_pelatih,
                 'bahan_pelatih' => $request->bahan_pelatih,
                 'keterangan2' => $request->keterangan2,
+                'kertas_id' => $request->kertas_id,
+                'cetak_id' => $request->kain_id,
                 'foto_pelatih' =>  $fileGambar,
                 'tanda_telah_mengerjakan' => 1
             ]);
+
+            LaporanKainSortir::create([
+                'layout_id' => $dataMasukPelatih->id,
+                'kertas_id' => $request->kertas_id,
+                'daerah' => $dataMasukPelatih->BarangMasukCs->kota_produksi,
+                'total_kertas' => $request->panjang_kertas
+            ]);
+
+            LaporanCetakSortir::create([
+                'press_kain_id' => $dataMasukPelatih->id,
+                'kain_id' => $request->kain_id,
+                'daerah' => $dataMasukPelatih->BarangMasukCs->kota_produksi,
+                'total_kain' => $request->berat
+            ]);
         }
         if ($request->kiper_id) {
-            $dataMasukKiper = DataSortir::find($request->kiper_id);
+            $dataMasukKiper = DataSortir::with('BarangMasukCs')->find($request->kiper_id);
 
             if ($request->file('foto_kiper')) {
                 $fileGambar = $request->file('foto_kiper')->store('sortir-kiper', 'public');
@@ -201,10 +246,15 @@ class SortirController extends Controller
                 $fileGambar = $dataMasukKiper->foto_kiper;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukKiper->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
                 'no_error_kiper' => $request->no_error_kiper,
+                'kertas_id' => $request->kertas_id,
+                'cetak_id' => $request->kain_id,
                 'panjang_kertas_kiper' => $request->panjang_kertas_kiper,
                 'berat_kiper' => $request->berat_kiper,
                 'bahan_kiper' => $request->bahan_kiper,
@@ -212,9 +262,23 @@ class SortirController extends Controller
                 'foto_kiper' =>  $fileGambar,
                 'tanda_telah_mengerjakan' => 1
             ]);
+
+            LaporanKainSortir::create([
+                'layout_id' => $dataMasukKiper->id,
+                'kertas_id' => $request->kertas_id,
+                'daerah' => $dataMasukKiper->BarangMasukCs->kota_produksi,
+                'total_kertas' => $request->panjang_kertas
+            ]);
+
+            LaporanCetakSortir::create([
+                'press_kain_id' => $dataMasukKiper->id,
+                'kain_id' => $request->kain_id,
+                'daerah' => $dataMasukKiper->BarangMasukCs->kota_produksi,
+                'total_kain' => $request->berat
+            ]);
         }
         if ($request->lk1_id) {
-            $dataMasuk1 = DataSortir::find($request->lk1_id);
+            $dataMasuk1 = DataSortir::with('BarangMasukCs')->find($request->lk1_id);
 
             if ($request->file('foto_1')) {
                 $fileGambar = $request->file('foto_1')->store('sortir-1', 'public');
@@ -228,20 +292,39 @@ class SortirController extends Controller
                 $fileGambar = $dataMasuk1->foto_1;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasuk1->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
                 'no_error_1' => $request->no_error_1,
                 'panjang_kertas_1' => $request->panjang_kertas_1,
                 'berat_1' => $request->berat_1,
+                'kertas_id' => $request->kertas_id,
+                'cetak_id' => $request->kain_id,
                 'bahan_1' => $request->bahan_1,
                 'keterangan4' => $request->keterangan4,
                 'foto_1' =>  $fileGambar,
                 'tanda_telah_mengerjakan' => 1
             ]);
+
+            LaporanKainSortir::create([
+                'layout_id' => $dataMasuk1->id,
+                'kertas_id' => $request->kertas_id,
+                'daerah' => $dataMasuk1->BarangMasukCs->kota_produksi,
+                'total_kertas' => $request->panjang_kertas
+            ]);
+
+            LaporanCetakSortir::create([
+                'press_kain_id' => $dataMasuk1->id,
+                'kain_id' => $request->kain_id,
+                'daerah' => $dataMasuk1->BarangMasukCs->kota_produksi,
+                'total_kain' => $request->berat
+            ]);
         }
         if ($request->celana_player_id) {
-            $dataMasukCelanaPlayer = DataSortir::find($request->celana_player_id);
+            $dataMasukCelanaPlayer = DataSortir::with('BarangMasukCs')->find($request->celana_player_id);
 
             if ($request->file('foto_celana_pelayer')) {
                 $fileGambar = $request->file('foto_celana_pelayer')->store('sortir-celana-player', 'public');
@@ -255,20 +338,39 @@ class SortirController extends Controller
                 $fileGambar = $dataMasukCelanaPlayer->foto_celana_pelayer;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukCelanaPlayer->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
                 'no_error_celana_pelayer' => $request->no_error_celana_pelayer,
                 'panjang_kertas_celana_pelayer' => $request->panjang_kertas_celana_pelayer,
                 'berat_celana_pelayer' => $request->berat_celana_pelayer,
+                'kertas_id' => $request->kertas_id,
+                'cetak_id' => $request->kain_id,
                 'bahan_celana_pelayer' => $request->bahan_celana_pelayer,
                 'keterangan5' => $request->keterangan5,
                 'foto_celana_pelayer' =>  $fileGambar,
                 'tanda_telah_mengerjakan' => 1
             ]);
+
+            LaporanKainSortir::create([
+                'layout_id' => $dataMasukCelanaPlayer->id,
+                'kertas_id' => $request->kertas_id,
+                'daerah' => $dataMasukCelanaPlayer->BarangMasukCs->kota_produksi,
+                'total_kertas' => $request->panjang_kertas
+            ]);
+
+            LaporanCetakSortir::create([
+                'press_kain_id' => $dataMasukCelanaPlayer->id,
+                'kain_id' => $request->kain_id,
+                'daerah' => $dataMasukCelanaPlayer->BarangMasukCs->kota_produksi,
+                'total_kain' => $request->berat
+            ]);
         }
         if ($request->celana_pelatih_id) {
-            $dataMasukCelanaPelatih = DataSortir::find($request->celana_pelatih_id);
+            $dataMasukCelanaPelatih = DataSortir::with('BarangMasukCs')->find($request->celana_pelatih_id);
 
             if ($request->file('foto_celana_pelatih')) {
                 $fileGambar = $request->file('foto_celana_pelatih')->store('sortir-celana-pelatih', 'public');
@@ -282,20 +384,39 @@ class SortirController extends Controller
                 $fileGambar = $dataMasukCelanaPelatih->foto_celana_pelatih;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukCelanaPelatih->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
                 'no_error_celana_pelatih' => $request->no_error_celana_pelatih,
                 'panjang_kertas_celana_pelatih' => $request->panjang_kertas_celana_pelatih,
                 'berat_celana_pelatih' => $request->berat_celana_pelatih,
+                'kertas_id' => $request->kertas_id,
+                'cetak_id' => $request->kain_id,
                 'bahan_celana_pelatih' => $request->bahan_celana_pelatih,
                 'keterangan6' => $request->keterangan6,
                 'foto_celana_pelatih' =>  $fileGambar,
                 'tanda_telah_mengerjakan' => 1
             ]);
+
+            LaporanKainSortir::create([
+                'layout_id' => $dataMasukCelanaPelatih->id,
+                'kertas_id' => $request->kertas_id,
+                'daerah' => $dataMasukCelanaPelatih->BarangMasukCs->kota_produksi,
+                'total_kertas' => $request->panjang_kertas
+            ]);
+
+            LaporanCetakSortir::create([
+                'press_kain_id' => $dataMasukCelanaPelatih->id,
+                'kain_id' => $request->kain_id,
+                'daerah' => $dataMasukCelanaPelatih->BarangMasukCs->kota_produksi,
+                'total_kain' => $request->berat
+            ]);
         }
         if ($request->celana_kiper_id) {
-            $dataMasukCelanaKiper = DataSortir::find($request->celana_kiper_id);
+            $dataMasukCelanaKiper = DataSortir::with('BarangMasukCs')->find($request->celana_kiper_id);
 
             if ($request->file('foto_celana_kiper')) {
                 $fileGambar = $request->file('foto_celana_kiper')->store('sortir-celana-kiper', 'public');
@@ -309,20 +430,39 @@ class SortirController extends Controller
                 $fileGambar = $dataMasukCelanaKiper->foto_celana_kiper;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukCelanaKiper->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
                 'no_error_celana_kiper' => $request->no_error_celana_kiper,
                 'panjang_kertas_celana_kiper' => $request->panjang_kertas_celana_kiper,
+                'kertas_id' => $request->kertas_id,
+                'cetak_id' => $request->kain_id,
                 'berat_celana_kiper' => $request->berat_celana_kiper,
                 'bahan_celana_kiper' => $request->bahan_celana_kiper,
                 'keterangan7' => $request->keterangan7,
                 'foto_celana_kiper' =>  $fileGambar,
                 'tanda_telah_mengerjakan' => 1
             ]);
+
+            LaporanKainSortir::create([
+                'layout_id' => $dataMasukCelanaKiper->id,
+                'kertas_id' => $request->kertas_id,
+                'daerah' => $dataMasukCelanaKiper->BarangMasukCs->kota_produksi,
+                'total_kertas' => $request->panjang_kertas
+            ]);
+
+            LaporanCetakSortir::create([
+                'press_kain_id' => $dataMasukCelanaKiper->id,
+                'kain_id' => $request->kain_id,
+                'daerah' => $dataMasukCelanaKiper->BarangMasukCs->kota_produksi,
+                'total_kain' => $request->berat
+            ]);
         }
         if ($request->celana_1_id) {
-            $dataMasukCelana1 = DataSortir::find($request->celana_1_id);
+            $dataMasukCelana1 = DataSortir::with('BarangMasukCs')->find($request->celana_1_id);
 
             if ($request->file('foto_celana_1')) {
                 $fileGambar = $request->file('foto_celana_1')->store('sortir-celana-1', 'public');
@@ -336,16 +476,35 @@ class SortirController extends Controller
                 $fileGambar = $dataMasukCelana1->foto_celana_1;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukCelana1->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
                 'no_error_celana_1' => $request->no_error_celana_1,
                 'panjang_kertas_celana_1' => $request->panjang_kertas_celana_1,
+                'kertas_id' => $request->kertas_id,
+                'cetak_id' => $request->kain_id,
                 'berat_celana_1' => $request->berat_celana_1,
                 'bahan_celana_1' => $request->bahan_celana_1,
                 'keterangan8' => $request->keterangan8,
                 'foto_celana_1' =>  $fileGambar,
                 'tanda_telah_mengerjakan' => 1
+            ]);
+
+            LaporanKainSortir::create([
+                'layout_id' => $dataMasukCelana1->id,
+                'kertas_id' => $request->kertas_id,
+                'daerah' => $dataMasukCelana1->BarangMasukCs->kota_produksi,
+                'total_kertas' => $request->panjang_kertas
+            ]);
+
+            LaporanCetakSortir::create([
+                'press_kain_id' => $dataMasukCelana1->id,
+                'kain_id' => $request->kain_id,
+                'daerah' => $dataMasukCelana1->BarangMasukCs->kota_produksi,
+                'total_kain' => $request->berat
             ]);
         }
 

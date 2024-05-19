@@ -13,6 +13,7 @@ class BarangMasukDatalayout extends Model
         'users_layout_id',
         'barang_masuk_id',
         'lk_player_id',
+        'kertas_id',
         'lk_pelatih_id',
         'lk_kiper_id',
         'lk_1_id',
@@ -77,6 +78,11 @@ class BarangMasukDatalayout extends Model
     public function GamarTangkaplayar()
     {
         return $this->hasMany(GambarTangkapLayar::class, 'barang_masuk_datalayouts_id');
+    }
+
+    public function Kertas()
+    {
+        return $this->belongsTo(BahanKain::class, 'kertas_id');
     }
 
     public function UserLayout()

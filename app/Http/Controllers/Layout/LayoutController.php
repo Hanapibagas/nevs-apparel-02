@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Layout;
 
 use App\Http\Controllers\Controller;
+use App\Models\BahanCetak;
 use App\Models\BarangMasukCostumerServices;
 use App\Models\BarangMasukDatalayout;
 use App\Models\GambarTangkapLayar;
 use App\Models\Laporan;
+use App\Models\LaporanKainLayout;
 use App\Models\LaporanLkLayout;
 use App\Models\PembagianKomisi;
 use Carbon\Carbon;
@@ -204,6 +206,7 @@ class LayoutController extends Controller
         // return response()->json($id);
         $dataLk = BarangMasukDatalayout::where('barang_masuk_id', $id)->with('BarangMasukCsLK')->get();
 
+        $bahanKertas = BahanCetak::all();
         $formattedData = [];
 
         foreach ($dataLk as $item) {
@@ -276,7 +279,7 @@ class LayoutController extends Controller
 
         // return response()->json($formattedData);
 
-        return view('component.Layout.layout-lk-pegawai.cerate-laporan-lk', compact('dataLk', 'formattedData'));
+        return view('component.Layout.layout-lk-pegawai.cerate-laporan-lk', compact('dataLk', 'formattedData', 'bahanKertas'));
     }
 
     public function putLaporanLs(Request $request)
@@ -350,7 +353,7 @@ class LayoutController extends Controller
                 'file_tangkap_layar_celana_1' => $fileTangkapLayarCelana1,
             ]);
 
-            $dataUpdate = BarangMasukDatalayout::findOrFail($request->player_id);
+            $dataUpdate = BarangMasukDatalayout::with('BarangMasukCsLK')->findOrFail($request->player_id);
 
             $resulTotalBaju = $dataPlayer->total_baju_player;
             $resulSatatusBaju = $dataPlayer->status;
@@ -370,15 +373,27 @@ class LayoutController extends Controller
                     $filebajuplayer = $request->file('file_corel_layout')->store('file-dari-layout-player', 'public');
                 }
             }
+
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataUpdate->update([
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
 
                 'panjang_kertas_palayer' => $request->panjang_kertas_palayer,
                 'poly_player' => $request->poly_player,
                 'keterangan1' => $request->keterangan1,
+                'kertas_id' => $request->kertas_id,
 
                 'file_corel_layout' => $filebajuplayer ?? $dataUpdate->file_corel_layout,
                 'tanda_telah_mengerjakan' => 1,
+            ]);
+
+            $d = LaporanKainLayout::create([
+                'layout_id' => $dataUpdate->id,
+                'kertas_id' => $request->kertas_id,
+                'daerah' => $dataUpdate->BarangMasukCsLK->kota_produksi,
+                'total_kertas' => $request->panjang_kertas_palayer,
             ]);
         } else {
             $resulTotalBaju = 0;
@@ -411,15 +426,25 @@ class LayoutController extends Controller
                 }
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataUpdatePelatih->update([
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
 
                 'panjang_kertas_pelatih' => $request->panjang_kertas_pelatih,
                 'poly_pelatih' => $request->poly_pelatih,
                 'keterangan2' => $request->keterangan2,
+                'kertas_id' => $request->kertas_id,
 
                 'file_corel_layout2' => $filebajuplayer ?? $dataUpdatePelatih->file_corel_layout2,
                 'tanda_telah_mengerjakan' => 1,
+            ]);
+            LaporanKainLayout::create([
+                'layout_id' => $dataUpdatePelatih->id,
+                'kertas_id' => $request->kertas_id,
+                'daerah' => $dataUpdatePelatih->BarangMasukCsLK->kota_produksi,
+                'total_kertas' => $request->panjang_kertas_pelatih,
             ]);
         } else {
             $resulTotalBajuPlatih = 0;
@@ -452,15 +477,25 @@ class LayoutController extends Controller
                 }
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataUpdateKiper->update([
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
 
                 'panjang_kertas_kiper' => $request->panjang_kertas_kiper,
                 'poly_kiper' => $request->poly_kiper,
                 'keterangan3' => $request->keterangan3,
+                'kertas_id' => $request->kertas_id,
 
                 'file_corel_layout3' => $filebajuplayer ?? $dataUpdateKiper->file_corel_layout3,
                 'tanda_telah_mengerjakan' => 1,
+            ]);
+            LaporanKainLayout::create([
+                'layout_id' => $dataUpdateKiper->id,
+                'kertas_id' => $request->kertas_id,
+                'daerah' => $dataUpdateKiper->BarangMasukCsLK->kota_produksi,
+                'total_kertas' => $request->panjang_kertas_kiper,
             ]);
         } else {
             $resulTotalBajuKiper = 0;
@@ -493,15 +528,26 @@ class LayoutController extends Controller
                     $filebajuplayer = $request->file('file_corel_layout4')->store('file-dari-layout-1', 'public');
                 }
             }
+
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataUpdate1->update([
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
 
                 'panjang_kertas_1' => $request->panjang_kertas_1,
                 'poly_1' => $request->poly_1,
                 'keterangan4' => $request->keterangan4,
+                'kertas_id' => $request->kertas_id,
 
                 'file_corel_layout4' => $filebajuplayer ?? $dataUpdate1->file_corel_layout4,
                 'tanda_telah_mengerjakan' => 1,
+            ]);
+            LaporanKainLayout::create([
+                'layout_id' => $dataUpdate1->id,
+                'kertas_id' => $request->kertas_id,
+                'daerah' => $dataUpdate1->BarangMasukCsLK->kota_produksi,
+                'total_kertas' => $request->panjang_kertas_1,
             ]);
         } else {
             $resulTotalBaju1 = 0;
@@ -534,15 +580,25 @@ class LayoutController extends Controller
                 }
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataUpdateCelanaPlayer->update([
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
 
                 'panjang_kertas_celana_pelayer' => $request->panjang_kertas_celana_pelayer,
                 'poly_celana_pelayer' => $request->poly_celana_pelayer,
                 'keterangan5' => $request->keterangan5,
+                'kertas_id' => $request->kertas_id,
 
                 'file_corel_layout5' => $filebajuplayer ?? $dataUpdateCelanaPlayer->file_corel_layout5,
                 'tanda_telah_mengerjakan' => 1,
+            ]);
+            LaporanKainLayout::create([
+                'layout_id' => $dataUpdateCelanaPlayer->id,
+                'kertas_id' => $request->kertas_id,
+                'daerah' => $dataUpdateCelanaPlayer->BarangMasukCsLK->kota_produksi,
+                'total_kertas' => $request->panjang_kertas_celana_pelayer,
             ]);
         } else {
             $resulTotalCelanaPlayer = 0;
@@ -574,15 +630,26 @@ class LayoutController extends Controller
                 }
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataUpdateCelanaPelatih->update([
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
 
                 'panjang_kertas_celana_pelatih' => $request->panjang_kertas_celana_pelatih,
                 'poly_celana_pelatih' => $request->poly_celana_pelatih,
                 'keterangan6' => $request->keterangan6,
+                'kertas_id' => $request->kertas_id,
 
                 'file_corel_layout6' => $filebajuplayer ?? $dataUpdateCelanaPelatih->file_corel_layout6,
                 'tanda_telah_mengerjakan' => 1,
+            ]);
+
+            LaporanKainLayout::create([
+                'layout_id' => $dataUpdateCelanaPelatih->id,
+                'kertas_id' => $request->kertas_id,
+                'daerah' => $dataUpdateCelanaPelatih->BarangMasukCsLK->kota_produksi,
+                'total_kertas' => $request->panjang_kertas_celana_pelatih,
             ]);
         } else {
             $resulTotalCelanaPelatih = 0;
@@ -614,15 +681,26 @@ class LayoutController extends Controller
                 }
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataUpdateCelanaKiper->update([
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
 
                 'panjang_kertas_celana_kiper' => $request->panjang_kertas_celana_kiper,
                 'poly_celana_kiper' => $request->poly_celana_kiper,
                 'keterangan7' => $request->keterangan7,
+                'kertas_id' => $request->kertas_id,
 
                 'file_corel_layout7' => $filebajuplayer ?? $dataUpdateCelanaKiper->file_corel_layout7,
                 'tanda_telah_mengerjakan' => 1,
+            ]);
+
+            LaporanKainLayout::create([
+                'layout_id' => $dataUpdateCelanaKiper->id,
+                'kertas_id' => $request->kertas_id,
+                'daerah' => $dataUpdateCelanaKiper->BarangMasukCsLK->kota_produksi,
+                'total_kertas' => $request->panjang_kertas_celana_kiper,
             ]);
         } else {
             $resulTotalCelanaKiper = 0;
@@ -656,15 +734,26 @@ class LayoutController extends Controller
                 }
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataUpdateCelana1->update([
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
 
                 'panjang_kertas_celana_1' => $request->panjang_kertas_celana_1,
                 'poly_celana_1' => $request->poly_celana_1,
                 'keterangan8' => $request->keterangan8,
+                'kertas_id' => $request->kertas_id,
 
                 'file_corel_layout8' => $filebajuplayer ?? $dataUpdateCelana1->file_corel_layout8,
                 'tanda_telah_mengerjakan' => 1,
+            ]);
+
+            LaporanKainLayout::create([
+                'layout_id' => $dataUpdateCelana1->id,
+                'kertas_id' => $request->kertas_id,
+                'daerah' => $dataUpdateCelana1->BarangMasukCsLK->kota_produksi,
+                'total_kertas' => $request->panjang_kertas_celana_1,
             ]);
         } else {
             $resulTotalCelana1 = 0;

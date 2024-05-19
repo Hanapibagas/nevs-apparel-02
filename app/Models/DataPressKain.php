@@ -19,6 +19,7 @@ class DataPressKain extends Model
         'lk_pelatih_id',
         'lk_kiper_id',
         'lk_1_id',
+        'kain_id',
         'lk_celana_player_id',
         'lk_celana_pelatih_id',
         'lk_celana_kiper_id',
@@ -59,8 +60,22 @@ class DataPressKain extends Model
         'berat_celana_1',
         'gambar_celana_1',
 
+        'keterangan',
+        'keterangan2',
+        'keterangan3',
+        'keterangan4',
+        'keterangan5',
+        'keterangan6',
+        'keterangan7',
+        'keterangan8',
+
         'tanda_telah_mengerjakan',
     ];
+
+    public function Kain()
+    {
+        return $this->belongsTo(BahanKain::class, 'kain_id');
+    }
 
     public function BarangMasukCs()
     {

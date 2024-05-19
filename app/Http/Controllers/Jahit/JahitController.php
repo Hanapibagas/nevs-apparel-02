@@ -401,9 +401,12 @@ class JahitController extends Controller
                 $fileGambar = $dataMasukPlayer->foto;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukPlayer->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
                 'foto' => $fileGambar,
                 'keterangan' => $request->keterangan,
                 'tanda_telah_mengerjakan' => 1
@@ -424,9 +427,12 @@ class JahitController extends Controller
                 $fileGambar = $dataMasukPelatih->foto_pelatih;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukPelatih->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
                 'foto_pelatih' => $fileGambar,
                 'keterangan2' => $request->keterangan2,
                 'tanda_telah_mengerjakan' => 1
@@ -447,9 +453,12 @@ class JahitController extends Controller
                 $fileGambar = $dataMasukKiper->foto_kiper;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukKiper->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
                 'foto_kiper' => $fileGambar,
                 'keterangan3' => $request->keterangan3,
                 'tanda_telah_mengerjakan' => 1
@@ -470,9 +479,12 @@ class JahitController extends Controller
                 $fileGambar = $dataMasuk1->foto_1;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasuk1->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
                 'foto_1' => $fileGambar,
                 'keterangan4' => $request->keterangan4,
                 'tanda_telah_mengerjakan' => 1
@@ -493,9 +505,12 @@ class JahitController extends Controller
                 $fileGambar = $dataMasukCelanaPlayer->foto_celana_pelayer;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukCelanaPlayer->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
                 'foto_celana_pelayer' => $fileGambar,
                 'keterangan5' => $request->keterangan5,
                 'tanda_telah_mengerjakan' => 1
@@ -516,9 +531,12 @@ class JahitController extends Controller
                 $fileGambar = $dataMasukCelanaPelatih->foto_celana_pelatih;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukCelanaPelatih->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
                 'foto_celana_pelatih' => $fileGambar,
                 'keterangan6' => $request->keterangan6,
                 'tanda_telah_mengerjakan' => 1
@@ -539,9 +557,12 @@ class JahitController extends Controller
                 $fileGambar = $dataMasukCelanaKiper->foto_celana_kiper;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukCelanaKiper->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
                 'foto_celana_kiper' => $fileGambar,
                 'keterangan7' => $request->keterangan7,
                 'tanda_telah_mengerjakan' => 1
@@ -562,9 +583,12 @@ class JahitController extends Controller
                 $fileGambar = $dataMasukCelana1->foto_celana_1;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukCelana1->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
                 'foto_celana_1' => $fileGambar,
                 'keterangan8' => $request->keterangan8,
                 'tanda_telah_mengerjakan' => 1

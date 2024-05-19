@@ -16,6 +16,8 @@ $isActive = request()->routeIs('getPacking')
 ;
 $listData = request()->routeIs('getIndexListDataJenisKerah') ||
 $listData = request()->routeIs('getIndexListDataJenisLengan') ||
+$listData = request()->routeIs('getIndexListDataBahanKain') ||
+$listData = request()->routeIs('getIndexListDataBahanKertas') ||
 $listData = request()->routeIs('getIndexListDataJenisCelana');
 
 $activeClass = $isActive ? 'open' : '';
@@ -48,14 +50,28 @@ $activeList = $listData ? 'active' : '';
         <li class="menu-item {{ request()->is('laporan')|| request()->is('laporan-details/*')  ? 'active' : '' }}">
             <a href="{{ route('getIndexLaporan') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-list-ul"></i>
-                <div data-i18n="Analytics">Laporan pengerjaan</div>
+                <div data-i18n="Analytics">Laporan Pengerjaan</div>
+            </a>
+        </li>
+        <li
+            class="menu-item {{ request()->is('laporan-semua-produksi')|| request()->is('laporan-details/*')  ? 'active' : '' }}">
+            <a href="{{ route('getLaporanSemuaProduksi') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-list-ul"></i>
+                <div data-i18n="Analytics">Laporan Produksi</div>
+            </a>
+        </li>
+        <li
+            class="menu-item {{ request()->is('laporan-jahit')|| request()->is('laporan-details/*')  ? 'active' : '' }}">
+            <a href="{{ route('getLaporanProduksi') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-list-ul"></i>
+                <div data-i18n="Analytics">Laporan Jahit</div>
             </a>
         </li>
         <li
             class="menu-item {{ request()->is('pemabagain-komisi') || request()->is('filtering-pemabagain-komisi*')  ? 'active' : '' }}">
             <a href="{{ route('getPembagianKomisi') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-list-ul"></i>
-                <div data-i18n="Analytics">Laporan pembagian komisi</div>
+                <div data-i18n="Analytics">Laporan Pembagian Komisi</div>
             </a>
         </li>
         <li class="menu-item {{ $activeClass }} {{ $active }}">
@@ -140,6 +156,16 @@ $activeList = $listData ? 'active' : '';
                 <li class="menu-item {{ request()->is('list-data-jenis-lengan') ? 'active' : '' }}">
                     <a href="{{ route('getIndexListDataJenisLengan') }}" class="menu-link">
                         <div data-i18n="Notifications">Produksi</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->is('list-data-bahan-kain') ? 'active' : '' }}">
+                    <a href="{{ route('getIndexListDataBahanKain') }}" class="menu-link">
+                        <div data-i18n="Notifications">Jenis Bahan Kain</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->is('list-data-bahan-kertas') ? 'active' : '' }}">
+                    <a href="{{ route('getIndexListDataBahanKertas') }}" class="menu-link">
+                        <div data-i18n="Notifications">Jenis Bahan Cetak</div>
                     </a>
                 </li>
                 {{-- <li class="menu-item {{ request()->is('list-data-jenis-celana') ? 'active' : '' }}">

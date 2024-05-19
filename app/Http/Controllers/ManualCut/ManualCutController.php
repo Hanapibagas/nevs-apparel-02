@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\ManualCut;
 
 use App\Http\Controllers\Controller;
+use App\Models\BahanKain;
 use App\Models\BarangMasukCostumerServices;
 use App\Models\BarangMasukDatalayout;
 use App\Models\DataManualCut;
 use App\Models\Laporan;
+use App\Models\LaporanCetakCutPolos;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -103,6 +105,7 @@ class ManualCutController extends Controller
     {
         $dataMasuk = DataManualCut::where('no_order_id', $id)->with('BarangMasukLaserCut')->get();
 
+        $bahanKain = BahanKain::all();
         $formattedData = [];
 
         foreach ($dataMasuk as $item) {
@@ -141,7 +144,7 @@ class ManualCutController extends Controller
             }
         }
 
-        return view('component.Manual-Cut.cerate-laporan-mesin', compact('dataMasuk', 'formattedData'));
+        return view('component.Manual-Cut.cerate-laporan-mesin', compact('dataMasuk', 'bahanKain', 'formattedData'));
     }
 
     public function putLaporan(Request $request)
@@ -149,7 +152,7 @@ class ManualCutController extends Controller
         $user = Auth::user();
 
         if ($request->player_id) {
-            $dataMasukPlayer = DataManualCut::findOrFail($request->player_id);
+            $dataMasukPlayer = DataManualCut::with('BarangMasukCs')->findOrFail($request->player_id);
 
             if ($request->file('file_foto')) {
                 $fileGambar = $request->file('file_foto')->store('laser-cut-player', 'public');
@@ -163,15 +166,28 @@ class ManualCutController extends Controller
                 $fileGambar = $dataMasukPlayer->file_foto;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukPlayer->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
+                'keterangan' => $request->keterangan,
+                'kain_id' => $request->kain_id,
+                'kain' => $request->kain,
                 'file_foto' => $fileGambar,
                 'tanda_telah_mengerjakan' => 1
             ]);
+
+            LaporanCetakCutPolos::create([
+                'press_kain_id' => $dataMasukPlayer->id,
+                'kain_id' => $request->kain_id,
+                'daerah' => $dataMasukPlayer->BarangMasukCs->kota_produksi,
+                'total_kain' => $request->kain
+            ]);
         }
         if ($request->pelatih_id) {
-            $dataMasukPelatih = DataManualCut::findOrFail($request->pelatih_id);
+            $dataMasukPelatih = DataManualCut::with('BarangMasukCs')->findOrFail($request->pelatih_id);
 
             if ($request->file('file_foto_pelatih')) {
                 $fileGambar = $request->file('file_foto_pelatih')->store('laser-cut-pelatih', 'public');
@@ -185,15 +201,28 @@ class ManualCutController extends Controller
                 $fileGambar = $dataMasukPelatih->file_foto_pelatih;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukPelatih->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'kain_id' => $request->kain_id,
+                'kain_pelatih' => $request->kain_pelatih,
+                'selesai' => $selesaiTime,
+                'keterangan2' => $request->keterangan2,
                 'file_foto_pelatih' => $fileGambar,
                 'tanda_telah_mengerjakan' => 1
             ]);
+
+            LaporanCetakCutPolos::create([
+                'press_kain_id' => $dataMasukPlayer->id,
+                'kain_id' => $request->kain_id,
+                'daerah' => $dataMasukPlayer->BarangMasukCs->kota_produksi,
+                'total_kain' => $request->kain
+            ]);
         }
         if ($request->kiper_id) {
-            $dataMasukKiper = DataManualCut::findOrFail($request->kiper_id);
+            $dataMasukKiper = DataManualCut::with('BarangMasukCs')->findOrFail($request->kiper_id);
 
             if ($request->file('file_foto_kiper')) {
                 $fileGambar = $request->file('file_foto_kiper')->store('laser-cut-kiper', 'public');
@@ -207,15 +236,28 @@ class ManualCutController extends Controller
                 $fileGambar = $dataMasukKiper->file_foto_kiper;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukKiper->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'keterangan3' => $request->keterangan3,
+                'kain_id' => $request->kain_id,
+                'kain_kiper' => $request->kain_kiper,
+                'selesai' => $selesaiTime,
                 'file_foto_kiper' => $fileGambar,
                 'tanda_telah_mengerjakan' => 1
             ]);
+
+            LaporanCetakCutPolos::create([
+                'press_kain_id' => $dataMasukPelatih->id,
+                'kain_id' => $request->kain_id,
+                'daerah' => $dataMasukPelatih->BarangMasukCs->kota_produksi,
+                'total_kain' => $request->kain_kiper
+            ]);
         }
         if ($request->lk1_id) {
-            $dataMasuk1 = DataManualCut::findOrFail($request->lk1_id);
+            $dataMasuk1 = DataManualCut::with('BarangMasukCs')->findOrFail($request->lk1_id);
 
             if ($request->file('file_foto_1')) {
                 $fileGambar = $request->file('file_foto_1')->store('laser-cut-1', 'public');
@@ -229,15 +271,28 @@ class ManualCutController extends Controller
                 $fileGambar = $dataMasuk1->file_foto_1;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasuk1->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
+                'keterangan4' => $request->keterangan4,
+                'kain_1' => $request->kain_1,
+                'kain_id' => $request->kain_id,
                 'file_foto_1' => $fileGambar,
                 'tanda_telah_mengerjakan' => 1
             ]);
+
+            LaporanCetakCutPolos::create([
+                'press_kain_id' => $dataMasuk1->id,
+                'kain_id' => $request->kain_id,
+                'daerah' => $dataMasuk1->BarangMasukCs->kota_produksi,
+                'total_kain' => $request->kain_1
+            ]);
         }
         if ($request->celana_player_id) {
-            $dataMasukCelanaPlayer = DataManualCut::findOrFail($request->celana_player_id);
+            $dataMasukCelanaPlayer = DataManualCut::with('BarangMasukCs')->findOrFail($request->celana_player_id);
 
             if ($request->file('file_foto_celana_player')) {
                 $fileGambar = $request->file('file_foto_celana_player')->store('laser-cut-celana-player', 'public');
@@ -251,15 +306,28 @@ class ManualCutController extends Controller
                 $fileGambar = $dataMasukCelanaPlayer->file_foto_celana_player;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukCelanaPlayer->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
+                'keterangan5' => $request->keterangan5,
+                'kain_celana_player' => $request->kain_celana_player,
+                'kain_id' => $request->kain_id,
                 'file_foto_celana_player' => $fileGambar,
                 'tanda_telah_mengerjakan' => 1
             ]);
+
+            LaporanCetakCutPolos::create([
+                'press_kain_id' => $dataMasukCelanaPlayer->id,
+                'kain_id' => $request->kain_id,
+                'daerah' => $dataMasukCelanaPlayer->BarangMasukCs->kota_produksi,
+                'total_kain' => $request->kain_celana_player
+            ]);
         }
         if ($request->celana_pelatih_id) {
-            $dataMasukCelanaPelatih = DataManualCut::findOrFail($request->celana_pelatih_id);
+            $dataMasukCelanaPelatih = DataManualCut::with('BarangMasukCs')->findOrFail($request->celana_pelatih_id);
 
             if ($request->file('file_foto_celana_pelatih')) {
                 $fileGambar = $request->file('file_foto_celana_pelatih')->store('laser-cut-celana-pelatih', 'public');
@@ -273,15 +341,28 @@ class ManualCutController extends Controller
                 $fileGambar = $dataMasukCelanaPelatih->file_foto_celana_pelatih;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukCelanaPelatih->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
                 'file_foto_celana_pelatih' => $fileGambar,
+                'kain_celana_pelatih' => $request->kain_celana_pelatih,
+                'keterangan6' => $request->keterangan6,
+                'kain_id' => $request->kain_id,
                 'tanda_telah_mengerjakan' => 1
+            ]);
+
+            LaporanCetakCutPolos::create([
+                'press_kain_id' => $dataMasukCelanaPelatih->id,
+                'kain_id' => $request->kain_id,
+                'daerah' => $dataMasukCelanaPelatih->BarangMasukCs->kota_produksi,
+                'total_kain' => $request->kain_celana_pelatih
             ]);
         }
         if ($request->celana_kiper_id) {
-            $dataMasukCelanaKiper = DataManualCut::findOrFail($request->celana_kiper_id);
+            $dataMasukCelanaKiper = DataManualCut::with('BarangMasukCs')->findOrFail($request->celana_kiper_id);
 
             if ($request->file('file_foto_celana_kiper')) {
                 $fileGambar = $request->file('file_foto_celana_kiper')->store('laser-cut-celana-kiper', 'public');
@@ -295,15 +376,28 @@ class ManualCutController extends Controller
                 $fileGambar = $dataMasukCelanaKiper->file_foto_celana_kiper;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukCelanaKiper->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
                 'file_foto_celana_kiper' => $fileGambar,
+                'kain_celana_kiper' => $request->kain_celana_kiper,
+                'kain_id' => $request->kain_id,
+                'keterangan7' => $request->keterangan7,
                 'tanda_telah_mengerjakan' => 1
+            ]);
+
+            LaporanCetakCutPolos::create([
+                'press_kain_id' => $dataMasukCelanaKiper->id,
+                'kain_id' => $request->kain_id,
+                'daerah' => $dataMasukCelanaKiper->BarangMasukCs->kota_produksi,
+                'total_kain' => $request->kain_celana_kiper
             ]);
         }
         if ($request->celana_1_id) {
-            $dataMasukCelana1 = DataManualCut::findOrFail($request->celana_1_id);
+            $dataMasukCelana1 = DataManualCut::with('BarangMasukCs')->findOrFail($request->celana_1_id);
 
             if ($request->file('file_foto_celana_1')) {
                 $fileGambar = $request->file('file_foto_celana_1')->store('laser-cut-celana-1', 'public');
@@ -317,11 +411,24 @@ class ManualCutController extends Controller
                 $fileGambar = $dataMasukCelana1->file_foto_celana_1;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukCelana1->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'keterangan8' => $request->keterangan8,
+                'kain_celana_1' => $request->kain_celana_1,
+                'kain_id' => $request->kain_id,
+                'selesai' => $selesaiTime,
                 'file_foto_celana_1' => $fileGambar,
                 'tanda_telah_mengerjakan' => 1
+            ]);
+
+            LaporanCetakCutPolos::create([
+                'press_kain_id' => $dataMasukCelana1->id,
+                'kain_id' => $request->kain_id,
+                'daerah' => $dataMasukCelana1->BarangMasukCs->kota_produksi,
+                'total_kain' => $request->kain_celana_1
             ]);
         }
         // return response()->json($dataMasukPlayer);

@@ -41,6 +41,7 @@
                                 <th>Deadline</th>
                                 <th>Selesai</th>
                                 <th>Nama layout</th>
+                                <th>Jenis Bahan Cetak</th>
                                 <th>Panjang kertas</th>
                                 <th>Panjang poly/DTF</th>
                                 <th>Keterangan</th>
@@ -66,6 +67,9 @@
                                     {{ strtoupper($laporanData['player'][0]['users_layout_id']) }}
                                 </td>
                                 <td>
+                                    {{ strtoupper($laporanData['player'][0]['kertas_id']) }}
+                                </td>
+                                <td>
                                     @if($laporanData['player'][0]['panjang_kertas_palayer'])
                                     {{ $laporanData['player'][0]['panjang_kertas_palayer'] }} Meter
                                     @else
@@ -83,7 +87,7 @@
                                     @if($laporanData['player'][0]['keterangan1'])
                                     {{ $laporanData['player'][0]['keterangan1'] }}
                                     @else
-                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    <p>TIDAK MEMILIKI KETERANGAN</p>
                                     @endif
                                 </td>
                             </tr>
@@ -107,6 +111,9 @@
                                     {{ strtoupper($laporanData['pelatih'][0]['users_layout_id']) }}
                                 </td>
                                 <td>
+                                    {{ strtoupper($laporanData['player'][0]['kertas_id']) }}
+                                </td>
+                                <td>
                                     @if($laporanData['pelatih'][0]['panjang_kertas_pelatih'])
                                     {{ $laporanData['pelatih'][0]['panjang_kertas_pelatih'] }} Meter
                                     @else
@@ -124,7 +131,7 @@
                                     @if($laporanData['pelatih'][0]['keterangan2'])
                                     {{ $laporanData['pelatih'][0]['keterangan2'] }}
                                     @else
-                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    <p>TIDAK MEMILIKI KETERANGAN</p>
                                     @endif
                                 </td>
                             </tr>
@@ -148,6 +155,9 @@
                                     {{ strtoupper($laporanData['kiper'][0]['users_layout_id']) }}
                                 </td>
                                 <td>
+                                    {{ strtoupper($laporanData['player'][0]['kertas_id']) }}
+                                </td>
+                                <td>
                                     @if($laporanData['kiper'][0]['panjang_kertas_kiper'])
                                     {{ $laporanData['kiper'][0]['panjang_kertas_kiper'] }} Meter
                                     @else
@@ -165,7 +175,7 @@
                                     @if($laporanData['kiper'][0]['keterangan3'])
                                     {{ $laporanData['kiper'][0]['keterangan3'] }}
                                     @else
-                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    <p>TIDAK MEMILIKI KETERANGAN</p>
                                     @endif
                                 </td>
                             </tr>
@@ -189,6 +199,9 @@
                                     {{ strtoupper($laporanData['lk_1'][0]['users_layout_id']) }}
                                 </td>
                                 <td>
+                                    {{ strtoupper($laporanData['player'][0]['kertas_id']) }}
+                                </td>
+                                <td>
                                     @if($laporanData['lk_1'][0]['panjang_kertas_1'])
                                     {{ $laporanData['lk_1'][0]['panjang_kertas_1'] }} Meter
                                     @else
@@ -206,7 +219,7 @@
                                     @if($laporanData['lk_1'][0]['keterangan4'])
                                     {{ $laporanData['lk_1'][0]['keterangan4'] }}
                                     @else
-                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    <p>TIDAK MEMILIKI KETERANGAN</p>
                                     @endif
                                 </td>
                             </tr>
@@ -231,6 +244,9 @@
                                     {{ strtoupper($laporanData['celana_player'][0]['users_layout_id']) }}
                                 </td>
                                 <td>
+                                    {{ strtoupper($laporanData['player'][0]['kertas_id']) }}
+                                </td>
+                                <td>
                                     @if($laporanData['celana_player'][0]['panjang_kertas_celana_pelayer'])
                                     {{ $laporanData['celana_player'][0]['panjang_kertas_celana_pelayer'] }} Meter
                                     @else
@@ -248,7 +264,7 @@
                                     @if($laporanData['celana_player'][0]['keterangan5'])
                                     {{ $laporanData['celana_player'][0]['keterangan5'] }}
                                     @else
-                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    <p>TIDAK MEMILIKI KETERANGAN</p>
                                     @endif
                                 </td>
                             </tr>
@@ -273,6 +289,9 @@
                                     {{ strtoupper($laporanData['celana_pelatih'][0]['users_layout_id']) }}
                                 </td>
                                 <td>
+                                    {{ strtoupper($laporanData['player'][0]['kertas_id']) }}
+                                </td>
+                                <td>
                                     @if($laporanData['celana_pelatih'][0]['panjang_kertas_celana_pelatih'])
                                     {{ $laporanData['celana_pelatih'][0]['panjang_kertas_celana_pelatih'] }} Meter
                                     @else
@@ -290,7 +309,7 @@
                                     @if($laporanData['celana_pelatih'][0]['keterangan6'])
                                     {{ $laporanData['celana_pelatih'][0]['keterangan6'] }}
                                     @else
-                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    <p>TIDAK MEMILIKI KETERANGAN</p>
                                     @endif
                                 </td>
                             </tr>
@@ -315,6 +334,9 @@
                                     {{ strtoupper($laporanData['celana_kiper'][0]['users_layout_id']) }}
                                 </td>
                                 <td>
+                                    {{ strtoupper($laporanData['player'][0]['kertas_id']) }}
+                                </td>
+                                <td>
                                     @if($laporanData['celana_kiper'][0]['panjang_kertas_celana_kiper'])
                                     {{ $laporanData['celana_kiper'][0]['panjang_kertas_celana_kiper'] }} Meter
                                     @else
@@ -332,7 +354,7 @@
                                     @if($laporanData['celana_kiper'][0]['keterangan7'])
                                     {{ $laporanData['celana_kiper'][0]['keterangan7'] }}
                                     @else
-                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    <p>TIDAK MEMILIKI KETERANGAN</p>
                                     @endif
                                 </td>
                             </tr>
@@ -356,6 +378,9 @@
                                     {{ strtoupper($laporanData['celana_1'][0]['users_layout_id']) }}
                                 </td>
                                 <td>
+                                    {{ strtoupper($laporanData['player'][0]['kertas_id']) }}
+                                </td>
+                                <td>
                                     @if($laporanData['celana_1'][0]['panjang_kertas_celana_1'])
                                     {{ $laporanData['celana_1'][0]['panjang_kertas_celana_1'] }} Meter
                                     @else
@@ -373,7 +398,7 @@
                                     @if($laporanData['celana_1'][0]['keterangan8'])
                                     {{ $laporanData['celana_1'][0]['keterangan8'] }}
                                     @else
-                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    <p>TIDAK MEMILIKI KETERANGAN</p>
                                     @endif
                                 </td>
                             </tr>
@@ -396,6 +421,7 @@
                                 <th>Deadline</th>
                                 <th>Selesai</th>
                                 <th>Nama penanggung jawab</th>
+                                <th>Keterangan</th>
                                 <th>Foto</th>
                             </tr>
                         </thead>
@@ -419,6 +445,13 @@
                                 </td>
                                 <td>
                                     {{ strtoupper($laporanDataAtexco['player'][0]['penanggung_jawab_id']) }}
+                                </td>
+                                <td>
+                                    @if ($laporanDataAtexco['player'][0]['keterangan'])
+                                    {{ strtoupper($laporanDataAtexco['player'][0]['keterangan']) }}
+                                    @else
+                                    <p>TIDAK MEMILIKI KETERANGAN</p>
+                                    @endif
                                 </td>
                                 <td>
                                     @if($laporanDataAtexco['player'][0]['file_foto'])
@@ -452,6 +485,13 @@
                                     {{ strtoupper($laporanDataAtexco['pelatih'][0]['penanggung_jawab_id']) }}
                                 </td>
                                 <td>
+                                    @if ($laporanDataAtexco['pelatih'][0]['keterangan2'])
+                                    {{ strtoupper($laporanDataAtexco['pelatih'][0]['keterangan2']) }}
+                                    @else
+                                    <p>TIDAK MEMILIKI KETERANGAN</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataAtexco['pelatih'][0]['file_foto_pelatih'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataAtexco['pelatih'][0]['file_foto_pelatih']) }}"
@@ -483,6 +523,13 @@
                                     {{ strtoupper($laporanDataAtexco['kiper'][0]['penanggung_jawab_id']) }}
                                 </td>
                                 <td>
+                                    @if ($laporanDataAtexco['kiper'][0]['keterangan3'])
+                                    {{ strtoupper($laporanDataAtexco['kiper'][0]['keterangan3']) }}
+                                    @else
+                                    <p>TIDAK MEMILIKI KETERANGAN</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataAtexco['kiper'][0]['file_foto_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataAtexco['kiper'][0]['file_foto_kiper']) }}"
@@ -511,6 +558,13 @@
                                 </td>
                                 <td>
                                     {{ strtoupper($laporanDataAtexco['lk_1'][0]['penanggung_jawab_id']) }}
+                                </td>
+                                <td>
+                                    @if ($laporanDataAtexco['lk_1'][0]['keterangan4'])
+                                    {{ strtoupper($laporanDataAtexco['lk_1'][0]['keterangan4']) }}
+                                    @else
+                                    <p>TIDAK MEMILIKI KETERANGAN</p>
+                                    @endif
                                 </td>
                                 <td>
                                     @if($laporanDataAtexco['lk_1'][0]['file_foto_1'])
@@ -546,6 +600,13 @@
                                     {{ strtoupper($laporanDataAtexco['celana_player'][0]['penanggung_jawab_id']) }}
                                 </td>
                                 <td>
+                                    @if ($laporanDataAtexco['celana_player'][0]['keterangan5'])
+                                    {{ strtoupper($laporanDataAtexco['celana_player'][0]['keterangan5']) }}
+                                    @else
+                                    <p>TIDAK MEMILIKI KETERANGAN</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataAtexco['celana_player'][0]['file_foto_celana_player'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataAtexco['celana_player'][0]['file_foto_celana_player']) }}"
@@ -577,6 +638,13 @@
                                 </td>
                                 <td>
                                     {{ strtoupper($laporanDataAtexco['celana_pelatih'][0]['penanggung_jawab_id']) }}
+                                </td>
+                                <td>
+                                    @if ($laporanDataAtexco['celana_pelatih'][0]['keterangan6'])
+                                    {{ strtoupper($laporanDataAtexco['celana_pelatih'][0]['keterangan6']) }}
+                                    @else
+                                    <p>TIDAK MEMILIKI KETERANGAN</p>
+                                    @endif
                                 </td>
                                 <td>
                                     @if($laporanDataAtexco['celana_pelatih'][0]['file_foto_celana_pelatih'])
@@ -612,6 +680,13 @@
                                     {{ strtoupper($laporanDataAtexco['celana_kiper'][0]['penanggung_jawab_id']) }}
                                 </td>
                                 <td>
+                                    @if ($laporanDataAtexco['celana_kiper'][0]['keterangan7'])
+                                    {{ strtoupper($laporanDataAtexco['celana_kiper'][0]['keterangan7']) }}
+                                    @else
+                                    <p>TIDAK MEMILIKI KETERANGAN</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataAtexco['celana_kiper'][0]['file_foto_celana_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataAtexco['celana_kiper'][0]['file_foto_celana_kiper']) }}"
@@ -641,6 +716,13 @@
                                 </td>
                                 <td>
                                     {{ strtoupper($laporanDataAtexco['celana_1'][0]['penanggung_jawab_id']) }}
+                                </td>
+                                <td>
+                                    @if ($laporanDataAtexco['celana_1'][0]['keterangan8'])
+                                    {{ strtoupper($laporanDataAtexco['celana_1'][0]['keterangan8']) }}
+                                    @else
+                                    <p>TIDAK MEMILIKI KETERANGAN</p>
+                                    @endif
                                 </td>
                                 <td>
                                     @if($laporanDataAtexco['celana_1'][0]['file_foto_celana_1'])
@@ -970,8 +1052,10 @@
                             <tr>
                                 <th>Deadline</th>
                                 <th>Selesai</th>
+                                <th>Jenis Bahan Kain</th>
                                 <th>kain</th>
                                 <th>Berat</th>
+                                <th>keterangan</th>
                                 <th>Foto</th>
                             </tr>
                         </thead>
@@ -994,8 +1078,15 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['player'][0]['kain_id'])
+                                    {{ $laporanDataPressKain['player'][0]['kain_id'] }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataPressKain['player'][0]['kain'])
-                                    {{ $laporanDataPressKain['player'][0]['kain'] }}
+                                    {{ $laporanDataPressKain['player'][0]['kain'] }} Meter
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -1003,6 +1094,13 @@
                                 <td>
                                     @if($laporanDataPressKain['player'][0]['berat'])
                                     {{ $laporanDataPressKain['player'][0]['berat'] }} Kg
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataPressKain['player'][0]['keterangan'])
+                                    {{ $laporanDataPressKain['player'][0]['keterangan'] }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -1036,8 +1134,15 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['player'][0]['kain_id'])
+                                    {{ $laporanDataPressKain['player'][0]['kain_id'] }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataPressKain['pelatih'][0]['kain_pelatih'])
-                                    {{ $laporanDataPressKain['pelatih'][0]['kain_pelatih'] }}
+                                    {{ $laporanDataPressKain['pelatih'][0]['kain_pelatih'] }} Meter
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -1045,6 +1150,13 @@
                                 <td>
                                     @if($laporanDataPressKain['pelatih'][0]['berat_pelatih'])
                                     {{ $laporanDataPressKain['pelatih'][0]['berat_pelatih'] }} Kg
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataPressKain['pelatih'][0]['keterangan2'])
+                                    {{ $laporanDataPressKain['pelatih'][0]['keterangan2'] }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -1078,8 +1190,15 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['player'][0]['kain_id'])
+                                    {{ $laporanDataPressKain['player'][0]['kain_id'] }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataPressKain['kiper'][0]['kain_kiper'])
-                                    {{ $laporanDataPressKain['kiper'][0]['kain_kiper'] }}
+                                    {{ $laporanDataPressKain['kiper'][0]['kain_kiper'] }} Meter
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -1087,6 +1206,13 @@
                                 <td>
                                     @if($laporanDataPressKain['kiper'][0]['berat_kiper'])
                                     {{ $laporanDataPressKain['kiper'][0]['berat_kiper'] }} Kg
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataPressKain['kiper'][0]['keterangan3'])
+                                    {{ $laporanDataPressKain['kiper'][0]['keterangan3'] }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -1120,8 +1246,15 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['player'][0]['kain_id'])
+                                    {{ $laporanDataPressKain['player'][0]['kain_id'] }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataPressKain['lk_1'][0]['kain_1'])
-                                    {{ $laporanDataPressKain['lk_1'][0]['kain_1'] }}
+                                    {{ $laporanDataPressKain['lk_1'][0]['kain_1'] }} Meter
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -1129,6 +1262,13 @@
                                 <td>
                                     @if($laporanDataPressKain['lk_1'][0]['berat_1'])
                                     {{ $laporanDataPressKain['lk_1'][0]['berat_1'] }} Kg
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataPressKain['lk_1'][0]['keterangan4'])
+                                    {{ $laporanDataPressKain['lk_1'][0]['keterangan4'] }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -1164,8 +1304,15 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['player'][0]['kain_id'])
+                                    {{ $laporanDataPressKain['player'][0]['kain_id'] }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataPressKain['celana_player'][0]['kain_celana_player'])
-                                    {{ $laporanDataPressKain['celana_player'][0]['kain_celana_player'] }}
+                                    {{ $laporanDataPressKain['celana_player'][0]['kain_celana_player'] }} Meter
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -1173,6 +1320,13 @@
                                 <td>
                                     @if($laporanDataPressKain['celana_player'][0]['berat_celana_player'])
                                     {{ $laporanDataPressKain['celana_player'][0]['berat_celana_player'] }} Kg
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataPressKain['celana_player'][0]['keterangan5'])
+                                    {{ $laporanDataPressKain['celana_player'][0]['keterangan5'] }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -1208,8 +1362,15 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['player'][0]['kain_id'])
+                                    {{ $laporanDataPressKain['player'][0]['kain_id'] }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataPressKain['celana_pelatih'][0]['kain_celana_pelatih'])
-                                    {{ $laporanDataPressKain['celana_pelatih'][0]['kain_celana_pelatih'] }}
+                                    {{ $laporanDataPressKain['celana_pelatih'][0]['kain_celana_pelatih'] }} Meter
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -1217,6 +1378,13 @@
                                 <td>
                                     @if($laporanDataPressKain['celana_pelatih'][0]['berat_celana_pelatih'])
                                     {{ $laporanDataPressKain['celana_pelatih'][0]['berat_celana_pelatih'] }} Kg
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataPressKain['celana_pelatih'][0]['keterangan6'])
+                                    {{ $laporanDataPressKain['celana_pelatih'][0]['keterangan6'] }} Kg
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -1252,8 +1420,15 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['player'][0]['kain_id'])
+                                    {{ $laporanDataPressKain['player'][0]['kain_id'] }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataPressKain['celana_kiper'][0]['kain_celana_kiper'])
-                                    {{ $laporanDataPressKain['celana_kiper'][0]['kain_celana_kiper'] }}
+                                    {{ $laporanDataPressKain['celana_kiper'][0]['kain_celana_kiper'] }} Meter
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -1261,6 +1436,13 @@
                                 <td>
                                     @if($laporanDataPressKain['celana_kiper'][0]['berat_celana_kiper'])
                                     {{ $laporanDataPressKain['celana_kiper'][0]['berat_celana_kiper'] }} Kg
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataPressKain['celana_kiper'][0]['keterangan7'])
+                                    {{ $laporanDataPressKain['celana_kiper'][0]['keterangan7'] }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -1295,8 +1477,15 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataPressKain['player'][0]['kain_id'])
+                                    {{ $laporanDataPressKain['player'][0]['kain_id'] }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataPressKain['celana_1'][0]['kain_celana_1'])
-                                    {{ $laporanDataPressKain['celana_1'][0]['kain_celana_1'] }}
+                                    {{ $laporanDataPressKain['celana_1'][0]['kain_celana_1'] }} Meter
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -1304,6 +1493,13 @@
                                 <td>
                                     @if($laporanDataPressKain['celana_1'][0]['berat_celana_1'])
                                     {{ $laporanDataPressKain['celana_1'][0]['berat_celana_1'] }} Kg
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataPressKain['celana_1'][0]['keterangan8'])
+                                    {{ $laporanDataPressKain['celana_1'][0]['keterangan8'] }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -1336,6 +1532,7 @@
                             <tr>
                                 <th>Deadline</th>
                                 <th>Selesai</th>
+                                <th>Keterangan</th>
                                 <th>Foto</th>
                             </tr>
                         </thead>
@@ -1353,6 +1550,13 @@
                                     Y, H:i:s
                                     A')
                                     }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataLaserCut['player'][0]['keterangan'])
+                                    {{ $laporanDataLaserCut['player'][0]['keterangan']}}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -1386,6 +1590,13 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataLaserCut['pelatih'][0]['keterangan2'])
+                                    {{ $laporanDataLaserCut['pelatih'][0]['keterangan2']}}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataLaserCut['pelatih'][0]['file_foto_pelatih'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataLaserCut['pelatih'][0]['file_foto_pelatih']) }}"
@@ -1414,6 +1625,13 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataLaserCut['kiper'][0]['keterangan3'])
+                                    {{ $laporanDataLaserCut['kiper'][0]['keterangan3']}}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataLaserCut['kiper'][0]['file_foto_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataLaserCut['kiper'][0]['file_foto_kiper']) }}"
@@ -1437,6 +1655,13 @@
                                     H:i:s
                                     A')
                                     }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataLaserCut['lk_1'][0]['keterangan4'])
+                                    {{ $laporanDataLaserCut['lk_1'][0]['keterangan4']}}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -1472,6 +1697,13 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataLaserCut['celana_player'][0]['keterangan5'])
+                                    {{ $laporanDataLaserCut['celana_player'][0]['keterangan5']}}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataLaserCut['celana_player'][0]['file_foto_celana_player'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataLaserCut['celana_player'][0]['file_foto_celana_player']) }}"
@@ -1497,6 +1729,13 @@
                                     F Y, H:i:s
                                     A')
                                     }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataLaserCut['celana_pelatih'][0]['keterangan6'])
+                                    {{ $laporanDataLaserCut['celana_pelatih'][0]['keterangan6']}}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -1532,6 +1771,13 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataLaserCut['celana_kiper'][0]['keterangan7'])
+                                    {{ $laporanDataLaserCut['celana_kiper'][0]['keterangan7']}}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataLaserCut['celana_kiper'][0]['file_foto_celana_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataLaserCut['celana_kiper'][0]['file_foto_celana_kiper']) }}"
@@ -1555,6 +1801,13 @@
                                     F Y, H:i:s
                                     A')
                                     }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataLaserCut['celana_1'][0]['keterangan8'])
+                                    {{ $laporanDataLaserCut['celana_1'][0]['keterangan8']}}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -1587,6 +1840,9 @@
                             <tr>
                                 <th>Deadline</th>
                                 <th>Selesai</th>
+                                <th>Jenis Kain</th>
+                                <th>Berat Kain</th>
+                                <th>keterangan</th>
                                 <th>Foto</th>
                             </tr>
                         </thead>
@@ -1604,6 +1860,26 @@
                                     Y, H:i:s
                                     A')
                                     }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataManualCut['player'][0]['kain_id'])
+                                    {{ $laporanDataManualCut['player'][0]['kain_id']}}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataManualCut['player'][0]['kain'])
+                                    {{ $laporanDataManualCut['player'][0]['kain']}} Kg
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                <td>
+                                    @if($laporanDataManualCut['player'][0]['keterangan'])
+                                    {{ $laporanDataManualCut['player'][0]['keterangan']}}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -1637,6 +1913,27 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataManualCut['pelatih'][0]['kain_id'])
+                                    {{ $laporanDataManualCut['pelatih'][0]['kain_id']}}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataManualCut['pelatih'][0]['kain_pelatih'])
+                                    {{ $laporanDataManualCut['pelatih'][0]['kain_pelatih']}} Kg
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataManualCut['pelatih'][0]['keterangan2'])
+                                    {{ $laporanDataManualCut['pelatih'][0]['keterangan2']}}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataManualCut['pelatih'][0]['file_foto_pelatih'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataManualCut['pelatih'][0]['file_foto_pelatih']) }}"
@@ -1665,6 +1962,27 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataManualCut['kiper'][0]['kain_id'])
+                                    {{ $laporanDataManualCut['kiper'][0]['kain_id']}}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataManualCut['kiper'][0]['kain_kiper'])
+                                    {{ $laporanDataManualCut['kiper'][0]['kain_kiper']}} Kg
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataManualCut['kiper'][0]['keterangan3'])
+                                    {{ $laporanDataManualCut['kiper'][0]['keterangan3']}}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataManualCut['kiper'][0]['file_foto_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataManualCut['kiper'][0]['file_foto_kiper']) }}"
@@ -1688,6 +2006,27 @@
                                     Y, H:i:s
                                     A')
                                     }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataManualCut['lk_1'][0]['kain_id'])
+                                    {{ $laporanDataManualCut['lk_1'][0]['kain_id']}}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataManualCut['lk_1'][0]['kain_1'])
+                                    {{ $laporanDataManualCut['lk_1'][0]['kain_1']}} Kg
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataManualCut['lk_1'][0]['keterangan4'])
+                                    {{ $laporanDataManualCut['lk_1'][0]['keterangan4']}}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -1723,6 +2062,27 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataManualCut['celana_player'][0]['kain_id'])
+                                    {{ $laporanDataManualCut['celana_player'][0]['kain_id']}}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataManualCut['celana_player'][0]['kain_celana_player'])
+                                    {{ $laporanDataManualCut['celana_player'][0]['kain_celana_player']}} Kg
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataManualCut['celana_player'][0]['keterangan5'])
+                                    {{ $laporanDataManualCut['celana_player'][0]['keterangan5']}}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataManualCut['celana_player'][0]['file_foto_celana_player'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataManualCut['celana_player'][0]['file_foto_celana_player']) }}"
@@ -1748,6 +2108,27 @@
                                     F Y, H:i:s
                                     A')
                                     }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataManualCut['celana_pelatih'][0]['kain_id'])
+                                    {{ $laporanDataManualCut['celana_pelatih'][0]['kain_id']}}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataManualCut['celana_pelatih'][0]['kain_celana_pelatih'])
+                                    {{ $laporanDataManualCut['celana_pelatih'][0]['kain_celana_pelatih']}} Kg
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataManualCut['celana_pelatih'][0]['keterangan6'])
+                                    {{ $laporanDataManualCut['celana_pelatih'][0]['keterangan6']}}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -1783,6 +2164,27 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataManualCut['celana_kiper'][0]['kain_id'])
+                                    {{ $laporanDataManualCut['celana_kiper'][0]['kain_id']}}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataManualCut['celana_kiper'][0]['kain_celana_kiper'])
+                                    {{ $laporanDataManualCut['celana_kiper'][0]['kain_celana_kiper']}} Kg
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataManualCut['celana_kiper'][0]['keterangan7'])
+                                    {{ $laporanDataManualCut['celana_kiper'][0]['keterangan7']}}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataManualCut['celana_kiper'][0]['file_foto_celana_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataManualCut['celana_kiper'][0]['file_foto_celana_kiper']) }}"
@@ -1807,6 +2209,27 @@
                                     F Y, H:i:s
                                     A')
                                     }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataManualCut['celana_1'][0]['kain_id'])
+                                    {{ $laporanDataManualCut['celana_1'][0]['kain_id']}}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataManualCut['celana_1'][0]['kain_celana_1'])
+                                    {{ $laporanDataManualCut['celana_1'][0]['kain_celana_1']}} Kg
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataManualCut['celana_1'][0]['keterangan8'])
+                                    {{ $laporanDataManualCut['celana_1'][0]['keterangan8']}}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -1840,6 +2263,8 @@
                                 <th>Deadline</th>
                                 <th>Selesai</th>
                                 <th>No eror</th>
+                                <th>Jenis kertas</th>
+                                <th>Jenis bahan kain</th>
                                 <th>Panjang kertas</th>
                                 <th>Berat</th>
                                 <th>Bahan</th>
@@ -1868,6 +2293,20 @@
                                 <td>
                                     @if($laporanDataSortir['player'][0]['no_error'])
                                     {{ strtoupper($laporanDataSortir['player'][0]['no_error']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataSortir['player'][0]['kertas_id'])
+                                    {{ strtoupper($laporanDataSortir['player'][0]['kertas_id']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataSortir['player'][0]['cetak_id'])
+                                    {{ strtoupper($laporanDataSortir['player'][0]['cetak_id']) }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -1937,6 +2376,22 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['pelatih'][0]['kertas_id'])
+                                    {{ strtoupper($laporanDataSortir['pelatih'][0]['kertas_id']) }}
+                                    Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataSortir['pelatih'][0]['cetak_id'])
+                                    {{ strtoupper($laporanDataSortir['pelatih'][0]['cetak_id']) }}
+                                    Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataSortir['pelatih'][0]['panjang_kertas_pelatih'])
                                     {{ strtoupper($laporanDataSortir['pelatih'][0]['panjang_kertas_pelatih']) }}
                                     Meter
@@ -1996,6 +2451,20 @@
                                 <td>
                                     @if($laporanDataSortir['kiper'][0]['no_error_kiper'])
                                     {{ strtoupper($laporanDataSortir['kiper'][0]['no_error_kiper']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataSortir['kiper'][0]['kertas_id'])
+                                    {{ strtoupper($laporanDataSortir['kiper'][0]['kertas_id']) }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataSortir['kiper'][0]['cetak_id'])
+                                    {{ strtoupper($laporanDataSortir['kiper'][0]['cetak_id']) }} Meter
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -2070,6 +2539,20 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['lk_1'][0]['kertas_id'])
+                                    {{ strtoupper($laporanDataSortir['lk_1'][0]['kertas_id']) }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataSortir['lk_1'][0]['cetak_id'])
+                                    {{ strtoupper($laporanDataSortir['lk_1'][0]['cetak_id']) }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataSortir['lk_1'][0]['berat_1'])
                                     {{ strtoupper($laporanDataSortir['lk_1'][0]['berat_1']) }} Meter
                                     @else
@@ -2123,6 +2606,20 @@
                                 <td>
                                     @if($laporanDataSortir['celana_player'][0]['no_error_celana_pelayer'])
                                     {{ strtoupper($laporanDataSortir['celana_player'][0]['no_error_celana_pelayer']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataSortir['celana_player'][0]['kertas_id'])
+                                    {{ strtoupper($laporanDataSortir['celana_player'][0]['kertas_id']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataSortir['celana_player'][0]['cetak_id'])
+                                    {{ strtoupper($laporanDataSortir['celana_player'][0]['cetak_id']) }}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -2197,6 +2694,24 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_pelatih'][0]['kertas_id'])
+                                    {{
+                                    strtoupper($laporanDataSortir['celana_pelatih'][0]['kertas_id'])
+                                    }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataSortir['celana_pelatih'][0]['cetak_id'])
+                                    {{
+                                    strtoupper($laporanDataSortir['celana_pelatih'][0]['cetak_id'])
+                                    }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataSortir['celana_pelatih'][0]['panjang_kertas_celana_pelatih'])
                                     {{
                                     strtoupper($laporanDataSortir['celana_pelatih'][0]['panjang_kertas_celana_pelatih'])
@@ -2266,6 +2781,22 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataSortir['celana_kiper'][0]['kertas_id'])
+                                    {{ strtoupper($laporanDataSortir['celana_kiper'][0]['kertas_id'])
+                                    }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataSortir['celana_kiper'][0]['cetak_id'])
+                                    {{ strtoupper($laporanDataSortir['celana_kiper'][0]['cetak_id'])
+                                    }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataSortir['celana_kiper'][0]['panjang_kertas_celana_kiper'])
                                     {{ strtoupper($laporanDataSortir['celana_kiper'][0]['panjang_kertas_celana_kiper'])
                                     }} Meter
@@ -2325,6 +2856,20 @@
                                 <td>
                                     @if($laporanDataSortir['celana_1'][0]['no_error_celana_1'])
                                     {{ strtoupper($laporanDataSortir['celana_1'][0]['no_error_celana_1']) }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataSortir['celana_1'][0]['kertas_id'])
+                                    {{ strtoupper($laporanDataSortir['celana_1'][0]['kertas_id']) }} Meter
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataSortir['celana_1'][0]['cetak_id'])
+                                    {{ strtoupper($laporanDataSortir['celana_1'][0]['cetak_id']) }} Meter
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -2820,6 +3365,7 @@
                             <tr>
                                 <th>Deadline</th>
                                 <th>Selesai</th>
+                                <th>keterangan</th>
                                 <th>foto</th>
                             </tr>
                         </thead>
@@ -2837,6 +3383,13 @@
                                     H:i:s
                                     A')
                                     }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataFinis['player'][0]['keterangan'])
+                                    {{ $laporanDataFinis['player'][0]['keterangan']}}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -2870,6 +3423,13 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataFinis['pelatih'][0]['keterangan2'])
+                                    {{ $laporanDataFinis['pelatih'][0]['keterangan2']}}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataFinis['pelatih'][0]['foto_pelatih'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataFinis['pelatih'][0]['foto_pelatih']) }}"
@@ -2897,6 +3457,13 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataFinis['kiper'][0]['keterangan3'])
+                                    {{ $laporanDataFinis['kiper'][0]['keterangan3']}}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataFinis['kiper'][0]['foto_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataFinis['kiper'][0]['foto_kiper']) }}" alt=""
@@ -2919,6 +3486,13 @@
                                     H:i:s
                                     A')
                                     }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataFinis['lk_1'][0]['keterangan4'])
+                                    {{ $laporanDataFinis['lk_1'][0]['keterangan4']}}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -2954,6 +3528,13 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataFinis['celana_player'][0]['keterangan5'])
+                                    {{ $laporanDataFinis['celana_player'][0]['keterangan5']}}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataFinis['celana_player'][0]['foto_celana_pelayer'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataFinis['celana_player'][0]['foto_celana_pelayer']) }}"
@@ -2979,6 +3560,13 @@
                                     F Y, H:i:s
                                     A')
                                     }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataFinis['celana_pelatih'][0]['keterangan6'])
+                                    {{ $laporanDataFinis['celana_pelatih'][0]['keterangan6']}}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif
@@ -3014,6 +3602,13 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($laporanDataFinis['celana_kiper'][0]['keterangan7'])
+                                    {{ $laporanDataFinis['celana_kiper'][0]['keterangan7']}}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($laporanDataFinis['celana_kiper'][0]['foto_celana_kiper'])
                                     <img style="height: 200px; width: 200px"
                                         src="{{ asset('storage/'.$laporanDataFinis['celana_kiper'][0]['foto_celana_kiper']) }}"
@@ -3037,6 +3632,13 @@
                                     Y, H:i:s
                                     A')
                                     }}
+                                    @else
+                                    <p>BELUM MELAKUKAN UPDATE DATA</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($laporanDataFinis['celana_1'][0]['keterangan8'])
+                                    {{ $laporanDataFinis['celana_1'][0]['keterangan8']}}
                                     @else
                                     <p>BELUM MELAKUKAN UPDATE DATA</p>
                                     @endif

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\PressKain;
 
 use App\Http\Controllers\Controller;
+use App\Models\BahanKain;
 use App\Models\DataPressKain;
 use App\Models\Laporan;
 use Carbon\Carbon;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\BarangMasukCostumerServices;
 use App\Models\BarangMasukDatalayout;
+use App\Models\LaporanCetakPresskain;
 use PDF;
 
 class PressKainController extends Controller
@@ -87,6 +89,8 @@ class PressKainController extends Controller
     {
         $dataMasuk = DataPressKain::where('no_order_id', $id)->with('BarangMasukCs')->get();
 
+        $bahanKain = BahanKain::all();
+
         $formattedData = [];
 
         foreach ($dataMasuk as $item) {
@@ -126,7 +130,7 @@ class PressKainController extends Controller
         }
 
         // return response()->json($formattedData);
-        return view('component.Press-Kain.cerate-laporan-mesin', compact('dataMasuk', 'formattedData'));
+        return view('component.Press-Kain.cerate-laporan-mesin', compact('dataMasuk', 'formattedData', 'bahanKain'));
     }
 
     public function putLaporan(Request $request)
@@ -148,14 +152,26 @@ class PressKainController extends Controller
                 $fileGambar = $dataMasukPlayer->gambar;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukPlayer->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
                 'kain' => $request->kain,
                 'berat' => $request->berat,
+                'kain_id' => $request->kain_id,
+                'keterangan' => $request->keterangan,
                 'gambar' => $fileGambar,
 
                 'tanda_telah_mengerjakan' => 1
+            ]);
+
+            LaporanCetakPresskain::create([
+                'press_kain_id' => $dataMasukPlayer->id,
+                'kain_id' => $request->kain_id,
+                'daerah' => $dataMasukPlayer->BarangMasukCs->kota_produksi,
+                'total_kain' => $request->berat,
             ]);
         }
         if ($request->pelatih_id) {
@@ -173,15 +189,27 @@ class PressKainController extends Controller
                 $data1 = $dataMasukPelatih->gambar_pelatih;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukPelatih->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
 
                 'kain_pelatih' => $request->kain_pelatih,
                 'berat_pelatih' => $request->berat_pelatih,
+                'kain_id' => $request->kain_id,
                 'gambar_pelatih' => $data1,
+                'keterangan2' => $request->keterangan2,
 
                 'tanda_telah_mengerjakan' => 1
+            ]);
+
+            LaporanCetakPresskain::create([
+                'press_kain_id' => $dataMasukPelatih->id,
+                'kain_id' => $request->kain_id,
+                'daerah' => $dataMasukPelatih->BarangMasukCs->kota_produksi,
+                'total_kain' => $request->berat_pelatih,
             ]);
         }
         if ($request->kiper_id) {
@@ -199,15 +227,27 @@ class PressKainController extends Controller
                 $data2 = $dataMasukKiper->gambar_kiper;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukKiper->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
 
                 'kain_kiper' => $request->kain_kiper,
                 'berat_kiper' => $request->berat_kiper,
+                'kain_id' => $request->kain_id,
+                'keterangan3' => $request->keterangan3,
                 'gambar_kiper' => $data2,
 
                 'tanda_telah_mengerjakan' => 1
+            ]);
+
+            LaporanCetakPresskain::create([
+                'press_kain_id' => $dataMasukKiper->id,
+                'kain_id' => $request->kain_id,
+                'daerah' => $dataMasukKiper->BarangMasukCs->kota_produksi,
+                'total_kain' => $request->berat_kiper,
             ]);
         }
         if ($request->lk1_id) {
@@ -225,15 +265,27 @@ class PressKainController extends Controller
                 $data3 = $dataMasuk1->gambar_1;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasuk1->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
 
                 'kain_1' => $request->kain_1,
                 'berat_1' => $request->berat_1,
+                'kain_id' => $request->kain_id,
+                'keterangan4' => $request->keterangan4,
                 'gambar_1' => $data3,
 
                 'tanda_telah_mengerjakan' => 1
+            ]);
+
+            LaporanCetakPresskain::create([
+                'press_kain_id' => $dataMasuk1->id,
+                'kain_id' => $request->kain_id,
+                'daerah' => $dataMasuk1->BarangMasukCs->kota_produksi,
+                'total_kain' => $request->berat_1,
             ]);
         }
         if ($request->celana_player_id) {
@@ -251,15 +303,27 @@ class PressKainController extends Controller
                 $data4 = $dataMasukCelanaPlayer->gambar_celana_player;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukCelanaPlayer->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
 
                 'kain_celana_player' => $request->kain_celana_player,
+                'kain_id' => $request->kain_id,
+                'keterangan5' => $request->keterangan5,
                 'berat_celana_player' => $request->berat_celana_player,
                 'gambar_celana_player' => $data4,
 
                 'tanda_telah_mengerjakan' => 1
+            ]);
+
+            LaporanCetakPresskain::create([
+                'press_kain_id' => $dataMasukCelanaPlayer->id,
+                'kain_id' => $request->kain_id,
+                'daerah' => $dataMasukCelanaPlayer->BarangMasukCs->kota_produksi,
+                'total_kain' => $request->berat_celana_player,
             ]);
         }
         if ($request->celana_pelatih_id) {
@@ -277,15 +341,27 @@ class PressKainController extends Controller
                 $data5 = $dataMasukCealanaPelatih->gambar_celana_pelatih;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukCealanaPelatih->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
 
                 'kain_celana_pelatih' => $request->kain_celana_pelatih,
                 'berat_celana_pelatih' => $request->berat_celana_pelatih,
+                'keterangan6' => $request->keterangan6,
+                'kain_id' => $request->kain_id,
                 'gambar_celana_pelatih' => $data5,
 
                 'tanda_telah_mengerjakan' => 1
+            ]);
+
+            LaporanCetakPresskain::create([
+                'press_kain_id' => $dataMasukCealanaPelatih->id,
+                'kain_id' => $request->kain_id,
+                'daerah' => $dataMasukCealanaPelatih->BarangMasukCs->kota_produksi,
+                'total_kain' => $request->berat_celana_pelatih,
             ]);
         }
         if ($request->celana_kiper_id) {
@@ -303,15 +379,27 @@ class PressKainController extends Controller
                 $data6 = $dataMasukCelanaKiper->gambar_celana_kiper;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukCelanaKiper->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
 
                 'kain_celana_kiper' => $request->kain_celana_kiper,
-                'berat_celana_kiper' => $request->berat,
+                'berat_celana_kiper' => $request->berat_celana_kiper,
+                'keterangan7' => $request->keterangan7,
+                'kain_id' => $request->kain_id,
                 'gambar_celana_kiper' => $data6,
 
                 'tanda_telah_mengerjakan' => 1
+            ]);
+
+            LaporanCetakPresskain::create([
+                'press_kain_id' => $dataMasukCelanaKiper->id,
+                'kain_id' => $request->kain_id,
+                'daerah' => $dataMasukCelanaKiper->BarangMasukCs->kota_produksi,
+                'total_kain' => $request->berat_celana_kiper,
             ]);
         }
         if ($request->celana_1_id) {
@@ -329,15 +417,27 @@ class PressKainController extends Controller
                 $data7 = $dataMasukCelana1->gambar_celana_1;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukCelana1->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
 
                 'kain_celana_1' => $request->kain_celana_1,
-                'berat_celana_1' => $request->berat,
+                'berat_celana_1' => $request->berat_celana_1,
                 'gambar_celana_1' => $data7,
+                'keterangan8' => $request->keterangan8,
+                'kain_id' => $request->kain_id,
 
                 'tanda_telah_mengerjakan' => 1
+            ]);
+
+            LaporanCetakPresskain::create([
+                'press_kain_id' => $dataMasukCelana1->id,
+                'kain_id' => $request->kain_id,
+                'daerah' => $dataMasukCelana1->BarangMasukCs->kota_produksi,
+                'total_kain' => $request->berat_celana_1,
             ]);
         }
 

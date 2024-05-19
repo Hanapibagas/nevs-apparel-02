@@ -23,33 +23,25 @@
 
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Model</h4>
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Jenis bahan cetak</h4>
         <button style="margin-bottom: 20px;" type="button" class="btn btn-primary" data-bs-toggle="modal"
             data-bs-target="#modalCenter">
-            Tambah data Model
+            Tambah data jenis bahan cetak
         </button>
         <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalCenterTitle">Form tambah data Model</h5>
+                        <h5 class="modal-title" id="modalCenterTitle">Form tambah data jenis data</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="{{ route('getCreateistDataJenisKerah') }}" method="POST"
-                        enctype="multipart/form-data">
+                    <form action="{{ route('postBahanCetak') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col mb-3">
-                                    <label for="nameWithTitle" class="form-label">Nama Model</label>
-                                    <input required name="jenis_kera" type="text" id="nameWithTitle"
-                                        class="form-control" placeholder="Silahkan masukkan nama tim ..." />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col mb-3">
-                                    <label for="nameWithTitle" class="form-label">file Model</label>
-                                    <input required name="gambar" type="file" id="nameWithTitle" class="form-control"
+                                    <label for="nameWithTitle" class="form-label">Nama jenis bahan cetak</label>
+                                    <input name="nama" type="text" id="nameWithTitle" class="form-control"
                                         placeholder="Silahkan masukkan nama tim ..." />
                                 </div>
                             </div>
@@ -65,44 +57,31 @@
             </div>
         </div>
         <div class="card">
-            <h5 class="card-header">Data Model</h5>
+            <h5 class="card-header">Data pola celana</h5>
             <div class="card-body">
                 <div class="table-responsive text-nowrap">
                     <table id="ds" class="table">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Model</th>
-                                <th>Gambar Model</th>
+                                <th>Nama</th>
                                 <th>aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ( $jenisKerah as $key => $jenisKerahs )
+                            @foreach ( $bahankain as $key => $jenisKerahs )
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>
                                     <strong>
-                                        {{ $jenisKerahs->jenis_kera }}
+                                        {{ $jenisKerahs->nama }}
                                     </strong>
-                                </td>
-                                <td>
-                                    <img style="width: 100px;" src="{{ asset('storage/'.$jenisKerahs->gambar) }}"
-                                        alt="">
                                 </td>
                                 <td>
                                     <button data-bs-toggle="modal" data-bs-target="#modalCenter{{ $jenisKerahs->id }}"
                                         class="btn btn-primary">
                                         <i class="menu-icon tf-icons bx bx-pencil"></i>
                                         Edit</button>
-                                    {{-- <form method="POST"
-                                        action="{{ route('deleteListDataJenisKerah', ['id' => $jenisKerahs->id]) }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">
-                                            <i class="menu-icon tf-icons bx bx-trash"></i> Hapus
-                                        </button>
-                                    </form> --}}
                                 </td>
                             </tr>
                             <div class="modal fade" id="modalCenter{{ $jenisKerahs->id }}" tabindex="-1"
@@ -110,29 +89,22 @@
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="modalCenterTitle">Form tambah data Model
+                                            <h5 class="modal-title" id="modalCenterTitle">Form tambah data jenis data
                                             </h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
-                                        <form action="{{ route('putListDataJenisKerah', $jenisKerahs->id) }}"
-                                            method="POST" enctype="multipart/form-data">
+                                        <form action="{{ route('putBahanCetak', $jenisKerahs->id) }}" method="POST"
+                                            enctype="multipart/form-data">
                                             @csrf
                                             @method('PUT')
                                             <div class="modal-body">
                                                 <div class="row">
                                                     <div class="col mb-3">
-                                                        <label for="nameWithTitle" class="form-label">Nama Model</label>
-                                                        <input required name="jenis_kera" type="text" id="nameWithTitle"
-                                                            class="form-control" value="{{ $jenisKerahs->jenis_kera }}">
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col mb-3">
-                                                        <label for="nameWithTitle" class="form-label">file Model</label>
-                                                        <input required name="gambar" type="file" id="nameWithTitle"
-                                                            class="form-control"
-                                                            placeholder="Silahkan masukkan nama tim ..." />
+                                                        <label for="nameWithTitle" class="form-label">Nama jenis
+                                                            bahan cetak</label>
+                                                        <input name="nama" type="text" id="nameWithTitle"
+                                                            class="form-control" value="{{ $jenisKerahs->nama }}">
                                                     </div>
                                                 </div>
                                             </div>

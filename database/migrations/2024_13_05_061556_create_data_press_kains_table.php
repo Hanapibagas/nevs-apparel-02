@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('no_order_id')->nullable()->constrained('barang_masuk_costumer_services')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('penanggung_jawab_id')->nullable()->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('kain_id')->nullable()->constrained('bahan_kains')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('mesin_atexco_id')->nullable()->constrained('data_presses')->onUpdate('cascade')->onDelete('cascade');
             // $table->foreignId('mesin_mimaki_id')->nullable()->constrained('mesin_mimakis')->onUpdate('cascade')->onDelete('cascade');
             // LK
@@ -63,6 +64,14 @@ return new class extends Migration
             $table->string('kain_celana_1')->nullable();
             $table->string('berat_celana_1')->nullable();
             $table->string('gambar_celana_1')->nullable();
+            $table->string('keterangan')->nullable();
+            $table->string('keterangan2')->nullable();
+            $table->string('keterangan3')->nullable();
+            $table->string('keterangan4')->nullable();
+            $table->string('keterangan5')->nullable();
+            $table->string('keterangan6')->nullable();
+            $table->string('keterangan7')->nullable();
+            $table->string('keterangan8')->nullable();
             // AKHIR
             $table->string('tanda_telah_mengerjakan')->default('0');
             $table->timestamps();

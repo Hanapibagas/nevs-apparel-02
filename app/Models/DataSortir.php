@@ -18,6 +18,8 @@ class DataSortir extends Model
         'lk_player_id',
         'lk_pelatih_id',
         'lk_kiper_id',
+        'kertas_id',
+        'cetak_id',
         'lk_1_id',
         'lk_celana_player_id',
         'lk_celana_pelatih_id',
@@ -85,6 +87,16 @@ class DataSortir extends Model
         'keterangan7',
         'keterangan8',
     ];
+
+    public function Kertas()
+    {
+        return $this->belongsTo(BahanCetak::class, 'kertas_id');
+    }
+
+    public function Kain()
+    {
+        return $this->belongsTo(BahanKain::class, 'cetak_id');
+    }
 
     public function BarangMasukCs()
     {

@@ -32,6 +32,14 @@ class DataPress extends Model
         'file_foto_celana_pelatih',
         'file_foto_celana_kiper',
         'file_foto_celana_1',
+        'keterangan',
+        'keterangan2',
+        'keterangan3',
+        'keterangan4',
+        'keterangan5',
+        'keterangan6',
+        'keterangan7',
+        'keterangan8',
         'tanda_telah_mengerjakan',
     ];
 

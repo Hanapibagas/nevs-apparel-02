@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('barang_masuk_datalayouts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('users_layout_id')->nullable()->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('kertas_id')->nullable()->constrained('bahan_cetaks')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('barang_masuk_id')->nullable()->constrained('barang_masuk_costumer_services')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('lk_player_id')->nullable()->constrained('lk_players')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('lk_pelatih_id')->nullable()->constrained('lk_pelatihs')->onUpdate('cascade')->onDelete('cascade');

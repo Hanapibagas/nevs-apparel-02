@@ -80,7 +80,7 @@ class DisainerController extends Controller
     public function getUpdateToTeamMesin($id)
     {
         $disainer = BarangMasukMesin::find($id);
-        $mesin = User::whereIn('roles', ['atexco'])->get();
+        $mesin = User::whereIn('roles', ['atexco'])->where('non_aktif', '1')->get();
         $userCounts = [];
         foreach ($mesin as $v) {
             $userId = $v->id;

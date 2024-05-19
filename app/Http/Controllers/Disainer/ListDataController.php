@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Disainer;
 
 use App\Http\Controllers\Controller;
+use App\Models\BahanCetak;
+use App\Models\BahanKain;
 use App\Models\KeraBaju;
 use App\Models\PolaCeleana;
 use App\Models\PolaLengan;
@@ -13,7 +15,7 @@ class ListDataController extends Controller
 {
     public function getIndexLisDataJenisKerah()
     {
-        $jenisKerah = KeraBaju::all();
+        $jenisKerah = KeraBaju::where('id', '>', '1')->get();
 
         return view('component.Disainer.list-data-jenis-kera-disainer-pegawai.index', compact('jenisKerah'));
     }
@@ -27,7 +29,7 @@ class ListDataController extends Controller
 
     public function getIndexLisDataJenisCelana()
     {
-        $jenisKerah = PolaCeleana::all();
+        $jenisKerah = PolaCeleana::where('id', '>', '1')->get();
 
         return view('component.Disainer.list-data-jenis-celana-disainer-pegawai.index', compact('jenisKerah'));
     }
@@ -49,6 +51,60 @@ class ListDataController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'Selamat data yang input berhasil!');
+    }
+
+    public function getIndexBahanKain()
+    {
+        $bahankain = BahanKain::all();
+
+        return view('component.Disainer.list-data-bahan-kain-disainer-pegawai.index', compact('bahankain'));
+    }
+
+    public function postBahanKain(Request $request)
+    {
+        BahanKain::create([
+            'nama' => $request->nama
+        ]);
+
+        return redirect()->back()->with('success', 'Selamat data yang input berhasil!');
+    }
+
+    public function putBahanKain(Request $request, $id)
+    {
+        $update = BahanKain::find($id);
+
+        $update->update([
+            'nama' => $request->nama
+        ]);
+
+        return redirect()->back()->with('success', 'Selamat data yang input diperbarui!');
+    }
+
+    public function getIndexBahanKertas()
+    {
+        $bahankain = BahanCetak::all();
+
+        return view('component.Disainer.list-data-bahan-kertas-disainer-pegawai.index', compact('bahankain'));
+    }
+
+    public function postBahanCetak(Request $request)
+    {
+        BahanCetak::create([
+            'nama' => $request->nama
+        ]);
+
+        return redirect()->back()->with('success', 'Selamat data yang input berhasil!');
+    }
+
+    public function putBahanCetak(Request $request, $id)
+    {
+        $update = BahanCetak::find($id);
+
+        $update->update([
+            'nama' => $request->nama
+        ]);
+
+        return redirect()->back()->with('success', 'Selamat data yang input diperbarui!');
     }
 
     public function postDataJenisCelana(Request $request)

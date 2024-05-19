@@ -93,34 +93,42 @@ class LaserCutController extends Controller
             if ($item->lk_player_id) {
                 $formattedData['player'][] = [
                     'id' => $item->id,
+                    'keterangan' => $item->keterangan,
                 ];
             } elseif ($item->lk_pelatih_id) {
                 $formattedData['pelatih'][] = [
                     'id' => $item->id,
+                    'keterangan2' => $item->keterangan2,
                 ];
             } elseif ($item->lk_kiper_id) {
                 $formattedData['kiper'][] = [
                     'id' => $item->id,
+                    'keterangan3' => $item->keterangan3,
                 ];
             } elseif ($item->lk_1_id) {
                 $formattedData['lk_1'][] = [
                     'id' => $item->id,
+                    'keterangan4' => $item->keterangan4,
                 ];
             } elseif ($item->lk_celana_player_id) {
                 $formattedData['celana_player'][] = [
                     'id' => $item->id,
+                    'keterangan5' => $item->keterangan5,
                 ];
             } elseif ($item->lk_celana_pelatih_id) {
                 $formattedData['celana_pelatih'][] = [
                     'id' => $item->id,
+                    'keterangan6' => $item->keterangan6,
                 ];
             } elseif ($item->lk_celana_kiper_id) {
                 $formattedData['celana_kiper'][] = [
                     'id' => $item->id,
+                    'keterangan7' => $item->keterangan7,
                 ];
             } elseif ($item->lk_celana_1_id) {
                 $formattedData['celana_1'][] = [
                     'id' => $item->id,
+                    'keterangan8' => $item->keterangan8,
                 ];
             }
         }
@@ -147,10 +155,14 @@ class LaserCutController extends Controller
                 $fileGambar = $dataMasukPlayer->file_foto;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukPlayer->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
                 'file_foto' => $fileGambar,
+                'keterangan' => $request->keterangan,
                 'tanda_telah_mengerjakan' => 1
             ]);
         }
@@ -169,9 +181,13 @@ class LaserCutController extends Controller
                 $fileGambar = $dataMasukPelatih->file_foto_pelatih;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukPelatih->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
+                'keterangan2' => $request->keterangan2,
                 'file_foto_pelatih' => $fileGambar,
                 'tanda_telah_mengerjakan' => 1
             ]);
@@ -191,10 +207,14 @@ class LaserCutController extends Controller
                 $fileGambar = $dataMasukKiper->file_foto_kiper;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukKiper->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
                 'file_foto_kiper' => $fileGambar,
+                'keterangan3' => $request->keterangan3,
                 'tanda_telah_mengerjakan' => 1
             ]);
         }
@@ -213,9 +233,13 @@ class LaserCutController extends Controller
                 $fileGambar = $dataMasuk1->file_foto_1;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasuk1->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
+                'keterangan4' => $request->keterangan4,
                 'file_foto_1' => $fileGambar,
                 'tanda_telah_mengerjakan' => 1
             ]);
@@ -235,9 +259,13 @@ class LaserCutController extends Controller
                 $fileGambar = $dataMasukCelanaPlayer->file_foto_celana_player;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukCelanaPlayer->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
+                'keterangan5' => $request->keterangan5,
                 'file_foto_celana_player' => $fileGambar,
                 'tanda_telah_mengerjakan' => 1
             ]);
@@ -257,10 +285,14 @@ class LaserCutController extends Controller
                 $fileGambar = $dataMasukCelanaPelatih->file_foto_celana_pelatih;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukCelanaPelatih->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
                 'file_foto_celana_pelatih' => $fileGambar,
+                'keterangan6' => $request->keterangan6,
                 'tanda_telah_mengerjakan' => 1
             ]);
         }
@@ -279,9 +311,13 @@ class LaserCutController extends Controller
                 $fileGambar = $dataMasukCelanaKiper->file_foto_celana_kiper;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukCelanaKiper->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
+                'keterangan7' => $request->keterangan7,
                 'file_foto_celana_kiper' => $fileGambar,
                 'tanda_telah_mengerjakan' => 1
             ]);
@@ -301,9 +337,13 @@ class LaserCutController extends Controller
                 $fileGambar = $dataMasukCelana1->file_foto_celana_1;
             }
 
+            $localTime = $request->input('local_time');
+            $selesaiTime = Carbon::parse($localTime);
+
             $dataMasukCelana1->update([
                 'penanggung_jawab_id' => $user->id,
-                'selesai' => Carbon::now(),
+                'selesai' => $selesaiTime,
+                'keterangan8' => $request->keterangan8,
                 'file_foto_celana_1' => $fileGambar,
                 'tanda_telah_mengerjakan' => 1
             ]);

@@ -112,14 +112,14 @@
                                         class="btn btn-primary">
                                         <i class="menu-icon tf-icons bx bx-pencil"></i>
                                         Edit</button>
-                                    <form method="POST"
+                                    {{-- <form method="POST"
                                         action="{{ route('deleteListDataJenisLengan', ['id' => $jenisKerahs->id]) }}">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">
                                             <i class="menu-icon tf-icons bx bx-trash"></i> Hapus
                                         </button>
-                                    </form>
+                                    </form> --}}
                                 </td>
                             </tr>
                             <div class="modal fade" id="modalCenter{{ $jenisKerahs->id }}" tabindex="-1"

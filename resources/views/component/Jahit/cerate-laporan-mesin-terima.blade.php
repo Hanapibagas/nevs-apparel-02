@@ -29,8 +29,8 @@
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">foto terima</label>
-                                                <input required class="form-control" type="file" id="firstName"
-                                                    name="foto" autofocus />
+                                                <input class="form-control" type="file" id="firstName" name="foto"
+                                                    autofocus />
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">keterangan tambahan</label>
@@ -55,7 +55,7 @@
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">foto terima</label>
-                                                <input required class="form-control" type="file" id="firstName"
+                                                <input class="form-control" type="file" id="firstName"
                                                     name="foto_pelatih" autofocus />
                                             </div>
                                             <div class="mb-3 col-md-6">
@@ -81,8 +81,8 @@
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">foto terima</label>
-                                                <input required class="form-control" type="file" id="firstName"
-                                                    name="foto_kiper" autofocus />
+                                                <input class="form-control" type="file" id="firstName" name="foto_kiper"
+                                                    autofocus />
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">keterangan tambahan</label>
@@ -107,8 +107,8 @@
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">foto terima</label>
-                                                <input required class="form-control" type="file" id="firstName"
-                                                    name="foto_1" autofocus />
+                                                <input class="form-control" type="file" id="firstName" name="foto_1"
+                                                    autofocus />
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">keterangan tambahan</label>
@@ -133,7 +133,7 @@
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">foto terima</label>
-                                                <input required class="form-control" type="file" id="firstName"
+                                                <input class="form-control" type="file" id="firstName"
                                                     name="foto_celana_pelayer" autofocus />
                                             </div>
                                             <div class="mb-3 col-md-6">
@@ -159,7 +159,7 @@
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">foto terima</label>
-                                                <input required class="form-control" type="file" id="firstName"
+                                                <input class="form-control" type="file" id="firstName"
                                                     name="foto_celana_pelatih" autofocus />
                                             </div>
                                             <div class="mb-3 col-md-6">
@@ -185,7 +185,7 @@
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">foto terima</label>
-                                                <input required class="form-control" type="file" id="firstName"
+                                                <input class="form-control" type="file" id="firstName"
                                                     name="foto_celana_kiper" autofocus />
                                             </div>
                                             <div class="mb-3 col-md-6">
@@ -211,7 +211,7 @@
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">foto terima</label>
-                                                <input required class="form-control" type="file" id="firstName"
+                                                <input class="form-control" type="file" id="firstName"
                                                     name="foto_celana_1" autofocus />
                                             </div>
                                             <div class="mb-3 col-md-6">
@@ -225,6 +225,7 @@
                                 @endif
                             </div>
                         </div>
+                        <input type="hidden" id="localTime" name="local_time">
                         <button id="submitButton" type="submit" class="btn btn-primary">
                             <i id="submitIcon" class="menu-icon tf-icons bx bx-send"></i>
                             Input Laporan Jahit
@@ -240,6 +241,24 @@
 @endsection
 
 @push('js')
+<script>
+    document.getElementById('submissionForm').addEventListener('submit', function(event) {
+    // Get the local time
+    var now = new Date();
+    var localTime = now.toLocaleString('en-GB', { hour12: false }); // e.g., "14/05/2024, 14:32:09"
+
+    // Format the local time to match ISO 8601 without timezone information
+    var localIsoTime = now.getFullYear() + '-' +
+                       String(now.getMonth() + 1).padStart(2, '0') + '-' +
+                       String(now.getDate()).padStart(2, '0') + 'T' +
+                       String(now.getHours()).padStart(2, '0') + ':' +
+                       String(now.getMinutes()).padStart(2, '0') + ':' +
+                       String(now.getSeconds()).padStart(2, '0');
+
+    // Set the value of the hidden input field
+    document.getElementById('localTime').value = localIsoTime;
+});
+</script>
 <script>
     var playerId = document.getElementById('playerId').value;
     var pelatihId = document.getElementById('pelatihId').value;

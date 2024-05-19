@@ -7,7 +7,7 @@
         <canvas id="barChart" width="800" height="400"></canvas>
     </div>
 
-    <div class="content-wrapper">
+    {{-- <div class="content-wrapper">
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="card">
                 <h5 class="card-header">Silahkan pilih tahun dan bulan untuk melihat jumlah jahit </h5>
@@ -61,7 +61,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     @endif
 
     @if (Auth::user()->roles == 'cs')

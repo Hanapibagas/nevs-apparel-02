@@ -38,6 +38,16 @@
                                                     pattern="[0-9]+(\.[0-9]+)?" placeholder="Contoh: 10 meter" />
                                             </div>
                                             <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">Nama kertas</label>
+                                                <select id="country" required name="kertas_id"
+                                                    class="select2 form-select">
+                                                    <option value="">-- Pilih Nama Kertas --</option>
+                                                    @foreach ( $bahanKertas as $bahan )
+                                                    <option value="{{ $bahan->id }}">{{ $bahan->nama }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="mb-3 col-md-6">
                                                 <label for="lastName" class="form-label">Panjang Poly / DTF
                                                     (Meter)</label>
                                                 <input required class="form-control" type="number" name="poly_player"
@@ -68,6 +78,16 @@
                                                 <input required class="form-control" type="number"
                                                     name="panjang_kertas_pelatih" id="lastName"
                                                     pattern="[0-9]+(\.[0-9]+)?" placeholder="Contoh: 10 meter" />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">Nama kertas</label>
+                                                <select id="country" required name="kertas_id"
+                                                    class="select2 form-select">
+                                                    <option value="">-- Pilih Nama Kertas --</option>
+                                                    @foreach ( $bahanKertas as $bahan )
+                                                    <option value="{{ $bahan->id }}">{{ $bahan->nama }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="lastName" class="form-label">Panjang Poly / DTF
@@ -102,6 +122,16 @@
                                                     pattern="[0-9]+(\.[0-9]+)?" placeholder="Contoh: 10 meter" />
                                             </div>
                                             <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">Nama kertas</label>
+                                                <select id="country" required name="kertas_id"
+                                                    class="select2 form-select">
+                                                    <option value="">-- Pilih Nama Kertas --</option>
+                                                    @foreach ( $bahanKertas as $bahan )
+                                                    <option value="{{ $bahan->id }}">{{ $bahan->nama }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="mb-3 col-md-6">
                                                 <label for="lastName" class="form-label">Panjang Poly / DTF
                                                     (Meter)</label>
                                                 <input required class="form-control" type="number" name="poly_kiper"
@@ -132,6 +162,16 @@
                                                 <input required class="form-control" type="number"
                                                     name="panjang_kertas_1" id="lastName" pattern="[0-9]+(\.[0-9]+)?"
                                                     placeholder="Contoh: 10 meter" />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">Nama kertas</label>
+                                                <select id="country" required name="kertas_id"
+                                                    class="select2 form-select">
+                                                    <option value="">-- Pilih Nama Kertas --</option>
+                                                    @foreach ( $bahanKertas as $bahan )
+                                                    <option value="{{ $bahan->id }}">{{ $bahan->nama }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="lastName" class="form-label">Panjang Poly / DTF
@@ -166,6 +206,16 @@
                                                     pattern="[0-9]+(\.[0-9]+)?" placeholder="Contoh: 10 meter" />
                                             </div>
                                             <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">Nama kertas</label>
+                                                <select id="country" required name="kertas_id"
+                                                    class="select2 form-select">
+                                                    <option value="">-- Pilih Nama Kertas --</option>
+                                                    @foreach ( $bahanKertas as $bahan )
+                                                    <option value="{{ $bahan->id }}">{{ $bahan->nama }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="mb-3 col-md-6">
                                                 <label for="lastName" class="form-label">Panjang Poly / DTF
                                                     (Meter)</label>
                                                 <input required class="form-control" type="number"
@@ -196,6 +246,16 @@
                                                 <input required class="form-control" type="number"
                                                     name="panjang_kertas_celana_pelatih" id="lastName"
                                                     pattern="[0-9]+(\.[0-9]+)?" placeholder="Contoh: 10 meter" />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">Nama kertas</label>
+                                                <select id="country" required name="kertas_id"
+                                                    class="select2 form-select">
+                                                    <option value="">-- Pilih Nama Kertas --</option>
+                                                    @foreach ( $bahanKertas as $bahan )
+                                                    <option value="{{ $bahan->id }}">{{ $bahan->nama }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="lastName" class="form-label">Panjang Poly / DTF
@@ -230,6 +290,16 @@
                                                     pattern="[0-9]+(\.[0-9]+)?" placeholder="Contoh: 10 meter" />
                                             </div>
                                             <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">Nama kertas</label>
+                                                <select id="country" required name="kertas_id"
+                                                    class="select2 form-select">
+                                                    <option value="">-- Pilih Nama Kertas --</option>
+                                                    @foreach ( $bahanKertas as $bahan )
+                                                    <option value="{{ $bahan->id }}">{{ $bahan->nama }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="mb-3 col-md-6">
                                                 <label for="lastName" class="form-label">Panjang Poly / DTF
                                                     (Meter)</label>
                                                 <input required class="form-control" type="number"
@@ -260,6 +330,16 @@
                                                 <input required class="form-control" type="number"
                                                     name="panjang_kertas_celana_1" id="lastName"
                                                     pattern="[0-9]+(\.[0-9]+)?" placeholder="Contoh: 10 meter" />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">Nama kertas</label>
+                                                <select id="country" required name="kertas_id"
+                                                    class="select2 form-select">
+                                                    <option value="">-- Pilih Nama Kertas --</option>
+                                                    @foreach ( $bahanKertas as $bahan )
+                                                    <option value="{{ $bahan->id }}">{{ $bahan->nama }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="lastName" class="form-label">Panjang Poly / DTF
@@ -303,6 +383,7 @@
                                         </div><br>
                                     </div>
                                 </div>
+                                <input type="hidden" id="localTime" name="local_time">
                             </div>
                         </div>
                         <button id="submitButton" type="submit" class="btn btn-primary">
@@ -320,6 +401,24 @@
 @endsection
 
 @push('js')
+<script>
+    document.getElementById('submissionForm').addEventListener('submit', function(event) {
+    // Get the local time
+    var now = new Date();
+    var localTime = now.toLocaleString('en-GB', { hour12: false }); // e.g., "14/05/2024, 14:32:09"
+
+    // Format the local time to match ISO 8601 without timezone information
+    var localIsoTime = now.getFullYear() + '-' +
+                       String(now.getMonth() + 1).padStart(2, '0') + '-' +
+                       String(now.getDate()).padStart(2, '0') + 'T' +
+                       String(now.getHours()).padStart(2, '0') + ':' +
+                       String(now.getMinutes()).padStart(2, '0') + ':' +
+                       String(now.getSeconds()).padStart(2, '0');
+
+    // Set the value of the hidden input field
+    document.getElementById('localTime').value = localIsoTime;
+});
+</script>
 <script>
     var maxUploads = 8;
     var uploadCount = 0;

@@ -28,8 +28,8 @@
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">foto serah</label>
-                                                <input required class="form-control" type="file" id="firstName"
-                                                    name="pola_badan" autofocus />
+                                                <input class="form-control" type="file" id="firstName" name="pola_badan"
+                                                    autofocus />
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">keterangan tambahan</label>
@@ -55,7 +55,7 @@
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">foto serah</label>
-                                                <input required class="form-control" type="file" id="firstName"
+                                                <input class="form-control" type="file" id="firstName"
                                                     name="pola_badan_pelatih" autofocus />
                                             </div>
                                             <div class="mb-3 col-md-6">
@@ -81,7 +81,7 @@
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">foto serah</label>
-                                                <input required class="form-control" type="file" id="firstName"
+                                                <input class="form-control" type="file" id="firstName"
                                                     name="pola_badan_kiper" autofocus />
                                             </div>
                                             <div class="mb-3 col-md-6">
@@ -106,7 +106,7 @@
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">foto serah</label>
-                                                <input required class="form-control" type="file" id="firstName"
+                                                <input class="form-control" type="file" id="firstName"
                                                     name="pola_badan_1" autofocus />
                                             </div>
                                             <div class="mb-3 col-md-6">
@@ -133,7 +133,7 @@
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">foto serah</label>
-                                                <input required class="form-control" type="file" id="firstName"
+                                                <input  class="form-control" type="file" id="firstName"
                                                     name="pola_badan_celana_pelayer" autofocus />
                                             </div>
                                             <div class="mb-3 col-md-6">
@@ -160,7 +160,7 @@
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">foto serah</label>
-                                                <input required class="form-control" type="file" id="firstName"
+                                                <input  class="form-control" type="file" id="firstName"
                                                     name="pola_badan_celana_pelatih" autofocus />
                                             </div>
                                             <div class="mb-3 col-md-6">
@@ -187,7 +187,7 @@
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">foto serah</label>
-                                                <input required class="form-control" type="file" id="firstName"
+                                                <input  class="form-control" type="file" id="firstName"
                                                     name="pola_badan_celana_kiper" autofocus />
                                             </div>
                                             <div class="mb-3 col-md-6">
@@ -214,7 +214,7 @@
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">foto serah</label>
-                                                <input required class="form-control" type="file" id="firstName"
+                                                <input  class="form-control" type="file" id="firstName"
                                                     name="pola_badan_celana_1" autofocus />
                                             </div>
                                             <div class="mb-3 col-md-6">

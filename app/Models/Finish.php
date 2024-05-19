@@ -30,6 +30,14 @@ class Finish extends Model
         'foto_celana_pelatih',
         'foto_celana_kiper',
         'foto_celana_1',
+        'keterangan',
+        'keterangan2',
+        'keterangan3',
+        'keterangan4',
+        'keterangan5',
+        'keterangan6',
+        'keterangan7',
+        'keterangan8',
         'tanda_telah_mengerjakan',
     ];
 

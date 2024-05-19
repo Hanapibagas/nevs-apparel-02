@@ -27,14 +27,28 @@
                                                     type="text" id="firstName" name="kain" />
                                             </div>
                                             <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">Nama kain</label>
+                                                <select id="country" required name="kain_id"
+                                                    class="select2 form-select">
+                                                    <option value="">-- Pilih Nama Kertas --</option>
+                                                    @foreach ( $bahanKain as $bahan )
+                                                    <option value="{{ $bahan->id }}">{{ $bahan->nama }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">Berat</label>
                                                 <input required class="form-control" placeholder="Contoh: 1 Kg"
                                                     type="text" id="firstName" name="berat" autofocus />
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">Foto</label>
-                                                <input required class="form-control" type="file" id="firstName"
-                                                    name="gambar" autofocus />
+                                                <input class="form-control" type="file" id="firstName" name="gambar"
+                                                    autofocus />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="firstName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control" name="keterangan"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -56,14 +70,28 @@
                                                     type="text" id="firstName" name="kain_pelatih" />
                                             </div>
                                             <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">Nama kain</label>
+                                                <select id="country" required name="kain_id"
+                                                    class="select2 form-select">
+                                                    <option value="">-- Pilih Nama Kertas --</option>
+                                                    @foreach ( $bahanKain as $bahan )
+                                                    <option value="{{ $bahan->id }}">{{ $bahan->nama }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">Berat</label>
                                                 <input required class="form-control" placeholder="Contoh: 1 Kg"
                                                     type="text" id="firstName" name="berat_pelatih" autofocus />
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">Foto</label>
-                                                <input required class="form-control" type="file" id="firstName"
+                                                <input class="form-control" type="file" id="firstName"
                                                     name="gambar_pelatih" autofocus />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="firstName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control" name="keterangan2"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -85,14 +113,28 @@
                                                     type="text" id="firstName" name="kain_kiper" />
                                             </div>
                                             <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">Nama kain</label>
+                                                <select id="country" required name="kain_id"
+                                                    class="select2 form-select">
+                                                    <option value="">-- Pilih Nama Kertas --</option>
+                                                    @foreach ( $bahanKain as $bahan )
+                                                    <option value="{{ $bahan->id }}">{{ $bahan->nama }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">Berat</label>
                                                 <input required class="form-control" placeholder="Contoh: 1 Kg"
                                                     type="text" id="firstName" name="berat_kiper" autofocus />
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">Foto</label>
-                                                <input required class="form-control" type="file" id="firstName"
+                                                <input class="form-control" type="file" id="firstName"
                                                     name="gambar_kiper" autofocus />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="firstName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control" name="keterangan3"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -113,14 +155,28 @@
                                                     type="text" id="firstName" name="kain_1" />
                                             </div>
                                             <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">Nama kain</label>
+                                                <select id="country" required name="kain_id"
+                                                    class="select2 form-select">
+                                                    <option value="">-- Pilih Nama Kertas --</option>
+                                                    @foreach ( $bahanKain as $bahan )
+                                                    <option value="{{ $bahan->id }}">{{ $bahan->nama }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">Berat</label>
                                                 <input required class="form-control" placeholder="Contoh: 1 Kg"
                                                     type="text" id="firstName" name="berat_1" autofocus />
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">Foto</label>
-                                                <input required class="form-control" type="file" id="firstName"
-                                                    name="gambar_1" autofocus />
+                                                <input class="form-control" type="file" id="firstName" name="gambar_1"
+                                                    autofocus />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="firstName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control" name="keterangan4"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -142,14 +198,28 @@
                                                     type="text" id="firstName" name="kain_celana_player" />
                                             </div>
                                             <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">Nama kain</label>
+                                                <select id="country" required name="kain_id"
+                                                    class="select2 form-select">
+                                                    <option value="">-- Pilih Nama Kertas --</option>
+                                                    @foreach ( $bahanKain as $bahan )
+                                                    <option value="{{ $bahan->id }}">{{ $bahan->nama }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">Berat</label>
                                                 <input required class="form-control" placeholder="Contoh: 1 Kg"
                                                     type="text" id="firstName" name="berat_celana_player" autofocus />
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">Foto</label>
-                                                <input required class="form-control" type="file" id="firstName"
+                                                <input class="form-control" type="file" id="firstName"
                                                     name="gambar_celana_player" autofocus />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="firstName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control" name="keterangan5"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -171,14 +241,28 @@
                                                     type="text" id="firstName" name="kain_celana_pelatih" />
                                             </div>
                                             <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">Nama kain</label>
+                                                <select id="country" required name="kain_id"
+                                                    class="select2 form-select">
+                                                    <option value="">-- Pilih Nama Kertas --</option>
+                                                    @foreach ( $bahanKain as $bahan )
+                                                    <option value="{{ $bahan->id }}">{{ $bahan->nama }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">Berat</label>
                                                 <input required class="form-control" placeholder="Contoh: 1 Kg"
                                                     type="text" id="firstName" name="berat_celana_pelatih" autofocus />
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">Foto</label>
-                                                <input required class="form-control" type="file" id="firstName"
+                                                <input class="form-control" type="file" id="firstName"
                                                     name="gambar_celana_pelatih" autofocus />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="firstName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control" name="keterangan6"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -200,14 +284,28 @@
                                                     type="text" id="firstName" name="kain_celana_kiper" />
                                             </div>
                                             <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">Nama kain</label>
+                                                <select id="country" required name="kain_id"
+                                                    class="select2 form-select">
+                                                    <option value="">-- Pilih Nama Kertas --</option>
+                                                    @foreach ( $bahanKain as $bahan )
+                                                    <option value="{{ $bahan->id }}">{{ $bahan->nama }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">Berat</label>
                                                 <input required class="form-control" placeholder="Contoh: 1 Kg"
                                                     type="text" id="firstName" name="berat_celana_kiper" autofocus />
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">Foto</label>
-                                                <input required class="form-control" type="file" id="firstName"
+                                                <input class="form-control" type="file" id="firstName"
                                                     name="gambar_celana_kiper" autofocus />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="firstName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control" name="keterangan7"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -229,14 +327,28 @@
                                                     type="text" id="firstName" name="kain_celana_1" />
                                             </div>
                                             <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">Nama kain</label>
+                                                <select id="country" required name="kain_id"
+                                                    class="select2 form-select">
+                                                    <option value="">-- Pilih Nama Kertas --</option>
+                                                    @foreach ( $bahanKain as $bahan )
+                                                    <option value="{{ $bahan->id }}">{{ $bahan->nama }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">Berat</label>
                                                 <input required class="form-control" placeholder="Contoh: 1 Kg"
                                                     type="text" id="firstName" name="berat_celana_1" autofocus />
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="firstName" class="form-label">Foto</label>
-                                                <input required class="form-control" type="file" id="firstName"
+                                                <input class="form-control" type="file" id="firstName"
                                                     name="gambar_celana_1" autofocus />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="firstName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control" name="keterangan8"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -244,6 +356,7 @@
                             </div>
                         </div>
                         @endif
+                        <input type="hidden" id="localTime" name="local_time">
                         <button id="submitButton" type="submit" class="btn btn-primary">
                             <i id="submitIcon" class="menu-icon tf-icons bx bx-send"></i>
                             Input Laporan Press Kain
@@ -260,6 +373,24 @@
 
 
 @push('js')
+<script>
+    document.getElementById('submissionForm').addEventListener('submit', function(event) {
+    // Get the local time
+    var now = new Date();
+    var localTime = now.toLocaleString('en-GB', { hour12: false }); // e.g., "14/05/2024, 14:32:09"
+
+    // Format the local time to match ISO 8601 without timezone information
+    var localIsoTime = now.getFullYear() + '-' +
+                       String(now.getMonth() + 1).padStart(2, '0') + '-' +
+                       String(now.getDate()).padStart(2, '0') + 'T' +
+                       String(now.getHours()).padStart(2, '0') + ':' +
+                       String(now.getMinutes()).padStart(2, '0') + ':' +
+                       String(now.getSeconds()).padStart(2, '0');
+
+    // Set the value of the hidden input field
+    document.getElementById('localTime').value = localIsoTime;
+});
+</script>
 <script>
     var playerId = document.getElementById('playerId').value;
     var pelatihId = document.getElementById('pelatihId').value;

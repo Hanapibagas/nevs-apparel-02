@@ -18,6 +18,8 @@ return new class extends Migration
             $table->foreignId('no_order_id')->nullable()->constrained('barang_masuk_costumer_services')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('penanggung_jawab_id')->nullable()->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('manual_cut_id')->nullable()->constrained('data_manual_cuts')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('kertas_id')->nullable()->constrained('bahan_cetaks')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('cetak_id')->nullable()->constrained('bahan_cetaks')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('laser_cut_id')->nullable()->constrained('data_laser_cuts')->onUpdate('cascade')->onDelete('cascade');
             // LK
             $table->foreignId('lk_player_id')->nullable()->constrained('lk_players')->onUpdate('cascade')->onDelete('cascade');

@@ -26,6 +26,11 @@
                                                 <input class="form-control" name="file_foto" type="file" id="firstName"
                                                     required />
                                             </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="firstName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control"
+                                                    name="keterangan">{{ $formattedData['player'][0]['keterangan'] }}</textarea>
+                                            </div>
                                             @endif
                                             @if (!empty($formattedData['pelatih']))
                                             <div class="mb-3 col-md-6">
@@ -34,6 +39,11 @@
                                                 <label for="firstName" class="form-label">File foto</label>
                                                 <input class="form-control" name="file_foto_pelatih" type="file"
                                                     id="firstName" required />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="firstName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control"
+                                                    name="keterangan2">{{ $formattedData['pelatih'][0]['keterangan2'] }}</textarea>
                                             </div>
                                             @endif
                                             @if (!empty($formattedData['kiper']))
@@ -44,6 +54,11 @@
                                                 <input class="form-control" name="file_foto_kiper" type="file"
                                                     id="firstName" required />
                                             </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="firstName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control"
+                                                    name="keterangan3">{{ $formattedData['kiper'][0]['keterangan3'] }}</textarea>
+                                            </div>
                                             @endif
                                             @if (!empty($formattedData['lk_1']))
                                             <div class="mb-3 col-md-6">
@@ -52,6 +67,11 @@
                                                 <label for="firstName" class="form-label">File foto</label>
                                                 <input class="form-control" name="file_foto_1" type="file"
                                                     id="firstName" required />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="firstName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control"
+                                                    name="keterangan4">{{ $formattedData['lk_1'][0]['keterangan4'] }}</textarea>
                                             </div>
                                             @endif
                                             @if (!empty($formattedData['celana_player']))
@@ -62,6 +82,11 @@
                                                 <input class="form-control" name="file_foto_celana_player" type="file"
                                                     id="firstName" required />
                                             </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="firstName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control"
+                                                    name="keterangan5">{{ $formattedData['celana_player'][0]['keterangan5'] }}</textarea>
+                                            </div>
                                             @endif
                                             @if (!empty($formattedData['celana_pelatih']))
                                             <div class="mb-3 col-md-6">
@@ -70,6 +95,11 @@
                                                 <label for="firstName" class="form-label">File foto</label>
                                                 <input class="form-control" name="file_foto_celana_pelatih" type="file"
                                                     id="firstName" required />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="firstName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control"
+                                                    name="keterangan6">{{ $formattedData['celana_pelatih'][0]['keterangan6'] }}</textarea>
                                             </div>
                                             @endif
                                             @if (!empty($formattedData['celana_kiper']))
@@ -80,6 +110,11 @@
                                                 <input class="form-control" name="file_foto_celana_kiper" type="file"
                                                     id="firstName" required />
                                             </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="firstName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control"
+                                                    name="keterangan7">{{ $formattedData['celana_kiper'][0]['keterangan7'] }}</textarea>
+                                            </div>
                                             @endif
                                             @if (!empty($formattedData['celana_1']))
                                             <div class="mb-3 col-md-6">
@@ -89,59 +124,16 @@
                                                 <input class="form-control" name="file_foto_celana_1" type="file"
                                                     id="firstName" required />
                                             </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="firstName" class="form-label">keterangan tambahan</label>
+                                                <textarea class="form-control"
+                                                    name="keterangan8">{{ $formattedData['celana_1'][0]['keterangan8'] }}</textarea>
+                                            </div>
                                             @endif
                                         </div>
                                     </div>
                                 </div>
-                                {{-- <div class="card mb-4">
-                                    <div class="card-body">
-                                        <div class="row">
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <div class="row">
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <div class="row">
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <div class="row">
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <div class="row">
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <div class="row">
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <div class="row">
-
-                                        </div>
-                                    </div>
-                                </div> --}}
+                                <input type="hidden" id="localTime" name="local_time">
                             </div>
                         </div>
                         <button id="submitButton" type="submit" class="btn btn-primary">
@@ -159,6 +151,24 @@
 @endsection
 
 @push('js')
+<script>
+    document.getElementById('submissionForm').addEventListener('submit', function(event) {
+    // Get the local time
+    var now = new Date();
+    var localTime = now.toLocaleString('en-GB', { hour12: false }); // e.g., "14/05/2024, 14:32:09"
+
+    // Format the local time to match ISO 8601 without timezone information
+    var localIsoTime = now.getFullYear() + '-' +
+                       String(now.getMonth() + 1).padStart(2, '0') + '-' +
+                       String(now.getDate()).padStart(2, '0') + 'T' +
+                       String(now.getHours()).padStart(2, '0') + ':' +
+                       String(now.getMinutes()).padStart(2, '0') + ':' +
+                       String(now.getSeconds()).padStart(2, '0');
+
+    // Set the value of the hidden input field
+    document.getElementById('localTime').value = localIsoTime;
+});
+</script>
 <script>
     var playerId = document.getElementById('playerId').value;
     var pelatihId = document.getElementById('pelatihId').value;

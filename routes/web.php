@@ -38,6 +38,10 @@ Route::middleware(['auth', 'checkroll:super_admin,jahit,finis,cut,disainer,layou
     Route::get('/show-data-lk-super-admin/{id}', [HomeController::class, 'cetakDataLk'])->name('getCetakDataLkSuperAdmin');
 
     // route admin cs
+    Route::get('/laporan-jahit', [HomeController::class, 'getLaporanProduksi'])->name('getLaporanProduksi');
+    Route::get('/laporan-semua-produksi', [HomeController::class, 'getLaporanSemuaProduksi'])->name('getLaporanSemuaProduksi');
+    Route::get('/laporan-semua-produksi/pdf', [HomeController::class, 'getLaporanbahankain'])->name('getLaporanbahankain');
+    Route::get('/laporan-semua-produksi-kertas/pdf', [HomeController::class, 'getLaporanKertas'])->name('getLaporanKertas');
     Route::get('/laporan', [HomeController::class, 'getLaporan'])->name('getIndexLaporan');
     Route::get('/laporan-details/{id}', [HomeController::class, 'getDetailLaporan'])->name('getDetailLaporan');
 
@@ -82,6 +86,13 @@ Route::middleware(['auth', 'checkroll:super_admin,jahit,finis,cut,disainer,layou
     Route::put('/list-data-jenis-celana/update/{id}', [ListDataController::class, 'putDataJenisCelana'])->name('putListDataJenisCelana');
     Route::delete('/list-data-jenis-celana/delete/{id}', [ListDataController::class, 'deletJenisDataCelana'])->name('deleteListDataJenisCelana');
 
+    Route::get('/list-data-bahan-kertas', [ListDataController::class, 'getIndexBahanKertas'])->name('getIndexListDataBahanKertas');
+    Route::post('/list-data-bahan-kertas/post', [ListDataController::class, 'postBahanCetak'])->name('postBahanCetak');
+    Route::put('/list-data-bahan-kertas/update/{id}', [ListDataController::class, 'putBahanCetak'])->name('putBahanCetak');
+
+    Route::get('/list-data-bahan-kain', [ListDataController::class, 'getIndexBahanKain'])->name('getIndexListDataBahanKain');
+    Route::post('/list-data-bahan-kain/post', [ListDataController::class, 'postBahanKain'])->name('postBahanKain');
+    Route::put('/list-data-bahan-kain/update/{id}', [ListDataController::class, 'putBahanKain'])->name('putBahanKain');
     // update Password
     Route::get('/update-password', [HomeController::class, 'getUpdatePassword'])->name('getUpdatePassword');
     Route::put('/update-password-user', [HomeController::class, 'postUpdatePassword'])->name('postUpdatePassword');
